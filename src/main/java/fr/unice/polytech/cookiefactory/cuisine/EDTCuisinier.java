@@ -1,17 +1,20 @@
-package java.fr.unice.polytech.cookiefactory.cuisine;
+package fr.unice.polytech.cookiefactory.cuisine;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EDTCuisinier {
-    private CreneauPreparationCommande creneauPreparationCommande;
+    private List<CreneauPreparationCommande> creneauPreparationCommande;
 
-    public EDTCuisinier(CreneauPreparationCommande creneauPreparationCommande) {
-        this.creneauPreparationCommande = creneauPreparationCommande;
+    public EDTCuisinier() {
+        this.creneauPreparationCommande = new ArrayList<>();
     }
 
-    public CreneauPreparationCommande getCreneauPreparationCommande() {
+    public List<CreneauPreparationCommande> getCreneauPreparationCommande() {
         return creneauPreparationCommande;
     }
 
-    public void setCreneauPreparationCommande(CreneauPreparationCommande creneauPreparationCommande) {
+    public void setCreneauPreparationCommande(List<CreneauPreparationCommande> creneauPreparationCommande) {
         this.creneauPreparationCommande = creneauPreparationCommande;
     }
 

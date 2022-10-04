@@ -1,4 +1,4 @@
-package java.fr.unice.polytech.cookiefactory.cuisine;
+package fr.unice.polytech.cookiefactory.cuisine;
 
 import java.util.Date;
 
