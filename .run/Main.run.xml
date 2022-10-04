@@ -4,7 +4,7 @@
     <module name="cod" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="fr.unice.polytech.cookiefactory.*" />
+        <option name="PATTERN" value="fr.unice.polytech.cookiefactory.clientelle.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
