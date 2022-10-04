@@ -1,7 +1,5 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.commandes.Commande;
-
 import java.util.List;
 
 public class GestionnaireDeCommandes {

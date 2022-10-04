@@ -9,7 +9,8 @@ public class GestionnaireDeCuisinier {
     private List<Cuisinier> cuisiniers;
     private Magasin magasin;
     private List<Commande> commandes;
-    public void assignCuisinier(CreneauPreparationCommande cpc, Commande c){
+
+    public void assignCuisinier(CreneauPreparationCommande cpc, Commande c) {
         //TODO
     }
 

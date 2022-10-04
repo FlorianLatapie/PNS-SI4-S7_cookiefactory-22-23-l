@@ -24,7 +24,7 @@ public class Cookie {
     private final Pate pate;
 
     public Cookie(Prix prixHorsTaxe, Cuisson cuisson, Melange melange, Pate pate, Saveur saveur, ArrayList<Garniture> garniture) {
-        if (garniture.size() > 3){
+        if (garniture.size() > 3) {
             throw new IllegalArgumentException("Un cookie ne peut pas avoir plus de 3 garnitures");
         }
         this.prixHorsTaxe = prixHorsTaxe;

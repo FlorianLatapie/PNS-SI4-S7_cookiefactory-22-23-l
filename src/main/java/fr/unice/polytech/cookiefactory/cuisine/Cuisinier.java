@@ -9,13 +9,13 @@ public class Cuisinier {
         this.edtCuisinier = new EDTCuisinier();
     }
 
-    
-    public void terminerCommande(Commande c){
+
+    public void terminerCommande(Commande c) {
         //TODO
     }
 
-    
-    public void ajouterCommande(Commande c){
+
+    public void ajouterCommande(Commande c) {
         //TODO
     }
 

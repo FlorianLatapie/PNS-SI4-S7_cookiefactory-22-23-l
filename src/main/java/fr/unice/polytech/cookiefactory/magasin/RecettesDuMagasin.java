@@ -7,6 +7,7 @@ import java.util.List;
 
 public class RecettesDuMagasin {
     private List<Cookie> cookies;
+
     public void ajouterRecette(Cookie recette) {
         // TODO implement here
     }

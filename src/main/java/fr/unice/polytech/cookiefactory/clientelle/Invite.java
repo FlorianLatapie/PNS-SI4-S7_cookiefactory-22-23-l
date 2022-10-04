@@ -9,13 +9,15 @@ public class Invite {
         this.informationClient = new InformationClient(nom, prenom, mail, numeroDeTelephone);
     }
 
-    public void enregistrerEnClient(){
+    public void enregistrerEnClient() {
         //TODO
     }
-    public void consulterCommande(){
+
+    public void consulterCommande() {
         //TODO
     }
-    public void annulerCommande(Commande commande){
+
+    public void annulerCommande(Commande commande) {
         //TODO
     }
 }

@@ -19,11 +19,11 @@ public class Commande {
     private Etat etat;
     private List<Cookie> cookies;
 
-    public void appliquerRemise(){
+    public void appliquerRemise() {
         //TODO
     }
 
-    public void changerStatut(Etat etat){
+    public void changerStatut(Etat etat) {
         this.etat = etat;
     }
 }

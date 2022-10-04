@@ -6,17 +6,20 @@ public class InfosProgrammeLoyal {
     public InfosProgrammeLoyal() {
         this.nbDeCookiesCommandes = 0;
     }
+
     public InfosProgrammeLoyal(int nbDeCookiesCommandes) {
         this.nbDeCookiesCommandes = nbDeCookiesCommandes;
     }
 
-    public void peutAvoirReduction(){
+    public void peutAvoirReduction() {
         //TODO
     }
-    public void ajoutBonusFidelite(int n){
+
+    public void ajoutBonusFidelite(int n) {
         //TODO
     }
-    public void appliquerReduction(){
+
+    public void appliquerReduction() {
         //TODO
     }
 
