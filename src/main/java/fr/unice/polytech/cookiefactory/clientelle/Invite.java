@@ -3,13 +3,19 @@ package fr.unice.polytech.cookiefactory.clientelle;
 import java.fr.unice.polytech.cookiefactory.commandes.Commande;
 
 public class Invite {
-    InformationClient ic;
+    InformationClient informationClient;
 
     public Invite() {
-        this.ic = new InformationClient();
+        this.informationClient = new InformationClient();
     }
 
-    public void enregistrerEnClient(){}
-    public void consulterCommande(){}
-    public void annulerCommande(Commande commande){}
+    public void enregistrerEnClient(){
+        //TODO
+    }
+    public void consulterCommande(){
+        //TODO
+    }
+    public void annulerCommande(Commande commande){
+        //TODO
+    }
 }

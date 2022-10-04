@@ -5,6 +5,7 @@ public class ClientEnregistre extends Invite{
     private String mdp;
     private boolean estMembre;
     private InfosProgrammeLoyal ipl;
+    
     public ClientEnregistre() {
         super();
         this.ipl = new InfosProgrammeLoyal(0);

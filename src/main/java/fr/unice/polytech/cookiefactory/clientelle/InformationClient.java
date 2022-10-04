@@ -6,15 +6,6 @@ public class InformationClient {
     private String mail;
     private String numeroDeTelephone;
 
-
-
-    public InformationClient() {
-        this.nom = "Chabanier";
-        this.prenom = "Quentin";
-        this.mail = "ludovic.latapie@matis.si4";
-        this.numeroDeTelephone = "01 23 45 67 89";
-    }
-
     public InformationClient(String nom, String prenom, String mail, String numeroDeTelephone) {
         this.nom = nom;
         this.prenom = prenom;
