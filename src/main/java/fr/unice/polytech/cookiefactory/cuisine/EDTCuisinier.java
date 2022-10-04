@@ -15,8 +15,7 @@ public class EDTCuisinier {
         this.creneauPreparationCommande = creneauPreparationCommande;
     }
 
-    //TO DO
     public void nouveauCreneau(){
-
+        // TODO
     }
 }
