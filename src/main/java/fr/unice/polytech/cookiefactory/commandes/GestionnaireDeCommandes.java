@@ -1,10 +1,12 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
+import fr.unice.polytech.cookiefactory.services.ServiceDEnvoi;
+
 import java.util.List;
 
 public class GestionnaireDeCommandes {
-    private SenderService MailService;
-    private SenderService SMSService;
+    private ServiceDEnvoi MailService;
+    private ServiceDEnvoi SMSService;
     private List<Commande> commandes;
 
     public void voirCommandesEnAttenteDeReception() {
