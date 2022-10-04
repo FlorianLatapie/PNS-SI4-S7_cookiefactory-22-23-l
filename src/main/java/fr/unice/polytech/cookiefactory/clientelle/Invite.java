@@ -1,6 +1,6 @@
 package fr.unice.polytech.cookiefactory.clientelle;
 
-import fr.unice.polytech.cookiefactory.commandes.Commande
+import java.fr.unice.polytech.cookiefactory.commandes.Commande;
 
 public class Invite {
     InformationClient ic;
