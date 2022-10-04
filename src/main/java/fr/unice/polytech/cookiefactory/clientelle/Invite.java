@@ -1,12 +1,12 @@
 package fr.unice.polytech.cookiefactory.clientelle;
 
-import java.fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.commandes.Commande;
 
 public class Invite {
     InformationClient informationClient;
 
-    public Invite() {
-        this.informationClient = new InformationClient();
+    public Invite(String nom, String prenom, String mail, String numeroDeTelephone) {
+        this.informationClient = new InformationClient(nom, prenom, mail, numeroDeTelephone);
     }
 
     public void enregistrerEnClient(){

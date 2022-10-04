@@ -1,14 +1,16 @@
 package fr.unice.polytech.cookiefactory.clientelle;
 
-public class ClientEnregistre extends Invite{
+public class ClientEnregistre extends Invite {
     private String nomUtilisateur;
-    private String mdp;
+    private String motDePasse;
     private boolean estMembre;
-    private InfosProgrammeLoyal ipl;
-    
-    public ClientEnregistre() {
-        super();
-        this.ipl = new InfosProgrammeLoyal(0);
+    private InfosProgrammeLoyal infosProgrammeLoyal;
+
+    public ClientEnregistre(String nom, String prenom, String mail, String numeroDeTelephone, String nomUtilisateur, String mdp) {
+        super(nom, prenom, mail, numeroDeTelephone);
+        this.nomUtilisateur = nomUtilisateur;
+        this.motDePasse = mdp;
+        this.infosProgrammeLoyal = new InfosProgrammeLoyal();
     }
 
     public String getNomUtilisateur() {
@@ -19,12 +21,12 @@ public class ClientEnregistre extends Invite{
         this.nomUtilisateur = nomUtilisateur;
     }
 
-    public String getMdp() {
-        return mdp;
+    public String getMotDePasse() {
+        return motDePasse;
     }
 
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 
     public boolean isEstMembre() {
@@ -35,11 +37,11 @@ public class ClientEnregistre extends Invite{
         this.estMembre = estMembre;
     }
 
-    public InfosProgrammeLoyal getIpl() {
-        return ipl;
+    public InfosProgrammeLoyal getInfosProgrammeLoyal() {
+        return infosProgrammeLoyal;
     }
 
-    public void setIpl(InfosProgrammeLoyal ipl) {
-        this.ipl = ipl;
+    public void setInfosProgrammeLoyal(InfosProgrammeLoyal infosProgrammeLoyal) {
+        this.infosProgrammeLoyal = infosProgrammeLoyal;
     }
 }

@@ -3,6 +3,9 @@ package fr.unice.polytech.cookiefactory.clientelle;
 public class InfosProgrammeLoyal {
     private int nbDeCookiesCommandes;
 
+    public InfosProgrammeLoyal() {
+        this.nbDeCookiesCommandes = 0;
+    }
     public InfosProgrammeLoyal(int nbDeCookiesCommandes) {
         this.nbDeCookiesCommandes = nbDeCookiesCommandes;
     }
