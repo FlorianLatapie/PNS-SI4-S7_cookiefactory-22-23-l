@@ -4,27 +4,35 @@ import fr.unice.polytech.cookiefactory.cookie.enums.Cuisson;
 import fr.unice.polytech.cookiefactory.cookie.enums.Melange;
 import fr.unice.polytech.cookiefactory.cookie.enums.ValidationCookie;
 import fr.unice.polytech.cookiefactory.divers.Prix;
+import fr.unice.polytech.cookiefactory.ingredients.Garniture;
+import fr.unice.polytech.cookiefactory.ingredients.Pate;
+import fr.unice.polytech.cookiefactory.ingredients.Saveur;
 
 import java.util.ArrayList;
 
 public class Cookie {
-
     private boolean disponible = false;
-    private ValidationCookie validation = ValidationCookie.SOUMIS;
+    private int tempsPreparation;
     private Prix prixHorsTaxe;
-    private final Cuisson cuisson;
+    private ValidationCookie validation = ValidationCookie.SOUMIS;
+
+
     private final Melange melange;
-    private final Pate pate;
+    private final Cuisson cuisson;
     private final Saveur saveur;
     private final ArrayList<Garniture> garniture;
+    private final Pate pate;
 
     public Cookie(Prix prixHorsTaxe, Cuisson cuisson, Melange melange, Pate pate, Saveur saveur, ArrayList<Garniture> garniture) {
+        if (garniture.size() > 3){
+            throw new IllegalArgumentException("Un cookie ne peut pas avoir plus de 3 garnitures");
+        }
         this.prixHorsTaxe = prixHorsTaxe;
         this.cuisson = cuisson;
         this.melange = melange;
         this.pate = pate;
         this.saveur = saveur;
-        this.garniture = new ArrayList<>(garniture);
+        this.garniture = garniture;
     }
 
     public boolean isDisponible() {
