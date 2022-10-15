@@ -17,7 +17,7 @@ assignees: ''
 **As a** [type of user], **I want** [an action] **so that** [a benefit/a value]<br>
 **En tant que** [type of user], **Je veux** [an action] **afin de** [a benefit/a value]
 
-:star2: **Priorité/Priority :** C'est la priorité dans les attentes du client, ce qui est important c'est que toute l'
+:star2: **Priorité/Priority :** C'est la priorité dans les attentes du client, ce qui est important, c'est que toute l'
 équipe soit d'accord sur l'échelle, vous pouvez aussi faire le choix d'étoiles, de chiffres ou suivre l'échelle donnée
 ci-dessous. Mettez à jour le patron quand l'équipe a fait un choix.
 
@@ -28,7 +28,8 @@ Proposition d'échelle, la [méthode MoSCoW](https://paper-leaf.com/insights/pri
 2. _**Should Have/Devrait avoir** : l'idéal serait que la première version de ce produit dispose de cette
    fonctionnalité, mais elle n'est pas absolument nécessaire. Elles peuvent être aussi importantes, mais pas aussi
    critiques en termes de temps, que les "Must Have"._
-3. _**Could have/Aurait pu**: l'histoire de l'utilisateur a de la valeur et est souhaitable, mais en fin de compte, elle
+3. _**Could have/Aurait pu** : l'histoire de l'utilisateur a de la valeur et est souhaitable, mais en fin de compte,
+   elle
    n'est pas nécessaire._
 4. _**Won't have/N'aura pas** : l'histoire de l'utilisateur est considérée comme étant parmi les moins critiques ou les
    moins utiles._
@@ -37,7 +38,7 @@ Proposition d'échelle, la [méthode MoSCoW](https://paper-leaf.com/insights/pri
 Ce point est estimé avec la méthode vue en cours.
 
 :sparkles: **Règle métier /Business rules :**
-Précisez ici les règles métiers essentielles pour le développement de cette user-story.
+Précisez ici les règles métiers essentielles pour le développement de cette user story.
 
 Ces règles sont écrites en français ou en anglais avec comme objectif de très facilement comprendre le travail à
 effectuer.
@@ -56,7 +57,7 @@ panier.
 Précisez l'ensemble des conditions que la story doit satisfaire pour être considérée comme complète et terminée.
 
 Plus spécifiquement décrivez un ensemble de scénario qui deviendront des tests d'acceptation.
-Précisez bien les données associées comme vous le voyez dans les scénarios d'exemples données ci-dessous.
+Précisez bien les données associées comme vous le voyez dans les scénarios d'exemples donnés ci-dessous.
 Vous pouvez faire référence ici aux tests Gherkins correspondant
 
 **Scenario:** objective

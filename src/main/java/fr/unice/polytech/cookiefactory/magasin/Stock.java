@@ -7,20 +7,20 @@ import java.util.List;
 public class Stock {
     private List<Ingredient> ingredients;
     private Magasin magasin;
-    
+
     public void retirerIngredient(Ingredient ingredient, Integer quantite) {
         // TODO implement here
     }
 
-    public void ajouterIngrédient(Ingredient ingredient, Integer quantite) {
+    public void ajouterIngredient(Ingredient ingredient, Integer quantite) {
         // TODO implement here
     }
 
-    public void nouvelIngrédient(Ingredient ingredient) {
+    public void nouvelIngredient(Ingredient ingredient) {
         // TODO implement here
     }
 
-    public void supprimerIngrédient(Ingredient ingredient) {
+    public void supprimerIngredient(Ingredient ingredient) {
         // TODO implement here
     }
 }

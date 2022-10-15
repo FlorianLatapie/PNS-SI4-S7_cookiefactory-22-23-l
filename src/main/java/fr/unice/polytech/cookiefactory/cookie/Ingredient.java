@@ -2,7 +2,7 @@ package fr.unice.polytech.cookiefactory.cookie;
 
 public class Ingredient {
     private boolean disponible;
-    String nom;
+    private final String nom;
 
     public Ingredient(String nom, boolean disponible) {
         this.disponible = disponible;
