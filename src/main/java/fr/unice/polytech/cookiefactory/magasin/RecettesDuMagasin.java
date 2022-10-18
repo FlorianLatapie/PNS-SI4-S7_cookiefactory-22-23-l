@@ -1,7 +1,7 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
-import fr.unice.polytech.cookiefactory.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.divers.Prix;
+import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.util.List;
 

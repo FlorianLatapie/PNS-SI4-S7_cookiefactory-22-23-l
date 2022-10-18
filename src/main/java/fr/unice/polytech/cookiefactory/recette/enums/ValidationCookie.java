@@ -1,4 +1,4 @@
-package fr.unice.polytech.cookiefactory.cookie.enums;
+package fr.unice.polytech.cookiefactory.recette.enums;
 
 public enum ValidationCookie {
     REFUSE,

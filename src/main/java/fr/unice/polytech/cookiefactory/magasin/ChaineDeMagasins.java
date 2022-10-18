@@ -1,6 +1,6 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
-import fr.unice.polytech.cookiefactory.cookie.Ingredient;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.util.List;
 
