@@ -19,7 +19,7 @@ public class PreparerUneCommandeStepdef {
 
         Etat etatEntre = Etat.valueOf(etat);
         commande = new Commande();
-        commande.changerStatut(etatEntre);
+        commande.setEtat(etatEntre);
     }
 
     @Quand("je commence la préparation de la commande")

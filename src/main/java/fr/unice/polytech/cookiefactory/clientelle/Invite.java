@@ -9,6 +9,10 @@ public class Invite {
         this.informationClient = new InformationClient(nom, prenom, mail, numeroDeTelephone);
     }
 
+    public Invite(String nom, String prenom){
+        this.informationClient = new InformationClient(nom, prenom);
+    }
+
     public void enregistrerEnClient() {
         //TODO
         throw new UnsupportedOperationException("Not implemented yet.");

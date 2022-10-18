@@ -2,10 +2,8 @@
 Fonctionnalité: Caissier
 
   Contexte:
-    Étant donné un Caissier
-    Et une Commande
+    Étant donné une Commande pour "Aurélia" "Chabanier" en état "EN_ATTENTE_DE_RECEPTION"
 
   Scénario: marquer une commande comme délivrée
-    Étant donné un Caissier
     Quand je veux valider la commande de "Aurélia"
-    Alors la commande est enlevée de la liste des commandes en attente de retrait
+    Alors la commande est enlevée de la liste des commandes en attente de retrait et la commande est marquée comme "RECEPTIONNEE"

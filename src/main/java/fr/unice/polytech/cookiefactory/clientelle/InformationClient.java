@@ -6,9 +6,13 @@ public class InformationClient {
     private String mail;
     private String numeroDeTelephone;
 
-    public InformationClient(String nom, String prenom, String mail, String numeroDeTelephone) {
+    public InformationClient(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
+    }
+
+    public InformationClient(String nom, String prenom, String mail, String numeroDeTelephone) {
+        this(nom, prenom);
         this.mail = mail;
         this.numeroDeTelephone = numeroDeTelephone;
     }

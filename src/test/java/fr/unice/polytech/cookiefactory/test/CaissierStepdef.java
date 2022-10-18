@@ -1,35 +1,37 @@
 package fr.unice.polytech.cookiefactory.test;
 
+import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import io.cucumber.java.bs.I;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
+import io.cucumber.java.fr.Étantdonné;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CaissierStepdef {
-    @Etantdonné("un Caissier")
-    public void un_caissier() {
-        //
-    }
+    private Commande commande;
 
-    @Etantdonné("une Commande")
-    public void une_commande() {
-        //
+    @Étantdonné("une Commande pour {string} {string} en état {string}")
+    public void uneCommandePourEnÉtat(String prenom, String nom, String etat) {
+        commande = new Commande(new Invite(prenom, nom));
+        commande.setEtat(Etat.valueOf(etat));
     }
 
     @Quand("je veux valider la commande de {string}")
     public void je_veux_valider_la_commande(String nom) {
-        Commande c = new Commande();
+        commande = new Commande();
         GestionnaireDeCommandes g = new GestionnaireDeCommandes();
-        g.commandeReceptionnee(c);
-        assertEquals(c.getEtat(), Etat.RECEPTIONNEE);
+        g.commandeReceptionnee(commande);
+        assertEquals(commande.getEtat(), Etat.RECEPTIONNEE);
     }
 
-    @Alors("la commande est enlevée de la liste des commandes en attente de retrait")
-    public void la_commande_est_enlevée_de_la_liste_des_commandes_en_attente_de_retrait() {
-        //
+    @Alors("la commande est enlevée de la liste des commandes en attente de retrait et la commande est marquée comme {string}")
+    public void laCommandeEstEnlevéeDeLaListeDesCommandesEnAttenteDeRetraitEtLaCommandeEstMarquéeComme(String etatCommande) {
     }
+
+
 }

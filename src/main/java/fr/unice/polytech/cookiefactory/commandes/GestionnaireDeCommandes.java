@@ -17,6 +17,6 @@ public class GestionnaireDeCommandes {
     }
 
     public void commandeReceptionnee(Commande commande) {
-        commande.changerStatut(Etat.RECEPTIONNEE);
+        commande.setEtat(Etat.RECEPTIONNEE);
     }
 }
