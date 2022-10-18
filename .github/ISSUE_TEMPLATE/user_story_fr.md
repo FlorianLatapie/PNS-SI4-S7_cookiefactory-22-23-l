@@ -2,7 +2,7 @@
 name: User Story fr
 about: Describe the User Story
 title: "[US]"
-labels: bug, US
+labels: US
 assignees: ''
 
 ---
@@ -17,10 +17,10 @@ assignees: ''
 
 ## :star2: Priorité
 
-1. **Doit avoir** :
-2. **Devrait avoir** :
-3. **Aurait pu** :
-4. **N'aura pas** :
+**Doit avoir**
+**Devrait avoir**
+ **Aurait pu**
+**N'aura pas**
 
 ## :star2: **Estimation :**
 
@@ -34,9 +34,3 @@ assignees: ''
 **Étant donné**  
 **Quand**  
 **Alors**
-
-## Légende
-
-- :star:  Requis
-- :star2: Requis avant le passage en développement.
-- :sparkles: Un plus
