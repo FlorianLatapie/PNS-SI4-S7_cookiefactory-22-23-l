@@ -1,5 +1,5 @@
 ---
-name: User Story
+name: User Story fr 
 about: Describe the User Story
 title: "[US]"
 labels: bug, US
