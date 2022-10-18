@@ -17,7 +17,7 @@ public class BaseDeDonnees {
     }
 
     private void initBD() {
-        bdCookie = new BDCookie();
+        bdCookie = BDCookie.getInstance();
     }
 
     public BDCookie getBdCookie(){

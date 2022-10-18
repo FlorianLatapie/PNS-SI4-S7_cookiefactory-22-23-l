@@ -7,11 +7,18 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import java.util.*;
 
 public class BDCookie {
+    private static BDCookie instance;
 
-    //public static String POP_CHOCO = "Pop-Choco";
-    private Map<String, Cookie> cookies;
+    private final Map<String, Cookie> cookies;
 
-    public BDCookie(){
+    public static BDCookie getInstance() {
+        if (instance == null) {
+            instance = new BDCookie();
+        }
+        return instance;
+    }
+
+    private BDCookie(){
         cookies = new HashMap<>();
         cookies.put("Pop-Choco", new Cookie(new Prix(150)));
     }
