@@ -86,7 +86,7 @@ _**Scénario:**_<br>
     Alors mon produit aura "2" quantités
 ```
 
-## Legende
+## Légende
 
 - :star:  Requis
 - :star2: Requis avant le passage en développement.
