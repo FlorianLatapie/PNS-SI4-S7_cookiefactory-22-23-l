@@ -1,5 +1,5 @@
 #language: fr
-Fonctionnalité: Cuisinier
+Fonctionnalité: Consulter les commandes à préparer
 
   Contexte:
     Étant donné un cuisinier

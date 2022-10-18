@@ -4,7 +4,7 @@ import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Lorsque;
 
-public class CuisinierStepdef {
+public class ConsulterLesCommandesAPreparerStepdef {
 
     @Etantdonné("un cuisinier")
     public void un_cuisinier() {
