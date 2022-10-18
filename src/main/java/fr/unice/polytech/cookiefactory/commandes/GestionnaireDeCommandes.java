@@ -1,5 +1,6 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
+import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.services.ServiceDEnvoi;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public class GestionnaireDeCommandes {
     }
 
     public void commandeReceptionnee(Commande commande) {
-        // TODO implement here
+        commande.changerStatut(Etat.RECEPTIONNEE);
     }
 }

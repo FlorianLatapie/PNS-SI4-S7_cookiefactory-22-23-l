@@ -26,4 +26,8 @@ public class Commande {
     public void changerStatut(Etat etat) {
         this.etat = etat;
     }
+
+    public Etat getEtat() {
+        return etat;
+    }
 }

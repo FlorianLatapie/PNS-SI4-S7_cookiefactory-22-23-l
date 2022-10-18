@@ -7,5 +7,5 @@ Fonctionnalité: Caissier
 
   Scénario: marquer une commande comme délivrée
     Etant donné un Caissier
-    Quand je veux valider la commande
+    Quand je veux valider la commande de "Aurélia"
     Alors la commande est enlevée de la liste des commandes en attente de retrait
