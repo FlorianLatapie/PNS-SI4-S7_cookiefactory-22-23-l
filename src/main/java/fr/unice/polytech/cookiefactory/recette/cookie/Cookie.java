@@ -4,7 +4,7 @@ import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 
 public class Cookie {
-    private final Recette recette;
+    private Recette recette;
     private final Prix prix;
     private ValidationCookie etat;
 
@@ -26,11 +26,15 @@ public class Cookie {
         this.prix = prix;
     }
 
+    public Cookie(Prix prix) {
+        this.prix = prix;
+    }
+
     public Recette getRecette() {
         return this.recette;
     }
 
-    public Prix getPrix() {
+    public Prix getPrixHorsTaxe() {
         return this.prix;
     }
 

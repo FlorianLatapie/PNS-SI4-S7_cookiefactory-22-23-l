@@ -1,5 +1,7 @@
 package fr.unice.polytech.cookiefactory.divers;
 
+import java.util.Objects;
+
 public final class Prix {
 
     public static final Prix ZERO = new Prix(0);
@@ -9,11 +11,32 @@ public final class Prix {
         this.nbCentimes = centimes;
     }
 
-    public int getNbCentimes() {
+    public int getPrixEnCentimes() {
         return nbCentimes;
     }
 
     public Prix add(Prix prix) {
         return new Prix(this.nbCentimes + prix.nbCentimes);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Prix prix = (Prix) o;
+        return nbCentimes == prix.nbCentimes;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nbCentimes);
+    }
+
+    @Override
+    public String toString() {
+        return "Prix{" +
+                "nbCentimes=" + nbCentimes +
+                '}';
+    }
+
 }

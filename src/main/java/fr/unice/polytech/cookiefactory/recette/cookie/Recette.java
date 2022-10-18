@@ -25,6 +25,6 @@ public record Recette(String nom, Pate pate, Saveur saveur, List<Garniture> garn
     }
 
     public Prix prix() {
-        return new Prix(this.pate.getPrix().add(this.saveur.getPrix()).add(this.garnitures.stream().map(Garniture::getPrix).reduce(Prix.ZERO, Prix::add)).getNbCentimes() * 2);
+        return new Prix(this.pate.getPrix().add(this.saveur.getPrix()).add(this.garnitures.stream().map(Garniture::getPrix).reduce(Prix.ZERO, Prix::add)).getPrixEnCentimes() * 2);
     }
 }
