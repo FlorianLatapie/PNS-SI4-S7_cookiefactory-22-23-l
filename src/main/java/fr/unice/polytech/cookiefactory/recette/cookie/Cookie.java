@@ -53,4 +53,9 @@ public class Cookie {
     private Prix calculerPrix() {
         return this.recette.prix();
     }
+
+    @Override
+    public String toString() {
+        return "Cookie{}";
+    }
 }

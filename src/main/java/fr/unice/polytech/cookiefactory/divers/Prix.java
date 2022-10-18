@@ -19,6 +19,14 @@ public final class Prix {
         return new Prix(this.nbCentimes + prix.nbCentimes);
     }
 
+    public Prix multiply(Prix prix) {
+        return new Prix(this.nbCentimes * prix.nbCentimes);
+    }
+
+    public Prix multiply(int nb) {
+        return new Prix(this.nbCentimes * nb);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

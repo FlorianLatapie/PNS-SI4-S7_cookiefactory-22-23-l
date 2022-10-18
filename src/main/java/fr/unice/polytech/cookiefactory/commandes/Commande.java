@@ -18,28 +18,14 @@ public class Commande {
     private Magasin magasin;
     private Invite invite;
     private Etat etat;
-    private List<Cookie> cookies = new ArrayList<>();
-
-    public Commande() {
-        this.etat = Etat.CONFIRME;
-    }
+    private final Panier panier = new Panier();
 
     public Commande(Invite invite) {
-        this();
         this.invite = invite;
     }
 
-
-    public void ajouterCookie(Cookie cookie) {
-        cookies.add(cookie);
-    }
-
-    public void supprimerCookie(Cookie cookie) {
-        cookies.remove(cookie);
-    }
-
-    public List<Cookie> getCookies() {
-        return cookies;
+    public Commande() {
+        super();
     }
 
     public void appliquerRemise() {
@@ -47,16 +33,27 @@ public class Commande {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
+    public Panier getPanier() {
+        return panier;
+    }
+
     public Prix getPrix() {
-        int prix = 0;
-        for (Cookie cookie : cookies) {
-            prix += cookie.getPrixHorsTaxe().getPrixEnCentimes();
-        }
-        return new Prix(prix);
+        return panier.getLignesCommande().stream().map(ligne -> ligne.getCookie().getPrixHorsTaxe().multiply(ligne.getQuantite())).reduce(Prix.ZERO, Prix::add);
+    }
+
+    public void changerStatut(Etat etat) {
+        this.etat = etat;
     }
 
     public Etat getEtat() {
         return etat;
+    }
+
+    @Override
+    public String toString() {
+        return "Commande{" +
+                "Contenu panier : " + panier +
+                '}';
     }
 
     public void setEtat(Etat etat) {
