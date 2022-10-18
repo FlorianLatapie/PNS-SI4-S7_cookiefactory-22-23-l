@@ -25,6 +25,7 @@ public record Recette(String nom, Pate pate, Saveur saveur, List<Garniture> garn
     }
 
     public Prix prix() {
+        // TODO changer le calcul du prix : il est choisi arbitrairement par un humain, il ne doit pas etre calculé automatiquement (cf le rapport)
         return new Prix(this.pate.getPrix().add(this.saveur.getPrix()).add(this.garnitures.stream().map(Garniture::getPrix).reduce(Prix.ZERO, Prix::add)).getPrixEnCentimes() * 2);
     }
 }
