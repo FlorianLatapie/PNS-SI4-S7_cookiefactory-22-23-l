@@ -8,23 +8,30 @@ public class ChaineDeMagasins {
     private List<Magasin> magasins;
 
     public void ajouterIngredient(Ingredient ingredient) {
-        // TODO implement here
+        // TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void retirerIngredient(Ingredient ingredient) {
-        // TODO implement here
+        // TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
+
     }
 
     public Magasin rechercheMagasin(String lieu) {
         // TODO implement here
-        return null;
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void ajouterMagasin(Magasin magasin) {
         // TODO implement here
+        throw new UnsupportedOperationException("Not implemented yet.");
+
     }
 
     public void retirerMagasin(Magasin magasin) {
         // TODO implement here
+        throw new UnsupportedOperationException("Not implemented yet.");
+
     }
 }

@@ -2,7 +2,7 @@
 Fonctionnalité: Cuisinier
 
   Contexte:
-    Etant donné un cuisinier
+    Étant donné un cuisinier
     Et des commandes
 
   Scénario: Préparer une commande

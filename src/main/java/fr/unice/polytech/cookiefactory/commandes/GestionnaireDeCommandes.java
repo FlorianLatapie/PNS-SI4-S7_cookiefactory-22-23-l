@@ -12,6 +12,8 @@ public class GestionnaireDeCommandes {
 
     public void voirCommandesEnAttenteDeReception() {
         // TODO implement here
+        throw new UnsupportedOperationException("Not implemented yet.");
+
     }
 
     public void commandeReceptionnee(Commande commande) {

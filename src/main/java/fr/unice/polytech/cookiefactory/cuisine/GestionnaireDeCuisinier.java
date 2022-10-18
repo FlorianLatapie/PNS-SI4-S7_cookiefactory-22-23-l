@@ -12,10 +12,12 @@ public class GestionnaireDeCuisinier {
 
     public void assignCuisinier(CreneauPreparationCommande cpc, Commande c) {
         //TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
+
     }
 
     public CreneauPreparationCommande getDisponibilites() {
         //TODO
-        return null;
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

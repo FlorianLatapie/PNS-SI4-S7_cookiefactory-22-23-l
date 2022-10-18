@@ -10,27 +10,31 @@ public class RecettesDuMagasin {
 
     public void ajouterRecette(Cookie recette) {
         // TODO implement here
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void supprimerRecette(Cookie recette) {
         // TODO implement here
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void ajouterDisponibilite(Cookie recette) {
         // TODO implement here
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void retirerDisponibilite(Cookie recette) {
         // TODO implement here
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public Prix calculerPrixHorsTaxe(Cookie recette) {
         // TODO implement here
-        return null;
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public List<Cookie> recupererCookiesDisponible() {
         // TODO implement here
-        return null;
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

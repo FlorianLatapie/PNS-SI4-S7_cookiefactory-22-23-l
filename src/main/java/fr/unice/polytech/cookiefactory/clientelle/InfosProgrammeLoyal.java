@@ -13,21 +13,16 @@ public class InfosProgrammeLoyal {
 
     public void peutAvoirReduction() {
         //TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void ajoutBonusFidelite(int n) {
         //TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void appliquerReduction() {
         //TODO
-    }
-
-    public int getNbDeCookiesCommandes() {
-        return nbDeCookiesCommandes;
-    }
-
-    public void setNbDeCookiesCommandes(int nbDeCookiesCommandes) {
-        this.nbDeCookiesCommandes = nbDeCookiesCommandes;
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

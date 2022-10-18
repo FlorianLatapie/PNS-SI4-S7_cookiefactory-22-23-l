@@ -34,6 +34,7 @@ public class Commande {
 
     public void appliquerRemise() {
         //TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public Prix getPrix() {

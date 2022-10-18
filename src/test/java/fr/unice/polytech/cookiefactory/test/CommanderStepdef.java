@@ -9,7 +9,7 @@ import io.cucumber.java.fr.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CommanderDef {
+public class CommanderStepdef {
     private Invite invite;
     private Cookie cookie;
     private Commande panier = new Commande();

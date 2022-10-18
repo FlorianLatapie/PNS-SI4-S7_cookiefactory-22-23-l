@@ -9,18 +9,22 @@ public class Stock {
     private Magasin magasin;
 
     public void retirerIngredient(Ingredient ingredient, Integer quantite) {
-        // TODO implement here
+        // TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void ajouterIngredient(Ingredient ingredient, Integer quantite) {
-        // TODO implement here
+        // TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void nouvelIngredient(Ingredient ingredient) {
-        // TODO implement here
+        // TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void supprimerIngredient(Ingredient ingredient) {
-        // TODO implement here
+        // TODO
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

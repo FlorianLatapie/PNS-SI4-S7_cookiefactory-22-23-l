@@ -25,15 +25,8 @@ public class Cuisinier {
     }
 
 
-    public void ajouterCommande(Commande c) {
+    public void ajouterCommande(Commande commande) {
         //TODO
-    }
-
-    public EDTCuisinier getEdtCuisinier() {
-        return edtCuisinier;
-    }
-
-    public void setEdtCuisinier(EDTCuisinier edtCuisinier) {
-        this.edtCuisinier = edtCuisinier;
+        throw new UnsupportedOperationException("Not implemented yet.");
     }
 }
