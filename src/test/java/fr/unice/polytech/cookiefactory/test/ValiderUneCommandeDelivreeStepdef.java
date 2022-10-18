@@ -4,15 +4,13 @@ import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
-import io.cucumber.java.bs.I;
 import io.cucumber.java.fr.Alors;
-import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CaissierStepdef {
+public class ValiderUneCommandeDelivreeStepdef {
     private Commande commande;
 
     @Étantdonné("une Commande pour {string} {string} en état {string}")

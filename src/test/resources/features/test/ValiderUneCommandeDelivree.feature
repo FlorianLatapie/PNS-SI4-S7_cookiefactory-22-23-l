@@ -1,5 +1,5 @@
 #language: fr
-Fonctionnalité: Caissier
+Fonctionnalité: Valider une commande délivrée
 
   Contexte:
     Étant donné une Commande pour "Aurélia" "Chabanier" en état "EN_ATTENTE_DE_RECEPTION"
