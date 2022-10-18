@@ -1,6 +1,5 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.clientelle.InformationClient;
 import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.divers.Prix;
@@ -21,11 +20,11 @@ public class Commande {
     private Etat etat;
     private List<Cookie> cookies = new ArrayList<>();
 
-    public Commande(){
+    public Commande() {
         this.etat = Etat.CONFIRME;
     }
 
-    public Commande(Invite invite){
+    public Commande(Invite invite) {
         this();
         this.invite = invite;
     }
@@ -55,6 +54,7 @@ public class Commande {
         }
         return new Prix(prix);
     }
+
     public Etat getEtat() {
         return etat;
     }

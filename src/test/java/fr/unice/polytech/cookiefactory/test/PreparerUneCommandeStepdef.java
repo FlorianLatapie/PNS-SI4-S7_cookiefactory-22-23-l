@@ -7,7 +7,7 @@ import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreparerUneCommandeStepdef {
     Commande commande;
@@ -26,6 +26,7 @@ public class PreparerUneCommandeStepdef {
     public void jeCommenceLaPréparationDeLaCommande() {
         cuisinier.preparerCommande(commande);
     }
+
     @Quand("je termine la préparation de la commande")
     public void jeTermineLaPréparationDeLaCommande() {
         jeCommenceLaPréparationDeLaCommande();

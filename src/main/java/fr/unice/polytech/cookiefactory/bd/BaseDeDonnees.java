@@ -5,14 +5,14 @@ public class BaseDeDonnees {
 
     private BDCookie bdCookie;
 
-    public static BaseDeDonnees getInstance(){
-        if (instance == null){
+    public static BaseDeDonnees getInstance() {
+        if (instance == null) {
             return new BaseDeDonnees();
         }
         return instance;
     }
 
-    private BaseDeDonnees(){
+    private BaseDeDonnees() {
         initBD();
     }
 
@@ -20,7 +20,7 @@ public class BaseDeDonnees {
         bdCookie = BDCookie.getInstance();
     }
 
-    public BDCookie getBdCookie(){
+    public BDCookie getBdCookie() {
         return bdCookie;
     }
 }

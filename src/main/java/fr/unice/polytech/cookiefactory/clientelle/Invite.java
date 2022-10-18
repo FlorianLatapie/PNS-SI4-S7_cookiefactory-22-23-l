@@ -9,7 +9,7 @@ public class Invite {
         this.informationClient = new InformationClient(nom, prenom, mail, numeroDeTelephone);
     }
 
-    public Invite(String nom, String prenom){
+    public Invite(String nom, String prenom) {
         this.informationClient = new InformationClient(nom, prenom);
     }
 

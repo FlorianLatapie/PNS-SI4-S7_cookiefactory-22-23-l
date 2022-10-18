@@ -13,13 +13,13 @@ assignees: ''
 
 **En tant que**  
 **Je veux**  
-**afin de**  
+**afin de**
 
 ## :star2: Priorité
 
 **Doit avoir**
 **Devrait avoir**
- **Aurait pu**
+**Aurait pu**
 **N'aura pas**
 
 ## :star2: **Estimation :**
