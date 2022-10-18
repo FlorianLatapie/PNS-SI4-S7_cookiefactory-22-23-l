@@ -26,7 +26,7 @@ assignees: ''
 
 ## :sparkles: Règle métier
 
-## :star2: Critère d'acceptation
+## :star2: Critères d'acceptation
 
 ## Scénarios
 
