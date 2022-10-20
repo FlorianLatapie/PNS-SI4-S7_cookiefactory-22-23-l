@@ -18,7 +18,6 @@ Fonctionnalité: Passer une commande
       | -1        | 0       |
 
 
-
   Plan du scénario: retirer trop de cookie
     Etant donné que l'invité ajoute <nbAjouter> cookie à son panier
     Quand l'invité retire <nbRetirer> cookie à son panier (erreur)
@@ -35,11 +34,11 @@ Fonctionnalité: Passer une commande
     Alors il y a <nbTotal> cookies dans son panier
 
     Exemples:
-      | nbAjouter | nbRetirer | nbTotal|
-      | 0         | 0         | 0|
-      | 1         | 1         | 0|
-      | 5         | 3         | 2|
-      | -5        | -3        | 0|
+      | nbAjouter | nbRetirer | nbTotal |
+      | 0         | 0         | 0       |
+      | 1         | 1         | 0       |
+      | 5         | 3         | 2       |
+      | -5        | -3        | 0       |
 
 
   Plan du scénario: consulter le prix du panier
@@ -52,7 +51,7 @@ Fonctionnalité: Passer une commande
       | 0         | 0    |
       | 1         | 1,50 |
       | 5         | 7,5  |
-      | -1        | 0  |
+      | -1        | 0    |
 
 
 

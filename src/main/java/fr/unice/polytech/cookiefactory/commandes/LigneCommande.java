@@ -24,7 +24,7 @@ public class LigneCommande {
 
     public void enleverQuantite(int quantite) {
         int newValue = this.quantite - quantite;
-        if (newValue < 0 ) {
+        if (newValue < 0) {
             throw new PasAssezCookies();
         }
         this.quantite -= quantite;
@@ -40,6 +40,6 @@ public class LigneCommande {
 
     @Override
     public String toString() {
-        return "{ " + cookie + ", " + quantite + " }" ;
+        return "{ " + cookie + ", " + quantite + " }";
     }
 }

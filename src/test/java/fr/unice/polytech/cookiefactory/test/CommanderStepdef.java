@@ -6,11 +6,13 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.exceptions.PasAssezCookies;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
-import io.cucumber.java.fr.*;
+import io.cucumber.java.fr.Alors;
+import io.cucumber.java.fr.Et;
+import io.cucumber.java.fr.Etantdonné;
+import io.cucumber.java.fr.Quand;
 
-import java.util.NoSuchElementException;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CommanderStepdef {
     private Invite invite;

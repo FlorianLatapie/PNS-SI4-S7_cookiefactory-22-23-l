@@ -4,11 +4,8 @@ import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
-import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Commande {
     private Date dateReception;
