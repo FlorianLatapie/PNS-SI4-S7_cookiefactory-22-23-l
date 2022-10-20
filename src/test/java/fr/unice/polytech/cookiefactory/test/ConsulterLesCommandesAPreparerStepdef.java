@@ -1,39 +1,34 @@
 package fr.unice.polytech.cookiefactory.test;
 
 import io.cucumber.java.fr.Alors;
-import io.cucumber.java.fr.Etantdonné;
-import io.cucumber.java.fr.Lorsque;
+import io.cucumber.java.fr.Etantdonnéque;
+import io.cucumber.java.fr.Quand;
+import io.cucumber.java.fr.Étantdonné;
 
 public class ConsulterLesCommandesAPreparerStepdef {
+    @Étantdonné("un cuisinier {string}")
+    public void unCuisinier(String arg0) {
 
-    @Etantdonné("un cuisinier")
-    public void un_cuisinier() {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new io.cucumber.java.PendingException();
     }
 
-    @Etantdonné("des commandes")
-    public void des_commandes() {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new io.cucumber.java.PendingException();
+    @Etantdonnéque("le cuisinier {string} a une commande {string} à préparer")
+    public void leCuisinierAUneCommandeÀPréparer(String arg0, String arg1) {
+
     }
 
-    @Lorsque("il veut préparer une commande qui lui est attribuée")
-    public void il_veut_préparer_une_commande_qui_lui_est_attribuée() {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new io.cucumber.java.PendingException();
+    @Quand("le cuisinier {string} consulte les commandes à préparer")
+    public void leCuisinierConsulteLesCommandesÀPréparer(String arg0) {
     }
 
-    @Alors("il prépare la commande")
-    public void il_prépare_la_commande() {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new io.cucumber.java.PendingException();
+    @Alors("le cuisinier {string} voit la commande {string} à préparer")
+    public void leCuisinierVoitLaCommandeÀPréparer(String arg0, String arg1) {
     }
 
-    @Alors("il marque la commande comme préparée")
-    public void il_marque_la_commande_comme_préparée() {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new io.cucumber.java.PendingException();
+    @Etantdonnéque("le cuisinier {string} n’a pas de commande à préparer")
+    public void leCuisinierNAPasDeCommandeÀPréparer(String arg0) {
     }
 
+    @Alors("le cuisinier {string} voit {string}")
+    public void leCuisinierVoit(String arg0, String arg1) {
+    }
 }
