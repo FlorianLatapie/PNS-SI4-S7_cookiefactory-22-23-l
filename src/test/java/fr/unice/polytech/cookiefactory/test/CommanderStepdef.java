@@ -32,7 +32,11 @@ public class CommanderStepdef {
 
     @Quand("l'invité ajoute {int} cookie à son panier")
     public void lInvitéAjouteCookieÀSonPanier(int nb) {
-        commande.getPanier().ajouterCookies(cookie, nb);
+        if (nb <= 0) {
+            assertThrows(IllegalArgumentException.class, () -> commande.getPanier().ajouterCookies(cookie, nb));
+        } else {
+            commande.getPanier().ajouterCookies(cookie, nb);
+        }
     }
 
     @Alors("il y a {int} cookie dans son panier")
@@ -43,7 +47,13 @@ public class CommanderStepdef {
 
     @Quand("l'invité retire {int} cookie à son panier")
     public void lInvitéRetireUnCookieÀSonPanier(int nb) {
-        commande.getPanier().supprimerCookies(cookie, nb);
+        if (nb <= 0) {
+            assertThrows(IllegalArgumentException.class, () -> commande.getPanier().supprimerCookies(cookie, nb));
+        } else if (nb > commande.getPanier().getNbCookie(cookie)) {
+            assertThrows(PasAssezCookies.class, () -> commande.getPanier().supprimerCookies(cookie, nb));
+        } else {
+            commande.getPanier().supprimerCookies(cookie, nb);
+        }
     }
 
     @Alors("il y a {int} cookies dans son panier")
@@ -59,11 +69,6 @@ public class CommanderStepdef {
     public void sonPanierPossèdeUnMontantDe€(double prix) {
         Prix prix2 = new Prix((int) (prix * 100));
         assertEquals(prix2, commande.getPrix());
-    }
-
-    @Quand("l'invité retire {int} cookie à son panier \\(erreur)")
-    public void lInvitéRetireCookieÀSonPanierErreur(int nb) {
-        assertThrows(PasAssezCookies.class, () -> lInvitéRetireUnCookieÀSonPanier(nb));
     }
 
     @Alors("une erreur PasAssezCookie intervient")

@@ -25,7 +25,7 @@ public class LigneCommande {
     public void enleverQuantite(int quantite) {
         int newValue = this.quantite - quantite;
         if (newValue < 0) {
-            throw new PasAssezCookies();
+            throw new PasAssezCookies(quantite, this.quantite);
         }
         this.quantite -= quantite;
     }

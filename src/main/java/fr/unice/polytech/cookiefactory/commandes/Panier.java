@@ -14,7 +14,11 @@ public class Panier {
 
     public void ajouterCookies(Cookie cookie, int quantite) {
         if (quantite <= 0) {
-            return;
+            throw new IllegalArgumentException("quantite : " + quantite + " doit être positive");
+        }
+
+        if (cookie == null) {
+            throw new IllegalArgumentException("cookie doit être non null");
         }
 
         for (LigneCommande ligne : lignesCommande) {
@@ -29,7 +33,7 @@ public class Panier {
 
     public void supprimerCookies(Cookie cookie, int quantite) {
         if (quantite <= 0) {
-            return;
+            throw new IllegalArgumentException("quantite : " + quantite + " doit être positive");
         }
 
         for (LigneCommande ligne : lignesCommande) {
@@ -56,6 +60,10 @@ public class Panier {
 
     public int getNbCookies() {
         return lignesCommande.stream().mapToInt(LigneCommande::getQuantite).sum();
+    }
+
+    public int getNbCookie(Cookie cookie) {
+        return lignesCommande.stream().filter(l -> l.getCookie().equals(cookie)).mapToInt(LigneCommande::getQuantite).sum();
     }
 
     public List<LigneCommande> getLignesCommande() {

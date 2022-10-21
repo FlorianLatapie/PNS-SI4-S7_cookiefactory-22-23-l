@@ -12,20 +12,14 @@ Fonctionnalité: Passer une commande
 
     Exemples:
       | nbAjouter | nbTotal |
+
+      # Comportement correct
       | 1         | 1       |
       | 5         | 5       |
       | 0         | 0       |
+
+      # Ajouter un nombre négatif de cookie
       | -1        | 0       |
-
-
-  Plan du scénario: retirer trop de cookie
-    Etant donné que l'invité ajoute <nbAjouter> cookie à son panier
-    Quand l'invité retire <nbRetirer> cookie à son panier (erreur)
-    Alors une erreur PasAssezCookie intervient
-
-    Exemples:
-      | nbAjouter | nbRetirer |
-      | 4         | 5         |
 
 
   Plan du scénario: retirer un cookie au panier
@@ -35,10 +29,17 @@ Fonctionnalité: Passer une commande
 
     Exemples:
       | nbAjouter | nbRetirer | nbTotal |
+
+      # Comportement correct
       | 0         | 0         | 0       |
       | 1         | 1         | 0       |
       | 5         | 3         | 2       |
-      | -5        | -3        | 0       |
+
+      # Retirer un nombre négatif de cookie
+      | 4         | 5         | 4       |
+
+      # Ajouter et retirer un nombre négatif de cookie
+      | -3        | -5        | 0       |
 
 
   Plan du scénario: consulter le prix du panier
@@ -48,10 +49,13 @@ Fonctionnalité: Passer une commande
 
     Exemples:
       | nbAjouter | prix |
-      | 0         | 0    |
-      | 1         | 1,50 |
+      # Conditions classiques
       | 5         | 7,5  |
+
+      # Conditions limites
+      | 1         | 1,50 |
       | -1        | 0    |
+      | 0         | 0    |
 
 
 
