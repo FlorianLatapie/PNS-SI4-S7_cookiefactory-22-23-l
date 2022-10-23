@@ -26,7 +26,10 @@ public class Cuisinier {
 
 
     public void ajouterCommande(Commande commande) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet.");
+        edtCuisinier.nouveauCreneau(commande);
+    }
+
+    public EDTCuisinier getEdtCuisinier() {
+        return edtCuisinier;
     }
 }

@@ -6,6 +6,7 @@ import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Commande {
     private Date dateReception;
@@ -55,5 +56,18 @@ public class Commande {
 
     public void setEtat(Etat etat) {
         this.etat = etat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Commande commande = (Commande) o;
+        return appliquerRemise == commande.appliquerRemise && Objects.equals(dateReception, commande.dateReception) && Objects.equals(reduction, commande.reduction) && Objects.equals(magasin, commande.magasin) && Objects.equals(invite, commande.invite) && etat == commande.etat && Objects.equals(panier, commande.panier);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dateReception, appliquerRemise, reduction, magasin, invite, etat, panier);
     }
 }
