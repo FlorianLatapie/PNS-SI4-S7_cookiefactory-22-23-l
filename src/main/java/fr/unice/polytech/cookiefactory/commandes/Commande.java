@@ -15,7 +15,7 @@ public class Commande {
 
     private Magasin magasin;
     private Invite invite;
-    private Etat etat;
+    private Etat etat = Etat.EN_COURS_DE_PREPARATION;
     private final Panier panier = new Panier();
 
     public Commande(Invite invite) {

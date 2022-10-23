@@ -21,7 +21,7 @@ public class Cuisinier {
         if (commande.getEtat() != Etat.EN_COURS_DE_PREPARATION) {
             throw new IllegalArgumentException("La commande n'est pas etat EN_COURS_DE_PREPARATION : " + commande.getEtat());
         }
-        commande.setEtat(Etat.EN_ATTENTE_DE_RECEPTION);
+        commande.setEtat(Etat.EN_ATTENTE_DE_RETRAIT);
     }
 
 

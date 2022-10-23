@@ -1,20 +1,48 @@
 package fr.unice.polytech.cookiefactory.test;
 
+import fr.unice.polytech.cookiefactory.commandes.Caissier;
+import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
+import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import io.cucumber.java.fr.Alors;
+import io.cucumber.java.fr.Etantdonné;
+import io.cucumber.java.fr.Lorsque;
 import io.cucumber.java.fr.Quand;
-import io.cucumber.java.fr.Soit;
-import io.cucumber.java.fr.Étantdonnéqu;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConsulterLesCommandesEnAttenteDeRetraitStepdefs {
-    @Étantdonnéqu("une Commande {string} en état {string} existe")
-    public void uneCommandeEnÉtatExiste(String arg0, String arg1) {
+
+    private Caissier caissier;
+    private final GestionnaireDeCommandes gestionnaireDeCommandes = new GestionnaireDeCommandes();
+
+    private List<Commande> commandesAVoir;
+
+    @Etantdonné("un caissier nommé {string} qui est connecté")
+    public void un_caissier_nommé_qui_est_connecté(String string) {
+        this.caissier = new Caissier(string);
     }
 
-    @Quand("un caissier consulte les commandes en attente de retrait")
-    public void unCaissierConsulteLesCommandesEnAttenteDeRetrait() {
+    @Lorsque("le system contient {int} dont {int} commandes en attente de retrait")
+    public void leSystemContientCommandesDontRetraitCommandesEnAttenteDeRetrait(int commandes, int retrait) {
+        for (int i = 0; i < commandes; i++) {
+            Commande commande = new Commande();
+            if (i < retrait) {
+                commande.setEtat(Etat.EN_ATTENTE_DE_RETRAIT);
+            }
+            this.gestionnaireDeCommandes.ajouterCommande(commande);
+        }
     }
 
-    @Alors("il voit la commande {string}")
-    public void ilVoitLaCommande(String arg0) {
+    @Quand("le caissier consulte les commandes en attente de retrait")
+    public void le_caissier_consulte_les_commandes_en_attente_de_retrait() {
+        this.commandesAVoir = this.gestionnaireDeCommandes.voirCommandesEnAttenteDeReception();
+    }
+
+    @Alors("il voit {int} commandes en attente de retrait")
+    public void ilVoitVoitCommandesEnAttenteDeRetrait(int voit) {
+        assertEquals(voit, this.commandesAVoir.size());
     }
 }
