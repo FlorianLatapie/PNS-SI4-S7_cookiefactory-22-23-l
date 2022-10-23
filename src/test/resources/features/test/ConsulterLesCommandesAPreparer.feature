@@ -12,4 +12,4 @@ Fonctionnalité: Consulter les commandes à préparer
   Scénario: 0 commande à préparer
     Etant donné que le cuisinier "Daniel" n’a pas de commande à préparer
     Quand le cuisinier "Daniel" consulte les commandes à préparer
-    Alors le cuisinier "Daniel" voit "Aucune commande à préparer"
+    Alors le cuisinier "Daniel" voit aucune commande à préparer

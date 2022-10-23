@@ -21,11 +21,11 @@ public class ConsulterLesCommandesEnAttenteDeRetraitStepdefs {
     private List<Commande> commandesAVoir;
 
     @Etantdonné("un caissier nommé {string} qui est connecté")
-    public void un_caissier_nommé_qui_est_connecté(String string) {
-        this.caissier = new Caissier(string);
+    public void un_caissier_nommé_qui_est_connecté(String nomCaissier) {
+        this.caissier = new Caissier(nomCaissier);
     }
 
-    @Lorsque("le system contient {int} dont {int} commandes en attente de retrait")
+    @Lorsque("le système contient {int} dont {int} commandes en attente de retrait")
     public void leSystemContientCommandesDontRetraitCommandesEnAttenteDeRetrait(int commandes, int retrait) {
         for (int i = 0; i < commandes; i++) {
             Commande commande = new Commande();

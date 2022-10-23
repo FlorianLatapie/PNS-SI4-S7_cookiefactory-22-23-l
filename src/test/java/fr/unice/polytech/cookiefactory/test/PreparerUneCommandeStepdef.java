@@ -10,8 +10,8 @@ import io.cucumber.java.fr.Étantdonné;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreparerUneCommandeStepdef {
-    Commande commande;
-    Cuisinier cuisinier;
+    private Commande commande;
+    private Cuisinier cuisinier;
 
     @Étantdonné("une Commande en état {string}")
     public void uneCommandeEnÉtat(String etat) {
