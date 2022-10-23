@@ -13,6 +13,10 @@ public class Invite {
         this.informationClient = new InformationClient(nom, prenom);
     }
 
+    public InformationClient getInformationClient() {
+        return informationClient;
+    }
+
     public void enregistrerEnClient() {
         //TODO
         throw new UnsupportedOperationException("Not implemented yet.");

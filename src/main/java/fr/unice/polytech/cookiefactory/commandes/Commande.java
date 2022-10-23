@@ -58,6 +58,10 @@ public class Commande {
         this.etat = etat;
     }
 
+    public Invite getInvite() {
+        return invite;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

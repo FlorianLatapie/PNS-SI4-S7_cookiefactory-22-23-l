@@ -2,7 +2,7 @@
 Fonctionnalité: Valider une commande délivrée
 
   Contexte:
-    Étant donné une Commande pour "Aurélia" "Chabanier" en état "EN_ATTENTE_DE_RECEPTION"
+    Étant donné une Commande pour "Aurélia" "Chabanier" en état "EN_ATTENTE_DE_RETRAIT"
 
   Scénario: marquer une commande comme délivrée
     Quand je veux valider la commande de "Aurélia"
