@@ -11,5 +11,5 @@ Fonctionnalité: Préparer une commande
 
   Scénario: Terminer preparation d'une commande
     Quand je termine la préparation de la commande
-    Alors la commande est en état "EN_ATTENTE_DE_RECEPTION"
+    Alors la commande est en état "EN_ATTENTE_DE_RETRAIT"
 
