@@ -22,7 +22,7 @@ assignees: ''
 **Aurait pu**
 **N'aura pas**
 
-## :star2: **Estimation :**
+## :star2: **Estimation**
 
 ## :sparkles: Règle métier
 
