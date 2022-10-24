@@ -25,4 +25,3 @@ Fonctionnalité: Consulter les commandes en attente de retrait
       | 10        | -1      | 0    |
       | -1        | 1       | 0    |
       | -1        | -1      | 0    |
-

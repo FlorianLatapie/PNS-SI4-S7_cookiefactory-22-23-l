@@ -22,12 +22,12 @@ public class PreparerUneCommandeStepdef {
         commande.setEtat(etatEntre);
     }
 
-    @Quand("je commence la préparation de la commande")
+    @Quand("le cuisinier commence la préparation de la commande")
     public void jeCommenceLaPréparationDeLaCommande() {
         cuisinier.preparerCommande(commande);
     }
 
-    @Quand("je termine la préparation de la commande")
+    @Quand("le cuisinier termine la préparation de la commande")
     public void jeTermineLaPréparationDeLaCommande() {
         jeCommenceLaPréparationDeLaCommande();
         cuisinier.terminerCommande(commande);
