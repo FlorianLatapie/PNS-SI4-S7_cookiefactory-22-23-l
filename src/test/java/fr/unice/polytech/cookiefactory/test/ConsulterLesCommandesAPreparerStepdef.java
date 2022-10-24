@@ -13,9 +13,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConsulterLesCommandesAPreparerStepdef {
-    Cuisinier cuisinier;
-    Commande commande;
-    List<CreneauPreparationCommande> commandes;
+    private Cuisinier cuisinier;
+    private Commande commande;
+    private List<CreneauPreparationCommande> commandes;
 
     @Étantdonné("un cuisinier {string}")
     public void unCuisinier(String arg0) {
@@ -43,8 +43,8 @@ public class ConsulterLesCommandesAPreparerStepdef {
         commandes = cuisinier.getEdtCuisinier().getCreneauPreparationCommande();
     }
 
-    @Alors("le cuisinier {string} voit {string}")
-    public void leCuisinierVoit(String arg0, String arg1) {
+    @Alors("le cuisinier {string} voit aucune commande à préparer")
+    public void leCuisinierVoitAucuneCommandeÀPréparer(String arg0) {
         assertEquals(List.of(), commandes);
     }
 }
