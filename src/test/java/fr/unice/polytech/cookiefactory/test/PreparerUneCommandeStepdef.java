@@ -6,6 +6,7 @@ import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
+import io.cucumber.java.fr.Étantdonnéqu;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,7 +20,7 @@ public class PreparerUneCommandeStepdef {
 
         Etat etatEntre = Etat.valueOf(etat);
         commande = new Commande();
-        commande.setEtat(etatEntre);
+        commande.changerStatut(etatEntre);
     }
 
     @Quand("le cuisinier commence la préparation de la commande")
@@ -29,7 +30,6 @@ public class PreparerUneCommandeStepdef {
 
     @Quand("le cuisinier termine la préparation de la commande")
     public void jeTermineLaPréparationDeLaCommande() {
-        jeCommenceLaPréparationDeLaCommande();
         cuisinier.terminerCommande(commande);
     }
 
@@ -37,5 +37,10 @@ public class PreparerUneCommandeStepdef {
     public void laCommandeEstEnÉtat(String etat) {
         Etat etatAttendu = Etat.valueOf(etat);
         assertEquals(etatAttendu, commande.getEtat());
+    }
+
+    @Étantdonnéqu("une commande est en état {string}")
+    public void uneCommandeEstEnÉtat(String arg0) {
+        commande.changerStatut(Etat.valueOf(arg0));
     }
 }

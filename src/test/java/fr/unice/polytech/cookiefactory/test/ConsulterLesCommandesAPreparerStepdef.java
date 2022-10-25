@@ -22,29 +22,29 @@ public class ConsulterLesCommandesAPreparerStepdef {
         cuisinier = new Cuisinier();
     }
 
-    @Etantdonnéque("le cuisinier {string} a une commande {string} à préparer")
-    public void leCuisinierAUneCommandeÀPréparer(String arg0, String arg1) {
+    @Etantdonnéque("une commande {string} à préparer")
+    public void uneCommandeÀPréparer(String arg0) {
         commande = new Commande();
         cuisinier.ajouterCommande(commande);
     }
 
-    @Quand("le cuisinier {string} consulte les commandes à préparer")
-    public void leCuisinierConsulteLesCommandesÀPréparer(String arg0) {
+    @Quand("le cuisinier consulte les commandes à préparer")
+    public void leCuisinierConsulteLesCommandesÀPréparer() {
         commandes = cuisinier.getEdtCuisinier().getCreneauPreparationCommande();
     }
 
-    @Alors("le cuisinier {string} voit la commande {string} à préparer")
-    public void leCuisinierVoitLaCommandeÀPréparer(String arg0, String arg1) {
+    @Alors("le cuisinier voit la commande à préparer")
+    public void leCuisinierVoitLaCommandeÀPréparer() {
         assertEquals(List.of(new CreneauPreparationCommande(commande)), commandes);
     }
 
-    @Etantdonnéque("le cuisinier {string} n’a pas de commande à préparer")
-    public void leCuisinierNAPasDeCommandeÀPréparer(String arg0) {
+    @Etantdonnéque("le cuisinier n’a pas de commande à préparer")
+    public void leCuisinierNAPasDeCommandeÀPréparer() {
         commandes = cuisinier.getEdtCuisinier().getCreneauPreparationCommande();
     }
 
-    @Alors("le cuisinier {string} voit aucune commande à préparer")
-    public void leCuisinierVoitAucuneCommandeÀPréparer(String arg0) {
+    @Alors("le cuisinier voit aucune commande à préparer")
+    public void leCuisinierVoitAucuneCommandeÀPréparer() {
         assertEquals(List.of(), commandes);
     }
 }

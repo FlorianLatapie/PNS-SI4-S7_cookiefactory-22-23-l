@@ -1,6 +1,5 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.services.ServiceDEnvoi;
 
@@ -22,7 +21,7 @@ public class GestionnaireDeCommandes {
 
     public void commandeReceptionnee(Commande commande) {
         this.commandes.remove(commande);
-        commande.setEtat(Etat.RECEPTIONNEE);
+        commande.changerStatut(Etat.RECEPTIONNEE);
     }
 
     public void ajouterCommande(Commande commande) {
