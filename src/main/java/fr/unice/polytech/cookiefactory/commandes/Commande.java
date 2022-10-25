@@ -34,7 +34,7 @@ public class Commande {
     public Invite getInvite() {
         return invite;
     }
-    
+
     public Panier getPanier() {
         return panier;
     }

@@ -21,7 +21,7 @@ public class GestionnaireDeCommandes {
 
     public void commandeReceptionnee(Commande commande) {
         this.commandes.remove(commande);
-        commande.setEtat(Etat.RECEPTIONNEE);
+        commande.changerStatut(Etat.RECEPTIONNEE);
     }
 
     public void ajouterCommande(Commande commande) {
