@@ -14,7 +14,6 @@ public class EDTCuisinier {
 
     public void nouveauCreneau(Commande commande) {
         creneauPreparationCommande.add(new CreneauPreparationCommande(commande));
-
     }
 
     public List<CreneauPreparationCommande> getCreneauPreparationCommande() {

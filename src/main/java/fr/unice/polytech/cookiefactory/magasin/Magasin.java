@@ -18,8 +18,17 @@ public class Magasin {
     private Stock stock;
     private ChaineDeMagasins chaineDeMagasins;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
+
+    public GestionnaireDeCuisinier getGestionnaireDeCuisinier() {
+        return gestionnaireDeCuisinier;
+    }
+
     private GestionnaireDeCuisinier gestionnaireDeCuisinier;
 
+    public Magasin(){
+        gestionnaireDeCommandes = new GestionnaireDeCommandes();
+        gestionnaireDeCuisinier = new GestionnaireDeCuisinier();
+    }
 
     public void ajouterIngredient(Ingredient ingredient) {
         // TODO implement here

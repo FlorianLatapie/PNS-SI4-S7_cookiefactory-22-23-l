@@ -32,4 +32,8 @@ public class Cuisinier {
     public EDTCuisinier getEdtCuisinier() {
         return edtCuisinier;
     }
+
+    public boolean estDisponible() {
+        return edtCuisinier.getCreneauPreparationCommande().isEmpty();
+    }
 }
