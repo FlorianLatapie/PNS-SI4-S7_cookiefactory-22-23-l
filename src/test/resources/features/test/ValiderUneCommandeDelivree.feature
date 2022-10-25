@@ -6,4 +6,5 @@ Fonctionnalité: Valider une commande délivrée
 
   Scénario: marquer une commande comme délivrée
     Quand je veux valider la commande de "Aurélia"
-    Alors la commande est enlevée de la liste des commandes en attente de retrait et la commande est marquée comme "RECEPTIONNEE"
+    Alors la commande est enlevée de la liste des commandes en attente de retrait
+    Et la commande est marquée comme "RECEPTIONNEE"

@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import io.cucumber.java.fr.Alors;
+import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
 
@@ -27,9 +28,13 @@ public class ValiderUneCommandeDelivreeStepdef {
         gestionnaireDeCommandes.commandeReceptionnee(commande);
     }
 
-    @Alors("la commande est enlevée de la liste des commandes en attente de retrait et la commande est marquée comme {string}")
-    public void laCommandeEstEnlevéeDeLaListeDesCommandesEnAttenteDeRetraitEtLaCommandeEstMarquéeComme(String etatCommande) {
-        assertEquals(commande.getEtat(), Etat.RECEPTIONNEE);
+    @Alors("la commande est enlevée de la liste des commandes en attente de retrait")
+    public void laCommandeEstEnlevéeDeLaListeDesCommandesEnAttenteDeRetrait() {
         assertFalse(gestionnaireDeCommandes.getCommandes().contains(commande));
+    }
+
+    @Et("la commande est marquée comme {string}")
+    public void laCommandeEstMarquéeComme(String etatCommande) {
+        assertEquals(commande.getEtat(), Etat.valueOf(etatCommande));
     }
 }
