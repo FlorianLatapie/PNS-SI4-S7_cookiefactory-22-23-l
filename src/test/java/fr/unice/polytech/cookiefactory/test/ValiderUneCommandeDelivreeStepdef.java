@@ -18,7 +18,7 @@ public class ValiderUneCommandeDelivreeStepdef {
     @Étantdonné("une Commande pour {string} {string} en état {string}")
     public void uneCommandePourEnÉtat(String prenom, String nom, String etat) {
         Commande commande = new Commande(new Invite(nom, prenom));
-        commande.setEtat(Etat.valueOf(etat));
+        commande.changerStatut(Etat.valueOf(etat));
         gestionnaireDeCommandes.ajouterCommande(commande);
     }
 

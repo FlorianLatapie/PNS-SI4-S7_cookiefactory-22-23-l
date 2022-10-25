@@ -1,6 +1,5 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.services.ServiceDEnvoi;
 

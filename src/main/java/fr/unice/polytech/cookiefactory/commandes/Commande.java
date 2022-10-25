@@ -31,6 +31,10 @@ public class Commande {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
+    public Invite getInvite() {
+        return invite;
+    }
+    
     public Panier getPanier() {
         return panier;
     }
@@ -52,14 +56,6 @@ public class Commande {
         return "Commande{" +
                 "Contenu panier : " + panier +
                 '}';
-    }
-
-    public void setEtat(Etat etat) {
-        this.etat = etat;
-    }
-
-    public Invite getInvite() {
-        return invite;
     }
 
     @Override
