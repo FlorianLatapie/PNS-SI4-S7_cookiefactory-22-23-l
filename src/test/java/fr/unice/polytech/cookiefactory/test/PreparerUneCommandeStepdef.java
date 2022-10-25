@@ -20,7 +20,7 @@ public class PreparerUneCommandeStepdef {
 
         Etat etatEntre = Etat.valueOf(etat);
         commande = new Commande();
-        commande.setEtat(etatEntre);
+        commande.changerStatut(etatEntre);
     }
 
     @Quand("le cuisinier commence la préparation de la commande")
@@ -41,6 +41,6 @@ public class PreparerUneCommandeStepdef {
 
     @Étantdonnéqu("une commande est en état {string}")
     public void uneCommandeEstEnÉtat(String arg0) {
-        commande.setEtat(Etat.valueOf(arg0));
+        commande.changerStatut(Etat.valueOf(arg0));
     }
 }
