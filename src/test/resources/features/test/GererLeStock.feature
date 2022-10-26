@@ -6,7 +6,7 @@ Fonctionnalité: Gérer le Stock
     Étant donné un stock
     Et un ingrédient "Chocolat"
 
-  Plan du scénario: Ajouter une quantité correcte d'ingrédient au stock
+  Plan du scénario: Ajouter une quantité positive d'ingrédient au stock
     Étant donné le stock ayant <nbInitial> ingrédients
     Quand le responsable du stock ajoute <nbAjoute> ingrédients
     Alors le stock comporte <nbFinal> ingrédients
@@ -14,7 +14,7 @@ Fonctionnalité: Gérer le Stock
     Exemples:
       | nbInitial | nbAjoute | nbFinal |
 
-      # Comportement correct
+      # Cas classiques
       | 1         | 1        | 2       |
       | 6         | 4        | 10      |
 
@@ -23,7 +23,7 @@ Fonctionnalité: Gérer le Stock
       | 0         | 1        | 1       |
       | 1         | 0        | 1       |
 
-  Plan du scénario: Ajouter une quantité négative d'ingrédient au stock
+  Plan du scénario: Ajouter une quantité strictement négative d'ingrédient au stock
     Étant donné le stock ayant <nbInitial> ingrédients
     Et un problème est attendu
     Quand le responsable du stock ajoute <nbAjoute> ingrédients
@@ -32,9 +32,11 @@ Fonctionnalité: Gérer le Stock
 
     Exemples:
       | nbInitial | nbAjoute | nbFinal |
+
+      # Cas classiques
       | 10        | -5       | 10      |
 
-    # Cas limites
+      # Cas limites
       | 0         | -1       | 0       |
       | 1         | -1       | 1       |
 
