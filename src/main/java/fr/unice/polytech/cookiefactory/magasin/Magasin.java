@@ -25,6 +25,9 @@ public class Magasin {
 
     private GestionnaireDeCuisinier gestionnaireDeCuisinier;
 
+    public Magasin(Stock stock) {
+        this.stock = stock;
+    }
     public Magasin(){
         gestionnaireDeCommandes = new GestionnaireDeCommandes();
         gestionnaireDeCuisinier = new GestionnaireDeCuisinier();

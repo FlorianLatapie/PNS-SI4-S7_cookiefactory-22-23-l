@@ -19,13 +19,4 @@ public record Recette(String nom, Pate pate, Saveur saveur, List<Garniture> garn
             throw new IllegalArgumentException("Un cookie ne peut pas avoir plus de 3 garnitures");
         }
     }
-
-    public boolean estDisponible() {
-        return this.pate.estDisponible() && this.saveur.estDisponible() && this.garnitures.stream().allMatch(Garniture::estDisponible);
-    }
-
-    public Prix prix() {
-        // TODO changer le calcul du prix : il est choisi arbitrairement par un humain, il ne doit pas etre calculé automatiquement (cf le rapport)
-        return new Prix(this.pate.getPrix().add(this.saveur.getPrix()).add(this.garnitures.stream().map(Garniture::getPrix).reduce(Prix.ZERO, Prix::add)).getPrixEnCentimes() * 2);
-    }
 }
