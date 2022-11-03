@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class GestionnaireDeCuisinier {
+public class GestionnaireDeCuisiniers {
     private List<Cuisinier> cuisiniers;
     private Magasin magasin;
     private List<Commande> commandes;
 
-    public GestionnaireDeCuisinier() {
+    public GestionnaireDeCuisiniers() {
         cuisiniers = new ArrayList<>();
         commandes = new ArrayList<>();
     }

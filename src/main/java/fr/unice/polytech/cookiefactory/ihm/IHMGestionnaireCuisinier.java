@@ -1,7 +1,7 @@
 package fr.unice.polytech.cookiefactory.ihm;
 
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
-import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisinier;
+import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.util.List;
@@ -11,12 +11,12 @@ public class IHMGestionnaireCuisinier implements IIHM {
     private final Scanner sc = new Scanner(System.in);
     private String MENU;
     private static final String MESSAGE_D_ACCUEIL = "Bonjour cuisinier" + System.lineSeparator();
-    private GestionnaireDeCuisinier gestionnaireDeCuisinier;
+    private GestionnaireDeCuisiniers gestionnaireDeCuisiniers;
 
     private final int TAILLE_MENU = 2;
 
     public IHMGestionnaireCuisinier(Magasin magasin) {
-        this.gestionnaireDeCuisinier = magasin.getGestionnaireDeCuisinier();
+        this.gestionnaireDeCuisiniers = magasin.getGestionnaireDeCuisiniers();
     }
 
     @Override
@@ -40,13 +40,13 @@ public class IHMGestionnaireCuisinier implements IIHM {
     }
 
     private void afficherCuisinier(int i) {
-        Cuisinier cuisinier = gestionnaireDeCuisinier.getCuisiniers().get(i);
+        Cuisinier cuisinier = gestionnaireDeCuisiniers.getCuisiniers().get(i);
         System.out.println(cuisinier);
     }
 
     private void nouveauCuisinier() {
         System.out.println("Ajout d'un cuisinier ..");
-        gestionnaireDeCuisinier.ajouterCuisinier(new Cuisinier());
+        gestionnaireDeCuisiniers.ajouterCuisinier(new Cuisinier());
     }
 
     private void quitter() {
@@ -58,7 +58,7 @@ public class IHMGestionnaireCuisinier implements IIHM {
         sb.append("1 - Quitter").append(System.lineSeparator());
         sb.append("2 - Ajouter un cuisinier").append(System.lineSeparator());
 
-        List<Cuisinier> cuisiniers = gestionnaireDeCuisinier.getCuisiniers();
+        List<Cuisinier> cuisiniers = gestionnaireDeCuisiniers.getCuisiniers();
         if (!cuisiniers.isEmpty()) {
             for (Cuisinier cuisinier : cuisiniers) {
                 sb.append(cuisiniers.indexOf(cuisinier) + 1 + TAILLE_MENU).append(" - ").append(cuisinier).append(System.lineSeparator());

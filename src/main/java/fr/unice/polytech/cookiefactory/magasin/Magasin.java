@@ -1,7 +1,7 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
-import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisinier;
+import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
@@ -19,18 +19,18 @@ public class Magasin {
     private ChaineDeMagasins chaineDeMagasins;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
 
-    public GestionnaireDeCuisinier getGestionnaireDeCuisinier() {
+    public GestionnaireDeCuisiniers getGestionnaireDeCuisiniers() {
         return gestionnaireDeCuisinier;
     }
 
-    private GestionnaireDeCuisinier gestionnaireDeCuisinier;
+    private GestionnaireDeCuisiniers gestionnaireDeCuisinier;
 
     public Magasin(Stock stock) {
         this.stock = stock;
     }
     public Magasin(){
         gestionnaireDeCommandes = new GestionnaireDeCommandes();
-        gestionnaireDeCuisinier = new GestionnaireDeCuisinier();
+        gestionnaireDeCuisinier = new GestionnaireDeCuisiniers();
     }
 
     public void ajouterIngredient(Ingredient ingredient) {
