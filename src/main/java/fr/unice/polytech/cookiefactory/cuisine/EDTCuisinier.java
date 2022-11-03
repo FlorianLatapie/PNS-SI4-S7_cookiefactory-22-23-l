@@ -19,4 +19,11 @@ public class EDTCuisinier {
     public List<CreneauPreparationCommande> getCreneauPreparationCommande() {
         return creneauPreparationCommande;
     }
+
+    @Override
+    public String toString() {
+        return "EDTCuisinier{" +
+                "creneauPreparationCommande=" + creneauPreparationCommande +
+                '}';
+    }
 }

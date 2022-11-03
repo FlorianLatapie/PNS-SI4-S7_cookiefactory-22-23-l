@@ -36,4 +36,11 @@ public class Cuisinier {
     public boolean estDisponible() {
         return edtCuisinier.getCreneauPreparationCommande().isEmpty();
     }
+
+    @Override
+    public String toString() {
+        return "Cuisinier{" +
+                "edtCuisinier=" + edtCuisinier +
+                '}';
+    }
 }

@@ -5,15 +5,15 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 public class Invite {
     private InformationClient informationClient;
 
+    public Invite() {
+    }
+    
     public Invite(String nom, String prenom, String mail, String numeroDeTelephone) {
         this.informationClient = new InformationClient(nom, prenom, mail, numeroDeTelephone);
     }
 
     public Invite(String nom, String prenom) {
         this.informationClient = new InformationClient(nom, prenom);
-    }
-
-    public Invite() {
     }
 
     public InformationClient getInformationClient() {
