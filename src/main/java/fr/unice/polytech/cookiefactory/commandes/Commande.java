@@ -22,6 +22,10 @@ public class Commande {
         this.invite = invite;
     }
 
+    public Commande(Magasin magasin) {
+        this.magasin = magasin;
+    }
+
     public Commande() {
         super();
     }
@@ -45,6 +49,11 @@ public class Commande {
 
     public void changerStatut(Etat etat) {
         this.etat = etat;
+    }
+
+    public void commandeConfirmee() {
+        changerStatut(Etat.CONFIRME);
+        panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getIngredients().forEach(ingredient -> magasin.getStock().retirerIngredient(ingredient, ligne.getQuantite())));
     }
 
     public Etat getEtat() {
