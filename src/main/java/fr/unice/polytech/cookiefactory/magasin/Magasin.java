@@ -14,12 +14,20 @@ public class Magasin {
     private Date dateOuverture;
     private Date dateFermeture;
 
-    private List<RecettesDuMagasin> recettesDuMagasin;
+    private RecettesDuMagasin recettesDuMagasin;
     private Stock stock;
     private ChaineDeMagasins chaineDeMagasins;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
     private GestionnaireDeCuisinier gestionnaireDeCuisinier;
 
+    public Magasin(){
+        this.recettesDuMagasin = new RecettesDuMagasin();
+        this.gestionnaireDeCuisinier = new GestionnaireDeCuisinier(this);
+    }
+
+    public void soumettreUnNouveauCookie(Cookie cookie){
+        recettesDuMagasin.soumettreUnCookie(cookie);
+    }
 
     public void ajouterIngredient(Ingredient ingredient) {
         // TODO implement here
