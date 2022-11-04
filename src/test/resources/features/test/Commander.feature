@@ -3,47 +3,96 @@
 Fonctionnalité: Passer une commande
 
   Contexte:
-    Étant donné un invité nommé "Bernard" "Tapie" avec pour adresse mail "bernardtapie@gmail.com" et pour numéro du téléphone "06 08 56 78 65"
+    Étant donné un invité
     Et un cookie nommé "Pop-Choco"
 
-  Plan du scénario: ajouter un cookie au panier
-    Quand l'invité ajoute <nbAjouter> cookie à son panier
+  Plan du scénario: Ajouter une quantité strictement positive de cookie au panier
+    Quand l'invité ajoute <nbAjouter> cookies à son panier
     Alors il y a <nbTotal> cookie dans son panier
 
     Exemples:
       | nbAjouter | nbTotal |
 
-      # Comportement correct
-      | 1         | 1       |
+      # Cas classiques
       | 5         | 5       |
-      | 0         | 0       |
 
-      # Ajouter un nombre négatif de cookie
+      #Cas limites
+      | 1         | 1       |
+
+
+  Plan du scénario: Ajouter une quantité négative de cookie au panier
+    Etant donné un problème est attendu (Commander)
+    Quand l'invité ajoute <nbAjouter> cookies à son panier
+    Alors il y a <nbTotal> cookie dans son panier
+    Et une exception IllegalArgumentException a été levée (Commander)
+
+    Exemples:
+      | nbAjouter | nbTotal |
+
+      # Cas classiques
+      | -5        | 0       |
+
+      # Cas limites
+      | 0         | 0       |
       | -1        | 0       |
 
 
-  Plan du scénario: retirer un cookie au panier
-    Étant donné que l'invité ajoute <nbAjouter> cookie à son panier
+  Plan du scénario: retirer une quantité strictement positive de cookie au panier
+    Étant donné que l'invité ajoute 10 cookies à son panier
     Quand l'invité retire <nbRetirer> cookie à son panier
     Alors il y a <nbTotal> cookies dans son panier
 
     Exemples:
-      | nbAjouter | nbRetirer | nbTotal |
+      | nbRetirer | nbTotal |
 
-      # Comportement correct
-      | 0         | 0         | 0       |
-      | 1         | 1         | 0       |
-      | 5         | 3         | 2       |
+      # Cas classiques
+      | 2         | 8       |
+      | 9         | 1       |
 
-      # Retirer un nombre négatif de cookie
-      | 4         | 5         | 4       |
+      # Cas limites
+      | 1         | 9       |
+      | 10        | 0       |
 
-      # Ajouter et retirer un nombre négatif de cookie
-      | -3        | -5        | 0       |
+
+  Plan du scénario: retirer une quantité négative de cookie au panier
+    Étant donné que l'invité ajoute 10 cookies à son panier
+    Et un problème est attendu (Commander)
+    Quand l'invité retire <nbRetirer> cookie à son panier
+    Alors il y a <nbTotal> cookies dans son panier
+    Et une exception IllegalArgumentException a été levée (Commander)
+
+    Exemples:
+      | nbRetirer | nbTotal |
+
+      # Cas classiques
+      | -2        | 10      |
+
+      # Cas limites
+      | 0         | 10      |
+      | -1        | 10      |
+
+
+  Plan du scénario: retirer une quantité trop importante de cookie au panier
+    Étant donné que l'invité ajoute 10 cookies à son panier
+    Et un problème est attendu (Commander)
+    Quand l'invité retire <nbRetirer> cookie à son panier
+    Alors il y a <nbTotal> cookies dans son panier
+    Et une exception PasAssezCookies a été levée (Commander)
+
+
+    Exemples:
+      | nbRetirer | nbTotal |
+
+      # Cas classiques
+      | 12        | 10      |
+      | 15        | 10      |
+
+      # Cas limites
+      | 11         | 10      |
 
 
   Plan du scénario: consulter le prix du panier
-    Étant donné que l'invité ajoute <nbAjouter> cookie à son panier
+    Étant donné que l'invité ajoute <nbAjouter> cookies à son panier
     Quand l'invité accède au prix de son panier
     Alors son panier possède un montant de <prix> €
 
@@ -54,8 +103,12 @@ Fonctionnalité: Passer une commande
 
       # Conditions limites
       | 1         | 1,50 |
-      | -1        | 0    |
-      | 0         | 0    |
+
+
+  Scénario: consulter le prix d'un panier vide
+    Quand l'invité accède au prix de son panier
+    Alors son panier possède un montant de 0 €
+
 
 
 

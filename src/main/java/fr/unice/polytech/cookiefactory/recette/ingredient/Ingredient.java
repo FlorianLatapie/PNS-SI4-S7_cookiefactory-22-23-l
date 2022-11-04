@@ -2,43 +2,29 @@ package fr.unice.polytech.cookiefactory.recette.ingredient;
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
 
-public abstract class Ingredient {
-    private final String nom;
-    private final Prix prix;
-    private int quantite;
+import java.util.Objects;
 
-    public Ingredient(String nom, Prix prix, int quantite) {
+public class Ingredient {
+    private final String nom;
+
+    public Ingredient(String nom) {
         this.nom = nom;
-        this.prix = prix;
-        this.quantite = quantite;
     }
 
     public String getNom() {
         return nom;
     }
 
-    public Prix getPrix() {
-        return prix;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ingredient that = (Ingredient) o;
+        return Objects.equals(nom, that.nom);
     }
 
-    public double getQuantite() {
-        return quantite;
-    }
-
-    public boolean estDisponible() {
-        return quantite > 0;
-    }
-
-    public int ajouter(int quantite) {
-        this.quantite += quantite;
-        return this.quantite;
-    }
-
-    public boolean consommer(int quantite) {
-        if (this.quantite >= quantite) {
-            this.quantite -= quantite;
-            return true;
-        }
-        return false;
+    @Override
+    public int hashCode() {
+        return Objects.hash(nom);
     }
 }

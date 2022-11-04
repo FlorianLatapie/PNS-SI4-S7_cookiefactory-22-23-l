@@ -3,8 +3,11 @@ package fr.unice.polytech.cookiefactory.clientelle;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 
 public class Invite {
-    private final InformationClient informationClient;
+    private InformationClient informationClient;
 
+    public Invite() {
+    }
+    
     public Invite(String nom, String prenom, String mail, String numeroDeTelephone) {
         this.informationClient = new InformationClient(nom, prenom, mail, numeroDeTelephone);
     }

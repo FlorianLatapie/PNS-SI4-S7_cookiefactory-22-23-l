@@ -5,19 +5,17 @@ import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 
 public class Cookie {
     private Recette recette;
-    private final Prix prix;
+    private Prix prix;
     private ValidationCookie etat;
 
     public Cookie(Recette recette) {
         this.recette = recette;
         this.etat = ValidationCookie.SOUMIS;
-        this.prix = this.calculerPrix();
     }
 
     public Cookie(Recette recette, ValidationCookie etat) {
         this.recette = recette;
         this.etat = etat;
-        this.prix = this.calculerPrix();
     }
 
     public Cookie(Recette recette, ValidationCookie etat, Prix prix) {
@@ -44,14 +42,6 @@ public class Cookie {
 
     public void changerEtat(ValidationCookie etat) {
         this.etat = etat;
-    }
-
-    public boolean estDisponible() {
-        return this.etat == ValidationCookie.VALIDE && this.recette.estDisponible();
-    }
-
-    private Prix calculerPrix() {
-        return this.recette.prix();
     }
 
     @Override

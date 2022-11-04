@@ -14,10 +14,16 @@ public class EDTCuisinier {
 
     public void nouveauCreneau(Commande commande) {
         creneauPreparationCommande.add(new CreneauPreparationCommande(commande));
-
     }
 
     public List<CreneauPreparationCommande> getCreneauPreparationCommande() {
         return creneauPreparationCommande;
+    }
+
+    @Override
+    public String toString() {
+        return "EDTCuisinier{" +
+                "creneauPreparationCommande=" + creneauPreparationCommande +
+                '}';
     }
 }

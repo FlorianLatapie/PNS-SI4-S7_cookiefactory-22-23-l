@@ -11,17 +11,18 @@ import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CommanderStepdef {
     private Invite invite;
     private Cookie cookie;
     private Commande commande;
 
-    @Etantdonné("un invité nommé {string} {string} avec pour adresse mail {string} et pour numéro du téléphone {string}")
-    public void unInvitéNomméAvecPourAdresseMailEtPourNuméroDuTéléphone(String prenom, String nom, String mail, String numTel) {
-        invite = new Invite(prenom, nom, mail, numTel);
+    private final GestionExceptions gestionExceptions = new GestionExceptions();
+
+    @Etantdonné("un invité")
+    public void unInvitéNomméAvecPourAdresseMailEtPourNuméroDuTéléphone() {
+        invite = new Invite();
         commande = new Commande(invite);
     }
 
@@ -30,12 +31,12 @@ public class CommanderStepdef {
         cookie = BaseDeDonnees.getInstance().getBdCookie().getCookieParNom(nomCookie);
     }
 
-    @Quand("l'invité ajoute {int} cookie à son panier")
+    @Quand("l'invité ajoute {int} cookies à son panier")
     public void lInvitéAjouteCookieÀSonPanier(int nb) {
-        if (nb <= 0) {
-            assertThrows(IllegalArgumentException.class, () -> commande.getPanier().ajouterCookies(cookie, nb));
-        } else {
+        try {
             commande.getPanier().ajouterCookies(cookie, nb);
+        } catch (RuntimeException exception){
+            gestionExceptions.ajouteException(exception);
         }
     }
 
@@ -47,12 +48,10 @@ public class CommanderStepdef {
 
     @Quand("l'invité retire {int} cookie à son panier")
     public void lInvitéRetireUnCookieÀSonPanier(int nb) {
-        if (nb <= 0) {
-            assertThrows(IllegalArgumentException.class, () -> commande.getPanier().supprimerCookies(cookie, nb));
-        } else if (nb > commande.getPanier().getNbCookie(cookie)) {
-            assertThrows(PasAssezCookies.class, () -> commande.getPanier().supprimerCookies(cookie, nb));
-        } else {
+        try {
             commande.getPanier().supprimerCookies(cookie, nb);
+        } catch (RuntimeException exception) {
+            gestionExceptions.ajouteException(exception);
         }
     }
 
@@ -73,5 +72,24 @@ public class CommanderStepdef {
 
     @Alors("une erreur PasAssezCookie intervient")
     public void uneErreurPasAssezCookieIntervient() {
+    }
+
+    @Etantdonné("un problème est attendu \\(Commander)")
+    public void unProblèmeEstAttenduCommander() {
+        gestionExceptions.exceptionAttendue();
+    }
+
+    @Et("une exception IllegalArgumentException a été levée \\(Commander)")
+    public void uneExceptionIllegalArgumentExceptionAÉtéLevéeCommander() {
+        RuntimeException exception = gestionExceptions.getPremiereException();
+        assertNotNull(exception);
+        assertEquals(IllegalArgumentException.class, exception.getClass());
+    }
+
+    @Et("une exception PasAssezCookies a été levée \\(Commander)")
+    public void uneExceptionPasAssezCookiesAÉtéLevéeCommander() {
+        RuntimeException exception = gestionExceptions.getPremiereException();
+        assertNotNull(exception);
+        assertEquals(PasAssezCookies.class, exception.getClass());
     }
 }

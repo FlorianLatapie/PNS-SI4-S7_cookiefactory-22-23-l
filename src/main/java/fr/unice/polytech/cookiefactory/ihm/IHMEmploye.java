@@ -7,7 +7,7 @@ public class IHMEmploye implements IIHM {
     private static final String MENU = "Que voulez-vous faire ?" + System.lineSeparator() + "1 - test" + System.lineSeparator() + "2 - Quitter";
     private static final String MESSAGE_D_ACCUEIL = "Bonjour employé" + System.lineSeparator() + MENU;
 
-    public void run() {
+    public void lancer() {
         System.out.println(MESSAGE_D_ACCUEIL);
         int choix;
         do {

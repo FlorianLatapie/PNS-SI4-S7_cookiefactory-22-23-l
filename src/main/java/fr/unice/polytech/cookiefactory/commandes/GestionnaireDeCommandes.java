@@ -1,6 +1,5 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.services.ServiceDEnvoi;
 
@@ -22,7 +21,7 @@ public class GestionnaireDeCommandes {
 
     public void commandeReceptionnee(Commande commande) {
         this.commandes.remove(commande);
-        commande.setEtat(Etat.RECEPTIONNEE);
+        commande.changerStatut(Etat.RECEPTIONNEE);
     }
 
     public void ajouterCommande(Commande commande) {
@@ -33,7 +32,12 @@ public class GestionnaireDeCommandes {
         this.commandes.addAll(commandes);
     }
 
-    public Commande obtenirCommandeInvite(String prenom, String nom){
-        return this.voirCommandesEnAttenteDeReception().stream().filter(c -> c.getInvite().getInformationClient().getPrenom().equals(prenom) && c.getInvite().getInformationClient().getNom().equals(nom)).findFirst().get();
+    public Commande obtenirCommandeInvite(String prenom, String nom) {
+        return this.voirCommandesEnAttenteDeReception()
+                .stream()
+                .filter(c -> c.getInvite().getInformationClient().getPrenom().equals(prenom)
+                        &&
+                        c.getInvite().getInformationClient().getNom().equals(nom)
+                ).findFirst().get();
     }
 }
