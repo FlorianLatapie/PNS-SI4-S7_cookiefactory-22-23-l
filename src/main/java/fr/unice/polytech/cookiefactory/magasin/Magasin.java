@@ -52,4 +52,8 @@ public class Magasin {
         // TODO implement here
         throw new UnsupportedOperationException("Not implemented yet.");
     }
+
+    public Stock getStock() {
+        return stock;
+    }
 }

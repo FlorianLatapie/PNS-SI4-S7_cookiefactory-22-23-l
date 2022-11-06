@@ -19,12 +19,12 @@ public final class Prix {
         return new Prix(this.nbCentimes + prix.nbCentimes);
     }
 
-    public Prix multiply(Prix prix) {
-        return new Prix(this.nbCentimes * prix.nbCentimes);
-    }
-
     public Prix multiply(int nb) {
         return new Prix(this.nbCentimes * nb);
+    }
+
+    public Prix reduction(int pourcentage) {
+        return new Prix((int) (Math.ceil(this.nbCentimes * (1 - pourcentage / 100.0))));
     }
 
     @Override

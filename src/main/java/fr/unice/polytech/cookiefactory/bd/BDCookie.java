@@ -3,6 +3,7 @@ package fr.unice.polytech.cookiefactory.bd;
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,9 @@ public class BDCookie {
 
     private BDCookie() {
         cookies = new HashMap<>();
-        cookies.put("Pop-Choco", new Cookie(new Prix(150)));
+        Cookie cookiePopChoco = new Cookie(new Prix(150));
+        cookiePopChoco.addIngredient(new Ingredient("Chocolat"));
+        cookies.put("Pop-Choco", cookiePopChoco);
     }
 
     public Cookie getCookieParNom(String nom) {

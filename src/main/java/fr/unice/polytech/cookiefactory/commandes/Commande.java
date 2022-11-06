@@ -11,8 +11,6 @@ import java.util.Objects;
 public class Commande {
     private Date dateReception;
     private boolean appliquerRemise;
-    private Prix reduction;
-
     private Magasin magasin;
     private Invite invite;
     private Etat etat = Etat.EN_COURS_DE_PREPARATION;
@@ -20,6 +18,10 @@ public class Commande {
 
     public Commande(Invite invite) {
         this.invite = invite;
+    }
+
+    public Commande(Magasin magasin) {
+        this.magasin = magasin;
     }
 
     public Commande() {
@@ -43,8 +45,17 @@ public class Commande {
         return panier.getLignesCommande().stream().map(ligne -> ligne.getCookie().getPrixHorsTaxe().multiply(ligne.getQuantite())).reduce(Prix.ZERO, Prix::add);
     }
 
+    public Prix getPrixReduction() {
+        return getPrix().reduction(10);
+    }
+
     public void changerStatut(Etat etat) {
         this.etat = etat;
+    }
+
+    public void commandeConfirmee() {
+        changerStatut(Etat.CONFIRME);
+        panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getIngredients().forEach(ingredient -> magasin.getStock().retirerIngredient(ingredient, ligne.getQuantite())));
     }
 
     public Etat getEtat() {
@@ -63,11 +74,11 @@ public class Commande {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Commande commande = (Commande) o;
-        return appliquerRemise == commande.appliquerRemise && Objects.equals(dateReception, commande.dateReception) && Objects.equals(reduction, commande.reduction) && Objects.equals(magasin, commande.magasin) && Objects.equals(invite, commande.invite) && etat == commande.etat && Objects.equals(panier, commande.panier);
+        return appliquerRemise == commande.appliquerRemise && Objects.equals(dateReception, commande.dateReception) && Objects.equals(magasin, commande.magasin) && Objects.equals(invite, commande.invite) && etat == commande.etat && Objects.equals(panier, commande.panier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateReception, appliquerRemise, reduction, magasin, invite, etat, panier);
+        return Objects.hash(dateReception, appliquerRemise, magasin, invite, etat, panier);
     }
 }

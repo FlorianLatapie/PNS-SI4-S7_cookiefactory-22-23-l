@@ -2,11 +2,17 @@ package fr.unice.polytech.cookiefactory.recette.cookie;
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cookie {
     private Recette recette;
     private Prix prix;
     private ValidationCookie etat;
+
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     public Cookie(Recette recette) {
         this.recette = recette;
@@ -26,6 +32,14 @@ public class Cookie {
 
     public Cookie(Prix prix) {
         this.prix = prix;
+    }
+
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(ingredient);
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
     public Recette getRecette() {
