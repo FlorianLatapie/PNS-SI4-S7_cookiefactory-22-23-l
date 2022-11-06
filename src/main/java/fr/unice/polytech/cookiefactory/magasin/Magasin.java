@@ -26,8 +26,11 @@ public class Magasin {
     private GestionnaireDeCuisiniers gestionnaireDeCuisinier;
 
     public Magasin(Stock stock) {
+        gestionnaireDeCommandes = new GestionnaireDeCommandes();
+        gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
         this.stock = stock;
     }
+
     public Magasin(){
         gestionnaireDeCommandes = new GestionnaireDeCommandes();
         this.recettesDuMagasin = new RecettesDuMagasin();
@@ -55,5 +58,9 @@ public class Magasin {
 
     public Stock getStock() {
         return stock;
+    }
+
+    public GestionnaireDeCommandes getGestionnaireDeCommandes() {
+        return gestionnaireDeCommandes;
     }
 }

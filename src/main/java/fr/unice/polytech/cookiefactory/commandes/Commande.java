@@ -33,6 +33,10 @@ public class Commande {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
+    public Magasin getMagasin() {
+        return magasin;
+    }
+
     public Invite getInvite() {
         return invite;
     }
@@ -56,6 +60,7 @@ public class Commande {
     public void commandeConfirmee() {
         changerStatut(Etat.CONFIRME);
         panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getIngredients().forEach(ingredient -> magasin.getStock().retirerIngredient(ingredient, ligne.getQuantite())));
+        magasin.getGestionnaireDeCommandes().ajouterCommande(this);
     }
 
     public Etat getEtat() {
