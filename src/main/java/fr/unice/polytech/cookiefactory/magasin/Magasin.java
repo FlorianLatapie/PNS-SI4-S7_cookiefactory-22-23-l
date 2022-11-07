@@ -29,9 +29,9 @@ public class Magasin {
         this.stock = stock;
     }
     public Magasin(){
-        gestionnaireDeCommandes = new GestionnaireDeCommandes();
+        this.gestionnaireDeCommandes = new GestionnaireDeCommandes();
         this.recettesDuMagasin = new RecettesDuMagasin();
-        gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
+        this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
     }
 
     public void soumettreUnNouveauCookie(Cookie cookie){
@@ -55,5 +55,9 @@ public class Magasin {
 
     public Stock getStock() {
         return stock;
+    }
+
+    public RecettesDuMagasin getRecettesDuMagasin() {
+        return recettesDuMagasin;
     }
 }

@@ -6,11 +6,17 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecettesDuMagasin {
     private List<Cookie> cookiesDisponible;
     private List<Cookie> cookiesEnAttenteDeValidation;
+
+    public RecettesDuMagasin(){
+        this.cookiesDisponible = new ArrayList<>();
+        this.cookiesEnAttenteDeValidation = new ArrayList<>();
+    }
 
     public void soumettreUnCookie(Cookie cookie){
         cookie.changerEtat(ValidationCookie.SOUMIS);
