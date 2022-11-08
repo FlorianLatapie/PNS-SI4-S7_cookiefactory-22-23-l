@@ -6,13 +6,28 @@ import java.util.Objects;
 
 public class Ingredient {
     private final String nom;
+    private final Prix prix;
+    private final int quantite;
 
-    public Ingredient(String nom) {
+    public Ingredient(String nom){
+        this(nom, new Prix(10), 1);
+    }
+    public Ingredient(String nom, Prix prix, int quantite) {
         this.nom = nom;
+        this.prix = prix;
+        this.quantite = quantite;
     }
 
     public String getNom() {
         return nom;
+    }
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public Prix getPrix() {
+        return prix;
     }
 
     @Override

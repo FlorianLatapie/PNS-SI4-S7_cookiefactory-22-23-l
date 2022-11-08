@@ -1,5 +1,7 @@
 package fr.unice.polytech.cookiefactory.test;
 
+import fr.unice.polytech.cookiefactory.bd.BDCookie;
+import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
@@ -16,6 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 public class SoumettreUnNouveauCookieStepDef {
     Magasin magasin;
+    Cuisinier cuisinier;
     Cookie cookie;
     String nom;
     Pate pate;
@@ -26,9 +29,11 @@ public class SoumettreUnNouveauCookieStepDef {
     Melange melange;
     int temps;
 
-    @Étantdonné("un gestionnaire de cuisinier")
-    public void un_gestionnaire_de_cuisinier() {
+    @Étantdonné("un cuisinier")
+    public void un_cuisinier() {
+        cuisinier = new Cuisinier();
         magasin = new Magasin();
+        magasin.getGestionnaireDeCuisiniers().ajouterCuisinier(cuisinier);
     }
     @Étantdonné("un cookie de Nom : {string}")
     public void un_cookie_de_nom(String nom) {
@@ -59,16 +64,16 @@ public class SoumettreUnNouveauCookieStepDef {
     public void un_temps_de_préparation_temps(int temps) {
         this.temps = temps;
 
-        this.cookie = new Cookie(new Recette(nom, pate, saveur, List.of(garniture1, garniture2), cuisson, melange, temps));
+        this.cookie = new Cookie(nom, new Recette(pate, saveur, List.of(garniture1, garniture2), cuisson, melange, temps));
 
     }
     @Quand("le gestionaire de cuisinier soumet un nouveau cookie")
     public void le_gestionaire_de_cuisinier_soumet_un_nouveau_cookie() {
-        magasin.getGestionnaireDeCuisiniers().soumettreUnNouveauCookie(cookie);
+        cuisinier.soumettreUnCookie(cookie);
     }
     @Alors("le cookie apparait dans la liste des cookies en attente de validation")
     public void le_cookie_apparait_dans_la_liste_des_cookies_en_attente_de_validation() {
-        assertTrue(magasin.getRecettesDuMagasin().getCookiesEnAttenteDeValidation().contains(cookie));
+        assertTrue(BDCookie.getInstance().getCookiesEnAttente().contains(cookie));
     }
 
 }

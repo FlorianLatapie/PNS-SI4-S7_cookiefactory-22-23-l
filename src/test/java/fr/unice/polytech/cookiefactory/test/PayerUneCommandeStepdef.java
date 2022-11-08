@@ -35,7 +35,7 @@ public class PayerUneCommandeStepdef {
     @Quand("le client paye la commande et qu'il a {double}€ sur le compte")
     public void leClientPayeLaCommandeEtQuIlASolde€SurLeCompte(double solde) {
         this.client.setSolde(solde);
-        this.commande.getPanier().ajouterCookies(new Cookie(new Recette("Test", new Pate("Pate"), new Saveur("Saveur"), List.of(new Garniture("Garniture")), Cuisson.CROQUANT, Melange.GARNI, 10)), 2);
+        this.commande.getPanier().ajouterCookies(new Cookie("Test", new Recette(new Pate("Pate"), new Saveur("Saveur"), List.of(new Garniture("Garniture")), Cuisson.CROQUANT, Melange.GARNI, 10)), 2);
         this.commande.changerStatut(Etat.EN_COURS_DE_PAYMENT);
         try {
             this.gestionnaireDeCommandes.payerCommande(this.commande, this.client);

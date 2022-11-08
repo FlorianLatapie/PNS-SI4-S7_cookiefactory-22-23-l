@@ -3,7 +3,7 @@
 Fonctionnalité: Soumettre un nouveau cookie
 
   Contexte:
-    Étant donné un gestionnaire de cuisinier
+    Étant donné un cuisinier
 
 
   Plan du scénario: Soumettre un cookie

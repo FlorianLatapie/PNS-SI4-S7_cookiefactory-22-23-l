@@ -1,7 +1,9 @@
 package fr.unice.polytech.cookiefactory.cuisine;
 
+import fr.unice.polytech.cookiefactory.bd.BDCookie;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 public class Cuisinier {
     private EDTCuisinier edtCuisinier;
@@ -35,6 +37,10 @@ public class Cuisinier {
 
     public boolean estDisponible() {
         return edtCuisinier.getCreneauPreparationCommande().isEmpty();
+    }
+
+    public void soumettreUnCookie(Cookie cookie){
+        BDCookie.getInstance().ajouterUnCookie(cookie);
     }
 
     @Override

@@ -8,38 +8,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cookie {
+    private String nom;
     private Recette recette;
     private Prix prix;
     private ValidationCookie etat;
 
-    private final List<Ingredient> ingredients = new ArrayList<>();
 
-    public Cookie(Recette recette) {
-        this.recette = recette;
-        this.etat = ValidationCookie.SOUMIS;
+    public Cookie(String nom, Recette recette) {
+        this(nom, recette, ValidationCookie.SOUMIS);
     }
 
-    public Cookie(Recette recette, ValidationCookie etat) {
-        this.recette = recette;
-        this.etat = etat;
+    public Cookie(String nom, Recette recette, Prix prix) {
+        this(nom, recette, ValidationCookie.SOUMIS, prix);
     }
 
-    public Cookie(Recette recette, ValidationCookie etat, Prix prix) {
+    public Cookie(String nom, Recette recette, ValidationCookie etat) {
+        this(nom, recette, etat, new Prix(100));
+    }
+
+    public Cookie(String nom, Recette recette, ValidationCookie etat, Prix prix) {
+        this.nom = nom;
         this.recette = recette;
         this.etat = etat;
         this.prix = prix;
-    }
-
-    public Cookie(Prix prix) {
-        this.prix = prix;
-    }
-
-    public void addIngredient(Ingredient ingredient) {
-        ingredients.add(ingredient);
-    }
-
-    public List<Ingredient> getIngredients() {
-        return ingredients;
     }
 
     public Recette getRecette() {
@@ -48,6 +39,10 @@ public class Cookie {
 
     public Prix getPrixHorsTaxe() {
         return this.prix != null ? this.prix : new Prix(10);
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public ValidationCookie getEtat() {

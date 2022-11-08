@@ -8,8 +8,6 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 import io.cucumber.java.fr.*;
 
-import java.util.Optional;
-
 import static org.junit.Assert.*;
 
 public class ReservationIngredientsdefs {
