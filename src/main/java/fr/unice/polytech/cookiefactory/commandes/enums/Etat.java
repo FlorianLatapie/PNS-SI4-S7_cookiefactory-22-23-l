@@ -8,6 +8,4 @@ public enum Etat {
     EN_COURS_DE_PREPARATION, // en train d'être cuisinée
     EN_ATTENTE_DE_RETRAIT, // cuisinée
     RECEPTIONNEE // dernière étape
-    ,
-    ERREUR_DE_PAYMENT
 }

@@ -26,15 +26,16 @@ public class Magasin {
     private GestionnaireDeCuisiniers gestionnaireDeCuisinier;
 
     public Magasin(Stock stock) {
-        gestionnaireDeCommandes = new GestionnaireDeCommandes();
+        gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
         this.stock = stock;
     }
 
     public Magasin(){
-        this.gestionnaireDeCommandes = new GestionnaireDeCommandes();
+        this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.recettesDuMagasin = new RecettesDuMagasin();
         this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
+        this.stock = new Stock();
     }
 
     public void soumettreUnNouveauCookie(Cookie cookie){
