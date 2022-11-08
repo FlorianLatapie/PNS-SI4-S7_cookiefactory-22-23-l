@@ -56,7 +56,7 @@ public class Commande {
 
     public void commandeConfirmee() {
         changerStatut(Etat.CONFIRME);
-        panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getIngredients().forEach(ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())));
+        panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getRecette().getIngredients().forEach(ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())));
         gestionnaireDeCommandes.ajouterCommande(this);
     }
 
