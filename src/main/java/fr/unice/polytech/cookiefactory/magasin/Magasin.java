@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Magasin {
-    private double valeurTaxe;
+    private double valeurTaxe = 0.2;
     private String lieu;
     private Date dateOuverture;
     private Date dateFermeture;
@@ -25,9 +25,22 @@ public class Magasin {
 
     private GestionnaireDeCuisiniers gestionnaireDeCuisinier;
 
+    public Magasin(double valeurTaxe, Stock stock) {
+        this.valeurTaxe = valeurTaxe;
+        this.stock = stock;
+    }
+    public Magasin(double valeurTaxe) {
+        this.valeurTaxe = valeurTaxe;
+        this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
+        this.recettesDuMagasin = new RecettesDuMagasin();
+        this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
+        this.stock = new Stock();
+    }
+
     public Magasin(Stock stock) {
         gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
+        recettesDuMagasin = new RecettesDuMagasin();
         this.stock = stock;
     }
 
@@ -38,6 +51,9 @@ public class Magasin {
         this.stock = new Stock();
     }
 
+    public double ajouterTaxe(double valeur){
+        return valeur * (1 - valeurTaxe);
+    }
     public void soumettreUnNouveauCookie(Cookie cookie){
         recettesDuMagasin.soumettreUnCookie(cookie);
     }
@@ -67,5 +83,9 @@ public class Magasin {
 
     public GestionnaireDeCommandes getGestionnaireDeCommandes() {
         return gestionnaireDeCommandes;
+    }
+
+    public double getValeurTaxe() {
+        return valeurTaxe;
     }
 }
