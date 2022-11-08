@@ -12,7 +12,7 @@ public class Commande {
     private final Panier panier = new Panier();
     private Date dateReception;
     private boolean appliquerRemise;
-    private Magasin magasin;
+    private GestionnaireDeCommandes gestionnaireDeCommandes;
     private Invite invite;
     private Etat etat = Etat.EN_COURS_DE_PREPARATION;
 
@@ -20,21 +20,18 @@ public class Commande {
         this.invite = invite;
     }
 
-    public Commande(Magasin magasin) {
-        this.magasin = magasin;
-    }
-
     public Commande() {
         super();
+    }
+
+    public Commande(Magasin magasin) {
+        super();
+        gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
     }
 
     public void appliquerRemise() {
         //TODO
         throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public Magasin getMagasin() {
-        return magasin;
     }
 
     public Invite getInvite() {
@@ -59,8 +56,8 @@ public class Commande {
 
     public void commandeConfirmee() {
         changerStatut(Etat.CONFIRME);
-        panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getIngredients().forEach(ingredient -> magasin.getStock().retirerIngredient(ingredient, ligne.getQuantite())));
-        magasin.getGestionnaireDeCommandes().ajouterCommande(this);
+        panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getIngredients().forEach(ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())));
+        gestionnaireDeCommandes.ajouterCommande(this);
     }
 
     public Etat getEtat() {
@@ -79,11 +76,11 @@ public class Commande {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Commande commande = (Commande) o;
-        return appliquerRemise == commande.appliquerRemise && Objects.equals(dateReception, commande.dateReception) && Objects.equals(magasin, commande.magasin) && Objects.equals(invite, commande.invite) && etat == commande.etat && Objects.equals(panier, commande.panier);
+        return appliquerRemise == commande.appliquerRemise && Objects.equals(dateReception, commande.dateReception) && Objects.equals(gestionnaireDeCommandes, commande.gestionnaireDeCommandes) && Objects.equals(invite, commande.invite) && etat == commande.etat && Objects.equals(panier, commande.panier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateReception, appliquerRemise, magasin, invite, etat, panier);
+        return Objects.hash(dateReception, appliquerRemise, gestionnaireDeCommandes, invite, etat, panier);
     }
 }
