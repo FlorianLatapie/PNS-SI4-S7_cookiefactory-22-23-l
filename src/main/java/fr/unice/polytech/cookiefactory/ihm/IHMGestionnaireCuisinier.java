@@ -1,5 +1,6 @@
 package fr.unice.polytech.cookiefactory.ihm;
 
+import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -46,7 +47,7 @@ public class IHMGestionnaireCuisinier implements IIHM {
 
     private void nouveauCuisinier() {
         System.out.println("Ajout d'un cuisinier ..");
-        gestionnaireDeCuisiniers.ajouterCuisinier(new Cuisinier());
+        gestionnaireDeCuisiniers.ajouterCuisinier(new Cuisinier(new GestionnaireDeCommandes()));
     }
 
     private void quitter() {

@@ -34,4 +34,9 @@ public class Invite {
         //TODO
         throw new UnsupportedOperationException("Not implemented yet.");
     }
+
+    @Override
+    public String toString() {
+        return informationClient.getNom() + " " + informationClient.getPrenom();
+    }
 }

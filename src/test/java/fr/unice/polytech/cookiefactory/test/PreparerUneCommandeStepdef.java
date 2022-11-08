@@ -1,6 +1,8 @@
 package fr.unice.polytech.cookiefactory.test;
 
+import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import io.cucumber.java.fr.Alors;
@@ -16,10 +18,10 @@ public class PreparerUneCommandeStepdef {
 
     @Étantdonné("une Commande en état {string}")
     public void uneCommandeEnÉtat(String etat) {
-        cuisinier = new Cuisinier();
+        cuisinier = new Cuisinier(new GestionnaireDeCommandes());
 
         Etat etatEntre = Etat.valueOf(etat);
-        commande = new Commande();
+        commande = new Commande(new Invite("","","",""));
         commande.changerStatut(etatEntre);
     }
 

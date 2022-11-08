@@ -20,7 +20,7 @@ public class I21UneCommandeParCuisinierPlusieursCuisiniersStepdefs {
     @Et("{int} cuisiniers")
     public void cuisiniers(int nbCuisiniers) {
         for (int i = 0; i < nbCuisiniers; i++) {
-            magasin.getGestionnaireDeCuisiniers().ajouterCuisinier(new Cuisinier());
+            magasin.getGestionnaireDeCuisiniers().ajouterCuisinier(new Cuisinier(magasin.getGestionnaireDeCommandes()));
         }
     }
 

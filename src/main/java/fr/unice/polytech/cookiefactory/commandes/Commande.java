@@ -29,6 +29,12 @@ public class Commande {
         gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
     }
 
+    public Commande(Magasin magasin, Invite invite) {
+        super();
+        gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
+        this.invite = invite;
+    }
+
     public void appliquerRemise() {
         //TODO
         throw new UnsupportedOperationException("Not implemented yet.");

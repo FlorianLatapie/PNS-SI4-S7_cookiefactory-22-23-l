@@ -1,6 +1,7 @@
 package fr.unice.polytech.cookiefactory.test;
 
 import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.cuisine.CreneauPreparationCommande;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import io.cucumber.java.fr.Alors;
@@ -16,15 +17,18 @@ public class ConsulterLesCommandesAPreparerStepdef {
     private Cuisinier cuisinier;
     private Commande commande;
     private List<CreneauPreparationCommande> commandes;
+    private GestionnaireDeCommandes gestionnaireDeCommandes;
 
     @Étantdonné("un cuisinier {string}")
     public void unCuisinier(String arg0) {
-        cuisinier = new Cuisinier();
+        gestionnaireDeCommandes = new GestionnaireDeCommandes();
+        cuisinier = new Cuisinier(gestionnaireDeCommandes);
     }
 
     @Etantdonnéque("une commande {string} à préparer")
     public void uneCommandeÀPréparer(String arg0) {
         commande = new Commande();
+        gestionnaireDeCommandes.ajouterCommande(commande);
         cuisinier.ajouterCommande(commande);
     }
 

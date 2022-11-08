@@ -31,8 +31,8 @@ public class SoumettreUnNouveauCookieStepDef {
 
     @Étantdonné("un cuisinier")
     public void un_cuisinier() {
-        cuisinier = new Cuisinier();
         magasin = new Magasin();
+        cuisinier = new Cuisinier(magasin.getGestionnaireDeCommandes());
         magasin.getGestionnaireDeCuisiniers().ajouterCuisinier(cuisinier);
     }
     @Étantdonné("un cookie de Nom : {string}")
