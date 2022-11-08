@@ -48,7 +48,7 @@ public class GestionnaireDeCommandes {
             commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
             client.payer(commande);
         } else {
-            commande.changerStatut(Etat.ERREUR_DE_PAYMENT);
+            commande.changerStatut(Etat.ANNULEE);
             throw new IllegalArgumentException("Le client n'a pas assez d'argent");
         }
     }

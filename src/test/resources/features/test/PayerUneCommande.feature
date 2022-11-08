@@ -15,4 +15,4 @@ Fonctionnalité: Payer lors d'une commande
     Exemples:
       | solde | etat                    |
       | 100   | EN_COURS_DE_PREPARATION |
-      | 0     | ERREUR_DE_PAYMENT       |
+      | 0     | ANNULEE                 |
