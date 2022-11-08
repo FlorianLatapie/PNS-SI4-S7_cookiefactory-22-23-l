@@ -1,5 +1,6 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
+import fr.unice.polytech.cookiefactory.acteurs.clients.Client;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.services.ServiceDEnvoi;
 
@@ -7,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestionnaireDeCommandes {
+    private final List<Commande> commandes = new ArrayList<>();
     private ServiceDEnvoi MailService;
     private ServiceDEnvoi SMSService;
-    private final List<Commande> commandes = new ArrayList<>();
 
     public List<Commande> getCommandes() {
         return commandes;
@@ -39,5 +40,16 @@ public class GestionnaireDeCommandes {
                         &&
                         c.getInvite().getInformationClient().getNom().equals(nom)
                 ).findFirst().get();
+    }
+
+    public void payerCommande(Commande commande, Client client) {
+        if (commande.getEtat() != Etat.EN_COURS_DE_PAYMENT) return;
+        if (client.getSolde().value() >= commande.getPrix().value()) {
+            commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
+            client.payer(commande);
+        } else {
+            commande.changerStatut(Etat.ERREUR_DE_PAYMENT);
+            throw new IllegalArgumentException("Le client n'a pas assez d'argent");
+        }
     }
 }

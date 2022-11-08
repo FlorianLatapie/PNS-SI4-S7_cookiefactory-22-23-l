@@ -9,12 +9,12 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Commande {
+    private final Panier panier = new Panier();
     private Date dateReception;
     private boolean appliquerRemise;
     private Magasin magasin;
     private Invite invite;
     private Etat etat = Etat.EN_COURS_DE_PREPARATION;
-    private final Panier panier = new Panier();
 
     public Commande(Invite invite) {
         this.invite = invite;

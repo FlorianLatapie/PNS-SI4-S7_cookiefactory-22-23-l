@@ -1,10 +1,14 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
-import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.exceptions.PasAssezIngredientStock;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class Stock {
     private final Map<Ingredient, Integer> ingredients;
@@ -59,4 +63,8 @@ public class Stock {
     }
 
 
+    public LocalDateTime heure() {
+        System.out.println(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(LocalDateTime.now()));
+        return LocalDateTime.now();
+    }
 }

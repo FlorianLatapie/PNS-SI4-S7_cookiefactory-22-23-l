@@ -12,7 +12,7 @@ public class Cookie {
     private Prix prix;
     private ValidationCookie etat;
 
-    private List<Ingredient> ingredients = new ArrayList<>();
+    private final List<Ingredient> ingredients = new ArrayList<>();
 
     public Cookie(Recette recette) {
         this.recette = recette;
@@ -47,7 +47,7 @@ public class Cookie {
     }
 
     public Prix getPrixHorsTaxe() {
-        return this.prix;
+        return this.prix != null ? this.prix : new Prix(10);
     }
 
     public ValidationCookie getEtat() {

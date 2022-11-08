@@ -19,6 +19,10 @@ public final class Prix {
         return new Prix(this.nbCentimes + prix.nbCentimes);
     }
 
+    public Prix subtract(Prix prix) {
+        return new Prix(this.nbCentimes - prix.nbCentimes);
+    }
+
     public Prix multiply(int nb) {
         return new Prix(this.nbCentimes * nb);
     }
@@ -47,4 +51,7 @@ public final class Prix {
                 '}';
     }
 
+    public double value() {
+        return this.nbCentimes / 100.0;
+    }
 }
