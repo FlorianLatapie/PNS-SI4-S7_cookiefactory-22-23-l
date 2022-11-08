@@ -34,9 +34,9 @@ public class BDCookie {
         Cookie cookiePopChoco = new Cookie(
                 "Pop-Choco",
                 new Recette(
-                        new Pate("Pizza"),
-                        new Saveur("4 fromage"),
-                        List.of(new Garniture("Chocolat"), new Garniture("Tomate")),
+                        new Pate("Pate basic"),
+                        new Saveur("Amandes"),
+                        List.of(new Garniture("Chocolat"), new Garniture("Chocolat blanc")),
                         Cuisson.CROQUANT,
                         Melange.MIXTE,
                         15

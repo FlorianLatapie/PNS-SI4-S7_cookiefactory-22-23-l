@@ -4,7 +4,7 @@ Fonctionnalité: Retirer les ingrédients du stock nécessaires à la réalisati
 
   Contexte:
     Étant donnée un cookie nommé "Pop-Choco" composé de Chocolat
-    Et un stock contenant 5 "Chocolat"
+    Et un stock contenant 8 "Pate basic", 7 "Amandes", 5 "Chocolat", 6 "Chocolat blanc"
 
 
   Plan du Scénario: retirer les ingrédient nécessaire à une commande

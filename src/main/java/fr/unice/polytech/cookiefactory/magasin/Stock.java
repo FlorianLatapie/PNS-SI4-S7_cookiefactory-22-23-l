@@ -67,4 +67,11 @@ public class Stock {
         System.out.println(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(LocalDateTime.now()));
         return LocalDateTime.now();
     }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "ingredients=" + ingredients +
+                '}';
+    }
 }

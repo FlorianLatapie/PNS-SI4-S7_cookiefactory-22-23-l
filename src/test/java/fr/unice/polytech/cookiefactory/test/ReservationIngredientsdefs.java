@@ -5,7 +5,10 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.magasin.Stock;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 import io.cucumber.java.fr.*;
 
 import static org.junit.Assert.*;
@@ -14,18 +17,28 @@ public class ReservationIngredientsdefs {
     private Cookie cookie;
     private Commande commande;
     private Magasin magasin;
-    private Ingredient ingredient;
+    private Pate ingredient1;
+    private Saveur ingredient2;
+    private Garniture ingredient3;
+    private Garniture ingredient4;
 
     @Etantdonné("un cookie nommé {string} composé de Chocolat")
     public void unCookieNomméComposéDUnIngrédient(String nomCookie) {
         cookie = BaseDeDonnees.getInstance().getBdCookie().getCookieParNom(nomCookie);
     }
 
-    @Et("un stock contenant {int} {string}")
-    public void unStockContenant(int nbIngredient, String nomIngredient) {
+    @Étantdonnée("un stock contenant {int} {string}, {int} {string}, {int} {string}, {int} {string}")
+    public void un_stock_contenant(int nbIngredient1, String nomIngredient1, int nbIngredient2, String nomIngredient2, int nbIngredient3, String nomIngredient3, int nbIngredient4, String nomIngredient4) {
         magasin = new Magasin(new Stock());
-        ingredient = new Ingredient(nomIngredient);
-        magasin.getStock().ajouterIngredient(ingredient, nbIngredient);
+        ingredient1 = new Pate(nomIngredient1);
+        ingredient2 = new Saveur(nomIngredient2);
+        ingredient3 = new Garniture(nomIngredient3);
+        ingredient4 = new Garniture(nomIngredient4);
+        magasin.getStock().ajouterIngredient(ingredient1, nbIngredient1);
+        magasin.getStock().ajouterIngredient(ingredient2, nbIngredient2);
+        magasin.getStock().ajouterIngredient(ingredient3, nbIngredient3);
+        magasin.getStock().ajouterIngredient(ingredient4, nbIngredient4);
+        System.out.println(magasin.getStock());
     }
 
     @Etantdonné("une commande contenant {int} cookies")
@@ -41,7 +54,7 @@ public class ReservationIngredientsdefs {
 
     @Alors("le stock comporte {int} chocolats")
     public void leStockComporteNbChocolatChocolat(int nbIngredient) {
-        assertEquals(nbIngredient, (int) magasin.getStock().getQuantite(ingredient));
+        assertEquals(nbIngredient, (int) magasin.getStock().getQuantite(ingredient3));
     }
 
 }

@@ -4,9 +4,6 @@ import fr.unice.polytech.cookiefactory.divers.Prix;
 
 public class Garniture extends Ingredient {
     public Garniture(String nom){
-        this(nom, new Prix(10), 1);
-    }
-    public Garniture(String nom, Prix prix, int quantite) {
-        super(nom, prix, quantite);
+        super(nom);
     }
 }
