@@ -1,6 +1,5 @@
 package fr.unice.polytech.cookiefactory.recette.cookie;
 
-import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
 import fr.unice.polytech.cookiefactory.recette.enums.Melange;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;

@@ -19,9 +19,10 @@ public class GestionnaireDeCuisiniers {
         commandes = new ArrayList<>();
     }
 
-    public void soumettreUnNouveauCookie(Cookie cookie){
+    public void soumettreUnNouveauCookie(Cookie cookie) {
         magasin.soumettreUnNouveauCookie(cookie);
     }
+
     public void assignerCuisinier(Commande commande) {
         for (Cuisinier cuisinier : cuisiniers) {
             if (cuisinier.estDisponible()) {

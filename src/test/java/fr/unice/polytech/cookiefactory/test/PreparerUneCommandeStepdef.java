@@ -21,7 +21,7 @@ public class PreparerUneCommandeStepdef {
         cuisinier = new Cuisinier(new GestionnaireDeCommandes());
 
         Etat etatEntre = Etat.valueOf(etat);
-        commande = new Commande(new Invite("","","",""));
+        commande = new Commande(new Invite("", "", "", ""));
         commande.changerStatut(etatEntre);
     }
 

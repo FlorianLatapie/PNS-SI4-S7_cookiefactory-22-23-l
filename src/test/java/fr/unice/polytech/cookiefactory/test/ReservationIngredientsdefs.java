@@ -6,12 +6,14 @@ import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.magasin.Stock;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
-import io.cucumber.java.fr.*;
+import io.cucumber.java.fr.Alors;
+import io.cucumber.java.fr.Etantdonné;
+import io.cucumber.java.fr.Quand;
+import io.cucumber.java.fr.Étantdonnée;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ReservationIngredientsdefs {
     private Cookie cookie;

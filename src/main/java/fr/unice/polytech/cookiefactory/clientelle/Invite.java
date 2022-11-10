@@ -7,7 +7,7 @@ public class Invite {
 
     public Invite() {
     }
-    
+
     public Invite(String nom, String prenom, String mail, String numeroDeTelephone) {
         this.informationClient = new InformationClient(nom, prenom, mail, numeroDeTelephone);
     }

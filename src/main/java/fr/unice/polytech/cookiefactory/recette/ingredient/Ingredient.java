@@ -1,13 +1,11 @@
 package fr.unice.polytech.cookiefactory.recette.ingredient;
 
-import fr.unice.polytech.cookiefactory.divers.Prix;
-
 import java.util.Objects;
 
 public class Ingredient {
     private final String nom;
 
-    public Ingredient(String nom){
+    public Ingredient(String nom) {
         this.nom = nom;
     }
 

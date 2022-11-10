@@ -43,7 +43,7 @@ public class Cuisinier {
         return edtCuisinier.getCreneauPreparationCommande().isEmpty();
     }
 
-    public void soumettreUnCookie(Cookie cookie){
+    public void soumettreUnCookie(Cookie cookie) {
         BDCookie.getInstance().ajouterUnCookie(cookie);
     }
 

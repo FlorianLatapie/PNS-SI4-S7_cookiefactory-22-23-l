@@ -5,12 +5,10 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import io.cucumber.java.fr.Alors;
-import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Lorsque;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ReductionStepdefs {
     private Commande commande;
@@ -35,6 +33,6 @@ public class ReductionStepdefs {
 
     @Alors("le prix est égal à {double} €")
     public void lePrixEstÉgalÀPrixTotalEuros(double prixReduction) {
-        assertEquals(new Prix((int) (prixReduction*100)), reduction);
+        assertEquals(new Prix((int) (prixReduction * 100)), reduction);
     }
 }

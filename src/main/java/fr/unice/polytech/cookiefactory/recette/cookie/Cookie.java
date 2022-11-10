@@ -2,10 +2,6 @@ package fr.unice.polytech.cookiefactory.recette.cookie;
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Cookie {
     private String nom;

@@ -29,6 +29,7 @@ public class Magasin {
         this.valeurTaxe = valeurTaxe;
         this.stock = stock;
     }
+
     public Magasin(double valeurTaxe) {
         this.valeurTaxe = valeurTaxe;
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
@@ -44,17 +45,18 @@ public class Magasin {
         this.stock = stock;
     }
 
-    public Magasin(){
+    public Magasin() {
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.recettesDuMagasin = new RecettesDuMagasin();
         this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
         this.stock = new Stock();
     }
 
-    public double ajouterTaxe(double valeur){
+    public double ajouterTaxe(double valeur) {
         return valeur * (1 - valeurTaxe);
     }
-    public void soumettreUnNouveauCookie(Cookie cookie){
+
+    public void soumettreUnNouveauCookie(Cookie cookie) {
         recettesDuMagasin.soumettreUnCookie(cookie);
     }
 

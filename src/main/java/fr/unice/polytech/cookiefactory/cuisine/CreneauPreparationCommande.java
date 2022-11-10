@@ -16,7 +16,7 @@ public class CreneauPreparationCommande {
         this.commande = commande;
     }
 
-    public CreneauPreparationCommande(Commande commande){
+    public CreneauPreparationCommande(Commande commande) {
         this.commande = commande;
     }
 

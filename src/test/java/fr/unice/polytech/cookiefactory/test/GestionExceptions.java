@@ -5,9 +5,8 @@ import java.util.List;
 
 /**
  * Class permettant de récupérer les exceptions levées par les tests Cumcumber
- *
+ * <p>
  * L'auteur de ce code est Niel de Wet trouvé sur le <a href="https://stackoverflow.com/questions/17272161/cucumber-jvm-test-if-the-correct-exception-is-thrown">site</a>
- *
  */
 
 public class GestionExceptions {

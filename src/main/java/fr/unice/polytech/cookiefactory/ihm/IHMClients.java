@@ -14,6 +14,7 @@ public class IHMClients implements IIHM {
     public IHMClients(Magasin magasin) {
         this.magasin = magasin;
     }
+
     public void lancer() {
         System.out.println(MESSAGE_D_ACCUEIL);
         int choix;

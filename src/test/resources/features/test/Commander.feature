@@ -88,7 +88,7 @@ Fonctionnalité: Passer une commande
       | 15        | 10      |
 
       # Cas limites
-      | 11         | 10      |
+      | 11        | 10      |
 
 
   Plan du scénario: consulter le prix du panier

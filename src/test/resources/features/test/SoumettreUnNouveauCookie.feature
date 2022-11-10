@@ -18,10 +18,10 @@ Fonctionnalité: Soumettre un nouveau cookie
     Alors le cookie apparait dans la liste des cookies en attente de validation
 
     Exemples:
-      | Nom | Pate | Saveur | Garniture 1 | Garniture 2 | Cuisson | Melange | temps |
+      | Nom      | Pate     | Saveur        | Garniture 1        | Garniture 2      | Cuisson  | Melange | temps |
 
       # Comportement correct
-      | Amandine | Nature | Amande | Chouchou | Caramel | CROQUANT | MIXTE | 5 |
-      | Pepito | Chocolat | Chocolat noir | Pepite de chocolat | Chocolat fondant | MOELLEUX | GARNI | 3 |
+      | Amandine | Nature   | Amande        | Chouchou           | Caramel          | CROQUANT | MIXTE   | 5     |
+      | Pepito   | Chocolat | Chocolat noir | Pepite de chocolat | Chocolat fondant | MOELLEUX | GARNI   | 3     |
 
 

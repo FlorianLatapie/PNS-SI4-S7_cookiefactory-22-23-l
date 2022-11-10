@@ -1,9 +1,7 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
-import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
-import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 
 import java.util.ArrayList;
@@ -13,17 +11,17 @@ public class RecettesDuMagasin {
     private List<Cookie> cookiesDisponible;
     private List<Cookie> cookiesEnAttenteDeValidation;
 
-    public RecettesDuMagasin(){
+    public RecettesDuMagasin() {
         this.cookiesDisponible = new ArrayList<>();
         this.cookiesEnAttenteDeValidation = new ArrayList<>();
     }
 
-    public void soumettreUnCookie(Cookie cookie){
+    public void soumettreUnCookie(Cookie cookie) {
         cookie.changerEtat(ValidationCookie.SOUMIS);
         cookiesEnAttenteDeValidation.add(cookie);
     }
 
-    public void validerUnCookie(Cookie cookie){
+    public void validerUnCookie(Cookie cookie) {
         cookie.changerEtat(ValidationCookie.VALIDE);
         cookiesEnAttenteDeValidation.remove(cookie);
         cookiesDisponible.add(cookie);

@@ -11,7 +11,8 @@ import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CommanderStepdef {
     private Invite invite;
@@ -35,7 +36,7 @@ public class CommanderStepdef {
     public void lInvitéAjouteCookieÀSonPanier(int nb) {
         try {
             commande.getPanier().ajouterCookies(cookie, nb);
-        } catch (RuntimeException exception){
+        } catch (RuntimeException exception) {
             gestionExceptions.ajouteException(exception);
         }
     }

@@ -14,4 +14,4 @@ Fonctionnalité: Bénéficier d’une réduction de 10% sur une commande
       | nbCookie | prixTotal |
       | 1        | 1,35      |
       | 5        | 6,75      |
-      | 10        | 13,50      |
+      | 10       | 13,50     |

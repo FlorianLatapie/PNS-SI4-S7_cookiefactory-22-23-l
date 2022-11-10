@@ -8,11 +8,9 @@ import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
 import fr.unice.polytech.cookiefactory.recette.enums.Melange;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,17 +50,17 @@ public class BDCookie {
         return cookies.get(nom);
     }
 
-    public void ajouterUnCookie(Cookie cookie){
+    public void ajouterUnCookie(Cookie cookie) {
         cookies.put(cookie.getNom(), cookie);
     }
 
-    public void validerUnCookie(String nom){
+    public void validerUnCookie(String nom) {
         Cookie cookie = cookies.remove(nom);
         cookie.changerEtat(ValidationCookie.VALIDE);
         ajouterUnCookie(cookie);
     }
 
-    public List<Cookie> getCookiesEnAttente(){
+    public List<Cookie> getCookiesEnAttente() {
         return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.SOUMIS)).toList();
     }
 }
