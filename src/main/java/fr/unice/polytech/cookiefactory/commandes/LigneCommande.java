@@ -1,5 +1,6 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
+import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.exceptions.PasAssezCookies;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
@@ -36,6 +37,10 @@ public class LigneCommande {
 
     public Cookie getCookie() {
         return cookie;
+    }
+
+    public Prix obtenirPrixSelonQuantite(){
+        return cookie.getPrixHorsTaxe().multiply(quantite);
     }
 
     @Override

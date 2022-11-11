@@ -49,7 +49,11 @@ public class Commande {
     }
 
     public Prix getPrix() {
-        return panier.getLignesCommande().stream().map(ligne -> ligne.getCookie().getPrixHorsTaxe().multiply(ligne.getQuantite())).reduce(Prix.ZERO, Prix::add);
+        return panier.getLignesCommande().stream().map(ligne -> ligne.obtenirPrixSelonQuantite()).reduce(Prix.ZERO, Prix::add);
+    }
+
+    public Prix getPrixAvecTaxe(Prix prix){
+        return gestionnaireDeCommandes.getMagasin().ajouterTaxe(prix);
     }
 
     public Prix getPrixReduction() {
@@ -61,7 +65,7 @@ public class Commande {
     }
 
     public void commandeConfirmee() {
-        changerStatut(Etat.CONFIRME);
+        changerStatut(Etat.CONFIRMEE);
         panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getRecette().getIngredients().forEach(ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())));
         gestionnaireDeCommandes.ajouterCommande(this);
     }

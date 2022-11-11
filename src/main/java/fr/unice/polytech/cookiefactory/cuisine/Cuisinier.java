@@ -19,7 +19,7 @@ public class Cuisinier {
     }
 
     public void preparerCommande(Commande commande) {
-        if (commande.getEtat() != Etat.CONFIRME) {
+        if (commande.getEtat() != Etat.CONFIRMEE) {
             throw new IllegalArgumentException("La commande n'est pas en état CONFIRME : " + commande.getEtat());
         }
         gestionnaireDeCommandes.changerStatut(commande, Etat.EN_COURS_DE_PREPARATION);

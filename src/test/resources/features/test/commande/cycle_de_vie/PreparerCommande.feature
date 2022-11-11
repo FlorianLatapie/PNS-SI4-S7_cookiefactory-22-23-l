@@ -3,7 +3,7 @@
 Fonctionnalité: Préparer une commande
 
   Contexte:
-    Étant donné une Commande en état "CONFIRME"
+    Étant donné une Commande en état "CONFIRMEE"
 
   Scénario: Démarrer preparation d'une commande
     Quand le cuisinier commence la préparation de la commande

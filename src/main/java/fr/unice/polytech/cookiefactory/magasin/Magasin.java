@@ -2,6 +2,7 @@ package fr.unice.polytech.cookiefactory.magasin;
 
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
+import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
@@ -61,8 +62,10 @@ public class Magasin {
         this.nom = nom;
     }
 
-    public double ajouterTaxe(double valeur) {
-        return valeur * (1 - valeurTaxe);
+    public Prix ajouterTaxe(Prix p){
+        double prix = p.value();
+        double prixAvecTaxe = prix * (1 + valeurTaxe);
+        return new Prix((int) prixAvecTaxe * 100);
     }
 
     public void soumettreUnNouveauCookie(Cookie cookie) {
