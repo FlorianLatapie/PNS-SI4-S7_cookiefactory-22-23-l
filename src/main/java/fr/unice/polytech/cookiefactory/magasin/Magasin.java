@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Magasin {
+    private String nom;
     private double valeurTaxe = 0.2;
     private String lieu;
     private Date dateOuverture;
@@ -28,6 +29,7 @@ public class Magasin {
     public Magasin(double valeurTaxe, Stock stock) {
         this.valeurTaxe = valeurTaxe;
         this.stock = stock;
+        this.nom = "";
     }
 
     public Magasin(double valeurTaxe) {
@@ -36,6 +38,7 @@ public class Magasin {
         this.recettesDuMagasin = new RecettesDuMagasin();
         this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
         this.stock = new Stock();
+        this.nom = "";
     }
 
     public Magasin(Stock stock) {
@@ -43,6 +46,7 @@ public class Magasin {
         gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
         recettesDuMagasin = new RecettesDuMagasin();
         this.stock = stock;
+        this.nom = "";
     }
 
     public Magasin() {
@@ -50,6 +54,11 @@ public class Magasin {
         this.recettesDuMagasin = new RecettesDuMagasin();
         this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
         this.stock = new Stock();
+        this.nom = "";
+    }
+
+    public Magasin(String nom) {
+        this.nom = nom;
     }
 
     public double ajouterTaxe(double valeur) {
@@ -89,5 +98,21 @@ public class Magasin {
 
     public double getValeurTaxe() {
         return valeurTaxe;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Magasin magasin) {
+            return this.getNom().equals(magasin.getNom());
+        }
+        return false;
     }
 }

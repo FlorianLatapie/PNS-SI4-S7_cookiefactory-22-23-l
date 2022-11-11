@@ -2,12 +2,11 @@ package fr.unice.polytech.cookiefactory.bd;
 
 public class BaseDeDonnees {
     private static BaseDeDonnees instance;
-
     private BDCookie bdCookie;
 
     public static BaseDeDonnees getInstance() {
         if (instance == null) {
-            return new BaseDeDonnees();
+            instance = new BaseDeDonnees();
         }
         return instance;
     }
