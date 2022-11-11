@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecettesDuMagasin {
-    private List<Cookie> cookiesDisponible;
-    private List<Cookie> cookiesEnAttenteDeValidation;
+    private final List<Cookie> cookiesDisponible;
+    private final List<Cookie> cookiesEnAttenteDeValidation;
 
     public RecettesDuMagasin() {
         this.cookiesDisponible = new ArrayList<>();

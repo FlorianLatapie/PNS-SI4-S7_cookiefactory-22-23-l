@@ -10,7 +10,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 public class Magasin {
-    private String nom;
+    private final String nom;
     private double valeurTaxe = 0.2;
     private String lieu;
     private ZonedDateTime dateOuverture;
@@ -18,12 +18,7 @@ public class Magasin {
 
     private RecettesDuMagasin recettesDuMagasin;
     private Stock stock;
-    private ChaineDeMagasins chaineDeMagasins;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
-
-    public GestionnaireDeCuisiniers getGestionnaireDeCuisiniers() {
-        return gestionnaireDeCuisinier;
-    }
 
     private GestionnaireDeCuisiniers gestionnaireDeCuisinier;
 
@@ -60,6 +55,14 @@ public class Magasin {
 
     public Magasin(String nom) {
         this.nom = nom;
+    }
+
+    public Magasin(String nom, double valeurTaxe, String lieu, ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
+        this.nom = nom;
+        this.valeurTaxe = valeurTaxe;
+        this.lieu = lieu;
+        this.dateOuverture = dateOuverture;
+        this.dateFermeture = dateFermeture;
     }
 
     public Prix ajouterTaxe(Prix p){
@@ -109,6 +112,10 @@ public class Magasin {
 
     public String getLieu() {
         return lieu;
+    }
+
+    public GestionnaireDeCuisiniers getGestionnaireDeCuisiniers() {
+        return gestionnaireDeCuisinier;
     }
 
     @Override

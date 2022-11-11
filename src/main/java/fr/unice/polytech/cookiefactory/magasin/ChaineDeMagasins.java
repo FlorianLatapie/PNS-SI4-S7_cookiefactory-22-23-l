@@ -1,9 +1,8 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
-import fr.unice.polytech.cookiefactory.bd.BDCookie;
-import fr.unice.polytech.cookiefactory.bd.BDIngredient;
 import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
+import fr.unice.polytech.cookiefactory.magasin.factory.MagasinFactory;
+import fr.unice.polytech.cookiefactory.magasin.factory.SimpleMagasinFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +10,13 @@ import java.util.stream.Collectors;
 
 public class ChaineDeMagasins {
     static {
-        ChaineDeMagasins.getInstance().ajouterMagasin(new Magasin("Magasin 1"));
-        ChaineDeMagasins.getInstance().ajouterMagasin(new Magasin("Magasin 2"));
-        ChaineDeMagasins.getInstance().ajouterMagasin(new Magasin("Magasin 3"));
+        MagasinFactory factory = new SimpleMagasinFactory();
+        List<Magasin> magasins = new ArrayList<>();
+        magasins.add(factory.createMagasin("Magasin 1"));
+        magasins.add(factory.createMagasin("Magasin 2"));
+        magasins.add(factory.createMagasin("Magasin 3"));
+
+        magasins.forEach(magasin -> ChaineDeMagasins.getInstance().ajouterMagasin(magasin));
     }
 
     private static ChaineDeMagasins instance;

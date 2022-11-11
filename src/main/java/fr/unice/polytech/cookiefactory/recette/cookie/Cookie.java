@@ -9,7 +9,6 @@ public class Cookie {
     private Prix prix;
     private ValidationCookie etat;
 
-
     public Cookie(String nom, Recette recette) {
         this(nom, recette, ValidationCookie.SOUMIS);
     }

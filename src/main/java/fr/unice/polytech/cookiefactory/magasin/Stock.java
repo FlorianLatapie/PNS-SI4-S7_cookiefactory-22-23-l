@@ -5,10 +5,7 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 public class Stock {
     private final Map<Ingredient, Integer> ingredients;
@@ -43,23 +40,12 @@ public class Stock {
         }
     }
 
-    public void nouvelIngredient(Ingredient ingredient) {
-        ingredients.put(ingredient, 0);
-    }
-
     public void supprimerIngredient(Ingredient ingredient) {
         ingredients.remove(ingredient);
     }
 
-    public Ingredient getIngredient(String nomIngredient) {
-        String nom = nomIngredient.toLowerCase();
-        Optional<Ingredient> res = ingredients.keySet().stream().filter(ingredient -> ingredient.getNom().equals(nom)).findFirst();
-
-        if (res.isEmpty()) {
-            throw new NoSuchElementException();
-        }
-
-        return res.get();
+    public List<Ingredient> getIngredients() {
+        return new ArrayList<>(ingredients.keySet());
     }
 
 
