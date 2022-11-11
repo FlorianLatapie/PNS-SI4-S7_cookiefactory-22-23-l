@@ -1,25 +1,23 @@
 package fr.unice.polytech.cookiefactory.bd;
 
 public class BaseDeDonnees {
-    private static BaseDeDonnees instance;
     private BDCookie bdCookie;
+    private BDIngredient bdIngredient;
 
-    public static BaseDeDonnees getInstance() {
-        if (instance == null) {
-            instance = new BaseDeDonnees();
-        }
-        return instance;
-    }
-
-    private BaseDeDonnees() {
+    public BaseDeDonnees() {
         initBD();
     }
 
     private void initBD() {
-        bdCookie = BDCookie.getInstance();
+        bdCookie = new BDCookie();
+        bdIngredient = new BDIngredient();
     }
 
     public BDCookie getBdCookie() {
         return bdCookie;
+    }
+
+    public BDIngredient getBdIngredient() {
+        return bdIngredient;
     }
 }

@@ -1,7 +1,8 @@
-package fr.unice.polytech.cookiefactory.test;
+package fr.unice.polytech.cookiefactory.test.stock;
 
 import fr.unice.polytech.cookiefactory.magasin.Stock;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
+import fr.unice.polytech.cookiefactory.test.GestionExceptions;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Quand;

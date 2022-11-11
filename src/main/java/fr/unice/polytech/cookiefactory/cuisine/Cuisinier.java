@@ -1,9 +1,11 @@
 package fr.unice.polytech.cookiefactory.cuisine;
 
 import fr.unice.polytech.cookiefactory.bd.BDCookie;
+import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 public class Cuisinier {
@@ -44,7 +46,7 @@ public class Cuisinier {
     }
 
     public void soumettreUnCookie(Cookie cookie) {
-        BDCookie.getInstance().ajouterUnCookie(cookie);
+        ChaineDeMagasins.getInstance().getBd().getBdCookie().ajouterUnCookie(cookie);
     }
 
     @Override

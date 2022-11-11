@@ -1,11 +1,13 @@
-package fr.unice.polytech.cookiefactory.test;
+package fr.unice.polytech.cookiefactory.test.commande.cycle_de_vie;
 
 import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.exceptions.PasAssezCookies;
+import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
+import fr.unice.polytech.cookiefactory.test.GestionExceptions;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Etantdonné;
@@ -29,7 +31,7 @@ public class CommanderStepdef {
 
     @Et("un cookie nommé {string}")
     public void unCookieNomméDUnPrixDe€(String nomCookie) {
-        cookie = BaseDeDonnees.getInstance().getBdCookie().getCookieParNom(nomCookie);
+        cookie = ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookieParNom(nomCookie);
     }
 
     @Quand("l'invité ajoute {int} cookies à son panier")

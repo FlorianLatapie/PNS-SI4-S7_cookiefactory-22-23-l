@@ -1,7 +1,8 @@
-package fr.unice.polytech.cookiefactory.test;
+package fr.unice.polytech.cookiefactory.test.stock;
 
 import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.magasin.Stock;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
@@ -26,7 +27,7 @@ public class ReservationIngredientsdefs {
 
     @Etantdonné("un cookie nommé {string} composé de Chocolat")
     public void unCookieNomméComposéDUnIngrédient(String nomCookie) {
-        cookie = BaseDeDonnees.getInstance().getBdCookie().getCookieParNom(nomCookie);
+        cookie = ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookieParNom(nomCookie);
     }
 
     @Étantdonnée("un stock contenant {int} {string}, {int} {string}, {int} {string}, {int} {string}")

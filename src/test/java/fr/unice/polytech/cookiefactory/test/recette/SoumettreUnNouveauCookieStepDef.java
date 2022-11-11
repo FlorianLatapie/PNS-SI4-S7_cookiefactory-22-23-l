@@ -1,7 +1,9 @@
-package fr.unice.polytech.cookiefactory.test;
+package fr.unice.polytech.cookiefactory.test.recette;
 
 import fr.unice.polytech.cookiefactory.bd.BDCookie;
+import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
+import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
@@ -84,7 +86,7 @@ public class SoumettreUnNouveauCookieStepDef {
 
     @Alors("le cookie apparait dans la liste des cookies en attente de validation")
     public void le_cookie_apparait_dans_la_liste_des_cookies_en_attente_de_validation() {
-        assertTrue(BDCookie.getInstance().getCookiesEnAttente().contains(cookie));
+        assertTrue(ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookiesEnAttente().contains(cookie));
     }
 
 }

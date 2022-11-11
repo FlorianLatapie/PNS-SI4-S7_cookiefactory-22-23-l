@@ -16,31 +16,11 @@ import java.util.List;
 import java.util.Map;
 
 public class BDCookie {
-    private static BDCookie instance;
-
     private final Map<String, Cookie> cookies;
 
-    public static BDCookie getInstance() {
-        if (instance == null) {
-            instance = new BDCookie();
-        }
-        return instance;
-    }
-
-    private BDCookie() {
+    BDCookie() {
         cookies = new HashMap<>();
-        Cookie cookiePopChoco = new Cookie(
-                "Pop-Choco",
-                new Recette(
-                        new Pate("Pate basic"),
-                        new Saveur("Amandes"),
-                        List.of(new Garniture("Chocolat"), new Garniture("Chocolat blanc")),
-                        Cuisson.CROQUANT,
-                        Melange.MIXTE,
-                        15
-                ),
-                new Prix(150));
-        cookies.put(cookiePopChoco.getNom(), cookiePopChoco);
+        init();
     }
 
     public Cookie getCookieParNom(String nom) {
@@ -62,5 +42,20 @@ public class BDCookie {
 
     public List<Cookie> getCookiesEnAttente() {
         return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.SOUMIS)).toList();
+    }
+
+    public void init() {
+        Cookie cookiePopChoco = new Cookie(
+                "Pop-Choco",
+                new Recette(
+                        new Pate("Pate basic"),
+                        new Saveur("Amandes"),
+                        List.of(new Garniture("Chocolat"), new Garniture("Chocolat blanc")),
+                        Cuisson.CROQUANT,
+                        Melange.MIXTE,
+                        15
+                ),
+                new Prix(150));
+        cookies.put(cookiePopChoco.getNom(), cookiePopChoco);
     }
 }

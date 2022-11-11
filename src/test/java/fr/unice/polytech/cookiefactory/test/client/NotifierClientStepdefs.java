@@ -1,4 +1,4 @@
-package fr.unice.polytech.cookiefactory.test;
+package fr.unice.polytech.cookiefactory.test.client;
 
 import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;

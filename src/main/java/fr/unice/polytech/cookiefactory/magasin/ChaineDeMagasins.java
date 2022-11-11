@@ -1,5 +1,8 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
+import fr.unice.polytech.cookiefactory.bd.BDCookie;
+import fr.unice.polytech.cookiefactory.bd.BDIngredient;
+import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.util.ArrayList;
@@ -14,11 +17,12 @@ public class ChaineDeMagasins {
     }
 
     private static ChaineDeMagasins instance;
-
     private final List<Magasin> magasins;
+    private final BaseDeDonnees bd;
 
     private ChaineDeMagasins() {
         magasins = new ArrayList<>();
+        bd = new BaseDeDonnees();
     }
 
     public static ChaineDeMagasins getInstance() {
@@ -26,17 +30,6 @@ public class ChaineDeMagasins {
             instance = new ChaineDeMagasins();
         }
         return instance;
-    }
-
-    public void ajouterIngredient(Ingredient ingredient) {
-        // TODO
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public void retirerIngredient(Ingredient ingredient) {
-        // TODO
-        throw new UnsupportedOperationException("Not implemented yet.");
-
     }
 
     public List<Magasin> getMagasins(String lieu) {
@@ -58,5 +51,9 @@ public class ChaineDeMagasins {
 
     public void retirerMagasin(String nomMagasin) {
         magasins.removeIf(magasin -> magasin.getNom().equals(nomMagasin));
+    }
+
+    public BaseDeDonnees getBd() {
+        return bd;
     }
 }

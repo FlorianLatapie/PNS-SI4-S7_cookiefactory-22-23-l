@@ -1,8 +1,9 @@
-package fr.unice.polytech.cookiefactory.test;
+package fr.unice.polytech.cookiefactory.test.commande.prix;
 
 import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.divers.Prix;
+import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
@@ -28,7 +29,7 @@ public class ReductionStepdefs {
 
     @Etantdonné("un cookie nommé {string} \\(reduction)")
     public void unCookieNomméReduction(String nomCookie) {
-        cookie = BaseDeDonnees.getInstance().getBdCookie().getCookieParNom(nomCookie);
+        cookie = ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookieParNom(nomCookie);
     }
 
     @Alors("le prix est égal à {double} €")
