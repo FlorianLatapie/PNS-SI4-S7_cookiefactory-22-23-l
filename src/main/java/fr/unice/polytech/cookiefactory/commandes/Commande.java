@@ -5,12 +5,12 @@ import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class Commande {
     private final Panier panier = new Panier();
-    private Date dateReception;
+    private ZonedDateTime dateReception;
     private boolean appliquerRemise;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
     private Invite invite;
@@ -36,7 +36,7 @@ public class Commande {
     }
 
     public void appliquerRemise() {
-        //TODO
+        //TODO on supprime vu que getPrixReduction() existe ?
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 

@@ -5,15 +5,15 @@ import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public class Magasin {
     private String nom;
     private double valeurTaxe = 0.2;
     private String lieu;
-    private Date dateOuverture;
-    private Date dateFermeture;
+    private ZonedDateTime dateOuverture;
+    private ZonedDateTime dateFermeture;
 
     private RecettesDuMagasin recettesDuMagasin;
     private Stock stock;

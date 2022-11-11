@@ -2,19 +2,15 @@ package fr.unice.polytech.cookiefactory.cuisine;
 
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class CreneauPreparationCommande {
-    private Date dateDebut;
-    private Date dateFin;
-    private Commande commande;
+    private ZonedDateTime dateDebut;
+    private ZonedDateTime dateFin;
 
-    public CreneauPreparationCommande(Date dateDebut, Date dateFin, Commande commande) {
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.commande = commande;
-    }
+    private int dureeReservee; // en minutes
+    private Commande commande;
 
     public CreneauPreparationCommande(Commande commande) {
         this.commande = commande;
