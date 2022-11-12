@@ -39,8 +39,8 @@ public class SimpleMagasinFactory implements MagasinFactory {
         // renvoyer le lundi de la semaine courante à 8h
         var maintenant = ZonedDateTime.now();
         var lundi = Util.getLundiDeLaSemaineCourante(maintenant);
-        dateOuverture = lundi.withHour(8).withMinute(0).withSecond(0).withNano(0);
-        dateFermeture = dateOuverture.plusHours(12);
+        dateOuverture = Util.heurePile(lundi, 8);
+        dateFermeture = Util.heurePile(dateOuverture.plusDays(4), 18);
 
         return new Magasin(nom, valeurTaxe, lieu, dateOuverture, dateFermeture);
     }

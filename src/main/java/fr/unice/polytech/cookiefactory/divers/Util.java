@@ -10,4 +10,8 @@ public class Util {
     public static ZonedDateTime getLundiDeLaSemaineSuivante(ZonedDateTime zonedDateTime) {
         return getLundiDeLaSemaineCourante(zonedDateTime).plusWeeks(1);
     }
+
+    public static ZonedDateTime heurePile(ZonedDateTime zonedDateTime, int heure) {
+        return zonedDateTime.withHour(heure).withMinute(0).withSecond(0).withNano(0);
+    }
 }

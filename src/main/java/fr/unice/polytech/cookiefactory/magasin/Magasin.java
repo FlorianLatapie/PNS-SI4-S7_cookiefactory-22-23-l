@@ -3,6 +3,7 @@ package fr.unice.polytech.cookiefactory.magasin;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.divers.Prix;
+import fr.unice.polytech.cookiefactory.divers.Util;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
@@ -30,6 +31,9 @@ public class Magasin {
     public Magasin(String nom, Stock stock) {
         this.nom = nom;
         this.stock = stock;
+
+        this.dateOuverture = Util.heurePile(Util.getLundiDeLaSemaineCourante(ZonedDateTime.now()), 8);
+        this.dateFermeture = Util.heurePile(dateOuverture/*.plusDays(4)*/, 18);
 
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.gestionnaireDeCuisiniers = new GestionnaireDeCuisiniers(this);
