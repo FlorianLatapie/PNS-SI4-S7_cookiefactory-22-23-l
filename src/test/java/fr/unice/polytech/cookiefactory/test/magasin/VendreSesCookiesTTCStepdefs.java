@@ -32,7 +32,7 @@ public class VendreSesCookiesTTCStepdefs {
 
     @Alors("le prix sera celui TTC")
     public void le_prix_sera_celui_ttc() {
-        assertTrue(prixTTCCommande.value() > prixCommande.value());
-        assertNotEquals(prixTTCCommande.value(), magasinRef.ajouterTaxe(prixCommande).value());
+        assertTrue(prixTTCCommande.getPrixEnCentimes() > prixCommande.getPrixEnCentimes());
+        assertNotEquals(prixTTCCommande, magasinRef.ajouterTaxe(prixCommande));
     }
 }

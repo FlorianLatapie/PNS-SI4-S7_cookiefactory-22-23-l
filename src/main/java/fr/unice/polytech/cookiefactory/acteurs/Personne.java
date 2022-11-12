@@ -62,6 +62,6 @@ public abstract class Personne {
     }
 
     public void payer(Commande commande) {
-        this.solde = this.solde.subtract(commande.getPrix());
+        this.solde = this.solde.soustraire(commande.getPrix());
     }
 }

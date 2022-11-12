@@ -62,7 +62,7 @@ public class GestionnaireDeCommandes {
 
     public void payerCommande(Commande commande, Client client) {
         if (commande.getEtat() != Etat.EN_COURS_DE_PAIEMENT) return;
-        if (client.getSolde().value() >= commande.getPrixAvecTaxe(commande.getPrix()).value()) {
+        if (client.getSolde().getPrixEnCentimes() >= commande.getPrixAvecTaxe(commande.getPrix()).getPrixEnCentimes()) {
             changerStatut(commande, Etat.EN_COURS_DE_PREPARATION);
             client.payer(commande);
         } else {

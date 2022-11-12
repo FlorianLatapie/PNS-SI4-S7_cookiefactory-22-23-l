@@ -40,7 +40,7 @@ public class LigneCommande {
     }
 
     public Prix obtenirPrixSelonQuantite() {
-        return cookie.getPrixHorsTaxe().multiply(quantite);
+        return cookie.getPrixHorsTaxe().multiplier(quantite);
     }
 
     @Override

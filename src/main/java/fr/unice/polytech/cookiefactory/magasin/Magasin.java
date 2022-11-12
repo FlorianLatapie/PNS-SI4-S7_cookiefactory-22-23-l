@@ -61,9 +61,9 @@ public class Magasin {
     // ------------------------------------------------------------------------
 
     public Prix ajouterTaxe(Prix p) {
-        double prix = p.value();
+        double prix = p.getPrixEnCentimes();
         double prixAvecTaxe = prix * (1 + valeurTaxe);
-        return new Prix((int) prixAvecTaxe * 100);
+        return new Prix((int) prixAvecTaxe);
     }
 
     public void soumettreUnNouveauCookie(Cookie cookie) {
