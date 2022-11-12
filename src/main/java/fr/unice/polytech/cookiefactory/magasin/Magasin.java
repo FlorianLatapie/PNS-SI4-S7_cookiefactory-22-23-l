@@ -20,50 +20,44 @@ public class Magasin {
     private Stock stock;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
 
-    private GestionnaireDeCuisiniers gestionnaireDeCuisinier;
+    private GestionnaireDeCuisiniers gestionnaireDeCuisiniers;
 
-    public Magasin(Integer taxe, Stock stock) {
-        this.valeurTaxe = taxe.floatValue()/100;
+    // --- Constructeurs ---
+    public Magasin() {
+        this("", new Stock());
+    }
+
+    public Magasin(String nom, Stock stock) {
+        this.nom = nom;
         this.stock = stock;
-        this.nom = "";
+
+        this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
+        this.gestionnaireDeCuisiniers = new GestionnaireDeCuisiniers(this);
+        this.recettesDuMagasin = new RecettesDuMagasin();
     }
 
     public Magasin(Integer taxe) {
+        this("", new Stock());
         this.valeurTaxe = taxe.floatValue()/100;
-        this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
-        this.recettesDuMagasin = new RecettesDuMagasin();
-        this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
-        this.stock = new Stock();
-        this.nom = "";
     }
 
     public Magasin(Stock stock) {
-        gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
-        gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
-        recettesDuMagasin = new RecettesDuMagasin();
-        this.stock = stock;
-        this.nom = "";
+        this("", stock);
     }
-
-    public Magasin() {
-        this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
-        this.recettesDuMagasin = new RecettesDuMagasin();
-        this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
-        this.stock = new Stock();
-        this.nom = "";
-    }
-
-    public Magasin(String nom) {
-        this.nom = nom;
+    public Magasin(Integer taxe, Stock stock) {
+        this("", stock);
+        this.valeurTaxe = taxe.floatValue()/100;
     }
 
     public Magasin(String nom, double valeurTaxe, String lieu, ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
-        this.nom = nom;
+        this(nom, new Stock());
         this.valeurTaxe = valeurTaxe;
         this.lieu = lieu;
         this.dateOuverture = dateOuverture;
         this.dateFermeture = dateFermeture;
     }
+
+    // ------------------------------------------------------------------------
 
     public Prix ajouterTaxe(Prix p){
         double prix = p.value();
@@ -115,7 +109,15 @@ public class Magasin {
     }
 
     public GestionnaireDeCuisiniers getGestionnaireDeCuisiniers() {
-        return gestionnaireDeCuisinier;
+        return gestionnaireDeCuisiniers;
+    }
+
+    public ZonedDateTime geHeureOuverture() {
+        return dateOuverture;
+    }
+
+    public ZonedDateTime getHeureFermeture() {
+        return dateFermeture;
     }
 
     @Override
@@ -124,5 +126,9 @@ public class Magasin {
             return this.getNom().equals(magasin.getNom());
         }
         return false;
+    }
+
+    public ZonedDateTime getDate() {
+        return null;//ICI
     }
 }

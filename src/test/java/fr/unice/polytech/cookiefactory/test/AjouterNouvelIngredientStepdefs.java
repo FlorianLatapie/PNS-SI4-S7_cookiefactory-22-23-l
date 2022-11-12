@@ -40,6 +40,11 @@ public class AjouterNouvelIngredientStepdefs {
 
     @Alors("l'ingrédient est retiré à la liste des ingrédients disponibles")
     public void lIngrédientEstRetiréÀLaListeDesIngrédientsDisponibles() {
-        assertNull(ChaineDeMagasins.getInstance().getBd().getBdIngredient().getIngredient(nom));
+        try{
+            ChaineDeMagasins.getInstance().getBd().getBdIngredient().getIngredient(nom);
+            fail();
+        } catch (IllegalArgumentException e){
+           assertTrue(true);
+        }
     }
 }

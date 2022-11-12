@@ -33,7 +33,7 @@ public class Stock {
         }
 
         Integer stockQuantite = getQuantite(ingredient);
-        if (stockQuantite == null) {
+        if (stockQuantite == null) { //TODO vérifier si le check du null est nécessaire ou s'il peut être remplacé par un int initialisé à 0, ou initialiser par défaut à 0 dans le constructeur
             ingredients.put(ingredient, quantite);
         } else {
             ingredients.put(ingredient, getQuantite(ingredient) + quantite);

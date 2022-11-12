@@ -4,21 +4,15 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Panier {
-
     private final List<LigneCommande> lignesCommande = new ArrayList<>();
 
     public void ajouterCookies(Cookie cookie, int quantite) {
         if (quantite <= 0) {
             throw new IllegalArgumentException("quantite : " + quantite + " doit être positive");
-        }
-
-        if (cookie == null) {
-            throw new IllegalArgumentException("cookie doit être non null");
         }
 
         for (LigneCommande ligne : lignesCommande) {
@@ -51,11 +45,8 @@ public class Panier {
         return lignesCommande.stream().map(LigneCommande::getCookie).collect(Collectors.toList());
     }
 
-    public LigneCommande getLigneCommande(Cookie cookie) {
-        Optional<LigneCommande> res = lignesCommande.stream().filter(l -> l.getCookie().equals(cookie)).findFirst();
-
-        if (res.isEmpty()) throw new NoSuchElementException();
-        return res.get();
+    public Optional<LigneCommande> getLigneCommande(Cookie cookie) {
+        return lignesCommande.stream().filter(l -> l.getCookie().equals(cookie)).findFirst();
     }
 
     public int getNbCookies() {

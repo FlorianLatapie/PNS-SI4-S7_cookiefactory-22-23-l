@@ -6,6 +6,7 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 
 import java.util.HashSet;
+import java.util.Optional;
 
 public class BDIngredient {
     private final HashSet<Garniture> garnitures;
@@ -15,7 +16,6 @@ public class BDIngredient {
         garnitures = new HashSet<>();
         pates = new HashSet<>();
         saveurs = new HashSet<>();
-        init();
     }
 
     public void ajouterGarniture(Garniture garniture) {
@@ -43,28 +43,21 @@ public class BDIngredient {
     }
 
     public Ingredient getIngredient(String nom) {
-        Ingredient res;
-        res = getGarniture(nom);
-        if (res != null) return res;
-        res = getPate(nom);
-        if (res != null) return res;
-        res = getSaveur(nom);
-        return res;
+        if (getGarniture(nom).isPresent()) return getGarniture(nom).get();
+        if (getPate(nom).isPresent()) return getPate(nom).get();
+        if (getSaveur(nom).isPresent()) return getSaveur(nom).get();
+        throw new IllegalArgumentException("L'ingredient "+ nom +" n'existe pas");
     }
 
-    public Saveur getSaveur(String nom) {
-        return saveurs.stream().filter(saveur -> saveur.getNom().equals(nom)).findFirst().orElse(null);
+    public Optional<Saveur> getSaveur(String nom) {
+        return saveurs.stream().filter(saveur -> saveur.getNom().equals(nom)).findFirst();
     }
 
-    public Garniture getGarniture(String nom) {
-        return garnitures.stream().filter(garniture -> garniture.getNom().equals(nom)).findFirst().orElse(null);
+    public Optional<Garniture> getGarniture(String nom) {
+        return garnitures.stream().filter(garniture -> garniture.getNom().equals(nom)).findFirst();
     }
 
-    public Pate getPate(String nom) {
-        return pates.stream().filter(pate -> pate.getNom().equals(nom)).findFirst().orElse(null);
-    }
-
-    public void init() {
-
+    public Optional<Pate> getPate(String nom) {
+        return pates.stream().filter(pate -> pate.getNom().equals(nom)).findFirst();
     }
 }

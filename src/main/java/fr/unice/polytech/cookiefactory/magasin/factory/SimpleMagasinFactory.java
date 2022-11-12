@@ -7,8 +7,10 @@ import java.time.ZonedDateTime;
 public class SimpleMagasinFactory implements MagasinFactory {
     private double valeurTaxe = 0.2;
     private String lieu = "Nice";
-    private ZonedDateTime dateOuverture = null; //besoin de spécifier la valeur par défaut
-    private ZonedDateTime dateFermeture = null; //besoin de spécifier la valeur par défaut
+
+    // lundi à 8h
+    private ZonedDateTime dateOuverture = null;
+    private ZonedDateTime dateFermeture = null;
 
 
     public SimpleMagasinFactory setLieu(String lieu) {
@@ -33,6 +35,11 @@ public class SimpleMagasinFactory implements MagasinFactory {
 
     @Override
     public Magasin createMagasin(String nom) {
+        // renvoyer le lundi de la semaine courante à 8h
+        var maintenant = ZonedDateTime.now();
+        dateOuverture = maintenant.withHour(8).withMinute(0).withSecond(0).withNano(0).minusDays(maintenant.getDayOfWeek().getValue() - 1);
+        dateFermeture = dateOuverture.plusHours(12);
+
         return new Magasin(nom, valeurTaxe, lieu, dateOuverture, dateFermeture);
     }
 }

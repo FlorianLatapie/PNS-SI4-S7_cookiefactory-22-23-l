@@ -10,15 +10,15 @@ import java.util.List;
  */
 
 public class GestionExceptions {
-    private boolean expectException;
+    private boolean exceptionAttendue;
     private List<RuntimeException> exceptions = new ArrayList<>();
 
     public void exceptionAttendue() {
-        expectException = true;
+        exceptionAttendue = true;
     }
 
     public void ajouteException(RuntimeException e) {
-        if (!expectException) {
+        if (!exceptionAttendue) {
             throw e;
         }
         exceptions.add(e);
