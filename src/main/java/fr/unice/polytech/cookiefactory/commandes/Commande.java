@@ -52,7 +52,7 @@ public class Commande {
         return panier.getLignesCommande().stream().map(ligne -> ligne.obtenirPrixSelonQuantite()).reduce(Prix.ZERO, Prix::add);
     }
 
-    public Prix getPrixAvecTaxe(Prix prix){
+    public Prix getPrixAvecTaxe(Prix prix) {
         return gestionnaireDeCommandes.getMagasin().ajouterTaxe(prix);
     }
 

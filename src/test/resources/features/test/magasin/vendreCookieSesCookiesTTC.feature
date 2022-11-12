@@ -10,6 +10,6 @@ Fonctionnalité: Vendre ses cookies TTC
 
     Exemples:
       | taxe | prixCommande |
-      | 30  | 1500         |
-      | 10  | 1500         |
-      | 10  | 1000         |
+      | 30   | 1500         |
+      | 10   | 1500         |
+      | 10   | 1000         |

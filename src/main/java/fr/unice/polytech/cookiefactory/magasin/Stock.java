@@ -5,7 +5,10 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Stock {
     private final Map<Ingredient, Integer> ingredients;

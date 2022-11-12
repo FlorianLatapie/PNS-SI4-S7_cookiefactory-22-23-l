@@ -12,6 +12,7 @@ public class BDIngredient {
     private final HashSet<Garniture> garnitures;
     private final HashSet<Pate> pates;
     private final HashSet<Saveur> saveurs;
+
     BDIngredient() {
         garnitures = new HashSet<>();
         pates = new HashSet<>();
@@ -46,7 +47,7 @@ public class BDIngredient {
         if (getGarniture(nom).isPresent()) return getGarniture(nom).get();
         if (getPate(nom).isPresent()) return getPate(nom).get();
         if (getSaveur(nom).isPresent()) return getSaveur(nom).get();
-        throw new IllegalArgumentException("L'ingredient "+ nom +" n'existe pas");
+        throw new IllegalArgumentException("L'ingredient " + nom + " n'existe pas");
     }
 
     public Optional<Saveur> getSaveur(String nom) {

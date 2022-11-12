@@ -1,7 +1,5 @@
 package fr.unice.polytech.cookiefactory.cuisine;
 
-import fr.unice.polytech.cookiefactory.bd.BDCookie;
-import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;

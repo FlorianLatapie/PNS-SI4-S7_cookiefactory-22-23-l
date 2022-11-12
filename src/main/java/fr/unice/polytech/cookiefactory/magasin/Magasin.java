@@ -38,15 +38,16 @@ public class Magasin {
 
     public Magasin(Integer taxe) {
         this("", new Stock());
-        this.valeurTaxe = taxe.floatValue()/100;
+        this.valeurTaxe = taxe.floatValue() / 100;
     }
 
     public Magasin(Stock stock) {
         this("", stock);
     }
+
     public Magasin(Integer taxe, Stock stock) {
         this("", stock);
-        this.valeurTaxe = taxe.floatValue()/100;
+        this.valeurTaxe = taxe.floatValue() / 100;
     }
 
     public Magasin(String nom, double valeurTaxe, String lieu, ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
@@ -59,7 +60,7 @@ public class Magasin {
 
     // ------------------------------------------------------------------------
 
-    public Prix ajouterTaxe(Prix p){
+    public Prix ajouterTaxe(Prix p) {
         double prix = p.value();
         double prixAvecTaxe = prix * (1 + valeurTaxe);
         return new Prix((int) prixAvecTaxe * 100);

@@ -12,6 +12,7 @@ public class AjouterNouvelIngredientStepdefs {
 
     private Saveur saveur;
     private String nom;
+
     @Etantdonné("une saveur {string}")
     public void uneSaveur(String nomSaveur) {
         nom = nomSaveur;
@@ -40,11 +41,11 @@ public class AjouterNouvelIngredientStepdefs {
 
     @Alors("l'ingrédient est retiré à la liste des ingrédients disponibles")
     public void lIngrédientEstRetiréÀLaListeDesIngrédientsDisponibles() {
-        try{
+        try {
             ChaineDeMagasins.getInstance().getBd().getBdIngredient().getIngredient(nom);
             fail();
-        } catch (IllegalArgumentException e){
-           assertTrue(true);
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
         }
     }
 }

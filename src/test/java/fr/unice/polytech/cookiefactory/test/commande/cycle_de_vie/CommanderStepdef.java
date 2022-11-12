@@ -1,6 +1,5 @@
 package fr.unice.polytech.cookiefactory.test.commande.cycle_de_vie;
 
-import fr.unice.polytech.cookiefactory.bd.BaseDeDonnees;
 import fr.unice.polytech.cookiefactory.clientelle.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.divers.Prix;
