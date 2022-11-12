@@ -22,14 +22,14 @@ public class Magasin {
 
     private GestionnaireDeCuisiniers gestionnaireDeCuisinier;
 
-    public Magasin(double valeurTaxe, Stock stock) {
-        this.valeurTaxe = valeurTaxe;
+    public Magasin(Integer taxe, Stock stock) {
+        this.valeurTaxe = taxe.floatValue()/100;
         this.stock = stock;
         this.nom = "";
     }
 
-    public Magasin(double valeurTaxe) {
-        this.valeurTaxe = valeurTaxe;
+    public Magasin(Integer taxe) {
+        this.valeurTaxe = taxe.floatValue()/100;
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.recettesDuMagasin = new RecettesDuMagasin();
         this.gestionnaireDeCuisinier = new GestionnaireDeCuisiniers(this);
