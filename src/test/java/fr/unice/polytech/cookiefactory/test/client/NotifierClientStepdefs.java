@@ -15,13 +15,11 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NotifierClientStepdefs {
+    private final Magasin magasin = new Magasin();
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
     private Commande commande;
     private Invite invite;
-    private final Magasin magasin = new Magasin();
-
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
-    private final PrintStream originalOut = System.out;
 
     @Etantdonné("un invité \\(notifier)")
     public void unInvitéNotifier() {

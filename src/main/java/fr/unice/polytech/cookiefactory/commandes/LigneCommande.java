@@ -6,8 +6,8 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 public class LigneCommande {
 
-    private int quantite;
     private final Cookie cookie;
+    private int quantite;
 
     public LigneCommande(Cookie cookie) {
         this.quantite = 1;

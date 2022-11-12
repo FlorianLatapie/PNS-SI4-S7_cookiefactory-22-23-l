@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VendreSesCookiesTTCStepdefs {
+    private final Magasin magasinRef = new Magasin();
     private Prix prixCommande;
     private Prix prixTTCCommande;
     private Magasin magasin;
-    private final Magasin magasinRef = new Magasin();
 
     @Etantdonné("une commande de prix {int} centimes")
     public void une_commande_de_prix_en_centimes(Integer prix) {

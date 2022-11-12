@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ChaineDeMagasins {
+    private static ChaineDeMagasins instance;
+
     static {
         MagasinFactory factory = new SimpleMagasinFactory();
         List<Magasin> magasins = new ArrayList<>();
@@ -19,7 +21,6 @@ public class ChaineDeMagasins {
         magasins.forEach(magasin -> ChaineDeMagasins.getInstance().ajouterMagasin(magasin));
     }
 
-    private static ChaineDeMagasins instance;
     private final List<Magasin> magasins;
     private final BaseDeDonnees bd;
 

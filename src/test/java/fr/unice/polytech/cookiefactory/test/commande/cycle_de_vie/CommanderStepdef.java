@@ -16,11 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CommanderStepdef {
+    private final GestionExceptions gestionExceptions = new GestionExceptions();
     private Invite invite;
     private Cookie cookie;
     private Commande commande;
-
-    private final GestionExceptions gestionExceptions = new GestionExceptions();
 
     @Etantdonné("un invité")
     public void unInvitéNomméAvecPourAdresseMailEtPourNuméroDuTéléphone() {

@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GererLeStockdefs {
+    private final GestionExceptions gestionExceptions = new GestionExceptions();
     private Stock stock;
     private Ingredient ingredient;
-    private final GestionExceptions gestionExceptions = new GestionExceptions();
 
     @Étantdonné("un stock")
     public void sonStock() {
