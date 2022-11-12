@@ -1,5 +1,6 @@
 package fr.unice.polytech.cookiefactory.magasin.factory;
 
+import fr.unice.polytech.cookiefactory.divers.Util;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.time.ZonedDateTime;
@@ -37,7 +38,8 @@ public class SimpleMagasinFactory implements MagasinFactory {
     public Magasin createMagasin(String nom) {
         // renvoyer le lundi de la semaine courante à 8h
         var maintenant = ZonedDateTime.now();
-        dateOuverture = maintenant.withHour(8).withMinute(0).withSecond(0).withNano(0).minusDays(maintenant.getDayOfWeek().getValue() - 1);
+        var lundi = Util.getLundiDeLaSemaineCourante(maintenant);
+        dateOuverture = lundi.withHour(8).withMinute(0).withSecond(0).withNano(0);
         dateFermeture = dateOuverture.plusHours(12);
 
         return new Magasin(nom, valeurTaxe, lieu, dateOuverture, dateFermeture);
