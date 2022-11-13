@@ -6,10 +6,11 @@ import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
-public class Cuisinier {
-    private EDTCuisinier edtCuisinier;
+import java.time.ZonedDateTime;
 
-    private GestionnaireDeCommandes gestionnaireDeCommandes;
+public class Cuisinier {
+    private final EDTCuisinier edtCuisinier;
+    private final GestionnaireDeCommandes gestionnaireDeCommandes;
 
     public Cuisinier(GestionnaireDeCommandes gestionnaireDeCommandes) {
         this.edtCuisinier = new EDTCuisinier();
@@ -39,9 +40,7 @@ public class Cuisinier {
         return edtCuisinier;
     }
 
-    public boolean estDisponible() {
-        return edtCuisinier.getCreneauPreparationCommande().isEmpty();
-    }
+
 
     public void soumettreUnCookie(Cookie cookie) {
         ChaineDeMagasins.getInstance().getBd().getBdCookie().ajouterUnCookie(cookie);
@@ -52,5 +51,9 @@ public class Cuisinier {
         return "Cuisinier{" +
                 "edtCuisinier=" + edtCuisinier +
                 '}';
+    }
+
+    public boolean estDisponible(ZonedDateTime dateDebut, ZonedDateTime datedeFin) {
+        return edtCuisinier.estDisponible(dateDebut, datedeFin);
     }
 }

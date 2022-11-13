@@ -17,8 +17,7 @@ public class InfosProgrammeLoyal {
     }
 
     public void ajoutBonusFidelite(int n) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet.");
+        nbDeCookiesCommandes += n;
     }
 
     public void appliquerReduction() {

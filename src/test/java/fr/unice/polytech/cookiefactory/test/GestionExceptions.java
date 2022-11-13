@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GestionExceptions {
     private boolean exceptionAttendue;
-    private List<RuntimeException> exceptions = new ArrayList<>();
+    private final List<RuntimeException> exceptions = new ArrayList<>();
 
     public void exceptionAttendue() {
         exceptionAttendue = true;

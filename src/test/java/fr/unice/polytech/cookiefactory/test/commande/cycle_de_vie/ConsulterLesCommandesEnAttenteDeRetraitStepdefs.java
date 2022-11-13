@@ -3,6 +3,7 @@ package fr.unice.polytech.cookiefactory.test.commande.cycle_de_vie;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Lorsque;
 import io.cucumber.java.fr.Quand;
@@ -12,8 +13,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConsulterLesCommandesEnAttenteDeRetraitStepdefs {
+    private Magasin magasin = new Magasin();
 
-    private final GestionnaireDeCommandes gestionnaireDeCommandes = new GestionnaireDeCommandes();
+    private final GestionnaireDeCommandes gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
 
     private List<Commande> commandesAVoir;
 

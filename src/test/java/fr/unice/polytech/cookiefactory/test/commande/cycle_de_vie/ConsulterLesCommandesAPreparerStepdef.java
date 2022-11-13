@@ -4,11 +4,14 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.cuisine.CreneauPreparationCommande;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
+import fr.unice.polytech.cookiefactory.divers.Util;
+import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonnéque;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,15 +22,18 @@ public class ConsulterLesCommandesAPreparerStepdef {
     private List<CreneauPreparationCommande> commandes;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
 
+    private Magasin magasin = new Magasin();
+
     @Étantdonné("un cuisinier {string}")
     public void unCuisinier(String arg0) {
-        gestionnaireDeCommandes = new GestionnaireDeCommandes();
+        gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
         cuisinier = new Cuisinier(gestionnaireDeCommandes);
     }
 
     @Etantdonnéque("une commande {string} à préparer")
     public void uneCommandeÀPréparer(String arg0) {
         commande = new Commande();
+        commande.setDateReception(Util.getLundiDeLaSemaineCourante(Util.heurePile(ZonedDateTime.now(),9)));
         gestionnaireDeCommandes.ajouterCommande(commande);
         cuisinier.ajouterCommande(commande);
     }

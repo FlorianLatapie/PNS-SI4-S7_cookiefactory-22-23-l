@@ -20,9 +20,10 @@ public class Magasin {
 
     private RecettesDuMagasin recettesDuMagasin;
     private Stock stock;
-    private GestionnaireDeCommandes gestionnaireDeCommandes;
+    private final GestionnaireDeCommandes gestionnaireDeCommandes;
 
-    private GestionnaireDeCuisiniers gestionnaireDeCuisiniers;
+    private final GestionnaireDeCuisiniers gestionnaireDeCuisiniers;
+    private ZonedDateTime date;
 
     // --- Constructeurs ---
     public Magasin() {
@@ -118,7 +119,7 @@ public class Magasin {
         return gestionnaireDeCuisiniers;
     }
 
-    public ZonedDateTime geHeureOuverture() {
+    public ZonedDateTime getHeureOuverture() {
         return dateOuverture;
     }
 
@@ -140,6 +141,25 @@ public class Magasin {
     }
 
     public ZonedDateTime getDate() {
-        return null;//ICI
+        return date;
+    }
+
+    @Override
+    public String toString() {
+        return "Magasin{" +
+                "nom='" + nom + '\'' +
+                ", valeurTaxe=" + valeurTaxe +
+                ", lieu='" + lieu + '\'' +
+                ", dateOuverture=" + dateOuverture +
+                ", dateFermeture=" + dateFermeture +
+                //", recettesDuMagasin=" + recettesDuMagasin +
+                ", stock=" + stock +
+                //", gestionnaireDeCommandes=" + gestionnaireDeCommandes +
+                //", gestionnaireDeCuisiniers=" + gestionnaireDeCuisiniers +
+                '}';
+    }
+
+    public void setDate(ZonedDateTime zonedDateTime) {
+        this.date = zonedDateTime;
     }
 }

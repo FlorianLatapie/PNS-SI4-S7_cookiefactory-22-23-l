@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
+import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
@@ -16,9 +17,12 @@ public class PreparerUneCommandeStepdef {
     private Commande commande;
     private Cuisinier cuisinier;
 
+    private Magasin magasin = new Magasin();
+
+
     @Étantdonné("une Commande en état {string}")
     public void uneCommandeEnÉtat(String etat) {
-        cuisinier = new Cuisinier(new GestionnaireDeCommandes());
+        cuisinier = new Cuisinier(new GestionnaireDeCommandes(magasin));
 
         Etat etatEntre = Etat.valueOf(etat);
         commande = new Commande(new Invite("", "", "", ""));

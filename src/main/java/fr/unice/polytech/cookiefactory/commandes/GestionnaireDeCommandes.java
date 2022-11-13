@@ -7,14 +7,11 @@ import fr.unice.polytech.cookiefactory.messageservices.MessageServices;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class GestionnaireDeCommandes {
     private final List<Commande> commandes = new ArrayList<>();
-    private Magasin magasin;
-
-    public GestionnaireDeCommandes() {
-        this.magasin = new Magasin();
-    }
+    private final Magasin magasin;
 
     public GestionnaireDeCommandes(Magasin magasin) {
         this.magasin = magasin;
@@ -40,7 +37,6 @@ public class GestionnaireDeCommandes {
     public void changerStatut(Commande commande, Etat etat) {
         commande.changerStatut(etat);
         if (needToSendMessage(commande)) MessageServices.getInstance().sendMessage(commande);
-
     }
 
     public void ajouterCommande(Commande commande) {
@@ -51,13 +47,13 @@ public class GestionnaireDeCommandes {
         this.commandes.addAll(commandes);
     }
 
-    public Commande obtenirCommandeInvite(String prenom, String nom) {
+    public Optional<Commande> obtenirCommandeInvite(String prenom, String nom) {
         return this.voirCommandesEnAttenteDeReception()
                 .stream()
                 .filter(c -> c.getInvite().getInformationClient().getPrenom().equals(prenom)
                         &&
                         c.getInvite().getInformationClient().getNom().equals(nom)
-                ).findFirst().get();
+                ).findFirst();
     }
 
     public void payerCommande(Commande commande, Client client) {
