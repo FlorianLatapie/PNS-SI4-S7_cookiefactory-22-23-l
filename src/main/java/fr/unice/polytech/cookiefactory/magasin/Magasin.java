@@ -77,17 +77,17 @@ public class Magasin {
     }
 
     public void ajouterIngredient(Ingredient ingredient) {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void retirerIngredient(Ingredient ingredient) {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public List<Cookie> recupererCookiesDuMagasin() {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 

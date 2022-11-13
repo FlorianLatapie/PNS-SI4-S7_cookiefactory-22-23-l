@@ -28,32 +28,32 @@ public class RecettesDuMagasin {
     }
 
     public void ajouterRecette(Cookie recette) {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void supprimerRecette(Cookie recette) {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void ajouterDisponibilite(Cookie recette) {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void retirerDisponibilite(Cookie recette) {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public Prix calculerPrixHorsTaxe(Cookie recette) {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public List<Cookie> recupererCookiesDisponible() {
-        // TODO implement here
+        // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 

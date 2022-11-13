@@ -21,17 +21,17 @@ public class Invite {
     }
 
     public void enregistrerEnClient() {
-        //TODO
+        //TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void consulterCommande() {
-        //TODO
+        //TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public void annulerCommande(Commande commande) {
-        //TODO
+        //TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 

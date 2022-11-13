@@ -12,7 +12,7 @@ public class InfosProgrammeLoyal {
     }
 
     public void peutAvoirReduction() {
-        //TODO
+        //TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
@@ -21,7 +21,7 @@ public class InfosProgrammeLoyal {
     }
 
     public void appliquerReduction() {
-        //TODO
+        //TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

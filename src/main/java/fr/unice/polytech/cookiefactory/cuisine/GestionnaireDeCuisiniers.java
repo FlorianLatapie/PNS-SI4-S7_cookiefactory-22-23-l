@@ -72,7 +72,7 @@ public class GestionnaireDeCuisiniers {
     }
 
     public CreneauPreparationCommande getDisponibilites() {
-        //TODO
+        //TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
