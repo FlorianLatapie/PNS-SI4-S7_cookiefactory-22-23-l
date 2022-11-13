@@ -9,6 +9,7 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Objects;
 
 public class Magasin {
     private final String nom;
@@ -126,11 +127,16 @@ public class Magasin {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Magasin magasin) {
-            return this.getNom().equals(magasin.getNom());
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Magasin magasin = (Magasin) o;
+        return nom.equals(magasin.nom);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nom);
     }
 
     public ZonedDateTime getDate() {
