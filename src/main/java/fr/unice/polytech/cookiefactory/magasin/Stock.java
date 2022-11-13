@@ -3,8 +3,6 @@ package fr.unice.polytech.cookiefactory.magasin;
 import fr.unice.polytech.cookiefactory.exceptions.PasAssezIngredientStock;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,12 +47,6 @@ public class Stock {
 
     public List<Ingredient> getIngredients() {
         return new ArrayList<>(ingredients.keySet());
-    }
-
-
-    public LocalDateTime heure() {
-        System.out.println(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(LocalDateTime.now()));
-        return LocalDateTime.now();
     }
 
     @Override
