@@ -21,16 +21,13 @@ public class Commande {
     }
 
     public Commande() {
-        super();
     }
 
     public Commande(Magasin magasin) {
-        super();
         gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
     }
 
     public Commande(Magasin magasin, Invite invite) {
-        super();
         gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
         this.invite = invite;
     }
@@ -49,7 +46,7 @@ public class Commande {
     }
 
     public Prix getPrix() {
-        return panier.getLignesCommande().stream().map(ligne -> ligne.obtenirPrixSelonQuantite()).reduce(Prix.ZERO, Prix::ajouter);
+        return panier.getLignesCommande().stream().map(LigneCommande::obtenirPrixSelonQuantite).reduce(Prix.ZERO, Prix::ajouter);
     }
 
     public Prix getPrixAvecTaxe(Prix prix) {
@@ -66,12 +63,25 @@ public class Commande {
 
     public void commandeConfirmee() {
         changerStatut(Etat.CONFIRMEE);
-        panier.getLignesCommande().forEach(ligne -> ligne.getCookie().getRecette().getIngredients().forEach(ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())));
+        panier.getLignesCommande().forEach(
+                ligne -> ligne.getCookie().getRecette().getIngredients()
+                        .forEach(
+                                ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())
+                        )
+        );
         gestionnaireDeCommandes.ajouterCommande(this);
     }
 
     public Etat getEtat() {
         return etat;
+    }
+
+    public ZonedDateTime getDateReception() {
+        return dateReception;
+    }
+
+    public void setDateReception(ZonedDateTime dateReception) {
+        this.dateReception = dateReception;
     }
 
     @Override
@@ -92,5 +102,15 @@ public class Commande {
     @Override
     public int hashCode() {
         return Objects.hash(dateReception, appliquerRemise, gestionnaireDeCommandes, invite, etat, panier);
+    }
+
+    public int calculerDureePreparation() {
+        return (panier.getLignesCommande().stream()
+                .mapToInt(
+                        ligneCommande -> ligneCommande.getCookie().getRecette().tempsPreparation()
+                                *
+                                ligneCommande.getQuantite()
+                )
+                .sum() / 15) * 15 + 15;
     }
 }
