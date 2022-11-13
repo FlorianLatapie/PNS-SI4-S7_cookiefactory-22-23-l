@@ -27,7 +27,7 @@ public class GererLesMagasinsStepdefs {
 
     @Alors("le magasin est présent dans la chaine de magasins")
     public void leMagasinEstPrésentDansLaChaineDeMagasins() {
-        assertNotNull(ChaineDeMagasins.getInstance().getMagasin(nom));
+        assertEquals(magasin, ChaineDeMagasins.getInstance().getMagasin(nom).orElse(null));
     }
 
     @Etantdonné("le magasin appartenant à la chaine de magasins")
@@ -42,6 +42,6 @@ public class GererLesMagasinsStepdefs {
 
     @Alors("le magasin est absent de la chaine de magasins")
     public void leMagasinEstAbsentDeLaChaineDeMagasins() {
-        assertNull(ChaineDeMagasins.getInstance().getMagasin(nom));
+        assertNull(ChaineDeMagasins.getInstance().getMagasin(nom).orElse(null));
     }
 }
