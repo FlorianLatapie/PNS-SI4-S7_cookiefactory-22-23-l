@@ -11,24 +11,36 @@ import java.util.List;
 
 public class GestionExceptions {
     private boolean exceptionAttendue;
-    private final List<RuntimeException> exceptions = new ArrayList<>();
+    private final List<Exception> exceptions = new ArrayList<>();
 
     public void exceptionAttendue() {
         exceptionAttendue = true;
     }
 
-    public void ajouteException(RuntimeException e) {
+    public void ajouterRuntimeException(RuntimeException e) {
         if (!exceptionAttendue) {
             throw e;
         }
         exceptions.add(e);
     }
 
-    public List<RuntimeException> getExceptions() {
+    public void ajouterException(Exception e) {
+        exceptions.add(e);
+    }
+
+    public List<Exception> getExceptions() {
         return exceptions;
     }
 
-    public RuntimeException getPremiereException() {
+    public Exception getPremiereException() {
         return exceptions.get(0);
+    }
+
+    public Exception popPremiereException() {
+        return exceptions.remove(0);
+    }
+
+    public Exception popException(){
+        return exceptions.remove(exceptions.size() - 1);
     }
 }

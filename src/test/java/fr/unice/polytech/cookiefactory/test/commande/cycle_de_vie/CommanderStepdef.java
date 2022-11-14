@@ -37,7 +37,7 @@ public class CommanderStepdef {
         try {
             commande.getPanier().ajouterCookies(cookie, nb);
         } catch (RuntimeException exception) {
-            gestionExceptions.ajouteException(exception);
+            gestionExceptions.ajouterException(exception);
         }
     }
 
@@ -52,7 +52,7 @@ public class CommanderStepdef {
         try {
             commande.getPanier().supprimerCookies(cookie, nb);
         } catch (RuntimeException exception) {
-            gestionExceptions.ajouteException(exception);
+            gestionExceptions.ajouterException(exception);
         }
     }
 
@@ -82,14 +82,14 @@ public class CommanderStepdef {
 
     @Et("une exception IllegalArgumentException a été levée \\(Commander)")
     public void uneExceptionIllegalArgumentExceptionAÉtéLevéeCommander() {
-        RuntimeException exception = gestionExceptions.getPremiereException();
+        Exception exception = gestionExceptions.getPremiereException();
         assertNotNull(exception);
         assertEquals(IllegalArgumentException.class, exception.getClass());
     }
 
     @Et("une exception PasAssezCookies a été levée \\(Commander)")
     public void uneExceptionPasAssezCookiesAÉtéLevéeCommander() {
-        RuntimeException exception = gestionExceptions.getPremiereException();
+        Exception exception = gestionExceptions.getPremiereException();
         assertNotNull(exception);
         assertEquals(PasAssezCookies.class, exception.getClass());
     }

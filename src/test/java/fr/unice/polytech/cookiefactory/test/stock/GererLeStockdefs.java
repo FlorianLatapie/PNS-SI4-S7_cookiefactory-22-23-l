@@ -36,7 +36,7 @@ public class GererLeStockdefs {
         try {
             stock.ajouterIngredient(ingredient, nbIngredient);
         } catch (RuntimeException exception) {
-            gestionExceptions.ajouteException(exception);
+            gestionExceptions.ajouterException(exception);
         }
     }
 
@@ -52,7 +52,7 @@ public class GererLeStockdefs {
 
     @Et("une exception IllegalArgumentException a été levée")
     public void uneExceptionIllegalArgumentExceptionAÉtéLevée() {
-        RuntimeException exception = gestionExceptions.getPremiereException();
+        Exception exception = gestionExceptions.getPremiereException();
         assertNotNull(exception);
         assertEquals(IllegalArgumentException.class, exception.getClass());
     }
