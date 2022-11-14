@@ -8,6 +8,7 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 
@@ -156,5 +157,28 @@ public class Magasin {
 
     public void setDate(ZonedDateTime zonedDateTime) {
         this.date = zonedDateTime;
+    }
+
+    private void setDateOuverture(ZonedDateTime dateOuverture) {
+        this.dateOuverture = dateOuverture;
+    }
+
+    private void setDateFermeture(ZonedDateTime dateFermeture) {
+        this.dateFermeture = dateFermeture;
+    }
+
+    public void changerHoraires(ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
+        if (!dateOuverture.isBefore(dateFermeture)) {
+            throw new IllegalArgumentException("La date d'ouverture doit être avant la date de fermeture");
+        }
+        if (dateOuverture.equals(dateFermeture)) {
+            throw new IllegalArgumentException("La date d'ouverture doit être différente de la date de fermeture");
+        }
+        // si le temps entre les deux dates est inférieur à 1h, on lève une exception
+        if (dateOuverture.until(dateFermeture, ChronoUnit.HOURS) < 1) {
+            throw new IllegalArgumentException("Le magasin doit être ouvert au moins 1h par jour");
+        }
+        setDateOuverture(dateOuverture);
+        setDateFermeture(dateFermeture);
     }
 }
