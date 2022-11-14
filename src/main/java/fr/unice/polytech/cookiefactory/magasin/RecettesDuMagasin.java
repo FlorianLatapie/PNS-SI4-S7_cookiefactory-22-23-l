@@ -2,29 +2,17 @@ package fr.unice.polytech.cookiefactory.magasin;
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
-import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecettesDuMagasin {
-    private final List<Cookie> cookiesDisponible;
+    private final List<Cookie> cookiesDisponibles;
     private final List<Cookie> cookiesEnAttenteDeValidation;
 
     public RecettesDuMagasin() {
-        this.cookiesDisponible = new ArrayList<>();
+        this.cookiesDisponibles = new ArrayList<>();
         this.cookiesEnAttenteDeValidation = new ArrayList<>();
-    }
-
-    public void soumettreUnCookie(Cookie cookie) {
-        cookie.changerEtat(ValidationCookie.SOUMIS);
-        cookiesEnAttenteDeValidation.add(cookie);
-    }
-
-    public void validerUnCookie(Cookie cookie) {
-        cookie.changerEtat(ValidationCookie.VALIDE);
-        cookiesEnAttenteDeValidation.remove(cookie);
-        cookiesDisponible.add(cookie);
     }
 
     public void ajouterRecette(Cookie recette) {
@@ -57,8 +45,8 @@ public class RecettesDuMagasin {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public List<Cookie> getCookiesDisponible() {
-        return cookiesDisponible;
+    public List<Cookie> getCookiesDisponibles() {
+        return cookiesDisponibles;
     }
 
     public List<Cookie> getCookiesEnAttenteDeValidation() {

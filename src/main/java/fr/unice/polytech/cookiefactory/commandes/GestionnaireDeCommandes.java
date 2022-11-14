@@ -36,7 +36,7 @@ public class GestionnaireDeCommandes {
 
     public void changerStatut(Commande commande, Etat etat) {
         commande.changerStatut(etat);
-        if (needToSendMessage(commande)) MessageServices.getInstance().sendMessage(commande);
+        if (besoinDEnvoyerMessage(commande)) MessageServices.getInstance().sendMessage(commande);
     }
 
     public void ajouterCommande(Commande commande) {
@@ -67,11 +67,7 @@ public class GestionnaireDeCommandes {
         }
     }
 
-    private void envoyerMessage(Commande commande) {
-        MessageServices.getInstance().sendMessage(commande);
-    }
-
-    private boolean needToSendMessage(Commande commande) {
+    private boolean besoinDEnvoyerMessage(Commande commande) {
         return commande.getEtat() == Etat.EN_ATTENTE_DE_RETRAIT || commande.getEtat() == Etat.RECEPTIONNEE;
     }
 }

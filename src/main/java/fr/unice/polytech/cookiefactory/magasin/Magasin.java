@@ -71,11 +71,6 @@ public class Magasin {
         double prixAvecTaxe = prix * (1 + valeurTaxe);
         return new Prix((int) prixAvecTaxe);
     }
-
-    public void soumettreUnNouveauCookie(Cookie cookie) {
-        recettesDuMagasin.soumettreUnCookie(cookie);
-    }
-
     public void ajouterIngredient(Ingredient ingredient) {
         // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");

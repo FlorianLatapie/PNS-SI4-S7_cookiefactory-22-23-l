@@ -97,6 +97,7 @@ public class I21UneCommandeParCuisinierPlusieursCuisiniersStepdefs {
             magasin.getGestionnaireDeCuisiniers().assignerCuisinier(temp);
         }
     }
+
     @Alors("chaque cuisinier est assigné à {int} commande en même temps")
     public void chaqueCuisinierEstAssignéÀCommandeEnMêmeTemps(int nbCommandesParCuisinier) {
         for (var cuisinier : magasin.getGestionnaireDeCuisiniers().getCuisiniers()) {

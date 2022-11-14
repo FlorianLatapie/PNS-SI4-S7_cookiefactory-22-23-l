@@ -6,11 +6,11 @@ public class MessageServices {
 
     private static MessageServices instance;
     private final EmailMessageMessageService emailMessageService;
-    private final SMSMessageMessageService SMSMessageService;
+    private final SMSMessageMessageService smsMessageMessageService;
 
     private MessageServices() {
         emailMessageService = new EmailMessageMessageService();
-        SMSMessageService = new SMSMessageMessageService();
+        smsMessageMessageService = new SMSMessageMessageService();
     }
 
     public static MessageServices getInstance() {
@@ -24,12 +24,12 @@ public class MessageServices {
         return emailMessageService;
     }
 
-    public SMSMessageMessageService getSMSMessageService() {
-        return SMSMessageService;
+    public SMSMessageMessageService getSmsMessageMessageService() {
+        return smsMessageMessageService;
     }
 
     public void sendMessage(Commande commande) {
         emailMessageService.send(commande);
-        SMSMessageService.send(commande);
+        smsMessageMessageService.send(commande);
     }
 }
