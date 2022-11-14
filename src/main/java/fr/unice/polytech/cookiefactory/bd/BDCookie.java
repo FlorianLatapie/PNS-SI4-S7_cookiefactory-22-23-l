@@ -34,7 +34,7 @@ public class BDCookie {
         cookies.put(cookie.getNom(), cookie);
     }
 
-    public void validerUnCookie(String nom) {
+    public void validerCookie(String nom) {
         Cookie cookie = cookies.remove(nom);
         cookie.changerEtat(ValidationCookie.VALIDE);
         ajouterUnCookie(cookie);

@@ -37,6 +37,10 @@ public class ChaineDeMagasins {
         return instance;
     }
 
+    public List<Magasin> getAllMagasins() {
+        return magasins;
+    }
+
     public List<Magasin> getMagasins(String lieu) {
         return magasins.stream().filter(m -> m.getLieu().equals(lieu)).collect(Collectors.toList());
     }
