@@ -9,11 +9,6 @@ public class LigneCommande {
     private final Cookie cookie;
     private int quantite;
 
-    public LigneCommande(Cookie cookie) {
-        this.quantite = 1;
-        this.cookie = cookie;
-    }
-
     public LigneCommande(Cookie cookie, int nombre) {
         this.quantite = nombre;
         this.cookie = cookie;

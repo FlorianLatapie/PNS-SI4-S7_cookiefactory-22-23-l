@@ -45,16 +45,8 @@ public class Panier {
         return lignesCommande.stream().map(LigneCommande::getCookie).collect(Collectors.toList());
     }
 
-    public Optional<LigneCommande> getLigneCommande(Cookie cookie) {
-        return lignesCommande.stream().filter(l -> l.getCookie().equals(cookie)).findFirst();
-    }
-
     public int getNbCookies() {
         return lignesCommande.stream().mapToInt(LigneCommande::getQuantite).sum();
-    }
-
-    public int getNbCookie(Cookie cookie) {
-        return lignesCommande.stream().filter(l -> l.getCookie().equals(cookie)).mapToInt(LigneCommande::getQuantite).sum();
     }
 
     public List<LigneCommande> getLignesCommande() {

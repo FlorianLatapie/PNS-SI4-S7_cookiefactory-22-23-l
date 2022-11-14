@@ -39,10 +39,6 @@ public class GestionnaireDeCuisiniers {
         return journee;
     }
 
-    public void soumettreUnNouveauCookie(Cookie cookie) {
-        magasin.soumettreUnNouveauCookie(cookie);
-    }
-
     public void assignerCuisinier(Commande commande) {
         int tempsPreparation = commande.calculerDureePreparation();
         var datedeFin = commande.getDateReception();
