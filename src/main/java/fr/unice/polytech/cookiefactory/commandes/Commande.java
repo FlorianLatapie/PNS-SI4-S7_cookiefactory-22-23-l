@@ -32,11 +32,6 @@ public class Commande {
         this.invite = invite;
     }
 
-    public void appliquerRemise() {
-        //TODO on supprime vu que getPrixReduction() existe ?
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
     public Invite getInvite() {
         return invite;
     }

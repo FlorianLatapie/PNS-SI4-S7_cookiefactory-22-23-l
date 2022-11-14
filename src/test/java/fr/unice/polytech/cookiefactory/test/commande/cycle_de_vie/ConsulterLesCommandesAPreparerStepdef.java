@@ -33,7 +33,7 @@ public class ConsulterLesCommandesAPreparerStepdef {
     @Etantdonnéque("une commande {string} à préparer")
     public void uneCommandeÀPréparer(String arg0) {
         commande = new Commande();
-        commande.setDateReception(Util.getLundiDeLaSemaineCourante(Util.heurePile(ZonedDateTime.now(),9)));
+        commande.setDateReception(Util.getLundiDeLaSemaineCourante(Util.heurePile(ZonedDateTime.now(), 9)));
         gestionnaireDeCommandes.ajouterCommande(commande);
         cuisinier.ajouterCommande(commande);
     }

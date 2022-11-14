@@ -19,18 +19,18 @@ public class GestionnaireDeCuisiniers {
     }
 
     private List<Map<ZonedDateTime, List<Cuisinier>>> creerPlanning(int nbJoursSemaine, ZonedDateTime dateSemaine, ZonedDateTime heureOuverture, ZonedDateTime heureFermeture) {
-        List<Map<ZonedDateTime, List<Cuisinier>>> planning = new ArrayList<>();
+        List<Map<ZonedDateTime, List<Cuisinier>>> res = new ArrayList<>();
         for (int i = 0; i < nbJoursSemaine; i++) {
-            planning.add(creerJournee(heureOuverture, heureFermeture));
+            res.add(creerJournee(heureOuverture, heureFermeture));
         }
-        return planning;
+        return res;
     }
 
-    private Map<ZonedDateTime, List<Cuisinier>> creerJournee(ZonedDateTime heureOuverture, ZonedDateTime HeureOuverture) {
+    private Map<ZonedDateTime, List<Cuisinier>> creerJournee(ZonedDateTime heureOuverture, ZonedDateTime heureFermeture) {
         Map<ZonedDateTime, List<Cuisinier>> journee = new HashMap<>();
 
         // pour chaque heure entre l'ouverture et la fermeture du magasin, ajouter une liste vide de cuisiniers toutes les 15 minutes
-        for (int i = 0; i < HeureOuverture.getHour() - heureOuverture.getHour(); i++) {
+        for (int i = 0; i < heureFermeture.getHour() - heureOuverture.getHour(); i++) {
             for (int j = 0; j < 60; j += 15) {
                 journee.put(heureOuverture.plusHours(i).plusMinutes(j), new ArrayList<>());
             }
@@ -52,7 +52,6 @@ public class GestionnaireDeCuisiniers {
             if (cuisinier.estDisponible(dateDebut, datedeFin)) {
                 cuisinier.ajouterCommande(commande);
                 // pour chaque créneau de 15 min de la commande, ajouter le cuisinier au planning
-                //planning.get(dateDebut.getDayOfWeek().getValue()).get(dateDebut).add(cuisinier);
                 for (int i = 0; i < tempsPreparation; i += 15) {
                     planning.get(dateDebut.getDayOfWeek().getValue()).get(dateDebut.plusMinutes(i)).add(cuisinier);
                 }

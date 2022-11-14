@@ -7,7 +7,6 @@ import fr.unice.polytech.cookiefactory.magasin.factory.SimpleMagasinFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ChaineDeMagasins {
     private static ChaineDeMagasins instance;
@@ -38,7 +37,7 @@ public class ChaineDeMagasins {
     }
 
     public List<Magasin> getMagasins(String lieu) {
-        return magasins.stream().filter(m -> m.getLieu().equals(lieu)).collect(Collectors.toList());
+        return magasins.stream().filter(m -> m.getLieu().equals(lieu)).toList();
     }
 
     public Optional<Magasin> getMagasin(String nom) {

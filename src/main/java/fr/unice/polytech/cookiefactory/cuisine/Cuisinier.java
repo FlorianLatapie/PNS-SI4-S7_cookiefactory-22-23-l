@@ -41,7 +41,6 @@ public class Cuisinier {
     }
 
 
-
     public void soumettreUnCookie(Cookie cookie) {
         ChaineDeMagasins.getInstance().getBd().getBdCookie().ajouterUnCookie(cookie);
     }

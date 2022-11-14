@@ -12,7 +12,7 @@ public abstract class Personne {
     private String motDePasse;
     private Prix solde;
 
-    public Personne(String nom, String prenom, String email, String telephone, String motDePasse, double solde) {
+    protected Personne(String nom, String prenom, String email, String telephone, String motDePasse, double solde) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;

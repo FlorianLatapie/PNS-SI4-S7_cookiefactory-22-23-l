@@ -2,6 +2,7 @@ package fr.unice.polytech.cookiefactory.test.divers;
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PrixTest {
