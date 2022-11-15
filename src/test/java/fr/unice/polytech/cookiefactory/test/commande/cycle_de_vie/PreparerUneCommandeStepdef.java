@@ -1,6 +1,6 @@
 package fr.unice.polytech.cookiefactory.test.commande.cycle_de_vie;
 
-import fr.unice.polytech.cookiefactory.clientelle.Invite;
+import fr.unice.polytech.cookiefactory.acteur.clients.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
@@ -17,7 +17,7 @@ public class PreparerUneCommandeStepdef {
     private Commande commande;
     private Cuisinier cuisinier;
 
-    private Magasin magasin = new Magasin();
+    private final Magasin magasin = new Magasin();
 
 
     @Étantdonné("une Commande en état {string}")
@@ -25,7 +25,7 @@ public class PreparerUneCommandeStepdef {
         cuisinier = new Cuisinier(new GestionnaireDeCommandes(magasin));
 
         Etat etatEntre = Etat.valueOf(etat);
-        commande = new Commande(new Invite("", "", "", ""));
+        commande = new Commande(new Invite());
         commande.changerStatut(etatEntre);
     }
 

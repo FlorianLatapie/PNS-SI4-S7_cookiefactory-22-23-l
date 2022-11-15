@@ -9,10 +9,10 @@ Fonctionnalité: Payer lors d'une commande
     Étant donné un client qui passe une commande
 
   Plan du Scénario: Payer une commande
-    Quand le client paye la commande et qu'il a <solde>€ sur le compte
+    Quand le client paye la commande et qu'il arrive au bout du "<payment>"
     Alors l'état de la commande passe à "<etat>"
 
     Exemples:
-      | solde | etat                    |
-      | 100   | EN_COURS_DE_PREPARATION |
-      | 0     | ANNULEE                 |
+      | payment | etat                    |
+      | True    | EN_COURS_DE_PREPARATION |
+      | False   | ANNULEE                 |
