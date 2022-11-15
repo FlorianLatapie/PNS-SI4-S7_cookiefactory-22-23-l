@@ -66,11 +66,6 @@ public class GestionnaireDeCuisiniers {
         return Optional.empty();
     }
 
-    public CreneauPreparationCommande getDisponibilites() {
-        //TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
     public boolean ajouterCuisinier(Cuisinier cuisinier) {
         return cuisiniers.add(cuisinier);
     }
