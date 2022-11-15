@@ -6,13 +6,11 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecettesDuMagasin {
+public class CookiesDuMagasin {
     private final List<Cookie> cookiesDisponibles;
-    private final List<Cookie> cookiesEnAttenteDeValidation;
 
-    public RecettesDuMagasin() {
+    public CookiesDuMagasin() {
         this.cookiesDisponibles = new ArrayList<>();
-        this.cookiesEnAttenteDeValidation = new ArrayList<>();
     }
 
     public void ajouterRecette(Cookie recette) {
@@ -40,16 +38,8 @@ public class RecettesDuMagasin {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public List<Cookie> recupererCookiesDisponible() {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
     public List<Cookie> getCookiesDisponibles() {
         return cookiesDisponibles;
     }
 
-    public List<Cookie> getCookiesEnAttenteDeValidation() {
-        return cookiesEnAttenteDeValidation;
-    }
 }

@@ -19,7 +19,7 @@ public class Magasin {
     private ZonedDateTime dateOuverture;
     private ZonedDateTime dateFermeture;
 
-    private RecettesDuMagasin recettesDuMagasin;
+    private CookiesDuMagasin cookiesDuMagasin;
     private Stock stock;
     private final GestionnaireDeCommandes gestionnaireDeCommandes;
 
@@ -40,7 +40,7 @@ public class Magasin {
 
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.gestionnaireDeCuisiniers = new GestionnaireDeCuisiniers(this);
-        this.recettesDuMagasin = new RecettesDuMagasin();
+        this.cookiesDuMagasin = new CookiesDuMagasin();
     }
 
     public Magasin(Integer taxe) {
@@ -91,8 +91,8 @@ public class Magasin {
         return stock;
     }
 
-    public RecettesDuMagasin getRecettesDuMagasin() {
-        return recettesDuMagasin;
+    public CookiesDuMagasin getRecettesDuMagasin() {
+        return cookiesDuMagasin;
     }
 
     public GestionnaireDeCommandes getGestionnaireDeCommandes() {
