@@ -1,6 +1,6 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.acteurs.clients.Client;
+import fr.unice.polytech.cookiefactory.acteur.clients.Client;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.messageservices.MessageServices;
@@ -30,8 +30,8 @@ public class GestionnaireDeCommandes {
     }
 
     public void commandeReceptionnee(Commande commande) {
-        this.commandes.remove(commande);
         changerStatut(commande, Etat.RECEPTIONNEE);
+        this.commandes.remove(commande);
     }
 
     public void changerStatut(Commande commande, Etat etat) {
@@ -47,23 +47,18 @@ public class GestionnaireDeCommandes {
         this.commandes.addAll(commandes);
     }
 
-    public Optional<Commande> obtenirCommandeInvite(String prenom, String nom) {
+    public Optional<Commande> obtenirCommandeCompte(String prenom, String nom) {
         return this.voirCommandesEnAttenteDeReception()
                 .stream()
-                .filter(c -> c.getInvite().getInformationClient().getPrenom().equals(prenom)
-                        &&
-                        c.getInvite().getInformationClient().getNom().equals(nom)
-                ).findFirst();
+                .filter(c -> c.getCompte().getNom().equals(nom) && c.getCompte().getPrenom().equals(prenom))
+                .findFirst();
     }
 
-    public void payerCommande(Commande commande, Client client) {
-        if (commande.getEtat() != Etat.EN_COURS_DE_PAIEMENT) return;
-        if (client.getSolde().getPrixEnCentimes() >= commande.getPrixAvecTaxe(commande.getPrix()).getPrixEnCentimes()) {
-            changerStatut(commande, Etat.EN_COURS_DE_PREPARATION);
-            client.payer(commande);
+    public void payerCommande(Commande commande, Client client, boolean paiementAccepte) {
+        if (paiementAccepte) {
+            commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
         } else {
-            changerStatut(commande, Etat.ANNULEE);
-            throw new IllegalArgumentException("Le client n'a pas assez d'argent");
+            commande.changerStatut(Etat.ANNULEE);
         }
     }
 

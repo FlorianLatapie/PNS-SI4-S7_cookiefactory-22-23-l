@@ -52,4 +52,11 @@ public class Panier {
     public List<LigneCommande> getLignesCommande() {
         return lignesCommande;
     }
+
+    @Override
+    public String toString() {
+        return "Panier{" +
+                "lignesCommande=" + lignesCommande +
+                '}';
+    }
 }

@@ -9,6 +9,6 @@ public class SMSMessageFactory extends MessageFactory {
 
     @Override
     public Message buildMessage(Commande commande) {
-        return new SMS(MARQUE_TEL, commande.getInvite().getInformationClient().getNumeroDeTelephone(), buildContenu(commande));
+        return new SMS(MARQUE_TEL, commande.getCompte().getTelephone(), buildContenu(commande));
     }
 }

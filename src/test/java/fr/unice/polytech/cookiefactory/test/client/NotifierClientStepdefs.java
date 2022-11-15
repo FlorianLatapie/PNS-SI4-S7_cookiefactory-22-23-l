@@ -1,6 +1,6 @@
 package fr.unice.polytech.cookiefactory.test.client;
 
-import fr.unice.polytech.cookiefactory.clientelle.Invite;
+import fr.unice.polytech.cookiefactory.acteur.clients.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -23,7 +23,7 @@ public class NotifierClientStepdefs {
 
     @Etantdonné("un invité \\(notifier)")
     public void unInvitéNotifier() {
-        invite = new Invite("Dupont", "Jean", "jean.dupont@gmail.com", "0606060606");
+        invite = new Invite("Dupont", "Jean", "jean.dupont@gmail.com", "0606060606", "1234");
         setUpCheckSystemOut();
     }
 

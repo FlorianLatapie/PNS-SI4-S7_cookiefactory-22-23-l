@@ -1,6 +1,6 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.clientelle.Invite;
+import fr.unice.polytech.cookiefactory.acteur.Compte;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -13,11 +13,11 @@ public class Commande {
     private ZonedDateTime dateReception;
     private boolean appliquerRemise;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
-    private Invite invite;
+    private Compte compte;
     private Etat etat = Etat.EN_COURS_DE_PREPARATION;
 
-    public Commande(Invite invite) {
-        this.invite = invite;
+    public Commande(Compte compte) {
+        this.compte = compte;
     }
 
     public Commande() {
@@ -27,13 +27,13 @@ public class Commande {
         gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
     }
 
-    public Commande(Magasin magasin, Invite invite) {
+    public Commande(Magasin magasin, Compte compte) {
         gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
-        this.invite = invite;
+        this.compte = compte;
     }
 
-    public Invite getInvite() {
-        return invite;
+    public Compte getCompte() {
+        return this.compte;
     }
 
     public Panier getPanier() {
@@ -82,7 +82,9 @@ public class Commande {
     @Override
     public String toString() {
         return "Commande{" +
-                "Contenu panier : " + panier +
+                "Compte : " + this.compte +
+                ", Contenu panier : " + this.panier +
+                ", Etat : " + this.etat +
                 '}';
     }
 
@@ -91,12 +93,15 @@ public class Commande {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Commande commande = (Commande) o;
-        return appliquerRemise == commande.appliquerRemise && Objects.equals(dateReception, commande.dateReception) && Objects.equals(gestionnaireDeCommandes, commande.gestionnaireDeCommandes) && Objects.equals(invite, commande.invite) && etat == commande.etat && Objects.equals(panier, commande.panier);
+        return appliquerRemise == commande.appliquerRemise && Objects.equals(dateReception, commande.dateReception)
+                && Objects.equals(gestionnaireDeCommandes, commande.gestionnaireDeCommandes)
+                && Objects.equals(compte, commande.compte) && etat == commande.etat
+                && Objects.equals(panier, commande.panier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateReception, appliquerRemise, gestionnaireDeCommandes, invite, etat, panier);
+        return Objects.hash(dateReception, appliquerRemise, gestionnaireDeCommandes, compte, etat, panier);
     }
 
     public int calculerDureePreparation() {

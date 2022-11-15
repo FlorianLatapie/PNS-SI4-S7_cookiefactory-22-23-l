@@ -6,7 +6,7 @@ import fr.unice.polytech.cookiefactory.messageservices.messages.Message;
 public abstract class MessageFactory {
     protected String buildContenu(Commande commande) {
         StringBuilder contenu = new StringBuilder(
-                "Bonjour " + commande.getInvite() + ", la commande contenant " + commande.getPanier() + " est "
+                "Bonjour " + commande.getCompte() + ", la commande contenant " + commande.getPanier() + " est "
         );
         switch (commande.getEtat()) {
             case RECEPTIONNEE -> contenu.append("receptionnée");

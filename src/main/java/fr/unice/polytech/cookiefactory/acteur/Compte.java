@@ -1,24 +1,29 @@
-package fr.unice.polytech.cookiefactory.acteurs;
+package fr.unice.polytech.cookiefactory.acteur;
 
-import fr.unice.polytech.cookiefactory.commandes.Commande;
-import fr.unice.polytech.cookiefactory.divers.Prix;
-
-public abstract class Personne {
+public abstract class Compte {
 
     private final String nom;
     private final String prenom;
     private String email;
     private String telephone;
     private String motDePasse;
-    private Prix solde;
 
-    protected Personne(String nom, String prenom, String email, String telephone, String motDePasse, double solde) {
+    protected Compte(String nom, String prenom, String email, String telephone, String motDePasse) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.telephone = telephone;
         this.motDePasse = motDePasse;
-        this.solde = new Prix((int) solde * 100);
+    }
+
+    public Compte(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    public Compte() {
+        this.nom = "";
+        this.prenom = "";
     }
 
     public String getNom() {
@@ -53,15 +58,12 @@ public abstract class Personne {
         this.motDePasse = motDePasse;
     }
 
-    public Prix getSolde() {
-        return this.solde;
-    }
-
-    public void setSolde(double solde) {
-        this.solde = new Prix((int) solde * 100);
-    }
-
-    public void payer(Commande commande) {
-        this.solde = this.solde.soustraire(commande.getPrix());
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

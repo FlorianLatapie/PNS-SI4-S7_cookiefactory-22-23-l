@@ -9,7 +9,7 @@ public class EmailMessageBuilder extends MessageFactory {
 
     @Override
     public Message buildMessage(Commande commande) {
-        return new Email(MARQUE_MAIL, commande.getInvite().getInformationClient().getMail(), buildObjet(commande), buildContenu(commande));
+        return new Email(MARQUE_MAIL, commande.getCompte().getEmail(), buildObjet(commande), buildContenu(commande));
     }
 
     private String buildObjet(Commande commande) {
