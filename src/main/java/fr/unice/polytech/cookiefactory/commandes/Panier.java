@@ -4,7 +4,6 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Panier {
@@ -55,8 +54,6 @@ public class Panier {
 
     @Override
     public String toString() {
-        return "Panier{" +
-                "lignesCommande=" + lignesCommande +
-                '}';
+        return "Panier{" + lignesCommande + '}';
     }
 }

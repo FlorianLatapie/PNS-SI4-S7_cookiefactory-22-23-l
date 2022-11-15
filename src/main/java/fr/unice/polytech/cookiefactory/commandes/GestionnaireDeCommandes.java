@@ -3,6 +3,7 @@ package fr.unice.polytech.cookiefactory.commandes;
 import fr.unice.polytech.cookiefactory.acteur.Compte;
 import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.messageservices.MessageServices;
 
@@ -57,10 +58,19 @@ public class GestionnaireDeCommandes {
 
     public void payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
         if (paiementAccepte) {
-            commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
+            Prix prix = commande.getPrix();
             if (compte.getClass().equals(Membre.class)) {
-                ((Membre) compte).ajouterPointsFidelite(commande.getPanier().getNbCookies());
+                Membre membre = (Membre) compte;
+                membre.ajouterPointsFidelite(commande.getPanier().getNbCookies());
+                if (membre.getPointsFidelite() >= Membre.QUOTA) {
+                    membre.setPointsFidelite(membre.getPointsFidelite() % Membre.QUOTA);
+                    prix = prix.multiplier(0.9);
+                }
             }
+            commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
+            System.out.println("Vous avez Payé: " + prix);
+            System.out.println("Pour: " + commande.getPanier());
+            if (!prix.equals(commande.getPrix())) System.out.println("Réduction de 10%: " + commande.getPrix().multiplier(0.9));
         } else {
             commande.changerStatut(Etat.ANNULEE);
         }
