@@ -11,4 +11,8 @@ public class Client extends Compte {
     public Client(String nom, String prenom) {
         super(nom, prenom);
     }
+
+    public Client(Invite invite) {
+        super(invite.getNom(), invite.getPrenom(), invite.getEmail(), invite.getTelephone(), invite.getMotDePasse());
+    }
 }
