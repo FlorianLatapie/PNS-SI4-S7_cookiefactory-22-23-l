@@ -3,6 +3,7 @@ package fr.unice.polytech.cookiefactory.bd;
 import fr.unice.polytech.cookiefactory.acteur.Compte;
 import fr.unice.polytech.cookiefactory.acteur.clients.Client;
 import fr.unice.polytech.cookiefactory.acteur.clients.Invite;
+import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +35,10 @@ public class BDCompte {
     public void devenirClient(Invite invite) {
         this.comptes.remove(invite);
         this.comptes.add(new Client(invite));
+    }
+
+    public void devenirMembre(Client client) {
+        this.comptes.remove(client);
+        this.comptes.add(new Membre(client));
     }
 }
