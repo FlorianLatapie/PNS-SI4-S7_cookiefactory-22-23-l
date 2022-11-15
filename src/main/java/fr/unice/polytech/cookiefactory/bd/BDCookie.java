@@ -40,6 +40,11 @@ public class BDCookie {
         ajouterUnCookie(cookie);
     }
 
+    public List<Cookie> getGetCookies() {
+        return this.cookies.values().stream().toList();
+    }
+
+
     public List<Cookie> getCookiesEnAttente() {
         return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.SOUMIS)).toList();
     }

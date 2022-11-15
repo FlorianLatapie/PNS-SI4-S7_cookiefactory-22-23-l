@@ -1,6 +1,7 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
-import fr.unice.polytech.cookiefactory.acteur.clients.Client;
+import fr.unice.polytech.cookiefactory.acteur.Compte;
+import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.messageservices.MessageServices;
@@ -54,9 +55,12 @@ public class GestionnaireDeCommandes {
                 .findFirst();
     }
 
-    public void payerCommande(Commande commande, Client client, boolean paiementAccepte) {
+    public void payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
         if (paiementAccepte) {
             commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
+            if (compte.getClass().equals(Membre.class)) {
+                ((Membre) compte).ajouterPointsFidelite(commande.getPanier().getNbCookies());
+            }
         } else {
             commande.changerStatut(Etat.ANNULEE);
         }
