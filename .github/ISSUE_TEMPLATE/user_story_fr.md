@@ -1,6 +1,6 @@
 ---
 name: User Story fr
-about: Describe the User Story
+about: Utilisez ce template pour les User Stories
 title: "[US]"
 labels: US
 assignees: ''
