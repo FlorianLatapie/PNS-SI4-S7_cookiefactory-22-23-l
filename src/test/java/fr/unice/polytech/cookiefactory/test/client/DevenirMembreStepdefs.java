@@ -40,8 +40,8 @@ public class DevenirMembreStepdefs {
         assertFalse(baseDeDonnees.getCompte(Membre.class).isEmpty());
     }
 
-    @Quand("un Membre passe une commande à {int} cookies et qu'il a {int} points")
-    public void unMembrePasseUneCommandeÀNombreCookiesCookiesEtQuIlAAvantPoints(int nombreCookies, int avant) {
+    @Quand("un Membre passe une commande à {int} cookies et qu'il a {int} points de fidélité")
+    public void unMembrePasseUneCommandeÀNombreCookiesCookiesEtQuIlAAvantPointsDeFidélité(int nombreCookies, int avant) {
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(new Magasin());
         this.membre = new Membre("Jack", "Daniel", "jackdaneil@gmail.com", "1234567890", "chuuuu🤫");
         ((Membre) this.membre).setPointsFidelite(avant);

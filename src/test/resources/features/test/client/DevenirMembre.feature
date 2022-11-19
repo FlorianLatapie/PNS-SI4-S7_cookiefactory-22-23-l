@@ -10,7 +10,7 @@ Fonctionnalité: Permet à un client de passer son compte Client en compte Membr
     Alors le client devient un membre avec ses avantages
 
   Plan du Scénario:
-    Quand un Membre passe une commande à <nombreCookies> cookies et qu'il a <avant> points
+    Quand un Membre passe une commande à <nombreCookies> cookies et qu'il a <avant> points de fidélité
     Alors il voit ses points de fidélité augmenter du nombre de cookie acheté: <après>
 
     Exemples:
