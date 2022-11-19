@@ -8,9 +8,12 @@ public class MessageServices {
     private final EmailMessageMessageService emailMessageService;
     private final SMSMessageMessageService smsMessageMessageService;
 
+    private final TooGoodToGoMessageService tooGoodToGoMessageService;
+
     private MessageServices() {
         emailMessageService = new EmailMessageMessageService();
         smsMessageMessageService = new SMSMessageMessageService();
+        tooGoodToGoMessageService = new TooGoodToGoMessageService();
     }
 
     public static MessageServices getInstance() {
@@ -20,16 +23,12 @@ public class MessageServices {
         return instance;
     }
 
-    public EmailMessageMessageService getEmailService() {
-        return emailMessageService;
+    public void envoyerAvecTousLesServicesClientelle(Commande commande) {
+        emailMessageService.envoyer(commande);
+        smsMessageMessageService.envoyer(commande);
     }
 
-    public SMSMessageMessageService getSmsMessageMessageService() {
-        return smsMessageMessageService;
-    }
-
-    public void sendMessage(Commande commande) {
-        emailMessageService.send(commande);
-        smsMessageMessageService.send(commande);
+    public void envoyerAvecTousLesServicesPartenaire(Commande commande) {
+        tooGoodToGoMessageService.envoyer(commande);
     }
 }

@@ -4,7 +4,6 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Panier {
     private final List<LigneCommande> lignesCommande = new ArrayList<>();
@@ -41,7 +40,7 @@ public class Panier {
     }
 
     public List<Cookie> getCookies() {
-        return lignesCommande.stream().map(LigneCommande::getCookie).collect(Collectors.toList());
+        return lignesCommande.stream().map(LigneCommande::getCookie).toList();
     }
 
     public int getNbCookies() {
