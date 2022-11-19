@@ -13,6 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class Magasin implements IClasseTempsReel {
     private final String nom;
     private HorlogeDuMagasin horlogeDuMagasin;
@@ -55,7 +56,7 @@ public class Magasin implements IClasseTempsReel {
     public Magasin(Stock stock) {
         this("", stock);
     }
-    
+
     public Magasin(HorlogeDuMagasin horlogeDuMagasin) {
         this("", new Stock());
         this.horlogeDuMagasin = horlogeDuMagasin;
@@ -81,21 +82,6 @@ public class Magasin implements IClasseTempsReel {
         double prixAvecTaxe = prix * (1 + valeurTaxe);
         return new Prix((int) prixAvecTaxe);
     }
-    public void ajouterIngredient(Ingredient ingredient) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public void retirerIngredient(Ingredient ingredient) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public List<Cookie> recupererCookiesDuMagasin() {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
     public Stock getStock() {
         return stock;
     }

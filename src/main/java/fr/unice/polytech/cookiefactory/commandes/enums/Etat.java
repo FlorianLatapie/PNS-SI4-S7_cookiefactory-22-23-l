@@ -1,5 +1,6 @@
 package fr.unice.polytech.cookiefactory.commandes.enums;
 
+@SuppressWarnings("ALL")
 public enum Etat {
 
     ANNULEE,

@@ -1,8 +1,8 @@
 package fr.unice.polytech.cookiefactory.messageservices.messages;
 
 public class Email extends Message {
-    String objet;
-    String contenu;
+    final String objet;
+    final String contenu;
 
     public Email(String expediteur, String destinataire, String objet, String contenu) {
         super(expediteur, destinataire);

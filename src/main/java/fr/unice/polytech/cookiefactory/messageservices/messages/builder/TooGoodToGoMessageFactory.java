@@ -1,7 +1,6 @@
 package fr.unice.polytech.cookiefactory.messageservices.messages.builder;
 
 import fr.unice.polytech.cookiefactory.commandes.Commande;
-import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.messageservices.messages.Message;
 import fr.unice.polytech.cookiefactory.messageservices.messages.TooGoodToGoMessage;
 

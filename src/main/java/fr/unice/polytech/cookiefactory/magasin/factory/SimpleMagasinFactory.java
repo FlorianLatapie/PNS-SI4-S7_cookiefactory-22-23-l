@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.time.ZonedDateTime;
 
+@SuppressWarnings("GrazieInspection")
 public class SimpleMagasinFactory implements MagasinFactory {
     private double valeurTaxe = 0.2;
     private String lieu = "Nice";

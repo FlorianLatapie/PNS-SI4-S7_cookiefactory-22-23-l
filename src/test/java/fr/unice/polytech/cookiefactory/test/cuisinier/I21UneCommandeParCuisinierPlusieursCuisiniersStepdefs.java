@@ -105,7 +105,7 @@ public class I21UneCommandeParCuisinierPlusieursCuisiniersStepdefs {
         }
     }
 
-    public void disponibilite(){
+    public void disponibilite() {
         magasin.getGestionnaireDeCuisiniers().getdisponibilitesDeLaSemaine();
     }
 }

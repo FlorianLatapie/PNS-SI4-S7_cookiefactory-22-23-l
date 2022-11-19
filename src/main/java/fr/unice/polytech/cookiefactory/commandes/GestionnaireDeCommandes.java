@@ -3,8 +3,8 @@ package fr.unice.polytech.cookiefactory.commandes;
 import fr.unice.polytech.cookiefactory.acteur.Compte;
 import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
-import fr.unice.polytech.cookiefactory.commandes.oubliees.generation_panier_strategy.ConcatenantionGenerationPanierStrategy;
 import fr.unice.polytech.cookiefactory.commandes.oubliees.GestionnaireDeCommandesOubliees;
+import fr.unice.polytech.cookiefactory.commandes.oubliees.generation_panier_strategy.ConcatenantionGenerationPanierStrategy;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -18,7 +18,7 @@ import java.util.Optional;
 public class GestionnaireDeCommandes implements IClasseTempsReel {
     private final List<Commande> commandes = new ArrayList<>();
     private final Magasin magasin;
-    private GestionnaireDeCommandesOubliees gestionnaireCommandesOubliees;
+    private final GestionnaireDeCommandesOubliees gestionnaireCommandesOubliees;
 
     public GestionnaireDeCommandes(Magasin magasin) {
         this.magasin = magasin;
@@ -44,7 +44,8 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
 
     public void changerStatut(Commande commande, Etat etat) {
         commande.changerStatut(etat);
-        if (besoinDEnvoyerMessage(commande)) MessageServices.getInstance().envoyerAvecTousLesServicesClientelle(commande);
+        if (besoinDEnvoyerMessage(commande))
+            MessageServices.getInstance().envoyerAvecTousLesServicesClientelle(commande);
     }
 
     public void ajouterCommande(Commande commande) {
@@ -76,7 +77,8 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
             commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
             System.out.println("Vous avez Payé: " + prix);
             System.out.println("Pour: " + commande.getPanier());
-            if (!prix.equals(commande.getPrix())) System.out.println("Réduction de 10%: " + commande.getPrix().multiplier(0.9));
+            if (!prix.equals(commande.getPrix()))
+                System.out.println("Réduction de 10%: " + commande.getPrix().multiplier(0.9));
         } else {
             commande.changerStatut(Etat.ANNULEE);
         }

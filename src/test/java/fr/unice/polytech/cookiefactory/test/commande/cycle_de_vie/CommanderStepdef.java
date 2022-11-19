@@ -17,13 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CommanderStepdef {
     private final GestionExceptions gestionExceptions = new GestionExceptions();
-    private Invite invite;
     private Cookie cookie;
     private Commande commande;
 
     @Etantdonné("un invité")
     public void unInvitéNomméAvecPourAdresseMailEtPourNuméroDuTéléphone() {
-        invite = new Invite();
+        var invite = new Invite();
         commande = new Commande(invite);
     }
 

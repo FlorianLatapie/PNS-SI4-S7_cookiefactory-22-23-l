@@ -1,4 +1,5 @@
 package fr.unice.polytech.cookiefactory.bd;
+
 public class BaseDeDonnees {
     private BDCookie bdCookie;
     private BDIngredient bdIngredient;

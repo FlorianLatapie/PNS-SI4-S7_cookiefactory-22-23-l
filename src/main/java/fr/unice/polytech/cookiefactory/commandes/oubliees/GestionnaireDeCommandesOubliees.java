@@ -14,7 +14,7 @@ public class GestionnaireDeCommandesOubliees implements IClasseTempsReel {
     private final List<Commande> paniersSurprise;
     private ZonedDateTime derniereCompositionPanierSurprise;
 
-    private IGenerationPanierStrategy generationPanierStrategy;
+    private final IGenerationPanierStrategy generationPanierStrategy;
 
     public GestionnaireDeCommandesOubliees(ZonedDateTime zonedDateTime, IGenerationPanierStrategy generationPanierStrategy) {
         this.commandesOubliees = new ArrayList<>();
@@ -44,7 +44,7 @@ public class GestionnaireDeCommandesOubliees implements IClasseTempsReel {
     private void prevenir() {
         prevenirTooGoodToGo();
     }
-    
+
     private void prevenirTooGoodToGo() {
         paniersSurprise.forEach(MessageServices.getInstance()::envoyerAvecTousLesServicesPartenaire);
     }

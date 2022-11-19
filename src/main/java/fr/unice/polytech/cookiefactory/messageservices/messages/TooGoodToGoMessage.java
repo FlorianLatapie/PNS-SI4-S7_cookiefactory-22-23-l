@@ -1,11 +1,11 @@
 package fr.unice.polytech.cookiefactory.messageservices.messages;
 
 public class TooGoodToGoMessage extends Message {
-    String typeRequete;
+    final String typeRequete;
 
-    String magasin;
-    double prix;
-    String description;
+    final String magasin;
+    final double prix;
+    final String description;
 
     public TooGoodToGoMessage(String expediteur, String destinataire, String typeRequete, String magasin, double prix, String description) {
         super(expediteur, destinataire);

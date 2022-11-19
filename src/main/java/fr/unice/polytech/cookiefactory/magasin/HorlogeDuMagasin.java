@@ -29,6 +29,7 @@ public class HorlogeDuMagasin {
     public void notifierMagasin(Magasin magasin) {
         notifierMagasin(magasin, ZonedDateTime.now());
     }
+
     public void notifierMagasin(Magasin magasin, ZonedDateTime date) {
         magasin.updateHeure(date);
     }
