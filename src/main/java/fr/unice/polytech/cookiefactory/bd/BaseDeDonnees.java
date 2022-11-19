@@ -1,7 +1,4 @@
 package fr.unice.polytech.cookiefactory.bd;
-
-import fr.unice.polytech.cookiefactory.acteur.Compte;
-
 public class BaseDeDonnees {
     private BDCookie bdCookie;
     private BDIngredient bdIngredient;
