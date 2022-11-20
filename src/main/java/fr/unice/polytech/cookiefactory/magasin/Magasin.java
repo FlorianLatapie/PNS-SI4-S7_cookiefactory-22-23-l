@@ -3,14 +3,10 @@ package fr.unice.polytech.cookiefactory.magasin;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
-import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.divers.Util;
-import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("ALL")
@@ -76,12 +72,6 @@ public class Magasin implements IClasseTempsReel {
     }
 
     // ------------------------------------------------------------------------
-
-    public Prix ajouterTaxe(Prix p) {
-        double prix = p.getPrixEnCentimes();
-        double prixAvecTaxe = prix * (1 + valeurTaxe);
-        return new Prix((int) prixAvecTaxe);
-    }
     public Stock getStock() {
         return stock;
     }

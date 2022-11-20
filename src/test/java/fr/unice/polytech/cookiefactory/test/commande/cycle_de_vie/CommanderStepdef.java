@@ -67,7 +67,7 @@ public class CommanderStepdef {
     @Alors("son panier possède un montant de {double} €")
     public void sonPanierPossèdeUnMontantDe€(double prix) {
         Prix prix2 = new Prix((int) (prix * 100));
-        assertEquals(prix2, commande.getPrix());
+        assertEquals(prix2, commande.getPrixHorsTaxe());
     }
 
     @Alors("une erreur PasAssezCookie intervient")

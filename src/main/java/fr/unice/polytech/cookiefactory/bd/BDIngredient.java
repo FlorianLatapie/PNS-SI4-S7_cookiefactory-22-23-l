@@ -61,4 +61,23 @@ public class BDIngredient {
     public Optional<Pate> getPate(String nom) {
         return pates.stream().filter(pate -> pate.getNom().equals(nom)).findFirst();
     }
+
+    public BDIngredient init() {
+        pates.add(new Pate("Chocolat"));
+        pates.add(new Pate("Nature"));
+        pates.add(new Pate("Beurre de cacahuète"));
+        pates.add(new Pate("Chocolat blanc"));
+        pates.add(new Pate("Flocons d'avoine"));
+
+        saveurs.add(new Saveur("Amandes"));
+        saveurs.add(new Saveur("Vanille"));
+        saveurs.add(new Saveur("Cannelle"));
+
+        garnitures.add(new Garniture("Chocolat blanc"));
+        garnitures.add(new Garniture("Chocolat noir"));
+        garnitures.add(new Garniture("Chocolat au lait"));
+        garnitures.add(new Garniture("M&M’s™"));
+
+        return this;
+    }
 }
