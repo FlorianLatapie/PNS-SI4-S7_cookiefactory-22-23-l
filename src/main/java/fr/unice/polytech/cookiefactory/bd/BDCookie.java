@@ -49,7 +49,7 @@ public class BDCookie {
         return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.SOUMIS)).toList();
     }
 
-    public void init() {
+    public BDCookie init() {
         Cookie cookiePopChoco = new Cookie(
                 "Pop-Choco",
                 new Recette(
@@ -62,5 +62,7 @@ public class BDCookie {
                 ),
                 new Prix(150));
         cookies.put(cookiePopChoco.getNom(), cookiePopChoco);
+
+        return this;
     }
 }

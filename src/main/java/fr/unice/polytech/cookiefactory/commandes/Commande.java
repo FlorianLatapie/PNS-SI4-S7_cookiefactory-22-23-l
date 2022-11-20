@@ -10,6 +10,8 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class Commande implements IClasseTempsReel {
+
+    private static final int REDUCTION = 10; // en pourcentage
     private final Panier panier = new Panier();
     private ZonedDateTime dateReception;
     private boolean appliquerRemise;
@@ -41,16 +43,20 @@ public class Commande implements IClasseTempsReel {
         return panier;
     }
 
-    public Prix getPrix() {
+    public Prix getPrixHorsTaxe() {
         return panier.getLignesCommande().stream().map(LigneCommande::obtenirPrixSelonQuantite).reduce(Prix.ZERO, Prix::ajouter);
     }
 
-    public Prix getPrixAvecTaxe(Prix prix) {
-        return gestionnaireDeCommandes.getMagasin().ajouterTaxe(prix);
+    public Prix getPrixAvecTaxe() {
+        Prix prixHorsTaxe = getPrixHorsTaxe();
+        if (appliquerRemise) {
+            prixHorsTaxe = getPrixHorsTaxeReduction(REDUCTION);
+        }
+        return gestionnaireDeCommandes.ajouterTaxe(prixHorsTaxe);
     }
 
-    public Prix getPrixReduction() {
-        return getPrix().reduction(10);
+    public Prix getPrixHorsTaxeReduction(int pourcentage) {
+        return getPrixHorsTaxe().reduction(pourcentage);
     }
 
     public void changerStatut(Etat etat) {

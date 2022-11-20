@@ -12,9 +12,8 @@ public class TooGoodToGoMessageFactory extends MessageFactory {
                 "https://api.toogoodtogo.com/api/auth/v1/login",
                 "POST",
                 commande.getGestionnaireDeCommandes().getMagasin().getNom(),
-                commande.getPrix().getPrixEnCentimes() / 100.0,
+                commande.getPrixHorsTaxe().getPrixEnCentimes() / 100.0,
                 commande.getPanier().getLignesCommande().toString()
         );
     }
-
 }

@@ -4,10 +4,14 @@ import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 
 public class Cookie {
-    private String nom;
-    private Recette recette;
-    private Prix prix;
-    private ValidationCookie etat;
+    private final String nom;
+    protected Recette recette;
+    protected Prix prix;
+    private ValidationCookie etat = ValidationCookie.VALIDE;
+
+    public Cookie(String nom) {
+        this.nom = nom;
+    }
 
     public Cookie(String nom, Recette recette) {
         this(nom, recette, ValidationCookie.SOUMIS);

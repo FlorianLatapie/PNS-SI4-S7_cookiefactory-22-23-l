@@ -14,7 +14,6 @@ public class SimpleMagasinFactory implements MagasinFactory {
     private ZonedDateTime dateOuverture = null;
     private ZonedDateTime dateFermeture = null;
 
-
     public SimpleMagasinFactory setLieu(String lieu) {
         this.lieu = lieu;
         return this;

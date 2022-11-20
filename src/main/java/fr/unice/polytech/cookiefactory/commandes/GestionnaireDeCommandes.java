@@ -65,7 +65,7 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
 
     public void payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
         if (paiementAccepte) {
-            Prix prix = commande.getPrix();
+            Prix prix = commande.getPrixHorsTaxe();
             if (compte.getClass().equals(Membre.class)) {
                 Membre membre = (Membre) compte;
                 membre.ajouterPointsFidelite(commande.getPanier().getNbCookies());
@@ -77,8 +77,8 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
             commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
             System.out.println("Vous avez Payé: " + prix);
             System.out.println("Pour: " + commande.getPanier());
-            if (!prix.equals(commande.getPrix()))
-                System.out.println("Réduction de 10%: " + commande.getPrix().multiplier(0.9));
+            if (!prix.equals(commande.getPrixHorsTaxe()))
+                System.out.println("Réduction de 10%: " + commande.getPrixHorsTaxe().multiplier(0.9));
         } else {
             commande.changerStatut(Etat.ANNULEE);
         }
@@ -96,5 +96,11 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
 
     public GestionnaireDeCommandesOubliees getGestionnaireCommandesOubliees() {
         return gestionnaireCommandesOubliees;
+    }
+
+    public Prix ajouterTaxe(Prix p) {
+        double prix = p.getPrixEnCentimes();
+        double prixAvecTaxe = prix * (1 + getMagasin().getValeurTaxe());
+        return new Prix((int) prixAvecTaxe);
     }
 }
