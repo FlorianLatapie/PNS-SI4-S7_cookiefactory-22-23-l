@@ -1,6 +1,7 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
+import fr.unice.polytech.cookiefactory.cuisine.ChefCookieFestif;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Util;
@@ -171,5 +172,9 @@ public class Magasin implements IClasseTempsReel {
     public void updateHeure(ZonedDateTime zonedDateTime) {
         this.setDate(zonedDateTime);
         this.gestionnaireDeCommandes.updateHeure(zonedDateTime);
+    }
+
+    public boolean possedeChefCookieFestif(){
+        return this.gestionnaireDeCuisiniers.getCuisiniers().stream().filter(cuisinier -> cuisinier instanceof ChefCookieFestif).count() > 0;
     }
 }
