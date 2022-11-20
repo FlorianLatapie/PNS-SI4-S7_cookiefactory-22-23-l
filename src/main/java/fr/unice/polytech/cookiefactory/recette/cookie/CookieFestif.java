@@ -13,9 +13,9 @@ public class CookieFestif extends Cookie {
         this.taille = taille;
     }
 
-    public CookieFestif(Cookie cookie) {
+    public CookieFestif(Cookie cookie, Taille taille) {
         super(cookie.getNom());
-        this.taille = Taille.L;
+        this.taille = taille;
         recette = cookie.getRecette(); // à changer plus tard par la multiplication de la quantité définie dans Size
         prix = cookie.getPrixHorsTaxe().multiplier(taille.getMultiplicateurPrix()).multiplier(MARGE);
     }

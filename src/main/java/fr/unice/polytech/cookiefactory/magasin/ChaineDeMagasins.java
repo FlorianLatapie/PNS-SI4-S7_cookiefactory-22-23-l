@@ -14,9 +14,9 @@ public class ChaineDeMagasins {
     static {
         MagasinFactory factory = new SimpleMagasinFactory();
         List<Magasin> magasins = new ArrayList<>();
-        magasins.add(factory.createMagasin("Magasin 1"));
-        magasins.add(factory.createMagasin("Magasin 2"));
-        magasins.add(factory.createMagasin("Magasin 3"));
+        magasins.add(factory.creerMagasin("Magasin 1"));
+        magasins.add(factory.creerMagasin("Magasin 2"));
+        magasins.add(factory.creerMagasin("Magasin 3"));
 
         magasins.forEach(magasin -> ChaineDeMagasins.getInstance().ajouterMagasin(magasin));
     }

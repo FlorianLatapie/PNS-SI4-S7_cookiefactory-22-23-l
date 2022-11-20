@@ -49,7 +49,7 @@ public class DevenirMembreStepdefs {
         gestionnaireDeCommandes.ajouterCommande(commande);
 
         try {
-            commande.getPanier().ajouterCookies(ChaineDeMagasins.getInstance().getBd().getBdCookie().getGetCookies().get(0), nombreCookies);
+            commande.getPanier().ajouterCookies(ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookies().get(0), nombreCookies);
         } catch (Exception ignored) {
             if (nombreCookies < 0) assertTrue(true);
         }

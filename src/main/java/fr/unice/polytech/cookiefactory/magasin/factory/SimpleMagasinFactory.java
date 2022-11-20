@@ -35,7 +35,7 @@ public class SimpleMagasinFactory implements MagasinFactory {
     }
 
     @Override
-    public Magasin createMagasin(String nom) {
+    public Magasin creerMagasin(String nom) {
         // renvoyer le lundi de la semaine courante à 8h
         var maintenant = ZonedDateTime.now();
         var lundi = Util.getLundiDeLaSemaineCourante(maintenant);

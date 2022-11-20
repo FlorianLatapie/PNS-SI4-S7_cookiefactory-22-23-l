@@ -10,8 +10,8 @@ public class BaseDeDonnees {
     }
 
     private void initBD() {
-        bdCookie = new BDCookie().init();
-        bdIngredient = new BDIngredient().init();
+        bdCookie = new BDCookie();
+        bdIngredient = new BDIngredient();
         bdCompte = new BDCompte();
     }
 
