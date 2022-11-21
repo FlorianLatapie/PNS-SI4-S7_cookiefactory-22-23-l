@@ -21,8 +21,4 @@ public class ChefCookieFestif extends Cuisinier {
         this.themes = themes;
         this.occasions = occasions;
     }
-
-    public ChefCookieFestif devenirChefCookieFestif(Cuisinier cuisinier, ArrayList<Themes> themes, ArrayList<Occasions> occasions){
-       return new ChefCookieFestif(cuisinier.getGestionnaireDeCommandes(), themes, occasions);
-    }
 }

@@ -1,6 +1,8 @@
 package fr.unice.polytech.cookiefactory.cuisine;
 
 import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.cuisine.specialites.Occasions;
+import fr.unice.polytech.cookiefactory.cuisine.specialites.Themes;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.time.ZonedDateTime;
@@ -63,6 +65,16 @@ public class GestionnaireDeCuisiniers {
             }
         }
         return Optional.empty();
+    }
+
+    public ChefCookieFestif devenirChefCookieFestif(Cuisinier cuisinier, ArrayList<Themes> themes, ArrayList<Occasions> occasions){
+        if(cuisiniers.contains(cuisinier)){
+            cuisiniers.remove(cuisinier);
+            cuisinier = new ChefCookieFestif(cuisinier.getGestionnaireDeCommandes(), themes, occasions);
+            cuisiniers.add(cuisinier);
+            return (ChefCookieFestif) cuisinier;
+        }
+        throw new IllegalArgumentException("Le cuisinier n'est pas dans le magasin sélectionné");
     }
 
     public boolean ajouterCuisinier(Cuisinier cuisinier) {

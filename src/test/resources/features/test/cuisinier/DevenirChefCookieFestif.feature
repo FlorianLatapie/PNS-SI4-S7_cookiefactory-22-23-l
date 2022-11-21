@@ -3,7 +3,8 @@
 Fonctionnalité: Un cuisinier devient chef cookie festif
 
   Contexte:
-    Etant donné un cuisinier existant
+    Etant donné un magasin sans chef cookie festif
+    Et un cuisinier existant
 
   Plan du scénario: Devenir chef cookie festif
     Etant donné un thème "<theme>"

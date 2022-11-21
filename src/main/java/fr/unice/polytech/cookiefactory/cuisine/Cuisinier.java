@@ -3,10 +3,13 @@ package fr.unice.polytech.cookiefactory.cuisine;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import fr.unice.polytech.cookiefactory.cuisine.specialites.Occasions;
+import fr.unice.polytech.cookiefactory.cuisine.specialites.Themes;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 
 public class Cuisinier {
     private final EDTCuisinier edtCuisinier;
