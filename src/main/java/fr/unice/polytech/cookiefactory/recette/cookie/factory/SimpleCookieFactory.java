@@ -21,11 +21,7 @@ public class SimpleCookieFactory {
     protected ValidationCookie etat = ValidationCookie.VALIDE;
 
     public SimpleCookieFactory() {
-        BDIngredient ingredient = ChaineDeMagasins.getInstance().getBd().getBdIngredient();
-        Pate pate = ingredient.getPate("Nature").get();
-        Saveur saveur = ingredient.getSaveur("Amandes").get();
-        Garniture garniture = ingredient.getGarniture("Chocolat noir").get();
-        recette = new Recette(pate, saveur, List.of(garniture), Cuisson.MOELLEUX, Melange.GARNI, 10);
+        recette = new Recette().setPate("Nature").setSaveur("Amande").setGarnitures(List.of("Chocolat noir")).setCuisson("MOELLEUX").setMelange("GARNI").setTempsPreparation(10);
     }
 
     public void setRecette(Recette recette) {

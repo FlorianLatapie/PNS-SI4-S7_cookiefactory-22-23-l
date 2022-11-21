@@ -30,8 +30,8 @@ public class ReservationIngredientsdefs {
     @Étantdonnée("un stock contenant {int} pâte {string}, {int} {string}, {int} {string}, {int} {string}")
     public void un_stock_contenant(int nbIngredient1, String nomIngredient1, int nbIngredient2, String nomIngredient2, int nbIngredient3, String nomIngredient3, int nbIngredient4, String nomIngredient4) {
         magasin = new Magasin();
-        ingredient1 = new Pate(nomIngredient1);
-        ingredient2 = new Saveur(nomIngredient2);
+        Pate ingredient1 = new Pate(nomIngredient1);
+        Saveur ingredient2 = new Saveur(nomIngredient2);
         ingredient3 = new Garniture(nomIngredient3);
         var ingredient4 = new Garniture(nomIngredient4);
         magasin.getStock().ajouterIngredient(ingredient1, nbIngredient1);

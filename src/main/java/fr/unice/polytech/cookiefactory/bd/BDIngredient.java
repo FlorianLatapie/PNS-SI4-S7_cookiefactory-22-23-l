@@ -25,8 +25,11 @@ public class BDIngredient {
         pates.addAll(List.of(
                 new Pate("Nature"),
                 new Pate("Chocolat"),
-                new Pate("Berre de cacahuette"),
-                new Pate("Avoine")
+                new Pate("Beurre de cacahuette"),
+                new Pate("Avoine"),
+                new Pate("Chocolat blanc") ,
+                new Pate("Flocons d'avoine")
+
         ));
         saveurs.addAll(List.of(
                 new Saveur("Nature"),
@@ -39,7 +42,10 @@ public class BDIngredient {
                 new Saveur("Fraise"),
                 new Saveur("Vanille"),
                 new Saveur("Caramel"),
-                new Saveur("Noisette")
+                new Saveur("Noisette"),
+                new Saveur("Vanille"),
+                new Saveur("Cannelle")
+
         ));
         garnitures.addAll(List.of(
                 new Garniture("Chocolat"),
@@ -57,7 +63,8 @@ public class BDIngredient {
                 new Garniture("Noix de coco"),
                 new Garniture("Menthe"),
                 new Garniture("Cerise"),
-                new Garniture("Chouchou")
+                new Garniture("Chouchou"),
+                new Garniture("M&M’s™")
         ));
     }
 
@@ -102,22 +109,5 @@ public class BDIngredient {
 
     public Optional<Pate> getPate(String nom) {
         return pates.stream().filter(pate -> pate.getNom().equals(nom)).findFirst();
-    }
-
-    public void init() {
-        pates.add(new Pate("Chocolat"));
-        pates.add(new Pate("Nature"));
-        pates.add(new Pate("Beurre de cacahuète"));
-        pates.add(new Pate("Chocolat blanc"));
-        pates.add(new Pate("Flocons d'avoine"));
-
-        saveurs.add(new Saveur("Amandes"));
-        saveurs.add(new Saveur("Vanille"));
-        saveurs.add(new Saveur("Cannelle"));
-
-        garnitures.add(new Garniture("Chocolat blanc"));
-        garnitures.add(new Garniture("Chocolat noir"));
-        garnitures.add(new Garniture("Chocolat au lait"));
-        garnitures.add(new Garniture("M&M’s™"));
     }
 }

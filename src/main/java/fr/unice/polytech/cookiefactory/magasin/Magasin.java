@@ -51,7 +51,7 @@ public class Magasin implements IClasseTempsReel {
     }
 
     public Magasin(HorlogeDuMagasin horlogeDuMagasin) {
-        this("", new Stock());
+        this("");
         this.horlogeDuMagasin = horlogeDuMagasin;
     }
 
