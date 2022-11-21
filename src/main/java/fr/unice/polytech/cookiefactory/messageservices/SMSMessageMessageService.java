@@ -8,7 +8,7 @@ public class SMSMessageMessageService implements MessageService {
     private static final MessageFactory MESSAGE_FACTORY = new SMSMessageFactory();
 
     @Override
-    public void send(Commande commande) {
+    public void envoyer(Commande commande) {
         System.out.println(MESSAGE_FACTORY.buildMessage(commande));
     }
 }

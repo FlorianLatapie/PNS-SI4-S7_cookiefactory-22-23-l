@@ -40,6 +40,9 @@ public class Cuisinier {
         return edtCuisinier;
     }
 
+    public GestionnaireDeCommandes getGestionnaireDeCommandes() {
+        return gestionnaireDeCommandes;
+    }
 
     public void soumettreUnCookie(Cookie cookie) {
         ChaineDeMagasins.getInstance().getBd().getBdCookie().ajouterUnCookie(cookie);

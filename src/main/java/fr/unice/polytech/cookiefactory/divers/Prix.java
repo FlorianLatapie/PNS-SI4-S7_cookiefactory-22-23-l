@@ -23,12 +23,16 @@ public final class Prix {
         return new Prix(this.nbCentimes - prix.nbCentimes);
     }
 
-    public Prix multiplier(int nb) {
-        return new Prix(this.nbCentimes * nb);
+    public Prix multiplier(double nb) {
+        return new Prix((int) (this.nbCentimes * nb));
     }
 
     public Prix reduction(int pourcentage) {
         return new Prix((int) (Math.ceil(this.nbCentimes * (1 - pourcentage / 100.0))));
+    }
+
+    public static Prix convertir(double prix){
+        return new Prix((int) (prix * 100));
     }
 
     @Override
@@ -46,8 +50,6 @@ public final class Prix {
 
     @Override
     public String toString() {
-        return "Prix{" +
-                "nbCentimes=" + nbCentimes +
-                '}';
+        return this.nbCentimes / 100.0 + "€";
     }
 }

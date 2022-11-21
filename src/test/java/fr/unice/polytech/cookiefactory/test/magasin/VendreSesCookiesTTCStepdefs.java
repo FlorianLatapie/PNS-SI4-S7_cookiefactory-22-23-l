@@ -27,12 +27,12 @@ public class VendreSesCookiesTTCStepdefs {
 
     @Quand("le client paye la commande")
     public void le_client_paye_la_commande() {
-        prixTTCCommande = magasin.ajouterTaxe(prixCommande);
+        prixTTCCommande = magasin.getGestionnaireDeCommandes().ajouterTaxe(prixCommande);
     }
 
     @Alors("le prix sera celui TTC")
     public void le_prix_sera_celui_ttc() {
         assertTrue(prixTTCCommande.getPrixEnCentimes() > prixCommande.getPrixEnCentimes());
-        assertNotEquals(prixTTCCommande, magasinRef.ajouterTaxe(prixCommande));
+        assertNotEquals(prixTTCCommande, magasinRef.getGestionnaireDeCommandes().ajouterTaxe(prixCommande));
     }
 }

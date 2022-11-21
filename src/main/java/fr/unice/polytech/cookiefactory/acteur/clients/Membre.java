@@ -2,6 +2,7 @@ package fr.unice.polytech.cookiefactory.acteur.clients;
 
 public class Membre extends Client {
 
+    public static final int QUOTA = 30;
     private int pointsFidelite = 0;
 
     public Membre(String nom, String prenom, String email, String telephone, String motDePasse) {
@@ -21,6 +22,7 @@ public class Membre extends Client {
     }
 
     public void setPointsFidelite(int pointsFidelite) {
+        if (pointsFidelite < 0) return;
         this.pointsFidelite = pointsFidelite;
     }
 

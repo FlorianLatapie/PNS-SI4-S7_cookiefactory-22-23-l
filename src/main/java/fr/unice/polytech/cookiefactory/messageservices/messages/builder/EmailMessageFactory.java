@@ -4,7 +4,7 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.messageservices.messages.Email;
 import fr.unice.polytech.cookiefactory.messageservices.messages.Message;
 
-public class EmailMessageBuilder extends MessageFactory {
+public class EmailMessageFactory extends MessageFactory {
     public static final String MARQUE_MAIL = "cookiefactory@pns.fr";
 
     @Override

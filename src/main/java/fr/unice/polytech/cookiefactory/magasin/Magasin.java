@@ -1,23 +1,23 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
+import fr.unice.polytech.cookiefactory.cuisine.ChefCookieFestif;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
-import fr.unice.polytech.cookiefactory.divers.Prix;
+import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Util;
-import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
 import java.util.Objects;
 
-public class Magasin {
+@SuppressWarnings("ALL")
+public class Magasin implements IClasseTempsReel {
     private final String nom;
+    private HorlogeDuMagasin horlogeDuMagasin;
     private double valeurTaxe = 0.2;
     private String lieu;
-    private ZonedDateTime dateOuverture;
-    private ZonedDateTime dateFermeture;
+    private ZonedDateTime heureOuverture;
+    private ZonedDateTime heureFermeture;
 
     private CookiesDuMagasin cookiesDuMagasin;
     private Stock stock;
@@ -35,14 +35,14 @@ public class Magasin {
         this.nom = nom;
         this.stock = new Stock();
 
-        this.dateOuverture = Util.heurePile(Util.getLundiDeLaSemaineCourante(ZonedDateTime.now()), 8);
-        this.dateFermeture = Util.heurePile(dateOuverture/*.plusDays(4)*/, 18);
+        this.heureOuverture = Util.heurePile(Util.getLundiDeLaSemaineCourante(ZonedDateTime.now()), 8);
+        this.heureFermeture = Util.heurePile(heureOuverture/*.plusDays(4)*/, 18);
 
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.gestionnaireDeCuisiniers = new GestionnaireDeCuisiniers(this);
         this.cookiesDuMagasin = new CookiesDuMagasin();
 
-        ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookiesValide().forEach(this::ajouterCookie);
+        this.horlogeDuMagasin = new HorlogeDuMagasin(this);
     }
 
     public Magasin(Integer taxe) {
@@ -50,51 +50,25 @@ public class Magasin {
         this.valeurTaxe = taxe.floatValue() / 100;
     }
 
+    public Magasin(HorlogeDuMagasin horlogeDuMagasin) {
+        this("", new Stock());
+        this.horlogeDuMagasin = horlogeDuMagasin;
+    }
+
     public Magasin(String nom, double valeurTaxe, String lieu, ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
         this(nom);
         this.valeurTaxe = valeurTaxe;
         this.lieu = lieu;
-        this.dateOuverture = dateOuverture;
-        this.dateFermeture = dateFermeture;
+        this.heureOuverture = dateOuverture;
+        this.heureFermeture = dateFermeture;
     }
 
     // ------------------------------------------------------------------------
-
-    public Prix ajouterTaxe(Prix p) {
-        double prix = p.getPrixEnCentimes();
-        double prixAvecTaxe = prix * (1 + valeurTaxe);
-        return new Prix((int) prixAvecTaxe);
-    }
-
-    public void ajouterCookie(Cookie cookie) {
-        for ( Ingredient ingredient : cookie.getRecette().getIngredients() ) {
-                if (!getStock().contientIngredient(ingredient)) {
-                    System.out.println("Le magasin ne contient pas l'ingredient " + ingredient.getNom());
-                    return;
-                }
-        }
-        cookiesDuMagasin.ajouterCookie(cookie);
-    }
-    public void ajouterIngredient(Ingredient ingredient) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public void retirerIngredient(Ingredient ingredient) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public List<Cookie> recupererCookiesDuMagasin() {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
     public Stock getStock() {
         return stock;
     }
 
-    public CookiesDuMagasin getCookiesDuMagasin() {
+    public CookiesDuMagasin getRecettesDuMagasin() {
         return cookiesDuMagasin;
     }
 
@@ -119,11 +93,11 @@ public class Magasin {
     }
 
     public ZonedDateTime getHeureOuverture() {
-        return dateOuverture;
+        return heureOuverture;
     }
 
     public ZonedDateTime getHeureFermeture() {
-        return dateFermeture;
+        return heureFermeture;
     }
 
     @Override
@@ -149,8 +123,8 @@ public class Magasin {
                 "nom='" + nom + '\'' +
                 ", valeurTaxe=" + valeurTaxe +
                 ", lieu='" + lieu + '\'' +
-                ", dateOuverture=" + dateOuverture +
-                ", dateFermeture=" + dateFermeture +
+                ", dateOuverture=" + heureOuverture +
+                ", dateFermeture=" + heureFermeture +
                 //", recettesDuMagasin=" + recettesDuMagasin +
                 ", stock=" + stock +
                 //", gestionnaireDeCommandes=" + gestionnaireDeCommandes +
@@ -162,12 +136,12 @@ public class Magasin {
         this.date = zonedDateTime;
     }
 
-    private void setDateOuverture(ZonedDateTime dateOuverture) {
-        this.dateOuverture = dateOuverture;
+    private void setHeureOuverture(ZonedDateTime heureOuverture) {
+        this.heureOuverture = heureOuverture;
     }
 
-    private void setDateFermeture(ZonedDateTime dateFermeture) {
-        this.dateFermeture = dateFermeture;
+    private void setHeureFermeture(ZonedDateTime heureFermeture) {
+        this.heureFermeture = heureFermeture;
     }
 
     public void changerHoraires(ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
@@ -181,7 +155,17 @@ public class Magasin {
         if (dateOuverture.until(dateFermeture, ChronoUnit.HOURS) < 1) {
             throw new IllegalArgumentException("Le magasin doit être ouvert au moins 1h par jour");
         }
-        setDateOuverture(dateOuverture);
-        setDateFermeture(dateFermeture);
+        setHeureOuverture(dateOuverture);
+        setHeureFermeture(dateFermeture);
+    }
+
+    @Override
+    public void updateHeure(ZonedDateTime zonedDateTime) {
+        this.setDate(zonedDateTime);
+        this.gestionnaireDeCommandes.updateHeure(zonedDateTime);
+    }
+
+    public boolean possedeChefCookieFestif(){
+        return this.gestionnaireDeCuisiniers.getCuisiniers().stream().filter(cuisinier -> cuisinier instanceof ChefCookieFestif).count() > 0;
     }
 }

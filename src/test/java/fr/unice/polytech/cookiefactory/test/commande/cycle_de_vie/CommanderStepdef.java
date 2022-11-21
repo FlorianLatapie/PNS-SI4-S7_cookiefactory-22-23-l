@@ -17,13 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CommanderStepdef {
     private final GestionExceptions gestionExceptions = new GestionExceptions();
-    private Invite invite;
     private Cookie cookie;
     private Commande commande;
 
     @Etantdonné("un invité")
     public void unInvitéNomméAvecPourAdresseMailEtPourNuméroDuTéléphone() {
-        invite = new Invite();
+        var invite = new Invite();
         commande = new Commande(invite);
     }
 
@@ -67,8 +66,7 @@ public class CommanderStepdef {
 
     @Alors("son panier possède un montant de {double} €")
     public void sonPanierPossèdeUnMontantDe€(double prix) {
-        Prix prix2 = new Prix((int) (prix * 100));
-        assertEquals(prix2, commande.getPrix());
+        assertEquals(Prix.convertir(prix), commande.getPrixHorsTaxe());
     }
 
     @Alors("une erreur PasAssezCookie intervient")

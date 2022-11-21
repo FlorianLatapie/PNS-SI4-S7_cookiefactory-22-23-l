@@ -1,5 +1,5 @@
 ---
-name: User Story
+name: User Story (Original template do not use)
 about: Describe the User Story
 title: "[US]"
 labels: bug, US

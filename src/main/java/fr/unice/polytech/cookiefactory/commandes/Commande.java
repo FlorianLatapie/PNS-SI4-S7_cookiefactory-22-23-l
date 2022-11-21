@@ -2,13 +2,16 @@ package fr.unice.polytech.cookiefactory.commandes;
 
 import fr.unice.polytech.cookiefactory.acteur.Compte;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class Commande {
+public class Commande implements IClasseTempsReel {
+
+    private static final int REDUCTION = 10; // en pourcentage
     private final Panier panier = new Panier();
     private ZonedDateTime dateReception;
     private boolean appliquerRemise;
@@ -40,16 +43,20 @@ public class Commande {
         return panier;
     }
 
-    public Prix getPrix() {
+    public Prix getPrixHorsTaxe() {
         return panier.getLignesCommande().stream().map(LigneCommande::obtenirPrixSelonQuantite).reduce(Prix.ZERO, Prix::ajouter);
     }
 
-    public Prix getPrixAvecTaxe(Prix prix) {
-        return gestionnaireDeCommandes.getMagasin().ajouterTaxe(prix);
+    public Prix getPrixAvecTaxe() {
+        Prix prixHorsTaxe = getPrixHorsTaxe();
+        if (appliquerRemise) {
+            prixHorsTaxe = getPrixHorsTaxeReduction(REDUCTION);
+        }
+        return gestionnaireDeCommandes.ajouterTaxe(prixHorsTaxe);
     }
 
-    public Prix getPrixReduction() {
-        return getPrix().reduction(10);
+    public Prix getPrixHorsTaxeReduction(int pourcentage) {
+        return getPrixHorsTaxe().reduction(pourcentage);
     }
 
     public void changerStatut(Etat etat) {
@@ -112,5 +119,20 @@ public class Commande {
                                 ligneCommande.getQuantite()
                 )
                 .sum() / 15) * 15 + 15;
+    }
+
+    @Override
+    public void updateHeure(ZonedDateTime zonedDateTime) {
+        if (etat == Etat.EN_ATTENTE_DE_RETRAIT && zonedDateTime.isAfter(dateReception.plusHours(2))) {
+            etat = Etat.OUBLIEE;
+        }
+    }
+
+    public GestionnaireDeCommandes getGestionnaireDeCommandes() {
+        return gestionnaireDeCommandes;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 }

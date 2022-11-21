@@ -16,12 +16,12 @@ public abstract class Compte {
         this.motDePasse = motDePasse;
     }
 
-    public Compte(String nom, String prenom) {
+    protected Compte(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
     }
 
-    public Compte() {
+    protected Compte() {
         this.nom = "";
         this.prenom = "";
     }

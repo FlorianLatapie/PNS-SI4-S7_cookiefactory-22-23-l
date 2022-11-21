@@ -18,7 +18,7 @@ public class GererLesMagasinsStepdefs {
     @Etantdonné("un magasin s'appelant {string}")
     public void unMagasinSAppelantSeSituantÀ(String nom) {
         this.nom = nom;
-        magasin = new SimpleMagasinFactory().createMagasin(nom);
+        magasin = new SimpleMagasinFactory().creerMagasin(nom);
     }
 
     @Quand("j'ajoute le nouveau magasin")

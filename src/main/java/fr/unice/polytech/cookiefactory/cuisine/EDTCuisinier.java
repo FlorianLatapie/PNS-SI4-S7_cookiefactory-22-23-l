@@ -29,7 +29,7 @@ public class EDTCuisinier {
     }
 
     public boolean estDisponible(ZonedDateTime dateDebut, ZonedDateTime datedeFin) {
-        // pour chaque crénau de préparation, s'il existe c'est qu'il n'est pas disponible
+        // pour chaque crénau de préparation, s'il existe, c'est qu'il n'est pas disponible
         for (var creneau : creneauPreparationCommande) {
             if (creneau.estContenuDans(dateDebut, datedeFin)) {
                 return false;

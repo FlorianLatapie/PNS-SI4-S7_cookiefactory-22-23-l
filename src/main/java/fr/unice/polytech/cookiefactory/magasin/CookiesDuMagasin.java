@@ -8,33 +8,16 @@ import java.util.List;
 
 public class CookiesDuMagasin {
     private final List<Cookie> cookiesDisponibles;
-
     public CookiesDuMagasin() {
         this.cookiesDisponibles = new ArrayList<>();
+    }
+    
+    public List<Cookie> getCookiesDisponibles() {
+        return cookiesDisponibles;
     }
 
     public void ajouterCookie(Cookie cookie) {
         cookiesDisponibles.add(cookie);
     }
 
-    public void supprimerCookie(Cookie cookie) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public Prix calculerPrixHorsTaxe(Cookie cookie) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public List<Cookie> getCookiesDisponibles() {
-        return cookiesDisponibles;
-    }
-
-    @Override
-    public String toString() {
-        return "CookiesDuMagasin{" +
-                "cookiesDisponibles=" + cookiesDisponibles +
-                '}';
-    }
 }

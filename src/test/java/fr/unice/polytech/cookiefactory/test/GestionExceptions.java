@@ -40,7 +40,7 @@ public class GestionExceptions {
         return exceptions.remove(0);
     }
 
-    public Exception popException(){
+    public Exception popException() {
         return exceptions.remove(exceptions.size() - 1);
     }
 }

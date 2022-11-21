@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 public class AccepterUneNouvelleRecetteStepDef {
     Dirigeant dirigeant;
     ChaineDeMagasins chaineDeMagasins = ChaineDeMagasins.getInstance();
-    BDCookie bdCookie = chaineDeMagasins.getBd().getBdCookie();
+    final BDCookie bdCookie = chaineDeMagasins.getBd().getBdCookie();
     Magasin magasin;
     Cuisinier cuisinier;
     Cookie cookie;

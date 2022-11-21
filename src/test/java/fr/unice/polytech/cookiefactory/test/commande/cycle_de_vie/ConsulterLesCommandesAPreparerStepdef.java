@@ -22,7 +22,7 @@ public class ConsulterLesCommandesAPreparerStepdef {
     private List<CreneauPreparationCommande> commandes;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
 
-    private Magasin magasin = new Magasin();
+    private final Magasin magasin = new Magasin();
 
     @Étantdonné("un cuisinier {string}")
     public void unCuisinier(String arg0) {

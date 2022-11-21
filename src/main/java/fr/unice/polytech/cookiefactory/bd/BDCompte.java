@@ -18,6 +18,7 @@ public class BDCompte {
 
     public BDCompte() {
         this.comptes = new ArrayList<>();
+        init();
     }
 
     public List<Compte> getComptes() {
@@ -40,5 +41,9 @@ public class BDCompte {
     public void devenirMembre(Client client) {
         this.comptes.remove(client);
         this.comptes.add(new Membre(client));
+    }
+
+    public void init(){
+
     }
 }

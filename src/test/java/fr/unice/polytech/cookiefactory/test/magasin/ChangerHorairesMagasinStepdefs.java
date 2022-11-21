@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChangerHorairesMagasinStepdefs {
     Magasin magasin;
-    GestionExceptions gestionExceptions = new GestionExceptions();
+    final GestionExceptions gestionExceptions = new GestionExceptions();
 
     @Étantdonné("un magasin ouvert de {int} h à {int} h")
     public void un_magasin_ouvert_de_h_à_h(Integer int1, Integer int2) {
@@ -27,13 +27,10 @@ public class ChangerHorairesMagasinStepdefs {
     }
 
 
-
-
     @Alors("une erreur est levée")
     public void uneErreurEstLevée() {
         assertEquals(IllegalArgumentException.class, gestionExceptions.popException().getClass());
     }
-
 
 
     @Quand("je change les horaires d ouvertures du magasin pour {int} à {int}")

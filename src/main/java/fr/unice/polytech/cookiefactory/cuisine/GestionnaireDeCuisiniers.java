@@ -2,7 +2,6 @@ package fr.unice.polytech.cookiefactory.cuisine;
 
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
-import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -64,11 +63,6 @@ public class GestionnaireDeCuisiniers {
             }
         }
         return Optional.empty();
-    }
-
-    public CreneauPreparationCommande getDisponibilites() {
-        //TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
     }
 
     public boolean ajouterCuisinier(Cuisinier cuisinier) {

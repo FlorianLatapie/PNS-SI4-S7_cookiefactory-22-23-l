@@ -19,10 +19,8 @@ public class ReservationIngredientsdefs {
     private Cookie cookie;
     private Commande commande;
     private Magasin magasin;
-    private Pate ingredient1;
-    private Saveur ingredient2;
+
     private Garniture ingredient3;
-    private Garniture ingredient4;
 
     @Etantdonné("un cookie nommé {string} composé de Chocolat")
     public void unCookieNomméComposéDUnIngrédient(String nomCookie) {
@@ -35,7 +33,7 @@ public class ReservationIngredientsdefs {
         ingredient1 = new Pate(nomIngredient1);
         ingredient2 = new Saveur(nomIngredient2);
         ingredient3 = new Garniture(nomIngredient3);
-        ingredient4 = new Garniture(nomIngredient4);
+        var ingredient4 = new Garniture(nomIngredient4);
         magasin.getStock().ajouterIngredient(ingredient1, nbIngredient1);
         magasin.getStock().ajouterIngredient(ingredient2, nbIngredient2);
         magasin.getStock().ajouterIngredient(ingredient3, nbIngredient3);

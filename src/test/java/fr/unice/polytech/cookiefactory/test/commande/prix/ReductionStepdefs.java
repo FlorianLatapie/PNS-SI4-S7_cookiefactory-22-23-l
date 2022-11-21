@@ -23,7 +23,7 @@ public class ReductionStepdefs {
 
     @Lorsque("le système calcule le montant total de la commande")
     public void leSystèmeCalculeLeMontantTotalDeLaCommande() {
-        reduction = commande.getPrixReduction();
+        reduction = commande.getPrixHorsTaxeReduction(10);
     }
 
     @Etantdonné("un cookie nommé {string} \\(reduction)")

@@ -2,7 +2,7 @@ package fr.unice.polytech.cookiefactory.messageservices.messages;
 
 public class SMS extends Message {
 
-    String contenu;
+    final String contenu;
 
     public SMS(String expediteur, String destinataire, String contenu) {
         super(expediteur, destinataire);

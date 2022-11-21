@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.time.ZonedDateTime;
 
+@SuppressWarnings("GrazieInspection")
 public class SimpleMagasinFactory implements MagasinFactory {
     private double valeurTaxe = 0.2;
     private String lieu = "Nice";
@@ -12,7 +13,6 @@ public class SimpleMagasinFactory implements MagasinFactory {
     // lundi à 8h
     private ZonedDateTime dateOuverture = null;
     private ZonedDateTime dateFermeture = null;
-
 
     public SimpleMagasinFactory setLieu(String lieu) {
         this.lieu = lieu;
@@ -35,7 +35,7 @@ public class SimpleMagasinFactory implements MagasinFactory {
     }
 
     @Override
-    public Magasin createMagasin(String nom) {
+    public Magasin creerMagasin(String nom) {
         // renvoyer le lundi de la semaine courante à 8h
         var maintenant = ZonedDateTime.now();
         var lundi = Util.getLundiDeLaSemaineCourante(maintenant);
