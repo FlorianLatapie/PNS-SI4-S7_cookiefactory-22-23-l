@@ -15,6 +15,10 @@ public class Stock {
         ingredients = new HashMap<>();
     }
 
+    public void initStock(){
+
+    }
+
     public void retirerIngredient(Ingredient ingredient, Integer quantite) {
         int intialQuantite = getQuantite(ingredient);
         if (intialQuantite - quantite < 0) {
@@ -22,6 +26,10 @@ public class Stock {
         } else {
             ingredients.put(ingredient, getQuantite(ingredient) - quantite);
         }
+    }
+
+    public boolean contientIngredient(Ingredient ingredient) {
+        return ingredients.containsKey(ingredient);
     }
 
     public Integer getQuantite(Ingredient ingredient) {

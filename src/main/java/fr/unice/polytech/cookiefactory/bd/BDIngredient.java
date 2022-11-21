@@ -6,6 +6,7 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 public class BDIngredient {
@@ -14,9 +15,50 @@ public class BDIngredient {
     private final HashSet<Saveur> saveurs;
 
     BDIngredient() {
-        garnitures = new HashSet<>();
         pates = new HashSet<>();
         saveurs = new HashSet<>();
+        garnitures = new HashSet<>();
+        init();
+    }
+
+    private void init() {
+        pates.addAll(List.of(
+                new Pate("Nature"),
+                new Pate("Chocolat"),
+                new Pate("Berre de cacahuette"),
+                new Pate("Avoine")
+        ));
+        saveurs.addAll(List.of(
+                new Saveur("Nature"),
+                new Saveur("Chocolat"),
+                new Saveur("Chocolat noir"),
+                new Saveur("Chocolat blanc"),
+                new Saveur("Chocolat au lait"),
+                new Saveur("Amande"),
+                new Saveur("Pistache"),
+                new Saveur("Fraise"),
+                new Saveur("Vanille"),
+                new Saveur("Caramel"),
+                new Saveur("Noisette")
+        ));
+        garnitures.addAll(List.of(
+                new Garniture("Chocolat"),
+                new Garniture("Chocolat blanc"),
+                new Garniture("Chocolat noir"),
+                new Garniture("Chocolat au lait"),
+                new Garniture("Pépite de chocolat"),
+                new Garniture("Pépite de chocolat blanc"),
+                new Garniture("Pépite de chocolat noir"),
+                new Garniture("Pépite de chocolat au lait"),
+                new Garniture("Amande"),
+                new Garniture("Pistache"),
+                new Garniture("Caramel"),
+                new Garniture("Fraise"),
+                new Garniture("Noix de coco"),
+                new Garniture("Menthe"),
+                new Garniture("Cerise"),
+                new Garniture("Chouchou")
+        ));
     }
 
     public void ajouterGarniture(Garniture garniture) {

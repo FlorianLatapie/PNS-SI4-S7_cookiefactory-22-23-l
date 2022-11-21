@@ -28,12 +28,12 @@ public class Magasin {
 
     // --- Constructeurs ---
     public Magasin() {
-        this("", new Stock());
+        this("");
     }
 
-    public Magasin(String nom, Stock stock) {
+    public Magasin(String nom) {
         this.nom = nom;
-        this.stock = stock;
+        this.stock = new Stock();
 
         this.dateOuverture = Util.heurePile(Util.getLundiDeLaSemaineCourante(ZonedDateTime.now()), 8);
         this.dateFermeture = Util.heurePile(dateOuverture/*.plusDays(4)*/, 18);
@@ -41,24 +41,17 @@ public class Magasin {
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.gestionnaireDeCuisiniers = new GestionnaireDeCuisiniers(this);
         this.cookiesDuMagasin = new CookiesDuMagasin();
+
+        ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookiesValide().forEach(this::ajouterCookie);
     }
 
     public Magasin(Integer taxe) {
-        this("", new Stock());
-        this.valeurTaxe = taxe.floatValue() / 100;
-    }
-
-    public Magasin(Stock stock) {
-        this("", stock);
-    }
-
-    public Magasin(Integer taxe, Stock stock) {
-        this("", stock);
+        this("");
         this.valeurTaxe = taxe.floatValue() / 100;
     }
 
     public Magasin(String nom, double valeurTaxe, String lieu, ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
-        this(nom, new Stock());
+        this(nom);
         this.valeurTaxe = valeurTaxe;
         this.lieu = lieu;
         this.dateOuverture = dateOuverture;
@@ -71,6 +64,16 @@ public class Magasin {
         double prix = p.getPrixEnCentimes();
         double prixAvecTaxe = prix * (1 + valeurTaxe);
         return new Prix((int) prixAvecTaxe);
+    }
+
+    public void ajouterCookie(Cookie cookie) {
+        for ( Ingredient ingredient : cookie.getRecette().getIngredients() ) {
+                if (!getStock().contientIngredient(ingredient)) {
+                    System.out.println("Le magasin ne contient pas l'ingredient " + ingredient.getNom());
+                    return;
+                }
+        }
+        cookiesDuMagasin.ajouterCookie(cookie);
     }
     public void ajouterIngredient(Ingredient ingredient) {
         // TODO - Provient de l'UML
@@ -91,7 +94,7 @@ public class Magasin {
         return stock;
     }
 
-    public CookiesDuMagasin getRecettesDuMagasin() {
+    public CookiesDuMagasin getCookiesDuMagasin() {
         return cookiesDuMagasin;
     }
 

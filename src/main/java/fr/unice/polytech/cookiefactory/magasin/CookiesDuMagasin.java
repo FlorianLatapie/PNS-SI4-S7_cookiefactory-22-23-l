@@ -13,27 +13,16 @@ public class CookiesDuMagasin {
         this.cookiesDisponibles = new ArrayList<>();
     }
 
-    public void ajouterRecette(Cookie recette) {
+    public void ajouterCookie(Cookie cookie) {
+        cookiesDisponibles.add(cookie);
+    }
+
+    public void supprimerCookie(Cookie cookie) {
         // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
-    public void supprimerRecette(Cookie recette) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public void ajouterDisponibilite(Cookie recette) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public void retirerDisponibilite(Cookie recette) {
-        // TODO - Provient de l'UML
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-
-    public Prix calculerPrixHorsTaxe(Cookie recette) {
+    public Prix calculerPrixHorsTaxe(Cookie cookie) {
         // TODO - Provient de l'UML
         throw new UnsupportedOperationException("Not implemented yet.");
     }
@@ -42,4 +31,10 @@ public class CookiesDuMagasin {
         return cookiesDisponibles;
     }
 
+    @Override
+    public String toString() {
+        return "CookiesDuMagasin{" +
+                "cookiesDisponibles=" + cookiesDisponibles +
+                '}';
+    }
 }

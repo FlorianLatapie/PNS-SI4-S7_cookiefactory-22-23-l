@@ -36,7 +36,7 @@ public class PayerUneCommandeStepdef {
 
     @Quand("le client paye la commande et qu'il arrive au bout du {string}")
     public void leClientPayeLaCommandeEtQuIlArriveAuBoutDu(String paiement) {
-        this.commande.getPanier().ajouterCookies(new Cookie("Test", new Recette(new Pate("Pate"), new Saveur("Saveur"), List.of(new Garniture("Garniture")), Cuisson.CROQUANT, Melange.GARNI, 10)), 2);
+        this.commande.getPanier().ajouterCookies(new Cookie("Test", new Recette(/*new Pate("Pate"), new Saveur("Saveur"), List.of(new Garniture("Garniture")), Cuisson.CROQUANT, Melange.GARNI, 10*/)), 2);
         this.commande.changerStatut(Etat.EN_COURS_DE_PAIEMENT);
         try {
             this.gestionnaireDeCommandes.payerCommande(this.commande, this.client, Boolean.parseBoolean(paiement));

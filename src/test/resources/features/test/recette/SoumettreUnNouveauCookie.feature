@@ -22,6 +22,6 @@ Fonctionnalité: Soumettre un nouveau cookie
 
       # Comportement correct
       | Amandine | Nature   | Amande        | Chouchou           | Caramel          | CROQUANT | MIXTE   | 5     |
-      | Pepito   | Chocolat | Chocolat noir | Pepite de chocolat | Chocolat fondant | MOELLEUX | GARNI   | 3     |
+      | Pepito   | Chocolat | Chocolat noir | Pépite de chocolat | Fraise           | MOELLEUX | GARNI   | 3     |
 
 

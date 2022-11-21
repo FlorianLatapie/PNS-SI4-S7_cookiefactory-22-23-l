@@ -23,12 +23,12 @@ public class SoumettreUnNouveauCookieStepDef {
     Cuisinier cuisinier;
     Cookie cookie;
     String nom;
-    Pate pate;
-    Saveur saveur;
-    Garniture garniture1;
-    Garniture garniture2;
-    Cuisson cuisson;
-    Melange melange;
+    String pate;
+    String saveur;
+    String garniture1;
+    String garniture2;
+    String cuisson;
+    String melange;
     int temps;
 
     @Étantdonné("un cuisinier")
@@ -45,35 +45,35 @@ public class SoumettreUnNouveauCookieStepDef {
 
     @Étantdonné("avec une Pate : {string}")
     public void avec_une_pate(String pate) {
-        this.pate = new Pate(pate);
+        this.pate = pate;
     }
 
     @Étantdonné("de Saveur : {string}")
     public void de_saveur(String saveur) {
-        this.saveur = new Saveur(saveur);
+        this.saveur = saveur;
     }
 
     @Étantdonné("avec les garnitures {string} et {string}")
     public void avec_les_garnitures_et(String garniture1, String garniture2) {
-        this.garniture1 = new Garniture(garniture1);
-        this.garniture2 = new Garniture((garniture2));
+        this.garniture1 = garniture1;
+        this.garniture2 = garniture2;
     }
 
     @Étantdonné("une Cuisson : {string}")
     public void une_cuisson(String cuisson) {
-        this.cuisson = Cuisson.valueOf(cuisson);
+        this.cuisson = cuisson;
     }
 
     @Étantdonné("un Melange : {string}")
     public void un_melange(String melange) {
-        this.melange = Melange.valueOf(melange);
+        this.melange = melange;
     }
 
     @Étantdonné("un temps de préparation {int} s")
     public void un_temps_de_préparation_temps(int temps) {
         this.temps = temps;
 
-        this.cookie = new Cookie(nom, new Recette(pate, saveur, List.of(garniture1, garniture2), cuisson, melange, temps));
+        this.cookie = new Cookie(nom, new Recette().setPate(pate).setSaveur(saveur).setGarnitures(List.of(garniture1, garniture2)).setCuisson(cuisson).setMelange(melange).setTempsPreparation(temps));
 
     }
 

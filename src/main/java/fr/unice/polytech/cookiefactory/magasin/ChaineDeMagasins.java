@@ -21,17 +21,22 @@ public class ChaineDeMagasins {
         magasins.forEach(magasin -> ChaineDeMagasins.getInstance().ajouterMagasin(magasin));
     }
 
-    private final List<Magasin> magasins;
-    private final BaseDeDonnees bd;
+    private List<Magasin> magasins;
+    private BaseDeDonnees bd;
 
     private ChaineDeMagasins() {
+    }
+
+    private void init() {
         magasins = new ArrayList<>();
         bd = new BaseDeDonnees();
+        bd.initBD();
     }
 
     public static ChaineDeMagasins getInstance() {
         if (instance == null) {
             instance = new ChaineDeMagasins();
+            instance.init();
         }
         return instance;
     }

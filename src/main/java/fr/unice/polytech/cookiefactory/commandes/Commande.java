@@ -107,7 +107,7 @@ public class Commande {
     public int calculerDureePreparation() {
         return (panier.getLignesCommande().stream()
                 .mapToInt(
-                        ligneCommande -> ligneCommande.getCookie().getRecette().tempsPreparation()
+                        ligneCommande -> ligneCommande.getCookie().getRecette().getTempsPreparation()
                                 *
                                 ligneCommande.getQuantite()
                 )

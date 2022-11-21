@@ -44,17 +44,17 @@ public class BDCookie {
         return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.SOUMIS)).toList();
     }
 
+    public List<Cookie> getCookiesValide() {
+        return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.VALIDE)).toList();
+    }
+
     public void init() {
         Cookie cookiePopChoco = new Cookie(
                 "Pop-Choco",
-                new Recette(
-                        new Pate("Pate basic"),
-                        new Saveur("Amandes"),
-                        List.of(new Garniture("Chocolat"), new Garniture("Chocolat blanc")),
-                        Cuisson.CROQUANT,
-                        Melange.MIXTE,
-                        15
-                ),
+                new Recette()
+                        .setSaveur("Amande")
+                        .setGarnitures(List.of("Chocolat", "Chocolat blanc"))
+                        .setCuisson("CROQUANT"),
                 new Prix(150));
         cookies.put(cookiePopChoco.getNom(), cookiePopChoco);
     }

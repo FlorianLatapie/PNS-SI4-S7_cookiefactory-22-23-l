@@ -1,19 +1,14 @@
 package fr.unice.polytech.cookiefactory.bd;
 
-import fr.unice.polytech.cookiefactory.acteur.Compte;
-
 public class BaseDeDonnees {
     private BDCookie bdCookie;
     private BDIngredient bdIngredient;
     private BDCompte bdCompte;
 
-    public BaseDeDonnees() {
-        initBD();
-    }
 
-    private void initBD() {
-        bdCookie = new BDCookie();
+    public void initBD() {
         bdIngredient = new BDIngredient();
+        bdCookie = new BDCookie();
         bdCompte = new BDCompte();
     }
 
