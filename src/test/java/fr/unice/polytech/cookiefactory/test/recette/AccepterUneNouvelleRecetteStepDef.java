@@ -13,6 +13,7 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 import io.cucumber.java.fr.Alors;
+import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
 
@@ -100,5 +101,15 @@ public class AccepterUneNouvelleRecetteStepDef {
     @Alors("le Dirigent valide le cookie {string}")
     public void le_dirigent_valide_le_cookie(String string) {
         bdCookie.validerCookie(string);
+        System.out.println("valide cookie");
+        assertTrue(bdCookie.getCookiesValide().contains(cookie));
+    }
+
+    @Et("les magasins sont notifiés de la disponibilité du cookie {string}")
+    public void lesMagasinsSontNotifiésDeLaDisponibilitéDuCookie(String string) {
+        chaineDeMagasins.getAllMagasins().forEach(magasin -> {
+            System.out.println(magasin.getCookiesDuMagasin().getCookies());
+            assertTrue(magasin.getCookiesDuMagasin().getCookies().containsKey(string));
+        });
     }
 }

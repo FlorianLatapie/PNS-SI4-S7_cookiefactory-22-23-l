@@ -1,23 +1,24 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
-import fr.unice.polytech.cookiefactory.divers.Prix;
+import fr.unice.polytech.cookiefactory.magasin.observeur.CookieDuMagasinListener;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class CookiesDuMagasin {
-    private final List<Cookie> cookiesDisponibles;
+public class CookiesDuMagasin implements CookieDuMagasinListener {
+    private final HashMap<String, Cookie> cookiesDuMagasin;
     public CookiesDuMagasin() {
-        this.cookiesDisponibles = new ArrayList<>();
+        this.cookiesDuMagasin = new HashMap<>();
     }
     
-    public List<Cookie> getCookiesDisponibles() {
-        return cookiesDisponibles;
+    public HashMap<String, Cookie> getCookies() {
+        return cookiesDuMagasin;
     }
 
-    public void ajouterCookie(Cookie cookie) {
-        cookiesDisponibles.add(cookie);
+    @Override
+    public void update(Cookie cookie) {
+        cookiesDuMagasin.put(cookie.getNom(), cookie);
     }
-
 }

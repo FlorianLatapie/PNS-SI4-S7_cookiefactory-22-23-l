@@ -41,7 +41,7 @@ public class Magasin implements IClasseTempsReel {
         this.gestionnaireDeCommandes = new GestionnaireDeCommandes(this);
         this.gestionnaireDeCuisiniers = new GestionnaireDeCuisiniers(this);
         this.cookiesDuMagasin = new CookiesDuMagasin();
-
+        ChaineDeMagasins.getInstance().getBd().getBdCookie().ajouterCookieDuMagasinListener(this.cookiesDuMagasin);
         this.horlogeDuMagasin = new HorlogeDuMagasin(this);
     }
 
@@ -98,6 +98,10 @@ public class Magasin implements IClasseTempsReel {
 
     public ZonedDateTime getHeureFermeture() {
         return heureFermeture;
+    }
+
+    public CookiesDuMagasin getCookiesDuMagasin() {
+        return cookiesDuMagasin;
     }
 
     @Override

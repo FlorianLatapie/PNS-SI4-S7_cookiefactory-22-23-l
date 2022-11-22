@@ -18,10 +18,10 @@ public class ChaineDeMagasins {
     }
 
     private void init() {
-        magasins = new ArrayList<>();
-        initMagasin();
         bd = new BaseDeDonnees();
         bd.initBD();
+        magasins = new ArrayList<>();
+        initMagasin();
     }
 
     private void initMagasin(){

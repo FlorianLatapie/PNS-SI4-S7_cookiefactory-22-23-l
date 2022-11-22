@@ -16,3 +16,4 @@ Fonctionnalité: Accepter un nouveau cookie
     Étant donné un cuisinier qui a soumis un cookie
     Quand le Dirigent regarde les cookies en attente de validation
     Alors le Dirigent valide le cookie "Chocokid"
+    Et les magasins sont notifiés de la disponibilité du cookie "Chocokid"
