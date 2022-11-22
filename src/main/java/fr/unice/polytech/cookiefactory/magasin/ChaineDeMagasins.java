@@ -11,16 +11,6 @@ import java.util.Optional;
 public class ChaineDeMagasins {
     private static ChaineDeMagasins instance;
 
-    static {
-        MagasinFactory factory = new SimpleMagasinFactory();
-        List<Magasin> magasins = new ArrayList<>();
-        magasins.add(factory.creerMagasin("Magasin 1"));
-        magasins.add(factory.creerMagasin("Magasin 2"));
-        magasins.add(factory.creerMagasin("Magasin 3"));
-
-        magasins.forEach(magasin -> ChaineDeMagasins.getInstance().ajouterMagasin(magasin));
-    }
-
     private List<Magasin> magasins;
     private BaseDeDonnees bd;
 
@@ -29,8 +19,16 @@ public class ChaineDeMagasins {
 
     private void init() {
         magasins = new ArrayList<>();
+        initMagasin();
         bd = new BaseDeDonnees();
         bd.initBD();
+    }
+
+    private void initMagasin(){
+        MagasinFactory factory = new SimpleMagasinFactory();
+        magasins.add(factory.creerMagasin("Magasin 1"));
+        magasins.add(factory.creerMagasin("Magasin 2"));
+        magasins.add(factory.creerMagasin("Magasin 3"));
     }
 
     public static ChaineDeMagasins getInstance() {
