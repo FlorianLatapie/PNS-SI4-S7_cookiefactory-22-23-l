@@ -49,6 +49,7 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     }
 
     public void ajouterCommande(Commande commande) {
+        commande.setGestionnaireDeCommandes(this);
         this.commandes.add(commande);
     }
 
@@ -63,25 +64,26 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
                 .findFirst();
     }
 
-    public void payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
+    public Prix payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
+        Prix prix = Prix.ZERO;
         if (paiementAccepte) {
-            Prix prix = commande.getPrixHorsTaxe();
             if (compte.getClass().equals(Membre.class)) {
                 Membre membre = (Membre) compte;
                 membre.ajouterPointsFidelite(commande.getPanier().getNbCookies());
-                if (membre.getPointsFidelite() >= Membre.QUOTA) {
-                    membre.setPointsFidelite(membre.getPointsFidelite() % Membre.QUOTA);
-                    prix = prix.multiplier(0.9);
+                if (membre.aReduction()) {
+                    commande.appliquerRemise();
                 }
             }
+            prix = commande.getPrixAvecTaxe();
             commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
             System.out.println("Vous avez Payé: " + prix);
             System.out.println("Pour: " + commande.getPanier());
             if (!prix.equals(commande.getPrixHorsTaxe()))
-                System.out.println("Réduction de 10%: " + commande.getPrixHorsTaxe().multiplier(0.9));
+                System.out.println("Réduction de " + Commande.REDUCTION + "%: " + commande.getPrixHorsTaxe().multiplier(0.9));
         } else {
             commande.changerStatut(Etat.ANNULEE);
         }
+        return prix;
     }
 
     private boolean besoinDEnvoyerMessage(Commande commande) {

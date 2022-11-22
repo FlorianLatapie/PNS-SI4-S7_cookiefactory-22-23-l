@@ -8,7 +8,7 @@ public final class Prix {
     private final int nbCentimes;
 
     public Prix(int centimes) {
-        this.nbCentimes = centimes;
+        this.nbCentimes = Math.max(centimes, 0);
     }
 
     public int getPrixEnCentimes() {
