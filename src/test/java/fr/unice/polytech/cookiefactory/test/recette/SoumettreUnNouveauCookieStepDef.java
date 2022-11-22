@@ -73,7 +73,7 @@ public class SoumettreUnNouveauCookieStepDef {
     public void un_temps_de_préparation_temps(int temps) {
         this.temps = temps;
 
-        this.cookie = new Cookie(nom, new Recette().setPate(pate).setSaveur(saveur).setGarnitures(List.of(garniture1, garniture2)).setCuisson(cuisson).setMelange(melange).setTempsPreparation(temps));
+        this.cookie = new Cookie(nom, new Recette().setPate(pate, 10).setSaveur(saveur, 10).setGarnitures(List.of(garniture1, garniture2), 10).setCuisson(cuisson).setMelange(melange).setTempsPreparation(temps));
 
     }
 

@@ -76,9 +76,9 @@ public class AccepterUneNouvelleRecetteStepDef {
         temps = int1;
         cookie = new Cookie(nom,
                 new Recette()
-                        .setPate(pate)
-                        .setSaveur(saveur)
-                        .setGarnitures(List.of(garniture1))
+                        .setPate(pate, 10)
+                        .setSaveur(saveur, 10)
+                        .setGarnitures(List.of(garniture1), 10)
                         .setCuisson(cuisson)
                         .setMelange(melange)
                         .setTempsPreparation(temps)

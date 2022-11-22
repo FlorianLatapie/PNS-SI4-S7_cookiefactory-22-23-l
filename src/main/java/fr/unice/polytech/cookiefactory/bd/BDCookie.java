@@ -70,8 +70,8 @@ public class BDCookie {
         Cookie cookiePopChoco = new Cookie(
                 "Pop-Choco",
                 new Recette()
-                        .setSaveur("Amande")
-                        .setGarnitures(List.of("Chocolat", "Chocolat blanc"))
+                        .setSaveur("Amande", 10)
+                        .setGarnitures(List.of("Chocolat", "Chocolat blanc"), 10)
                         .setCuisson("CROQUANT"),
                 new Prix(150));
         ajouterUnCookie(cookiePopChoco);

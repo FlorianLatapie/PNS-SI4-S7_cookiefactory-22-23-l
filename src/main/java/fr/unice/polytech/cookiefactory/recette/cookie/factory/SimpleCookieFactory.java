@@ -21,7 +21,7 @@ public class SimpleCookieFactory {
     protected ValidationCookie etat = ValidationCookie.VALIDE;
 
     public SimpleCookieFactory() {
-        recette = new Recette().setPate("Nature").setSaveur("Amande").setGarnitures(List.of("Chocolat noir")).setCuisson("MOELLEUX").setMelange("GARNI").setTempsPreparation(10);
+        recette = new Recette().setPate("Nature", 10).setSaveur("Amande", 10).setGarnitures(List.of("Chocolat noir"), 10).setCuisson("MOELLEUX").setMelange("GARNI").setTempsPreparation(10);
     }
 
     public void setRecette(Recette recette) {

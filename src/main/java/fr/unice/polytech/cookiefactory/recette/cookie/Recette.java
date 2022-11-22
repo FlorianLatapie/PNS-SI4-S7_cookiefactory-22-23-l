@@ -3,54 +3,58 @@ package fr.unice.polytech.cookiefactory.recette.cookie;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
 import fr.unice.polytech.cookiefactory.recette.enums.Melange;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
+import fr.unice.polytech.cookiefactory.recette.ingredient.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Recette {
-    Pate pate;
-    Saveur saveur;
-    List<Garniture> garnitures;
+    QuantiteIngredient<Pate, Integer> quantitePate;
+    QuantiteIngredient<Saveur, Integer> quantiteSaveur;
+    QuantiteIngredient<List<Garniture>, Integer> quantiteGarnitures;
     Cuisson cuisson;
     Melange melange;
     int tempsPreparation;
 
     public Recette(){
-        pate = new Pate("Nature");
-        saveur = new Saveur("Nature");
-        garnitures = new ArrayList<>();
+        Pate pate = new Pate("Nature");
+        Saveur saveur = new Saveur("Nature");
+        ArrayList<Garniture> garniture = new ArrayList<>();
+        quantitePate = new QuantiteIngredient<>(pate, 0);
+        quantiteSaveur = new QuantiteIngredient<>(saveur, 0);
+        quantiteGarnitures = new QuantiteIngredient<>(garniture, 0);
         cuisson = Cuisson.MOELLEUX;
         melange = Melange.MIXTE;
         tempsPreparation = 15;
     }
 
-    public Recette setPate(String pate) {
-        if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getPate(pate).isEmpty()){
+    public Recette setPate(String nomPate, int quantite) {
+        if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getPate(nomPate).isEmpty()){
             throw new IllegalArgumentException("La pate n'existe pas");
         }
-        this.pate = new Pate(pate);
+        Pate pate = new Pate(nomPate);
+        this.quantitePate = new QuantiteIngredient<>(pate, quantite);
         return this;
     }
 
-    public Recette setSaveur(String saveur) {
-        if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getSaveur(saveur).isEmpty()){
+    public Recette setSaveur(String nomSaveur, int quantite) {
+        if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getSaveur(nomSaveur).isEmpty()){
             throw new IllegalArgumentException("La saveur n'existe pas");
         }
-        this.saveur = new Saveur(saveur);
+        Saveur saveur = new Saveur(nomSaveur);
+        this.quantiteSaveur = new QuantiteIngredient<>(saveur, quantite);
         return this;
     }
 
-    public Recette setGarnitures(List<String> garnitures) {
-        for (String garniture : garnitures) {
-            if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getGarniture(garniture).isEmpty()){
+    public Recette setGarnitures(List<String> nomsGarnitures, int quantite) {
+        ArrayList<Garniture> garnitures = new ArrayList<>();
+        for (String nomGarniture : nomsGarnitures) {
+            if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getGarniture(nomGarniture).isEmpty()){
                 throw new IllegalArgumentException("La garniture n'existe pas");
             }
-            this.garnitures.add(new Garniture(garniture));
+            garnitures.add(new Garniture(nomGarniture));
         }
+        this.quantiteGarnitures = new QuantiteIngredient<>(garnitures, quantite);
         return this;
     }
 
@@ -83,21 +87,21 @@ public class Recette {
 
 
     public List<Ingredient> getIngredients() {
-        List<Ingredient> ingredients = new java.util.ArrayList<>(List.of(pate, saveur));
-        ingredients.addAll(garnitures);
+        List<Ingredient> ingredients = new java.util.ArrayList<>(List.of(quantitePate.getIngredient(), quantiteSaveur.getIngredient()));
+        ingredients.addAll(quantiteGarnitures.getIngredient());
         return ingredients;
     }
 
-    public Pate getPate() {
-        return pate;
+    public QuantiteIngredient<Pate, Integer> getQuantitePate() {
+        return quantitePate;
     }
 
-    public Saveur getSaveur() {
-        return saveur;
+    public QuantiteIngredient<Saveur, Integer> getQuantiteSaveur() {
+        return quantiteSaveur;
     }
 
-    public List<Garniture> getGarnitures() {
-        return garnitures;
+    public QuantiteIngredient<List<Garniture>, Integer> getQuantiteGarnitures() {
+        return quantiteGarnitures;
     }
 
     public Cuisson getCuisson() {
