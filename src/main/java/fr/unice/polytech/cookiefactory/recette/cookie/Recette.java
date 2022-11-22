@@ -92,6 +92,10 @@ public class Recette {
         return ingredients;
     }
 
+    public int getQuantiteTotale(){
+        return quantiteGarnitures.getQuantite() + quantiteSaveur.getQuantite() + quantitePate.getQuantite();
+    }
+
     public QuantiteIngredient<Pate, Integer> getQuantitePate() {
         return quantitePate;
     }
@@ -114,5 +118,29 @@ public class Recette {
 
     public int getTempsPreparation() {
         return tempsPreparation;
+    }
+
+    public void modifierQuantitePate(int quantite){
+        this.quantitePate.setQuantite(quantite);
+    }
+
+    public void modifierQuantiteGarnitures(int quantite){
+        this.quantiteGarnitures.setQuantite(quantite);
+    }
+
+    public void modifierQuantiteSaveur(int quantite){
+        this.quantiteSaveur.setQuantite(quantite);
+    }
+
+    public void multiplierQuantitePate(int multiplicateur){
+        modifierQuantitePate(this.quantitePate.getQuantite() * multiplicateur);
+    }
+
+    public void multiplierQuantiteGarnitures(int multiplicateur){
+        this.quantiteGarnitures.setQuantite(this.quantiteGarnitures.getQuantite() * multiplicateur);
+    }
+
+    public void multiplierQuantiteSaveur(int multiplicateur){
+        this.quantiteSaveur.setQuantite(this.quantiteSaveur.getQuantite() * multiplicateur);
     }
 }
