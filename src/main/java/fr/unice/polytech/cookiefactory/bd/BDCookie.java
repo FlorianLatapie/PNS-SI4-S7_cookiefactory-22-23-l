@@ -39,6 +39,9 @@ public class BDCookie {
     }
 
     public void validerCookie(String nom) {
+        if (!cookies.containsKey(nom)) {
+            throw new IllegalArgumentException(nom + "n'est pas contenu dans la base de données");
+        }
         Cookie cookie = cookies.remove(nom);
         cookie.changerEtat(ValidationCookie.VALIDE);
         ajouterUnCookie(cookie);
