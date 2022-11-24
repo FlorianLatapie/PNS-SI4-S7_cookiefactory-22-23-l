@@ -57,13 +57,19 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     public void annulerCommande(Commande commande) {
         if(commandeAppartientAuGestionnaire(commande)) {
             Compte compteAvecCommande;
-            if (commande.getEtat() != Etat.EN_COURS_DE_PREPARATION) {
+            if (commande.getEtat() == Etat.CONFIRMEE) {
                 compteAvecCommande = commande.getCompte(); //TODO rembourser client
                 Cuisinier cuisinier = obtenirCuisinierPreparantCommande(commande);
                 cuisinier.annulerCommande(commande); //désassigner le cuisinier
-                //TODO remettre en stock les ingrédients
-                this.enleverCommande(commande); //enlever commande du gestionnaire
+                                                     //TODO remettre en stock les ingrédients
+                this.enleverCommande(commande);      //enlever commande du gestionnaire
             }
+            else {
+                throw new IllegalArgumentException("Vous ne pouvez pas annuler votre commande maintenant.");
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Vous ne pouvez pas annuler une commande qui n'appartient pas au gestionnaire. ");
         }
     }
 
