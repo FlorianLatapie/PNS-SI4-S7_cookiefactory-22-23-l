@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.commandes.oubliees.GestionnaireDeCommandesOubliees;
 import fr.unice.polytech.cookiefactory.commandes.oubliees.generation_panier_strategy.ConcatenantionGenerationPanierStrategy;
+import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -53,6 +54,34 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
         this.commandes.add(commande);
     }
 
+    public void annulerCommande(Commande commande) {
+        if(commandeAppartientAuGestionnaire(commande)) {
+            Compte compteAvecCommande;
+            if (commande.getEtat() != Etat.EN_COURS_DE_PREPARATION) {
+                compteAvecCommande = commande.getCompte(); //TODO rembourser client
+                Cuisinier cuisinier = obtenirCuisinierPreparantCommande(commande);
+                cuisinier.annulerCommande(commande); //désassigner le cuisinier
+                //TODO remettre en stock les ingrédients
+                this.enleverCommande(commande); //enlever commande du gestionnaire
+            }
+        }
+    }
+
+    public Cuisinier obtenirCuisinierPreparantCommande(Commande commande) {
+        return magasin.getGestionnaireDeCuisiniers().getCuisiniers().stream().filter(cuisinier -> cuisinier.getGestionnaireDeCommandes().commandeAppartientAuGestionnaire(commande)).findFirst().get();
+    }
+
+    public boolean commandeAppartientAuGestionnaire(Commande commande) {
+        return this.commandes.contains(commande);
+    }
+    public void enleverCommande(Commande commande) {
+        if(commandeAppartientAuGestionnaire(commande)) {
+            this.commandes.remove(commande);
+        }
+        else {
+            throw new IllegalArgumentException("Erreur: la commande n'est pas dans le gestionnaire de commande. ");
+        }
+    }
     public void ajouterCommande(List<Commande> commandes) {
         this.commandes.addAll(commandes);
     }

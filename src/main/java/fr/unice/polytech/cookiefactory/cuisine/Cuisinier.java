@@ -34,6 +34,16 @@ public class Cuisinier {
         gestionnaireDeCommandes.changerStatut(commande, Etat.EN_ATTENTE_DE_RETRAIT);
     }
 
+    public void annulerCommande(Commande commande) {
+        if (commande.getEtat() != Etat.CONFIRMEE) {
+            throw new IllegalArgumentException("Vous ne pouvez pas annuler votre commande maintenant! ");
+        }
+        edtCuisinier.getCreneauPreparationCommande().remove(obtenirCreneauPourCommande(commande));
+    }
+
+    public CreneauPreparationCommande obtenirCreneauPourCommande(Commande commande) {
+        return edtCuisinier.getCreneauPreparationCommande().stream().filter(creneauPreparationCommande -> creneauPreparationCommande.getCommande() == commande).findAny().get();
+    }
 
     public void ajouterCommande(Commande commande) {
         edtCuisinier.nouveauCreneau(commande);
