@@ -1,28 +1,44 @@
 package fr.unice.polytech.cookiefactory.test.commande.cycle_de_vie;
 
+import fr.unice.polytech.cookiefactory.acteur.clients.Client;
+import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
+import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
+import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class AnnulerUneCommandeStepDef {
+    private Magasin magasin;
+    private GestionnaireDeCommandes gestionnaireDeCommandes;
+    private Client client;
+    private Commande commande;
+
     @Etantdonné("un magasin avec des commandes")
     public void un_magasin_avec_des_commandes() {
-        // Write code here that turns the phrase above into concrete actions
+        magasin = new Magasin();
+        gestionnaireDeCommandes = magasin.getGestionnaireDeCommandes();
     }
 
     @Etantdonné("un client ayant une commande n'étant pas encore préparée")
     public void un_client_ayant_une_commande_n_étant_pas_encore_préparée() {
-        // Write code here that turns the phrase above into concrete actions
+        client = new Client("Chabanier", "Aurelia");
+        commande = new Commande(magasin, client);
+        commande.changerStatut(Etat.CONFIRMEE);
+        gestionnaireDeCommandes.ajouterCommande(commande);
     }
 
     @Quand("le client annule sa commande")
     public void le_client_annule_sa_commande() {
-        // Write code here that turns the phrase above into concrete actions
+        //gestionnaireDeCommandes.annulerCommande(commande);
     }
 
     @Alors("l'état de la commande devient ANNULEE")
     public void l_état_de_la_commande_devient_annulee() {
-        // Write code here that turns the phrase above into concrete actions
+        //assertEquals(commande.getEtat(), Etat.ANNULEE);
     }
 
     @Etantdonné("un client ayant une commande déja commencée")
