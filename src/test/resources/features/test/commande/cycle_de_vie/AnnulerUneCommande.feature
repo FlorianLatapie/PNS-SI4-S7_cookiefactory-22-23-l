@@ -3,6 +3,8 @@ Fonctionnalité: Annuler sa commande
 
   Contexte:
     Etant donné un magasin avec des commandes
+    Et une commande à annuler
+    Et un cuisinier responsable de la commande à annuler
 
   Scénario: Annuler sa commande (possible)
     Etant donné un client ayant une commande n'étant pas encore préparée
@@ -16,7 +18,6 @@ Fonctionnalité: Annuler sa commande
 
   Scénario: Désassigner un cuisinier
     Etant donné un client ayant une commande n'étant pas encore préparée
-    Et un cuisinier assigné à cette commande
     Quand le client annule sa commande
     Alors le créneau du cuisinier est libéré
 
