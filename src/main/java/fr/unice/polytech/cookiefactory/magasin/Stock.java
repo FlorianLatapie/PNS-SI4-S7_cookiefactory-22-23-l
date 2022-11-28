@@ -1,6 +1,7 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
 import fr.unice.polytech.cookiefactory.exceptions.PasAssezIngredientStock;
+import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.util.ArrayList;
@@ -62,5 +63,14 @@ public class Stock {
         return "Stock{" +
                 "ingredients=" + ingredients +
                 '}';
+    }
+
+    public boolean estDisponible(Cookie cookie) {
+        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
+            if (!contientIngredient(ingredient) || getQuantite(ingredient) < cookie.getRecette().getQuantite(ingredient)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

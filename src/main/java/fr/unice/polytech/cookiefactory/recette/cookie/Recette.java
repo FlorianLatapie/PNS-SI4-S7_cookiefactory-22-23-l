@@ -115,4 +115,13 @@ public class Recette {
     public int getTempsPreparation() {
         return tempsPreparation;
     }
+
+    public Integer getQuantite(Ingredient ingredient) {
+        return switch (ingredient.getClass().getSimpleName()) {
+            case "Pate" -> quantitePate.getQuantite();
+            case "Saveur" -> quantiteSaveur.getQuantite();
+            case "Garniture" -> quantiteGarnitures.getQuantite();
+            default -> throw new IllegalArgumentException("L'ingredient n'existe pas");
+        };
+    }
 }

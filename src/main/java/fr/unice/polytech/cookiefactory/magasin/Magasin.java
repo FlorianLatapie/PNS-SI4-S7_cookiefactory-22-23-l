@@ -5,9 +5,12 @@ import fr.unice.polytech.cookiefactory.cuisine.ChefCookieFestif;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Util;
+import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("ALL")
@@ -102,6 +105,20 @@ public class Magasin implements IClasseTempsReel {
 
     public CookiesDuMagasin getCookiesDuMagasin() {
         return cookiesDuMagasin;
+    }
+
+    public HashMap<String, Cookie> getCatalogue() {
+        return cookiesDuMagasin
+                .getCookies()
+                .values()
+                .stream()
+                .filter(cookie -> estDisponible(cookie)) // On ne prend que les cookies disponiblesn en fonction du stock
+                .collect(HashMap::new, (map, cookie) -> map.put(cookie.getNom(), cookie), HashMap::putAll);
+
+    }
+
+    private boolean estDisponible(Cookie cookie) {
+        return stock.estDisponible(cookie);
     }
 
     @Override
