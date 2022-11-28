@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.commandes.oubliees.GestionnaireDeCommandesOubliees;
 import fr.unice.polytech.cookiefactory.commandes.oubliees.generation_panier_strategy.ConcatenantionGenerationPanierStrategy;
+import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -49,9 +50,44 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     }
 
     public void ajouterCommande(Commande commande) {
+        commande.setGestionnaireDeCommandes(this);
         this.commandes.add(commande);
     }
 
+    public void annulerCommande(Commande commande) {
+        if(commandeAppartientAuGestionnaire(commande)) {
+            Compte compteAvecCommande;
+            if (commande.getEtat() == Etat.CONFIRMEE) {
+                compteAvecCommande = commande.getCompte(); //TODO rembourser client
+                //Cuisinier cuisinier = obtenirCuisinierPreparantCommande(commande);
+                //cuisinier.annulerCommande(commande); //désassigner le cuisinier
+                                                     //TODO remettre en stock les ingrédients
+                this.enleverCommande(commande);      //enlever commande du gestionnaire
+            }
+            else {
+                throw new IllegalArgumentException("Vous ne pouvez pas annuler votre commande maintenant.");
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Vous ne pouvez pas annuler une commande qui n'appartient pas au gestionnaire. ");
+        }
+    }
+
+    public Cuisinier obtenirCuisinierPreparantCommande(Commande commande) {
+        return magasin.getGestionnaireDeCuisiniers().getCuisiniers().stream().filter(cuisinier -> cuisinier.getGestionnaireDeCommandes().commandeAppartientAuGestionnaire(commande)).findFirst().get();
+    }
+
+    public boolean commandeAppartientAuGestionnaire(Commande commande) {
+        return this.commandes.contains(commande);
+    }
+    public void enleverCommande(Commande commande) {
+        if(commandeAppartientAuGestionnaire(commande)) {
+            this.commandes.remove(commande);
+        }
+        else {
+            throw new IllegalArgumentException("Erreur: la commande n'est pas dans le gestionnaire de commande. ");
+        }
+    }
     public void ajouterCommande(List<Commande> commandes) {
         this.commandes.addAll(commandes);
     }
@@ -63,25 +99,26 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
                 .findFirst();
     }
 
-    public void payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
+    public Prix payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
+        Prix prix = Prix.ZERO;
         if (paiementAccepte) {
-            Prix prix = commande.getPrixHorsTaxe();
             if (compte.getClass().equals(Membre.class)) {
                 Membre membre = (Membre) compte;
                 membre.ajouterPointsFidelite(commande.getPanier().getNbCookies());
-                if (membre.getPointsFidelite() >= Membre.QUOTA) {
-                    membre.setPointsFidelite(membre.getPointsFidelite() % Membre.QUOTA);
-                    prix = prix.multiplier(0.9);
+                if (membre.aReduction()) {
+                    commande.appliquerRemise();
                 }
             }
+            prix = commande.getPrixAvecTaxe();
             commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
             System.out.println("Vous avez Payé: " + prix);
             System.out.println("Pour: " + commande.getPanier());
             if (!prix.equals(commande.getPrixHorsTaxe()))
-                System.out.println("Réduction de 10%: " + commande.getPrixHorsTaxe().multiplier(0.9));
+                System.out.println("Réduction de " + Commande.REDUCTION + "%: " + commande.getPrixHorsTaxe().multiplier(0.9));
         } else {
             commande.changerStatut(Etat.ANNULEE);
         }
+        return prix;
     }
 
     private boolean besoinDEnvoyerMessage(Commande commande) {

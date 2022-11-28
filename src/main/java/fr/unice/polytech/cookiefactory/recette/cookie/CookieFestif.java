@@ -11,6 +11,9 @@ public class CookieFestif extends Cookie {
     public CookieFestif(String nom, Recette recette, Prix prix, Taille taille) {
         super(nom, recette, prix);
         this.taille = taille;
+        this.recette.multiplierQuantitePate(taille.getMultiplicateurQuantite());
+        this.recette.multiplierQuantiteSaveur(taille.getMultiplicateurQuantite());
+        this.recette.multiplierQuantiteGarnitures(taille.getMultiplicateurQuantite());
     }
 
     public CookieFestif(Cookie cookie, Taille taille) {

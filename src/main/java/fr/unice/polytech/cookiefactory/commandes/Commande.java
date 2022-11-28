@@ -1,6 +1,7 @@
 package fr.unice.polytech.cookiefactory.commandes;
 
 import fr.unice.polytech.cookiefactory.acteur.Compte;
+import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Prix;
@@ -11,7 +12,7 @@ import java.util.Objects;
 
 public class Commande implements IClasseTempsReel {
 
-    private static final int REDUCTION = 10; // en pourcentage
+    public static int REDUCTION = 10; // en pourcentage
     private final Panier panier = new Panier();
     private ZonedDateTime dateReception;
     private boolean appliquerRemise;
@@ -27,12 +28,12 @@ public class Commande implements IClasseTempsReel {
     }
 
     public Commande(Magasin magasin) {
-        gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
+        this(magasin, null);
     }
 
     public Commande(Magasin magasin, Compte compte) {
-        gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
         this.compte = compte;
+        this.gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
     }
 
     public Compte getCompte() {
@@ -49,10 +50,12 @@ public class Commande implements IClasseTempsReel {
 
     public Prix getPrixAvecTaxe() {
         Prix prixHorsTaxe = getPrixHorsTaxe();
-        if (appliquerRemise) {
+        if (this.appliquerRemise && this.compte instanceof Membre) {
+            this.appliquerRemise = false;
             prixHorsTaxe = getPrixHorsTaxeReduction(REDUCTION);
+            ((Membre) this.compte).resetReduction();
         }
-        return gestionnaireDeCommandes.ajouterTaxe(prixHorsTaxe);
+        return this.gestionnaireDeCommandes.ajouterTaxe(prixHorsTaxe);
     }
 
     public Prix getPrixHorsTaxeReduction(int pourcentage) {
@@ -71,11 +74,15 @@ public class Commande implements IClasseTempsReel {
                                 ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())
                         )
         );
-        gestionnaireDeCommandes.ajouterCommande(this);
+        this.gestionnaireDeCommandes.ajouterCommande(this);
     }
 
     public Etat getEtat() {
         return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     public ZonedDateTime getDateReception() {
@@ -84,6 +91,10 @@ public class Commande implements IClasseTempsReel {
 
     public void setDateReception(ZonedDateTime dateReception) {
         this.dateReception = dateReception;
+    }
+
+    public void appliquerRemise() {
+        this.appliquerRemise = true;
     }
 
     @Override
@@ -132,7 +143,7 @@ public class Commande implements IClasseTempsReel {
         return gestionnaireDeCommandes;
     }
 
-    public void setEtat(Etat etat) {
-        this.etat = etat;
+    public void setGestionnaireDeCommandes(GestionnaireDeCommandes gestionnaireDeCommandes) {
+        this.gestionnaireDeCommandes = gestionnaireDeCommandes;
     }
 }

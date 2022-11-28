@@ -1,5 +1,7 @@
 package fr.unice.polytech.cookiefactory.acteur;
 
+import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
+
 public abstract class Compte {
 
     private final String nom;
