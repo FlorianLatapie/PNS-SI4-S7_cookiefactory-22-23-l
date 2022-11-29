@@ -1,4 +1,4 @@
-package fr.unice.polytech.cookiefactory.depots;
+package fr.unice.polytech.cookiefactory.spring.depots;
 
 import java.util.HashMap;
 import java.util.Optional;
