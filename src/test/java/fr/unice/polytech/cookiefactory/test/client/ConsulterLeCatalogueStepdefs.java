@@ -26,11 +26,9 @@ public class ConsulterLeCatalogueStepdefs {
     BDCookie bdCookie = chaineDeMagasins.getBd().getBdCookie();
     BDIngredient bdIngredient = chaineDeMagasins.getBd().getBdIngredient();
 
-    Magasin magasin1 = chaineDeMagasins.getAllMagasins().get(0);
-    Magasin magasin2 = chaineDeMagasins.getAllMagasins().get(1);
-    Magasin magasin3 = chaineDeMagasins.getAllMagasins().get(2);
-    Magasin magasin;
-
+    Magasin magasin1;
+    Magasin magasin2;
+    Magasin magasin3;
     Cookie cookie1;
     Cookie cookie2;
     Cookie cookie3;
@@ -43,37 +41,32 @@ public class ConsulterLeCatalogueStepdefs {
     public void un_invité_qui_veut_consulter_le_catalogue_d_un_magasin() {
         client = new Client(new Invite());
         initBDCookies();
-        initStocks();
-    }
-    @Quand("il veux consulter le catalogue du magasin {int}")
-    public void il_veux_consulter_le_catalogue_du_magasin(Integer int1) {
-        switch (int1) {
-            case 1 -> magasin = magasin1;
-            case 2 -> magasin = magasin2;
-            case 3 -> magasin = magasin3;
-        }
     }
 
-    @Alors("l'invité peut voir {int} cookies")
-    public void l_invité_peut_voir_cookies(Integer int1) {
-        if (int1 == 5) {
-            System.out.println(magasin.getCatalogue());
-            assertEquals(5, magasin.getCatalogue().size());
-            assertTrue(magasin.getCatalogue().containsKey("cookie1"));
-            assertTrue(magasin.getCatalogue().containsKey("cookie2"));
-            assertTrue(magasin.getCatalogue().containsKey("cookie3"));
-            assertTrue(magasin.getCatalogue().containsKey("cookie4"));
-            assertTrue(magasin.getCatalogue().containsKey("cookie5"));
-        }
-        else if (int1 == 2) {
-            assertEquals(2, magasin.getCatalogue().size());
-            assertTrue(magasin.getCatalogue().containsKey("cookie2"));
-            assertTrue(magasin.getCatalogue().containsKey("cookie4"));
-        }
-        else{
-            assertEquals(1, magasin.getCatalogue().size());
-            assertTrue(magasin.getCatalogue().containsKey("cookie3"));
-        }
+    @Quand("il veux consulter le catalogue d'un magasin")
+    public void ilVeuxConsulterLeCatalogueDUnMagasin() {
+        magasin1 = chaineDeMagasins.getAllMagasins().get(0);
+        magasin2 = chaineDeMagasins.getAllMagasins().get(1);
+        magasin3 = chaineDeMagasins.getAllMagasins().get(2);
+
+        initStocks();
+    }
+
+    @Alors("l'invité peut voir les cookies du catalogue")
+    public void l_invité_peut_voir_cookies_du_catalogue() {
+        assertEquals(5, magasin1.getCatalogue().size());
+        assertTrue(magasin1.getCatalogue().containsKey("cookie1"));
+        assertTrue(magasin1.getCatalogue().containsKey("cookie2"));
+        assertTrue(magasin1.getCatalogue().containsKey("cookie3"));
+        assertTrue(magasin1.getCatalogue().containsKey("cookie4"));
+        assertTrue(magasin1.getCatalogue().containsKey("cookie5"));
+
+        assertEquals(2, magasin2.getCatalogue().size());
+        assertTrue(magasin2.getCatalogue().containsKey("cookie2"));
+        assertTrue(magasin2.getCatalogue().containsKey("cookie4"));
+
+        assertEquals(1, magasin3.getCatalogue().size());
+        assertTrue(magasin3.getCatalogue().containsKey("cookie3"));
     }
 
     private void initBDCookies() {
@@ -167,4 +160,6 @@ public class ConsulterLeCatalogueStepdefs {
             magasin3.getStock().ajouterIngredient(new Garniture("Caramel"), 100);
             magasin3.getStock().ajouterIngredient(new Garniture("Pépite de chocolat noir"), 100);
         }
+
+
 }
