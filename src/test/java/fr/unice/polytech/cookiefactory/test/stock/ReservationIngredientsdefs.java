@@ -1,6 +1,7 @@
 package fr.unice.polytech.cookiefactory.test.stock;
 
 import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.magasin.Stock;
@@ -19,6 +20,7 @@ public class ReservationIngredientsdefs {
     private Cookie cookie;
     private Commande commande;
     private Magasin magasin;
+    private GestionnaireDeCommandes gestionnaireDeCommandes;
 
     private Garniture ingredient3;
 
@@ -30,6 +32,7 @@ public class ReservationIngredientsdefs {
     @Étantdonnée("un stock contenant {int} pâte {string}, {int} {string}, {int} {string}, {int} {string}")
     public void un_stock_contenant(int nbIngredient1, String nomIngredient1, int nbIngredient2, String nomIngredient2, int nbIngredient3, String nomIngredient3, int nbIngredient4, String nomIngredient4) {
         magasin = new Magasin();
+        gestionnaireDeCommandes = magasin.getGestionnaireDeCommandes();
         Pate ingredient1 = new Pate(nomIngredient1);
         Saveur ingredient2 = new Saveur(nomIngredient2);
         ingredient3 = new Garniture(nomIngredient3);
@@ -45,11 +48,12 @@ public class ReservationIngredientsdefs {
     public void uneCommandeContenantNbCookieCookie(int nbCookie) {
         commande = new Commande(magasin);
         commande.getPanier().ajouterCookies(cookie, nbCookie);
+        gestionnaireDeCommandes.ajouterCommande(commande);
     }
 
     @Quand("la commande est validé par le système")
     public void laCommandeEstValidéParLeSystème() {
-        commande.commandeConfirmee();
+        gestionnaireDeCommandes.reserverCommande(commande);
     }
 
     @Alors("le stock comporte {int} chocolats")

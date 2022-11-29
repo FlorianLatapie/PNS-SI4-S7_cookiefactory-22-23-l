@@ -1,11 +1,14 @@
 package fr.unice.polytech.cookiefactory.magasin;
 
+import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
+import fr.unice.polytech.cookiefactory.commandes.Panier;
 import fr.unice.polytech.cookiefactory.cuisine.ChefCookieFestif;
 import fr.unice.polytech.cookiefactory.cuisine.GestionnaireDeCuisiniers;
 import fr.unice.polytech.cookiefactory.divers.IClasseTempsReel;
 import fr.unice.polytech.cookiefactory.divers.Util;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -120,6 +123,11 @@ public class Magasin implements IClasseTempsReel {
     private boolean estDisponible(Cookie cookie) {
         return stock.estDisponible(cookie);
     }
+    private void reserverStock(Cookie cookie, int quantite) {
+        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
+            stock.retirerIngredient(ingredient, quantite);
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -188,5 +196,13 @@ public class Magasin implements IClasseTempsReel {
 
     public boolean possedeChefCookieFestif(){
         return this.gestionnaireDeCuisiniers.getCuisiniers().stream().filter(cuisinier -> cuisinier instanceof ChefCookieFestif).count() > 0;
+    }
+
+    public void resreverIngredients(Commande commande) {
+        commande.getPanier().getLignesCommande().forEach(ligneCommande -> reserverStock(ligneCommande.getCookie(), ligneCommande.getQuantite()));
+    }
+
+    public boolean verifierCommande(Commande commande) {
+        return commande.getPanier().getCookies().stream().allMatch(cookie -> stock.estDisponible(cookie));
     }
 }

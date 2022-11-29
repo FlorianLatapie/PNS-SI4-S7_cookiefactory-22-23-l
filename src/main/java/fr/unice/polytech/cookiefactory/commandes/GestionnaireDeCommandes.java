@@ -100,6 +100,10 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
                 .findFirst();
     }
 
+    public boolean verifierCommande(Commande commande) {
+        return magasin.verifierCommande(commande);
+    }
+
     public Prix payerCommande(Commande commande, Compte compte, boolean paiementAccepte) {
         Prix prix = Prix.ZERO;
         if (paiementAccepte) {
@@ -120,6 +124,10 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
             commande.changerStatut(Etat.ANNULEE);
         }
         return prix;
+    }
+
+    public void reserverCommande(Commande commande) {
+        magasin.resreverIngredients(commande);
     }
 
     private boolean besoinDEnvoyerMessage(Commande commande) {

@@ -33,7 +33,7 @@ public class Commande implements IClasseTempsReel {
 
     public Commande(Magasin magasin, Compte compte) {
         this.compte = compte;
-        this.gestionnaireDeCommandes = new GestionnaireDeCommandes(magasin);
+        this.gestionnaireDeCommandes = magasin.getGestionnaireDeCommandes();
     }
 
     public Compte getCompte() {
@@ -64,17 +64,6 @@ public class Commande implements IClasseTempsReel {
 
     public void changerStatut(Etat etat) {
         this.etat = etat;
-    }
-
-    public void commandeConfirmee() {
-        changerStatut(Etat.CONFIRMEE);
-        panier.getLignesCommande().forEach(
-                ligne -> ligne.getCookie().getRecette().getIngredients()
-                        .forEach(
-                                ingredient -> this.gestionnaireDeCommandes.getMagasin().getStock().retirerIngredient(ingredient, ligne.getQuantite())
-                        )
-        );
-        this.gestionnaireDeCommandes.ajouterCommande(this);
     }
 
     public Etat getEtat() {
