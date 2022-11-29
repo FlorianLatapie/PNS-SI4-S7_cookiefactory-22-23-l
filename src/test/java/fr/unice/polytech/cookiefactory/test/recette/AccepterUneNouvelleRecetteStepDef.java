@@ -1,7 +1,7 @@
 package fr.unice.polytech.cookiefactory.test.recette;
 
 import fr.unice.polytech.cookiefactory.acteur.employe.management.Dirigeant;
-import fr.unice.polytech.cookiefactory.bd.GererRecettesGlobales;
+import fr.unice.polytech.cookiefactory.spring.depots.GererRecettesGlobales;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
