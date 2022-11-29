@@ -42,11 +42,14 @@ public class Stock {
             throw new IllegalArgumentException("la quantité ne peut pas être négative");
         }
 
-        Integer stockQuantite = getQuantite(ingredient);
-        if (stockQuantite == null) {
-            ingredients.put(ingredient, quantite);
+        if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().contains(ingredient)) {
+            if (ingredients.containsKey(ingredient)) {
+                ingredients.put(ingredient, getQuantite(ingredient) + quantite);
+            } else {
+                ingredients.put(ingredient, quantite);
+            }
         } else {
-            ingredients.put(ingredient, getQuantite(ingredient) + quantite);
+            throw new IllegalArgumentException("L'ingredient n'existe pas dans la base de donnée");
         }
     }
 
@@ -72,5 +75,16 @@ public class Stock {
             }
         }
         return true;
+    }
+
+    public void retirerCookie(Cookie cookie, int quantite) {
+        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
+            if (ingredients.containsKey(ingredient) && ingredients.get(ingredient) >= cookie.getRecette().getQuantite(ingredient) * quantite) {
+                retirerIngredient(ingredient, cookie.getRecette().getQuantite(ingredient) * quantite);
+            }
+            else {
+                throw new PasAssezIngredientStock(cookie.getRecette().getQuantite(ingredient), ingredients.get(ingredient));
+            }
+        }
     }
 }

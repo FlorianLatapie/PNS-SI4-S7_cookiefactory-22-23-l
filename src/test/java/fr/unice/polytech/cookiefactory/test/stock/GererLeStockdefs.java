@@ -2,6 +2,7 @@ package fr.unice.polytech.cookiefactory.test.stock;
 
 import fr.unice.polytech.cookiefactory.magasin.Stock;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
 import fr.unice.polytech.cookiefactory.test.GestionExceptions;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Et;
@@ -23,7 +24,7 @@ public class GererLeStockdefs {
 
     @Et("un ingrédient {string}")
     public void unIngrédient(String nomIngredient) {
-        ingredient = new Ingredient(nomIngredient);
+        ingredient = new Pate(nomIngredient);
     }
 
     @Étantdonné("le stock ayant {int} ingrédients")

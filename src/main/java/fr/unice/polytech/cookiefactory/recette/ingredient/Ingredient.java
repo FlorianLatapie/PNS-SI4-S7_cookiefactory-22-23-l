@@ -3,7 +3,7 @@ package fr.unice.polytech.cookiefactory.recette.ingredient;
 import java.util.Objects;
 
 public class Ingredient {
-    private final String nom;
+    protected final String nom;
 
     public Ingredient(String nom) {
         this.nom = nom;

@@ -37,11 +37,27 @@ public class Recette {
         return this;
     }
 
+    public Recette setPate(Pate pate, int quantite) {
+        if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getPate(pate).isEmpty()) {
+            throw new IllegalArgumentException("La pate n'existe pas");
+        }
+        this.quantitePate = new QuantiteIngredient<>(pate, quantite);
+        return this;
+    }
+
     public Recette setSaveur(String nomSaveur, int quantite) {
         if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getSaveur(nomSaveur).isEmpty()) {
             throw new IllegalArgumentException("La saveur n'existe pas");
         }
         Saveur saveur = new Saveur(nomSaveur);
+        this.quantiteSaveur = new QuantiteIngredient<>(saveur, quantite);
+        return this;
+    }
+
+    public Recette setSaveur(Saveur saveur, int quantite) {
+        if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getSaveur(saveur).isEmpty()) {
+            throw new IllegalArgumentException("La saveur n'existe pas");
+        }
         this.quantiteSaveur = new QuantiteIngredient<>(saveur, quantite);
         return this;
     }
@@ -58,8 +74,18 @@ public class Recette {
         return this;
     }
 
+    public Recette setGarnituresWithGarniture(List<Garniture> garnitures, int quantite) {
+        for (Garniture garniture : garnitures) {
+            if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getGarniture(garniture).isEmpty()) {
+                throw new IllegalArgumentException("La garniture n'existe pas");
+            }
+        }
+        this.quantiteGarnitures = new QuantiteIngredient<>(garnitures, quantite);
+        return this;
+    }
+
     public List<Ingredient> getIngredients() {
-        List<Ingredient> ingredients = new java.util.ArrayList<>(List.of(quantitePate.getIngredient(), quantiteSaveur.getIngredient()));
+        List<Ingredient> ingredients = new ArrayList<>(List.of(quantitePate.getIngredient(), quantiteSaveur.getIngredient()));
         ingredients.addAll(quantiteGarnitures.getIngredient());
         return ingredients;
     }
@@ -140,11 +166,19 @@ public class Recette {
     }
 
     public Integer getQuantite(Ingredient ingredient) {
-        return switch (ingredient.getClass().getSimpleName()) {
-            case "Pate" -> quantitePate.getQuantite();
-            case "Saveur" -> quantiteSaveur.getQuantite();
-            case "Garniture" -> quantiteGarnitures.getQuantite();
-            default -> throw new IllegalArgumentException("L'ingredient n'existe pas");
-        };
+        if (getIngredients().contains(ingredient)) {
+            switch (ingredient.getClass().getSimpleName()) {
+                case "Pate" -> {
+                    return quantitePate.getQuantite();
+                }
+                case "Saveur" -> {
+                    return quantiteSaveur.getQuantite();
+                }
+                case "Garniture" -> {
+                    return quantiteGarnitures.getQuantite();
+                }
+            }
+        }
+        throw new IllegalArgumentException("L'ingredient n'est pas dans la recette");
     }
 }

@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Ingredient;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
 import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -26,25 +27,23 @@ public class BDIngredient {
                 new Pate("Nature"),
                 new Pate("Chocolat"),
                 new Pate("Beurre de cacahuette"),
-                new Pate("Avoine"),
-                new Pate("Chocolat blanc") ,
-                new Pate("Flocons d'avoine")
+                new Pate("Caramel"),
+                new Pate("Chocolat blanc")
 
         ));
         saveurs.addAll(List.of(
-                new Saveur("Nature"),
-                new Saveur("Chocolat"),
-                new Saveur("Chocolat noir"),
-                new Saveur("Chocolat blanc"),
-                new Saveur("Chocolat au lait"),
-                new Saveur("Amande"),
-                new Saveur("Pistache"),
-                new Saveur("Fraise"),
+                new Saveur("Nature"),//
+                new Saveur("Chocolat"),//
+                new Saveur("Chocolat noir"),//
+                new Saveur("Chocolat blanc"),//
+                new Saveur("Chocolat au lait"),//
+                new Saveur("Amande"),//
+                new Saveur("Pistache"),//
+                new Saveur("Fraise"),//
+                new Saveur("Caramel"),//
+                new Saveur("Noisette"),//
                 new Saveur("Vanille"),
-                new Saveur("Caramel"),
-                new Saveur("Noisette"),
-                new Saveur("Vanille"),
-                new Saveur("Cannelle")
+                new Saveur("Cannelle")//
 
         ));
         garnitures.addAll(List.of(
@@ -68,6 +67,10 @@ public class BDIngredient {
         ));
     }
 
+    public void initAUtiliserPourLesTests(){
+        init();
+    }
+
     public void ajouterGarniture(Garniture garniture) {
         garnitures.add(garniture);
     }
@@ -89,7 +92,45 @@ public class BDIngredient {
     }
 
     public boolean retirerSaveur(Saveur saveur) {
+
+        System.err.println("je retire la saveur " + saveur);
         return saveurs.remove(saveur);
+    }
+
+    public Optional<Saveur> getSaveur(String nom) {
+        return saveurs.stream().filter(saveur -> saveur.getNom().equals(nom)).findFirst();
+    }
+
+    public Optional<Saveur> getSaveur(Saveur saveur) {
+        return saveurs.stream().filter(saveur::equals).findFirst();
+    }
+
+    public List<Saveur> getSaveurs() {
+        return List.copyOf(saveurs);
+    }
+
+    public Optional<Garniture> getGarniture(String nom) {
+        return garnitures.stream().filter(garniture -> garniture.getNom().equals(nom)).findFirst();
+    }
+
+    public Optional<Garniture> getGarniture(Garniture garniture) {
+        return garnitures.stream().filter(garniture::equals).findFirst();
+    }
+
+    public List<Garniture> getGarnitures() {
+        return List.copyOf(garnitures);
+    }
+
+    public Optional<Pate> getPate(String nom) {
+        return pates.stream().filter(pate -> pate.getNom().equals(nom)).findFirst();
+    }
+
+    public Optional<Pate> getPate(Pate pate) {
+        return pates.stream().filter(p -> p.equals(pate)).findFirst();
+    }
+
+    public List<Pate> getPates() {
+        return List.copyOf(pates);
     }
 
     public Ingredient getIngredient(String nom) {
@@ -99,15 +140,27 @@ public class BDIngredient {
         throw new IllegalArgumentException("L'ingredient " + nom + " n'existe pas");
     }
 
-    public Optional<Saveur> getSaveur(String nom) {
-        return saveurs.stream().filter(saveur -> saveur.getNom().equals(nom)).findFirst();
+    public boolean contains(Ingredient ingredient) {
+        return garnitures.contains(ingredient) || pates.contains(ingredient) || saveurs.contains(ingredient);
     }
 
-    public Optional<Garniture> getGarniture(String nom) {
-        return garnitures.stream().filter(garniture -> garniture.getNom().equals(nom)).findFirst();
+    public List<Ingredient> getAllIngredients() {
+        List<Ingredient> ingredients = new ArrayList<>(List.copyOf(garnitures));
+        ingredients.addAll(pates);
+        ingredients.addAll(saveurs);
+        return ingredients;
     }
 
-    public Optional<Pate> getPate(String nom) {
-        return pates.stream().filter(pate -> pate.getNom().equals(nom)).findFirst();
+    public List<Ingredient> getAllPates() {
+        return new ArrayList<>(List.copyOf(pates));
     }
+
+    public List<Ingredient> getAllGarnitures() {
+        return new ArrayList<>(List.copyOf(garnitures));
+    }
+
+    public List<Ingredient> getAllSaveurs() {
+        return new ArrayList<>(List.copyOf(saveurs));
+    }
+
 }
