@@ -13,7 +13,8 @@ import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonnée;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class ReservationIngredientsdefs {
     private Cookie cookie;

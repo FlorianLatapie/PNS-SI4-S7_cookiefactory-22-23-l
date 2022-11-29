@@ -6,7 +6,7 @@ import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AjouterNouvelIngredientStepdefs {
 
@@ -45,6 +45,7 @@ public class AjouterNouvelIngredientStepdefs {
             ChaineDeMagasins.getInstance().getBd().getBdIngredient().getIngredient(nom);
             fail();
         } catch (IllegalArgumentException e) {
+            // c'est vraiment sale je sais
             assertTrue(true);
         }
     }
