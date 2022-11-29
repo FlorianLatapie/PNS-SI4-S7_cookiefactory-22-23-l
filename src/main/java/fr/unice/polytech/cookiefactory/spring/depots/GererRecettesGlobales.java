@@ -1,4 +1,4 @@
-package fr.unice.polytech.cookiefactory.bd;
+package fr.unice.polytech.cookiefactory.spring.depots;
 
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
