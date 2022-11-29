@@ -7,13 +7,13 @@ public final class Prix {
     public static final Prix ZERO = new Prix(0);
     private final int nbCentimes;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Prix(int centimes) {
         this.nbCentimes = Math.max(centimes, 0);
     }
 
-    public int getPrixEnCentimes() {
-        return nbCentimes;
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public Prix ajouter(Prix prix) {
         return new Prix(this.nbCentimes + prix.nbCentimes);
@@ -34,6 +34,14 @@ public final class Prix {
     public static Prix convertir(double prix){
         return new Prix((int) (prix * 100));
     }
+
+    /* ------------------------------------------ Getters ------------------------------------------ */
+
+    public int getPrixEnCentimes() {
+        return nbCentimes;
+    }
+
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
 
     @Override
     public boolean equals(Object o) {

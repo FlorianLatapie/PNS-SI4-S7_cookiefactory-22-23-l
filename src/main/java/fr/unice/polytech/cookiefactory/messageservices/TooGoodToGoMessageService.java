@@ -7,6 +7,8 @@ import fr.unice.polytech.cookiefactory.messageservices.messages.builder.TooGoodT
 public class TooGoodToGoMessageService implements MessageService {
     private static final MessageFactory MESSAGE_FACTORY = new TooGoodToGoMessageFactory();
 
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
     @Override
     public void envoyer(Commande commande) {
         System.out.println(MESSAGE_FACTORY.buildMessage(commande));

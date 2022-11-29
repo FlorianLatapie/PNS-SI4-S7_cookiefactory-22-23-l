@@ -20,6 +20,8 @@ public class Commande implements IClasseTempsReel {
     private Compte compte;
     private Etat etat = Etat.EN_COURS_DE_PREPARATION;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Commande(Compte compte) {
         this.compte = compte;
     }
@@ -36,13 +38,7 @@ public class Commande implements IClasseTempsReel {
         this.gestionnaireDeCommandes = magasin.getGestionnaireDeCommandes();
     }
 
-    public Compte getCompte() {
-        return this.compte;
-    }
-
-    public Panier getPanier() {
-        return panier;
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public Prix getPrixHorsTaxe() {
         return panier.getLignesCommande().stream().map(LigneCommande::obtenirPrixSelonQuantite).reduce(Prix.ZERO, Prix::ajouter);
@@ -58,12 +54,39 @@ public class Commande implements IClasseTempsReel {
         return this.gestionnaireDeCommandes.ajouterTaxe(prixHorsTaxe);
     }
 
+    public void appliquerRemise() {
+        this.appliquerRemise = true;
+    }
+
     public Prix getPrixHorsTaxeReduction(int pourcentage) {
         return getPrixHorsTaxe().reduction(pourcentage);
     }
 
-    public void changerStatut(Etat etat) {
-        this.etat = etat;
+    public int calculerDureePreparation() {
+        return (panier.getLignesCommande().stream()
+                .mapToInt(
+                        ligneCommande -> ligneCommande.getCookie().getRecette().getTempsPreparation()
+                                *
+                                ligneCommande.getQuantite()
+                )
+                .sum() / 15) * 15 + 15;
+    }
+
+    @Override
+    public void updateHeure(ZonedDateTime zonedDateTime) {
+        if (etat == Etat.EN_ATTENTE_DE_RETRAIT && zonedDateTime.isAfter(dateReception.plusHours(2))) {
+            etat = Etat.OUBLIEE;
+        }
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
+
+    public Compte getCompte() {
+        return this.compte;
+    }
+
+    public Panier getPanier() {
+        return panier;
     }
 
     public Etat getEtat() {
@@ -82,9 +105,15 @@ public class Commande implements IClasseTempsReel {
         this.dateReception = dateReception;
     }
 
-    public void appliquerRemise() {
-        this.appliquerRemise = true;
+    public GestionnaireDeCommandes getGestionnaireDeCommandes() {
+        return gestionnaireDeCommandes;
     }
+
+    public void setGestionnaireDeCommandes(GestionnaireDeCommandes gestionnaireDeCommandes) {
+        this.gestionnaireDeCommandes = gestionnaireDeCommandes;
+    }
+
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
 
     @Override
     public String toString() {
@@ -109,30 +138,5 @@ public class Commande implements IClasseTempsReel {
     @Override
     public int hashCode() {
         return Objects.hash(dateReception, appliquerRemise, gestionnaireDeCommandes, compte, etat, panier);
-    }
-
-    public int calculerDureePreparation() {
-        return (panier.getLignesCommande().stream()
-                .mapToInt(
-                        ligneCommande -> ligneCommande.getCookie().getRecette().getTempsPreparation()
-                                *
-                                ligneCommande.getQuantite()
-                )
-                .sum() / 15) * 15 + 15;
-    }
-
-    @Override
-    public void updateHeure(ZonedDateTime zonedDateTime) {
-        if (etat == Etat.EN_ATTENTE_DE_RETRAIT && zonedDateTime.isAfter(dateReception.plusHours(2))) {
-            etat = Etat.OUBLIEE;
-        }
-    }
-
-    public GestionnaireDeCommandes getGestionnaireDeCommandes() {
-        return gestionnaireDeCommandes;
-    }
-
-    public void setGestionnaireDeCommandes(GestionnaireDeCommandes gestionnaireDeCommandes) {
-        this.gestionnaireDeCommandes = gestionnaireDeCommandes;
     }
 }

@@ -4,11 +4,14 @@ public class QuantiteIngredient<Ingredient, Integer> {
     private Ingredient ingredient;
     private int quantite;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public QuantiteIngredient(Ingredient ingredient, int quantite) {
         this.ingredient = ingredient;
         this.quantite = quantite;
     }
 
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
     public Ingredient getIngredient() {
         return ingredient;
     }

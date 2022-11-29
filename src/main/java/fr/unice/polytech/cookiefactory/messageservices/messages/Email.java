@@ -4,16 +4,15 @@ public class Email extends Message {
     final String objet;
     final String contenu;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Email(String expediteur, String destinataire, String objet, String contenu) {
         super(expediteur, destinataire);
         this.objet = objet;
         this.contenu = contenu;
     }
 
-    @Override
-    public String toString() {
-        return getMessage();
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public String getMessage() {
         return "De: " + expediteur + System.lineSeparator()
@@ -23,4 +22,13 @@ public class Email extends Message {
                 + System.lineSeparator()
                 + "Contenu: " + contenu + System.lineSeparator();
     }
+
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
+
+    @Override
+    public String toString() {
+        return getMessage();
+    }
+
+
 }

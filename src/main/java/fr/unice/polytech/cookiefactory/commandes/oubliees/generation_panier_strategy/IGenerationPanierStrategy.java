@@ -5,5 +5,7 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import java.util.List;
 
 public interface IGenerationPanierStrategy {
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
     List<Commande> generePanierSurprise(List<Commande> commandesOubliees);
 }

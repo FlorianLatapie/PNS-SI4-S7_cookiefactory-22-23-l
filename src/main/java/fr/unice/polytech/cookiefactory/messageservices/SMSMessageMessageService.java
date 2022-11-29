@@ -7,6 +7,8 @@ import fr.unice.polytech.cookiefactory.messageservices.messages.builder.SMSMessa
 public class SMSMessageMessageService implements MessageService {
     private static final MessageFactory MESSAGE_FACTORY = new SMSMessageFactory();
 
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
     @Override
     public void envoyer(Commande commande) {
         System.out.println(MESSAGE_FACTORY.buildMessage(commande));

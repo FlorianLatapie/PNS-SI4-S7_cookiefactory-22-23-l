@@ -5,13 +5,19 @@ import java.util.Objects;
 public class Ingredient {
     protected final String nom;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Ingredient(String nom) {
         this.nom = nom;
     }
 
+    /* --------------------------------------- Getters --------------------------------------- */
+
     public String getNom() {
         return nom;
     }
+
+    /* --------------------------------- Méthodes génériques --------------------------------- */
 
     @Override
     public boolean equals(Object o) {

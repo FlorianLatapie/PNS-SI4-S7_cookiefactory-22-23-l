@@ -9,6 +9,8 @@ public class Cookie {
     protected Prix prix;
     private ValidationCookie etat = ValidationCookie.VALIDE;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Cookie(String nom) {
         this.nom = nom;
     }
@@ -32,12 +34,16 @@ public class Cookie {
         this.prix = prix;
     }
 
-    public Recette getRecette() {
-        return this.recette;
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public Prix getPrixHorsTaxe() {
         return this.prix != null ? this.prix : new Prix(10);
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
+
+    public Recette getRecette() {
+        return this.recette;
     }
 
     public String getNom() {
@@ -48,10 +54,11 @@ public class Cookie {
         return this.etat;
     }
 
-    public void changerEtat(ValidationCookie etat) {
+    public void setEtat(ValidationCookie etat) {
         this.etat = etat;
     }
 
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
     @Override
     public String toString() {
         return "Cookie{" +
@@ -59,6 +66,4 @@ public class Cookie {
                 ", etat=" + etat +
                 '}';
     }
-
-
 }

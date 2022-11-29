@@ -14,6 +14,21 @@ public class SimpleMagasinFactory implements MagasinFactory {
     private ZonedDateTime dateOuverture = null;
     private ZonedDateTime dateFermeture = null;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
+    @Override
+    public Magasin creerMagasin(String nom) {
+        // renvoyer le lundi de la semaine courante à 8h
+        var maintenant = ZonedDateTime.now();
+        var lundi = Util.getLundiDeLaSemaineCourante(maintenant);
+        dateOuverture = Util.heurePile(lundi, 8);
+        dateFermeture = Util.heurePile(dateOuverture.plusDays(4), 18);
+
+        return new Magasin(nom, valeurTaxe, lieu, dateOuverture, dateFermeture);
+    }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
     public SimpleMagasinFactory setLieu(String lieu) {
         this.lieu = lieu;
         return this;
@@ -32,16 +47,5 @@ public class SimpleMagasinFactory implements MagasinFactory {
     public SimpleMagasinFactory setDateFermeture(ZonedDateTime dateFermeture) {
         this.dateFermeture = dateFermeture;
         return this;
-    }
-
-    @Override
-    public Magasin creerMagasin(String nom) {
-        // renvoyer le lundi de la semaine courante à 8h
-        var maintenant = ZonedDateTime.now();
-        var lundi = Util.getLundiDeLaSemaineCourante(maintenant);
-        dateOuverture = Util.heurePile(lundi, 8);
-        dateFermeture = Util.heurePile(dateOuverture.plusDays(4), 18);
-
-        return new Magasin(nom, valeurTaxe, lieu, dateOuverture, dateFermeture);
     }
 }

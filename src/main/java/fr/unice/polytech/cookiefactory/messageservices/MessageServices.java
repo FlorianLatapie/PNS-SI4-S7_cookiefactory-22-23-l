@@ -7,14 +7,17 @@ public class MessageServices {
     private static MessageServices instance;
     private final EmailMessageMessageService emailMessageService;
     private final SMSMessageMessageService smsMessageMessageService;
-
     private final TooGoodToGoMessageService tooGoodToGoMessageService;
+
+    /* --------------------------------------- Constructeurs --------------------------------------- */
 
     private MessageServices() {
         emailMessageService = new EmailMessageMessageService();
         smsMessageMessageService = new SMSMessageMessageService();
         tooGoodToGoMessageService = new TooGoodToGoMessageService();
     }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public static MessageServices getInstance() {
         if (instance == null) {

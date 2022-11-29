@@ -20,10 +20,20 @@ public class SimpleCookieFactory {
     protected Prix prix = new Prix(300);
     protected ValidationCookie etat = ValidationCookie.VALIDE;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
+
     public SimpleCookieFactory() {
         recette = new Recette().setPate("Nature", 10).setSaveur("Amande", 10).setGarnitures(List.of("Chocolat noir"), 10).setCuisson("MOELLEUX").setMelange("GARNI").setTempsPreparation(10);
     }
 
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
+    public Cookie creerCookie(String nom) {
+        return new Cookie(nom, recette, etat, prix);
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
     public void setRecette(Recette recette) {
         this.recette = recette;
     }
@@ -34,9 +44,5 @@ public class SimpleCookieFactory {
 
     public void setValidationCookie(ValidationCookie etat) {
         this.etat = etat;
-    }
-
-    public Cookie creerCookie(String nom) {
-        return new Cookie(nom, recette, etat, prix);
     }
 }

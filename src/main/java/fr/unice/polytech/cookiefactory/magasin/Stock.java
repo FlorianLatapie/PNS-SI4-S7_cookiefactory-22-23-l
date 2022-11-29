@@ -12,12 +12,15 @@ import java.util.Map;
 public class Stock {
     private final Map<Ingredient, Integer> ingredients;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Stock() {
         ingredients = new HashMap<>();
     }
 
-    public void initStock(){
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
+    public void initStock(){
     }
 
     public void retirerIngredient(Ingredient ingredient, Integer quantite) {
@@ -29,12 +32,28 @@ public class Stock {
         }
     }
 
-    public boolean contientIngredient(Ingredient ingredient) {
-        return ingredients.containsKey(ingredient);
+    public boolean estDisponible(Cookie cookie) {
+        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
+            if (!contientIngredient(ingredient) || getQuantite(ingredient) < cookie.getRecette().getQuantite(ingredient)) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    public Integer getQuantite(Ingredient ingredient) {
-        return ingredients.get(ingredient);
+    public void retirerCookie(Cookie cookie, int quantite) {
+        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
+            if (ingredients.containsKey(ingredient) && ingredients.get(ingredient) >= cookie.getRecette().getQuantite(ingredient) * quantite) {
+                retirerIngredient(ingredient, cookie.getRecette().getQuantite(ingredient) * quantite);
+            }
+            else {
+                throw new PasAssezIngredientStock(cookie.getRecette().getQuantite(ingredient), ingredients.get(ingredient));
+            }
+        }
+    }
+
+    public boolean contientIngredient(Ingredient ingredient) {
+        return ingredients.containsKey(ingredient);
     }
 
     public void ajouterIngredient(Ingredient ingredient, Integer quantite) {
@@ -57,9 +76,16 @@ public class Stock {
         ingredients.remove(ingredient);
     }
 
+    /* ------------------------------------------ Getters ------------------------------------------ */
+
+    public Integer getQuantite(Ingredient ingredient) {
+        return ingredients.get(ingredient);
+    }
     public List<Ingredient> getIngredients() {
         return new ArrayList<>(ingredients.keySet());
     }
+
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
 
     @Override
     public String toString() {
@@ -68,23 +94,4 @@ public class Stock {
                 '}';
     }
 
-    public boolean estDisponible(Cookie cookie) {
-        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
-            if (!contientIngredient(ingredient) || getQuantite(ingredient) < cookie.getRecette().getQuantite(ingredient)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void retirerCookie(Cookie cookie, int quantite) {
-        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
-            if (ingredients.containsKey(ingredient) && ingredients.get(ingredient) >= cookie.getRecette().getQuantite(ingredient) * quantite) {
-                retirerIngredient(ingredient, cookie.getRecette().getQuantite(ingredient) * quantite);
-            }
-            else {
-                throw new PasAssezIngredientStock(cookie.getRecette().getQuantite(ingredient), ingredients.get(ingredient));
-            }
-        }
-    }
 }

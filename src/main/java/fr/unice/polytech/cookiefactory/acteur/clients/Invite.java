@@ -4,6 +4,8 @@ import fr.unice.polytech.cookiefactory.acteur.Compte;
 
 public class Invite extends Compte {
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Invite(String nom, String prenom, String email, String telephone, String motDePasse) {
         super(nom, prenom, email, telephone, motDePasse);
     }

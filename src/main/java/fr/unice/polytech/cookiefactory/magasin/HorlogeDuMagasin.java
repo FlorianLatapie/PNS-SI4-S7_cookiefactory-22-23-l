@@ -6,10 +6,13 @@ public class HorlogeDuMagasin {
     private static final long SECONDE = 1000L;
     private static final int DELAI = 10;
 
-    public HorlogeDuMagasin(Magasin magasin) {
+    /* ------------------------------------- Constructeur ------------------------------------- */
 
+    public HorlogeDuMagasin(Magasin magasin) {
         lancer(magasin);
     }
+
+    /* --------------------------------------- Méthodes --------------------------------------- */
 
     private void lancer(Magasin magasin) {
         Thread thread = new Thread(() -> {

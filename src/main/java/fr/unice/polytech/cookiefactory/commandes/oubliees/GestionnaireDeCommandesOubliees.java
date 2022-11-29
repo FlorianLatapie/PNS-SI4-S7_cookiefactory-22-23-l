@@ -16,6 +16,8 @@ public class GestionnaireDeCommandesOubliees implements IClasseTempsReel {
 
     private final IGenerationPanierStrategy generationPanierStrategy;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public GestionnaireDeCommandesOubliees(ZonedDateTime zonedDateTime, IGenerationPanierStrategy generationPanierStrategy) {
         this.commandesOubliees = new ArrayList<>();
         this.paniersSurprise = new ArrayList<>();
@@ -23,16 +25,10 @@ public class GestionnaireDeCommandesOubliees implements IClasseTempsReel {
         this.generationPanierStrategy = generationPanierStrategy;
     }
 
-    @Override
-    public void updateHeure(ZonedDateTime zonedDateTime) {
-        if (derniereCompositionPanierSurprise == null) {
-            derniereCompositionPanierSurprise = zonedDateTime;
-        }
-        if (zonedDateTime.isAfter(derniereCompositionPanierSurprise.plusHours(2).plusMinutes(59))) {
-            derniereCompositionPanierSurprise = zonedDateTime;
-            genererPanierSurprise();
-            prevenir();
-        }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
+    public void ajouterCommandesOubliees(List<Commande> commandesOubliees) {
+        this.commandesOubliees.addAll(commandesOubliees);
     }
 
     private void genererPanierSurprise() {
@@ -49,7 +45,15 @@ public class GestionnaireDeCommandesOubliees implements IClasseTempsReel {
         paniersSurprise.forEach(MessageServices.getInstance()::envoyerAvecTousLesServicesPartenaire);
     }
 
-    public void ajouterCommandesOubliees(List<Commande> commandesOubliees) {
-        this.commandesOubliees.addAll(commandesOubliees);
+    @Override
+    public void updateHeure(ZonedDateTime zonedDateTime) {
+        if (derniereCompositionPanierSurprise == null) {
+            derniereCompositionPanierSurprise = zonedDateTime;
+        }
+        if (zonedDateTime.isAfter(derniereCompositionPanierSurprise.plusHours(2).plusMinutes(59))) {
+            derniereCompositionPanierSurprise = zonedDateTime;
+            genererPanierSurprise();
+            prevenir();
+        }
     }
 }

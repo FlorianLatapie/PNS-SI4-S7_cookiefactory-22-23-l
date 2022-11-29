@@ -8,13 +8,13 @@ public class SimpleCookieFestifFactory extends SimpleCookieFactory {
 
     private Taille taille = Taille.L;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public SimpleCookieFestifFactory() {
         super();
     }
 
-    public void setSize(Taille taille) {
-        this.taille = taille;
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     @Override
     public Cookie creerCookie(String nom) {
@@ -23,5 +23,11 @@ public class SimpleCookieFestifFactory extends SimpleCookieFactory {
 
     public CookieFestif creerCookieFestif(String nom) {
         return new CookieFestif(nom, recette, prix, taille);
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
+
+    public void setSize(Taille taille) {
+        this.taille = taille;
     }
 }

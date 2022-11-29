@@ -8,6 +8,8 @@ public class CookieFestif extends Cookie {
     private static final double MARGE = 1.25;
     private final Taille taille;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public CookieFestif(String nom, Recette recette, Prix prix, Taille taille) {
         super(nom, recette, prix);
         this.taille = taille;

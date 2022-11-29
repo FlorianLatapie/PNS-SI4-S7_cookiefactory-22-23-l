@@ -9,16 +9,25 @@ import java.util.List;
 
 public class CookiesDuMagasin implements CookieDuMagasinListener {
     private final HashMap<String, Cookie> cookiesDuMagasin;
+
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public CookiesDuMagasin() {
         this.cookiesDuMagasin = new HashMap<>();
     }
-    
-    public HashMap<String, Cookie> getCookies() {
-        return cookiesDuMagasin;
-    }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     @Override
     public void update(Cookie cookie) {
         cookiesDuMagasin.put(cookie.getNom(), cookie);
     }
+
+    /* ------------------------------------------ Getters ------------------------------------------ */
+
+    public HashMap<String, Cookie> getCookies() {
+        return cookiesDuMagasin;
+    }
+
+
 }

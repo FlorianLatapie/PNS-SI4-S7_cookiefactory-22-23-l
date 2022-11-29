@@ -4,6 +4,7 @@ import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 public interface MagasinFactory {
 
-    Magasin creerMagasin(String nom);
+    /* --------------------------------------- Méthodes --------------------------------------- */
 
+    Magasin creerMagasin(String nom);
 }

@@ -13,11 +13,15 @@ public class GestionnaireDeCuisiniers {
     private final Magasin magasin;
     private List<Map<ZonedDateTime, List<Cuisinier>>> planning;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public GestionnaireDeCuisiniers(Magasin magasin) {
         this.magasin = magasin;
         cuisiniers = new ArrayList<>();
         planning = creerPlanning(5, magasin.getDate(), magasin.getHeureOuverture(), magasin.getHeureFermeture());
     }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     private List<Map<ZonedDateTime, List<Cuisinier>>> creerPlanning(int nbJoursSemaine, ZonedDateTime dateSemaine, ZonedDateTime heureOuverture, ZonedDateTime heureFermeture) {
         List<Map<ZonedDateTime, List<Cuisinier>>> res = new ArrayList<>();
@@ -81,10 +85,6 @@ public class GestionnaireDeCuisiniers {
         return cuisiniers.add(cuisinier);
     }
 
-    public List<Cuisinier> getCuisiniers() {
-        return cuisiniers;
-    }
-
     public List<ZonedDateTime> getdisponibilitesDeLaSemaine() {
         List<ZonedDateTime> disponibilites = new ArrayList<>();
         for (Map<ZonedDateTime, List<Cuisinier>> journee : planning) {
@@ -127,5 +127,11 @@ public class GestionnaireDeCuisiniers {
 
     private String afficheCreneau(List<Cuisinier> cuisiniers) {
         return "creneau : " + cuisiniers;
+    }
+
+    /* ------------------------------------------ Getters ------------------------------------------ */
+
+    public List<Cuisinier> getCuisiniers() {
+        return cuisiniers;
     }
 }

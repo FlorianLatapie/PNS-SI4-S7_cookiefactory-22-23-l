@@ -5,12 +5,15 @@ public class BaseDeDonnees {
     private BDIngredient bdIngredient;
     private BDCompte bdCompte;
 
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public void initBD() {
         bdIngredient = new BDIngredient();
         bdCookie = new BDCookie();
         bdCompte = new BDCompte();
     }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
 
     public BDCookie getBdCookie() {
         return bdCookie;

@@ -10,6 +10,8 @@ public class ChefCookieFestif extends Cuisinier {
     private ArrayList<Themes> themes;
     private ArrayList<Occasions> occasions;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public ChefCookieFestif(GestionnaireDeCommandes gestionnaireDeCommandes) {
         super(gestionnaireDeCommandes);
         this.themes = new ArrayList<>();

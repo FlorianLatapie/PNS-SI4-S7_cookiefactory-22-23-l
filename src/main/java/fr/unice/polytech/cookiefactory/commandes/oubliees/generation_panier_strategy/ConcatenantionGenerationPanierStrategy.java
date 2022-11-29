@@ -5,6 +5,8 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 import java.util.List;
 
 public class ConcatenantionGenerationPanierStrategy implements IGenerationPanierStrategy {
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
     @Override
     public List<Commande> generePanierSurprise(List<Commande> commandesOubliees) {
         var commandeRetour = new Commande(commandesOubliees.get(0).getGestionnaireDeCommandes().getMagasin());

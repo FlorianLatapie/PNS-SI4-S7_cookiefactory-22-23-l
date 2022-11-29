@@ -15,10 +15,14 @@ public class Cuisinier {
     private final EDTCuisinier edtCuisinier;
     private final GestionnaireDeCommandes gestionnaireDeCommandes;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Cuisinier(GestionnaireDeCommandes gestionnaireDeCommandes) {
         this.edtCuisinier = new EDTCuisinier();
         this.gestionnaireDeCommandes = gestionnaireDeCommandes;
     }
+
+    /* --------------------------------------- Méthodes --------------------------------------- */
 
     public void preparerCommande(Commande commande) {
         if (commande.getEtat() != Etat.CONFIRMEE) {
@@ -49,6 +53,16 @@ public class Cuisinier {
         edtCuisinier.nouveauCreneau(commande);
     }
 
+    public void soumettreUnCookie(Cookie cookie) {
+        ChaineDeMagasins.getInstance().getBd().getBdCookie().ajouterUnCookie(cookie);
+    }
+
+    public boolean estDisponible(ZonedDateTime dateDebut, ZonedDateTime datedeFin) {
+        return edtCuisinier.estDisponible(dateDebut, datedeFin);
+    }
+
+    /* --------------------------------------- Getters --------------------------------------- */
+
     public EDTCuisinier getEdtCuisinier() {
         return edtCuisinier;
     }
@@ -57,18 +71,12 @@ public class Cuisinier {
         return gestionnaireDeCommandes;
     }
 
-    public void soumettreUnCookie(Cookie cookie) {
-        ChaineDeMagasins.getInstance().getBd().getBdCookie().ajouterUnCookie(cookie);
-    }
+    /* --------------------------------- Méthodes génériques --------------------------------- */
 
     @Override
     public String toString() {
         return "Cuisinier{" +
                 "edtCuisinier=" + edtCuisinier +
                 '}';
-    }
-
-    public boolean estDisponible(ZonedDateTime dateDebut, ZonedDateTime datedeFin) {
-        return edtCuisinier.estDisponible(dateDebut, datedeFin);
     }
 }

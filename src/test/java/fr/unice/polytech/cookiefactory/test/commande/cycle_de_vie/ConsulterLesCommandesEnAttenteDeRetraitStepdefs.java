@@ -24,7 +24,7 @@ public class ConsulterLesCommandesEnAttenteDeRetraitStepdefs {
         for (int i = 0; i < commandes; i++) {
             Commande commande = new Commande();
             if (i < retrait) {
-                commande.changerStatut(Etat.EN_ATTENTE_DE_RETRAIT);
+                commande.setEtat(Etat.EN_ATTENTE_DE_RETRAIT);
             }
             this.gestionnaireDeCommandes.ajouterCommande(commande);
         }

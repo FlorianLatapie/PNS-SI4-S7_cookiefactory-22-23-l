@@ -7,6 +7,8 @@ public class TooGoodToGoMessage extends Message {
     final double prix;
     final String description;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public TooGoodToGoMessage(String expediteur, String destinataire, String typeRequete, String magasin, double prix, String description) {
         super(expediteur, destinataire);
         this.typeRequete = typeRequete;
@@ -15,10 +17,7 @@ public class TooGoodToGoMessage extends Message {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return getMessage();
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public String getMessage() {
         return typeRequete + " URL: " + destinataire + System.lineSeparator()
@@ -30,4 +29,12 @@ public class TooGoodToGoMessage extends Message {
                 + "}" + System.lineSeparator();
 
     }
+
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
+
+    @Override
+    public String toString() {
+        return getMessage();
+    }
+
 }

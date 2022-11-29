@@ -10,18 +10,24 @@ public class CreneauPreparationCommande {
     private final ZonedDateTime dateFin;
     private final Commande commande;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public CreneauPreparationCommande(Commande commande) {
         this.commande = commande;
         this.dateFin = commande.getDateReception();
         this.dateDebut = dateFin.minusMinutes(commande.calculerDureePreparation());
     }
 
-    public String toString() {
-        return "Cr" + commande.getDateReception() + " : " + dateDebut + " - " + dateFin;
-    }
+    /* --------------------------------------- Getters --------------------------------------- */
 
     public Commande getCommande() {
         return commande;
+    }
+
+    /* --------------------------------- Méthodes génériques --------------------------------- */
+
+    public String toString() {
+        return "Cr" + commande.getDateReception() + " : " + dateDebut + " - " + dateFin;
     }
 
     @Override

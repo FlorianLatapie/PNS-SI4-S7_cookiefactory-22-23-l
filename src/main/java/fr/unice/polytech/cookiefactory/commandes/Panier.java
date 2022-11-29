@@ -8,6 +8,8 @@ import java.util.List;
 public class Panier {
     private final List<LigneCommande> lignesCommande = new ArrayList<>();
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public void ajouterCookies(Cookie cookie, int quantite) {
         if (quantite <= 0) {
             throw new IllegalArgumentException("quantite : " + quantite + " doit être positive");
@@ -22,6 +24,8 @@ public class Panier {
 
         lignesCommande.add(new LigneCommande(cookie, quantite));
     }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public void supprimerCookies(Cookie cookie, int quantite) {
         if (quantite <= 0) {
@@ -39,6 +43,8 @@ public class Panier {
         }
     }
 
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
+
     public List<Cookie> getCookies() {
         return lignesCommande.stream().map(LigneCommande::getCookie).toList();
     }
@@ -50,6 +56,8 @@ public class Panier {
     public List<LigneCommande> getLignesCommande() {
         return lignesCommande;
     }
+
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
 
     @Override
     public String toString() {

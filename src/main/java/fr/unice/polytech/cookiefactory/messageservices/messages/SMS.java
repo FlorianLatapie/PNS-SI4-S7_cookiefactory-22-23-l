@@ -4,15 +4,14 @@ public class SMS extends Message {
 
     final String contenu;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public SMS(String expediteur, String destinataire, String contenu) {
         super(expediteur, destinataire);
         this.contenu = contenu;
     }
 
-    @Override
-    public String toString() {
-        return getMessage();
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public String getMessage() {
         return "De: " + expediteur + System.lineSeparator()
@@ -20,4 +19,12 @@ public class SMS extends Message {
                 + System.lineSeparator()
                 + "Contenu: " + contenu + System.lineSeparator();
     }
+
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
+
+    @Override
+    public String toString() {
+        return getMessage();
+    }
+
 }

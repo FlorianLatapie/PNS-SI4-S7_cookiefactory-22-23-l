@@ -21,18 +21,14 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     private final Magasin magasin;
     private final GestionnaireDeCommandesOubliees gestionnaireCommandesOubliees;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public GestionnaireDeCommandes(Magasin magasin) {
         this.magasin = magasin;
         this.gestionnaireCommandesOubliees = new GestionnaireDeCommandesOubliees(magasin.getDate(), new ConcatenantionGenerationPanierStrategy());
     }
 
-    public Magasin getMagasin() {
-        return magasin;
-    }
-
-    public List<Commande> getCommandes() {
-        return commandes;
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public List<Commande> voirCommandesEnAttenteDeReception() {
         return this.commandes.stream().filter(c -> c.getEtat() == Etat.EN_ATTENTE_DE_RETRAIT).toList();
@@ -44,7 +40,7 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     }
 
     public void changerStatut(Commande commande, Etat etat) {
-        commande.changerStatut(etat);
+        commande.setEtat(etat);
         if (besoinDEnvoyerMessage(commande))
             MessageServices.getInstance().envoyerAvecTousLesServicesClientelle(commande);
     }
@@ -54,6 +50,7 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
         this.commandes.add(commande);
     }
 
+
     public void annulerCommande(Commande commande) {
         if(commandeAppartientAuGestionnaire(commande)) {
             Compte compteAvecCommande;
@@ -61,7 +58,7 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
                 compteAvecCommande = commande.getCompte(); //TODO rembourser client
                 Cuisinier cuisinier = obtenirCuisinierPreparantCommande(commande);
                 cuisinier.annulerCommande(commande); //désassigner le cuisinier
-                                                     //TODO remettre en stock les ingrédients
+                //TODO remettre en stock les ingrédients
                 this.enleverCommande(commande);      //enlever commande du gestionnaire
             }
             else {
@@ -83,7 +80,7 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     public void enleverCommande(Commande commande) {
         if(commandeAppartientAuGestionnaire(commande)) {
             this.commandes.remove(commande);
-            commande.changerStatut(Etat.ANNULEE);
+            commande.setEtat(Etat.ANNULEE);
         }
         else {
             throw new IllegalArgumentException("Erreur: la commande n'est pas dans le gestionnaire de commande. ");
@@ -115,13 +112,13 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
                 }
             }
             prix = commande.getPrixAvecTaxe();
-            commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
+            commande.setEtat(Etat.EN_COURS_DE_PREPARATION);
             System.out.println("Vous avez Payé: " + prix);
             System.out.println("Pour: " + commande.getPanier());
             if (!prix.equals(commande.getPrixHorsTaxe()))
                 System.out.println("Réduction de " + Commande.REDUCTION + "%: " + commande.getPrixHorsTaxe().multiplier(0.9));
         } else {
-            commande.changerStatut(Etat.ANNULEE);
+            commande.setEtat(Etat.ANNULEE);
         }
         return prix;
     }
@@ -140,13 +137,23 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
         this.gestionnaireCommandesOubliees.updateHeure(zonedDateTime);
     }
 
-    public GestionnaireDeCommandesOubliees getGestionnaireCommandesOubliees() {
-        return gestionnaireCommandesOubliees;
-    }
-
     public Prix ajouterTaxe(Prix p) {
         double prix = p.getPrixEnCentimes();
         double prixAvecTaxe = prix * (1 + getMagasin().getValeurTaxe());
         return new Prix((int) prixAvecTaxe);
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
+
+    public Magasin getMagasin() {
+        return magasin;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public GestionnaireDeCommandesOubliees getGestionnaireCommandesOubliees() {
+        return gestionnaireCommandesOubliees;
     }
 }

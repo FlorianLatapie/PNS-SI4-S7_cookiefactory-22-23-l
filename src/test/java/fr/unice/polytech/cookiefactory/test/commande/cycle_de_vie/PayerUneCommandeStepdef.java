@@ -7,16 +7,9 @@ import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
-import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
-import fr.unice.polytech.cookiefactory.recette.enums.Melange;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -38,7 +31,7 @@ public class PayerUneCommandeStepdef {
     @Quand("le client paye la commande et qu'il arrive au bout du {string}")
     public void leClientPayeLaCommandeEtQuIlArriveAuBoutDu(String paiement) {
         this.commande.getPanier().ajouterCookies(new Cookie("Test", new Recette(/*new Pate("Pate"), new Saveur("Saveur"), List.of(new Garniture("Garniture")), Cuisson.CROQUANT, Melange.GARNI, 10*/)), 2);
-        this.commande.changerStatut(Etat.EN_COURS_DE_PAIEMENT);
+        this.commande.setEtat(Etat.EN_COURS_DE_PAIEMENT);
         try {
             this.gestionnaireDeCommandes.payerCommande(this.commande, this.client, Boolean.parseBoolean(paiement));
         } catch (Exception e) {

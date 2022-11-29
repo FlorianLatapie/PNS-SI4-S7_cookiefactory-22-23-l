@@ -9,10 +9,14 @@ public class LigneCommande {
     private final Cookie cookie;
     private int quantite;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public LigneCommande(Cookie cookie, int nombre) {
         this.quantite = nombre;
         this.cookie = cookie;
     }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public void ajouterQuantite(int quantite) {
         this.quantite += quantite;
@@ -26,6 +30,12 @@ public class LigneCommande {
         this.quantite -= quantite;
     }
 
+    public Prix obtenirPrixSelonQuantite() {
+        return cookie.getPrixHorsTaxe().multiplier(quantite);
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
+
     public int getQuantite() {
         return quantite;
     }
@@ -34,10 +44,7 @@ public class LigneCommande {
         return cookie;
     }
 
-    public Prix obtenirPrixSelonQuantite() {
-        return cookie.getPrixHorsTaxe().multiplier(quantite);
-    }
-
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
     @Override
     public String toString() {
         return "{ " + cookie + ", " + quantite + " }";

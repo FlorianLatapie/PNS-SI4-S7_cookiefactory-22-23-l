@@ -48,7 +48,7 @@ public class AnnulerUneCommandeStepDef {
 
     @Etantdonné("un client ayant une commande n'étant pas encore préparée")
     public void un_client_ayant_une_commande_n_étant_pas_encore_préparée() {
-        commande.changerStatut(Etat.CONFIRMEE);
+        commande.setEtat(Etat.CONFIRMEE);
         gestionnaireDeCommandes.ajouterCommande(commande);
     }
 
@@ -70,7 +70,7 @@ public class AnnulerUneCommandeStepDef {
     @Etantdonné("un client ayant une commande déja commencée")
     public void un_client_ayant_une_commande_déja_commencée() {
         commande = new Commande(magasin, client);
-        commande.changerStatut(Etat.EN_COURS_DE_PREPARATION);
+        commande.setEtat(Etat.EN_COURS_DE_PREPARATION);
         gestionnaireDeCommandes.ajouterCommande(commande);
     }
 

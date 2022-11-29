@@ -24,7 +24,6 @@ public class Magasin implements IClasseTempsReel {
     private String lieu;
     private ZonedDateTime heureOuverture;
     private ZonedDateTime heureFermeture;
-
     private CookiesDuMagasin cookiesDuMagasin;
     private Stock stock;
     private final GestionnaireDeCommandes gestionnaireDeCommandes;
@@ -32,7 +31,8 @@ public class Magasin implements IClasseTempsReel {
     private final GestionnaireDeCuisiniers gestionnaireDeCuisiniers;
     private ZonedDateTime date;
 
-    // --- Constructeurs ---
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Magasin() {
         this("");
     }
@@ -69,7 +69,62 @@ public class Magasin implements IClasseTempsReel {
         this.heureFermeture = dateFermeture;
     }
 
-    // ------------------------------------------------------------------------
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
+
+    public HashMap<String, Cookie> getCatalogue() {
+        return cookiesDuMagasin
+                .getCookies()
+                .values()
+                .stream()
+                .filter(cookie -> estDisponible(cookie)) // On ne prend que les cookies disponiblesn en fonction du stock
+                .collect(HashMap::new, (map, cookie) -> map.put(cookie.getNom(), cookie), HashMap::putAll);
+
+    }
+
+    private boolean estDisponible(Cookie cookie) {
+        return stock.estDisponible(cookie);
+    }
+    private void reserverStock(Cookie cookie, int quantite) {
+        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
+            stock.retirerIngredient(ingredient, quantite);
+        }
+    }
+
+    @Override
+    public void updateHeure(ZonedDateTime zonedDateTime) {
+        this.setDate(zonedDateTime);
+        this.gestionnaireDeCommandes.updateHeure(zonedDateTime);
+    }
+
+    public boolean possedeChefCookieFestif(){
+        return this.gestionnaireDeCuisiniers.getCuisiniers().stream().filter(cuisinier -> cuisinier instanceof ChefCookieFestif).count() > 0;
+    }
+
+    public void resreverIngredients(Commande commande) {
+        commande.getPanier().getLignesCommande().forEach(ligneCommande -> reserverStock(ligneCommande.getCookie(), ligneCommande.getQuantite()));
+    }
+
+    public boolean verifierCommande(Commande commande) {
+        return commande.getPanier().getCookies().stream().allMatch(cookie -> stock.estDisponible(cookie));
+    }
+
+    public void changerHoraires(ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
+        if (!dateOuverture.isBefore(dateFermeture)) {
+            throw new IllegalArgumentException("La date d'ouverture doit être avant la date de fermeture");
+        }
+        if (dateOuverture.equals(dateFermeture)) {
+            throw new IllegalArgumentException("La date d'ouverture doit être différente de la date de fermeture");
+        }
+        // si le temps entre les deux dates est inférieur à 1h, on lève une exception
+        if (dateOuverture.until(dateFermeture, ChronoUnit.HOURS) < 1) {
+            throw new IllegalArgumentException("Le magasin doit être ouvert au moins 1h par jour");
+        }
+        setHeureOuverture(dateOuverture);
+        setHeureFermeture(dateFermeture);
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
+
     public Stock getStock() {
         return stock;
     }
@@ -110,24 +165,23 @@ public class Magasin implements IClasseTempsReel {
         return cookiesDuMagasin;
     }
 
-    public HashMap<String, Cookie> getCatalogue() {
-        return cookiesDuMagasin
-                .getCookies()
-                .values()
-                .stream()
-                .filter(cookie -> estDisponible(cookie)) // On ne prend que les cookies disponiblesn en fonction du stock
-                .collect(HashMap::new, (map, cookie) -> map.put(cookie.getNom(), cookie), HashMap::putAll);
-
+    public ZonedDateTime getDate() {
+        return date;
     }
 
-    private boolean estDisponible(Cookie cookie) {
-        return stock.estDisponible(cookie);
+    public void setDate(ZonedDateTime zonedDateTime) {
+        this.date = zonedDateTime;
     }
-    private void reserverStock(Cookie cookie, int quantite) {
-        for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
-            stock.retirerIngredient(ingredient, quantite);
-        }
+
+    private void setHeureOuverture(ZonedDateTime heureOuverture) {
+        this.heureOuverture = heureOuverture;
     }
+
+    private void setHeureFermeture(ZonedDateTime heureFermeture) {
+        this.heureFermeture = heureFermeture;
+    }
+
+    /* ------------------------------------- Méthodes génériques --------------------------------------- */
 
     @Override
     public boolean equals(Object o) {
@@ -140,10 +194,6 @@ public class Magasin implements IClasseTempsReel {
     @Override
     public int hashCode() {
         return Objects.hash(nom);
-    }
-
-    public ZonedDateTime getDate() {
-        return date;
     }
 
     @Override
@@ -159,50 +209,5 @@ public class Magasin implements IClasseTempsReel {
                 //", gestionnaireDeCommandes=" + gestionnaireDeCommandes +
                 //", gestionnaireDeCuisiniers=" + gestionnaireDeCuisiniers +
                 '}';
-    }
-
-    public void setDate(ZonedDateTime zonedDateTime) {
-        this.date = zonedDateTime;
-    }
-
-    private void setHeureOuverture(ZonedDateTime heureOuverture) {
-        this.heureOuverture = heureOuverture;
-    }
-
-    private void setHeureFermeture(ZonedDateTime heureFermeture) {
-        this.heureFermeture = heureFermeture;
-    }
-
-    public void changerHoraires(ZonedDateTime dateOuverture, ZonedDateTime dateFermeture) {
-        if (!dateOuverture.isBefore(dateFermeture)) {
-            throw new IllegalArgumentException("La date d'ouverture doit être avant la date de fermeture");
-        }
-        if (dateOuverture.equals(dateFermeture)) {
-            throw new IllegalArgumentException("La date d'ouverture doit être différente de la date de fermeture");
-        }
-        // si le temps entre les deux dates est inférieur à 1h, on lève une exception
-        if (dateOuverture.until(dateFermeture, ChronoUnit.HOURS) < 1) {
-            throw new IllegalArgumentException("Le magasin doit être ouvert au moins 1h par jour");
-        }
-        setHeureOuverture(dateOuverture);
-        setHeureFermeture(dateFermeture);
-    }
-
-    @Override
-    public void updateHeure(ZonedDateTime zonedDateTime) {
-        this.setDate(zonedDateTime);
-        this.gestionnaireDeCommandes.updateHeure(zonedDateTime);
-    }
-
-    public boolean possedeChefCookieFestif(){
-        return this.gestionnaireDeCuisiniers.getCuisiniers().stream().filter(cuisinier -> cuisinier instanceof ChefCookieFestif).count() > 0;
-    }
-
-    public void resreverIngredients(Commande commande) {
-        commande.getPanier().getLignesCommande().forEach(ligneCommande -> reserverStock(ligneCommande.getCookie(), ligneCommande.getQuantite()));
-    }
-
-    public boolean verifierCommande(Commande commande) {
-        return commande.getPanier().getCookies().stream().allMatch(cookie -> stock.estDisponible(cookie));
     }
 }

@@ -16,6 +16,8 @@ public class Recette {
     Melange melange;
     int tempsPreparation;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public Recette() {
         Pate pate = new Pate("Nature");
         Saveur saveur = new Saveur("Nature");
@@ -27,6 +29,8 @@ public class Recette {
         this.melange = Melange.MIXTE;
         this.tempsPreparation = 15;
     }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     public Recette setPate(String nomPate, int quantite) {
         if (ChaineDeMagasins.getInstance().getBd().getBdIngredient().getPate(nomPate).isEmpty()) {
@@ -90,26 +94,6 @@ public class Recette {
         return ingredients;
     }
 
-    public int getQuantiteTotale(){
-        return quantiteGarnitures.getQuantite() + quantiteSaveur.getQuantite() + quantitePate.getQuantite();
-    }
-
-    public QuantiteIngredient<Pate, Integer> getQuantitePate() {
-        return quantitePate;
-    }
-
-    public QuantiteIngredient<Saveur, Integer> getQuantiteSaveur() {
-        return quantiteSaveur;
-    }
-
-    public QuantiteIngredient<List<Garniture>, Integer> getQuantiteGarnitures() {
-        return quantiteGarnitures;
-    }
-
-    public Cuisson getCuisson() {
-        return cuisson;
-    }
-
     public Recette setCuisson(String cuisson) {
         switch (cuisson) {
             case "CROQUANT" -> this.cuisson = Cuisson.CROQUANT;
@@ -119,8 +103,8 @@ public class Recette {
         return this;
     }
 
-    public Melange getMelange() {
-        return melange;
+    public int getQuantiteTotale(){
+        return quantiteGarnitures.getQuantite() + quantiteSaveur.getQuantite() + quantitePate.getQuantite();
     }
 
     public Recette setMelange(String melange) {
@@ -131,25 +115,8 @@ public class Recette {
         }
         return this;
     }
-
-    public int getTempsPreparation() {
-        return tempsPreparation;
-    }
-
-    public void modifierQuantitePate(int quantite){
-        this.quantitePate.setQuantite(quantite);
-    }
-
-    public void modifierQuantiteGarnitures(int quantite){
-        this.quantiteGarnitures.setQuantite(quantite);
-    }
-
-    public void modifierQuantiteSaveur(int quantite){
-        this.quantiteSaveur.setQuantite(quantite);
-    }
-
     public void multiplierQuantitePate(int multiplicateur){
-        modifierQuantitePate(this.quantitePate.getQuantite() * multiplicateur);
+        setQuantitePate(this.quantitePate.getQuantite() * multiplicateur);
     }
 
     public void multiplierQuantiteGarnitures(int multiplicateur){
@@ -181,4 +148,44 @@ public class Recette {
         }
         throw new IllegalArgumentException("L'ingredient n'est pas dans la recette");
     }
+
+    /* --------------------------------------- Getters & Setters --------------------------------------- */
+
+    public QuantiteIngredient<Pate, Integer> getQuantitePate() {
+        return quantitePate;
+    }
+
+    public QuantiteIngredient<Saveur, Integer> getQuantiteSaveur() {
+        return quantiteSaveur;
+    }
+
+    public QuantiteIngredient<List<Garniture>, Integer> getQuantiteGarnitures() {
+        return quantiteGarnitures;
+    }
+
+    public Cuisson getCuisson() {
+        return cuisson;
+    }
+
+    public Melange getMelange() {
+        return melange;
+    }
+
+
+    public int getTempsPreparation() {
+        return tempsPreparation;
+    }
+
+    public void setQuantitePate(int quantite){
+        this.quantitePate.setQuantite(quantite);
+    }
+
+    public void setQuantiteGarnitures(int quantite){
+        this.quantiteGarnitures.setQuantite(quantite);
+    }
+
+    public void setQuantiteSaveur(int quantite){
+        this.quantiteSaveur.setQuantite(quantite);
+    }
+
 }

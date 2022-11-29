@@ -12,6 +12,8 @@ public class BDCompte {
 
     private final List<Compte> comptes;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     public BDCompte(List<Compte> comptes) {
         this.comptes = comptes;
     }
@@ -21,13 +23,9 @@ public class BDCompte {
         init();
     }
 
-    public List<Compte> getComptes() {
-        return comptes;
-    }
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
-    public List<?> getCompte(Class<?> type) {
-        return comptes.stream().filter(c -> c.getClass().equals(type)).toList();
-    }
+    public void init(){}
 
     public void addCompte(Compte compte) {
         this.comptes.add(compte);
@@ -43,7 +41,13 @@ public class BDCompte {
         this.comptes.add(new Membre(client));
     }
 
-    public void init(){
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
 
+    public List<Compte> getComptes() {
+        return comptes;
+    }
+
+    public List<?> getCompte(Class<?> type) {
+        return comptes.stream().filter(c -> c.getClass().equals(type)).toList();
     }
 }

@@ -15,12 +15,16 @@ public class BDIngredient {
     private final HashSet<Pate> pates;
     private final HashSet<Saveur> saveurs;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     BDIngredient() {
         pates = new HashSet<>();
         saveurs = new HashSet<>();
         garnitures = new HashSet<>();
         init();
     }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     private void init() {
         pates.addAll(List.of(
@@ -67,8 +71,12 @@ public class BDIngredient {
         ));
     }
 
-    public void initAUtiliserPourLesTests(){
+    public void initAUtiliserPourLesTests() {
         init();
+    }
+
+    public boolean contains(Ingredient ingredient) {
+        return garnitures.contains(ingredient) || pates.contains(ingredient) || saveurs.contains(ingredient);
     }
 
     public void ajouterGarniture(Garniture garniture) {
@@ -96,6 +104,22 @@ public class BDIngredient {
         System.err.println("je retire la saveur " + saveur);
         return saveurs.remove(saveur);
     }
+
+    public List<Ingredient> getAllIngredients() {
+        List<Ingredient> ingredients = new ArrayList<>(List.copyOf(garnitures));
+        ingredients.addAll(pates);
+        ingredients.addAll(saveurs);
+        return ingredients;
+    }
+
+    public Ingredient getIngredient(String nom) {
+        if (getGarniture(nom).isPresent()) return getGarniture(nom).get();
+        if (getPate(nom).isPresent()) return getPate(nom).get();
+        if (getSaveur(nom).isPresent()) return getSaveur(nom).get();
+        throw new IllegalArgumentException("L'ingredient " + nom + " n'existe pas");
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
 
     public Optional<Saveur> getSaveur(String nom) {
         return saveurs.stream().filter(saveur -> saveur.getNom().equals(nom)).findFirst();
@@ -132,35 +156,4 @@ public class BDIngredient {
     public List<Pate> getPates() {
         return List.copyOf(pates);
     }
-
-    public Ingredient getIngredient(String nom) {
-        if (getGarniture(nom).isPresent()) return getGarniture(nom).get();
-        if (getPate(nom).isPresent()) return getPate(nom).get();
-        if (getSaveur(nom).isPresent()) return getSaveur(nom).get();
-        throw new IllegalArgumentException("L'ingredient " + nom + " n'existe pas");
-    }
-
-    public boolean contains(Ingredient ingredient) {
-        return garnitures.contains(ingredient) || pates.contains(ingredient) || saveurs.contains(ingredient);
-    }
-
-    public List<Ingredient> getAllIngredients() {
-        List<Ingredient> ingredients = new ArrayList<>(List.copyOf(garnitures));
-        ingredients.addAll(pates);
-        ingredients.addAll(saveurs);
-        return ingredients;
-    }
-
-    public List<Ingredient> getAllPates() {
-        return new ArrayList<>(List.copyOf(pates));
-    }
-
-    public List<Ingredient> getAllGarnitures() {
-        return new ArrayList<>(List.copyOf(garnitures));
-    }
-
-    public List<Ingredient> getAllSaveurs() {
-        return new ArrayList<>(List.copyOf(saveurs));
-    }
-
 }

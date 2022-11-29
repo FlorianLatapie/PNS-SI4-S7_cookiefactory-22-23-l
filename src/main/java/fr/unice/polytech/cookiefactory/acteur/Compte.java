@@ -3,12 +3,13 @@ package fr.unice.polytech.cookiefactory.acteur;
 import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 
 public abstract class Compte {
-
     private final String nom;
     private final String prenom;
     private String email;
     private String telephone;
     private String motDePasse;
+
+    /* --------------------------------------- Constructeurs --------------------------------------- */
 
     protected Compte(String nom, String prenom, String email, String telephone, String motDePasse) {
         this.nom = nom;
@@ -27,6 +28,22 @@ public abstract class Compte {
         this.nom = "";
         this.prenom = "";
     }
+
+    /* ----------------------------------------- Méthodes ----------------------------------------- */
+
+    public void changerEmail(String email) {
+        this.email = email;
+    }
+
+    public void changerTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void changerMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
 
     public String getNom() {
         return nom;
@@ -48,17 +65,7 @@ public abstract class Compte {
         return motDePasse;
     }
 
-    public void changerEmail(String email) {
-        this.email = email;
-    }
-
-    public void changerTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public void changerMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
-    }
+    /* ------------------------------------ Méthodes génériques ------------------------------------ */
 
     @Override
     public String toString() {

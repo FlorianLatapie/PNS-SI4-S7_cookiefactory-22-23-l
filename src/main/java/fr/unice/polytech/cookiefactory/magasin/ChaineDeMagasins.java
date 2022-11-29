@@ -9,13 +9,17 @@ import java.util.List;
 import java.util.Optional;
 
 public class ChaineDeMagasins {
-    private static ChaineDeMagasins instance;
 
+    private static ChaineDeMagasins instance;
     private List<Magasin> magasins;
     private BaseDeDonnees bd;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     private ChaineDeMagasins() {
     }
+
+    /* ----------------------------------------- Méthodes  ----------------------------------------- */
 
     private void init() {
         bd = new BaseDeDonnees();
@@ -39,6 +43,20 @@ public class ChaineDeMagasins {
         return instance;
     }
 
+    public void ajouterMagasin(Magasin magasin) {
+        magasins.add(magasin);
+    }
+
+    public void retirerMagasin(Magasin magasin) {
+        magasins.remove(magasin);
+    }
+
+    public void retirerMagasin(String nomMagasin) {
+        magasins.removeIf(magasin -> magasin.getNom().equals(nomMagasin));
+    }
+
+    /* --------------------------------------- Getters & Setters --------------------------------------- */
+
     public List<Magasin> getAllMagasins() {
         return magasins;
     }
@@ -49,19 +67,6 @@ public class ChaineDeMagasins {
 
     public Optional<Magasin> getMagasin(String nom) {
         return magasins.stream().filter(m -> m.getNom().equals(nom)).findFirst();
-    }
-
-    public void ajouterMagasin(Magasin magasin) {
-        magasins.add(magasin);
-
-    }
-
-    public void retirerMagasin(Magasin magasin) {
-        magasins.remove(magasin);
-    }
-
-    public void retirerMagasin(String nomMagasin) {
-        magasins.removeIf(magasin -> magasin.getNom().equals(nomMagasin));
     }
 
     public BaseDeDonnees getBd() {

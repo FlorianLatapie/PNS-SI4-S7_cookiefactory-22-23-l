@@ -8,10 +8,14 @@ public enum Taille {
     private final int multiplicateurPrix;
     private final int multiplicateurQuantite;
 
+    /* --------------------------------------- Constructeurs --------------------------------------- */
+
     Taille(int multiplicateurPrix, int multiplicateurQuantite) {
         this.multiplicateurPrix = multiplicateurPrix;
         this.multiplicateurQuantite = multiplicateurQuantite;
     }
+
+    /* ------------------------------------- Getters & Setters ------------------------------------- */
 
     public int getMultiplicateurPrix() {
         return multiplicateurPrix;
