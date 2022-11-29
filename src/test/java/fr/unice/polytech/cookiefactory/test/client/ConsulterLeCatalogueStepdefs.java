@@ -39,8 +39,8 @@ public class ConsulterLeCatalogueStepdefs {
 
     Client client;
 
-    @Etantdonné("un invité qui veut onsulter le catalogue d'un magasin")
-    public void un_invité_qui_veut_onsulter_le_catalogue_d_un_magasin() {
+    @Etantdonné("un invité qui veut consulter le catalogue d'un magasin")
+    public void un_invité_qui_veut_consulter_le_catalogue_d_un_magasin() {
         client = new Client(new Invite());
         initBDCookies();
         initStocks();
