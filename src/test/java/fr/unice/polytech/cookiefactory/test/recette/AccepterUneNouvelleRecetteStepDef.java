@@ -1,17 +1,12 @@
 package fr.unice.polytech.cookiefactory.test.recette;
 
 import fr.unice.polytech.cookiefactory.acteur.employe.management.Dirigeant;
-import fr.unice.polytech.cookiefactory.bd.BDCookie;
+import fr.unice.polytech.cookiefactory.bd.GererRecettesGlobales;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
-import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
-import fr.unice.polytech.cookiefactory.recette.enums.Melange;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Quand;
@@ -24,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 public class AccepterUneNouvelleRecetteStepDef {
     Dirigeant dirigeant;
     ChaineDeMagasins chaineDeMagasins = ChaineDeMagasins.getInstance();
-    final BDCookie bdCookie = chaineDeMagasins.getBd().getBdCookie();
+    final GererRecettesGlobales gererRecettesGlobales = chaineDeMagasins.getBd().getBdCookie();
     Magasin magasin;
     Cuisinier cuisinier;
     Cookie cookie;
@@ -95,14 +90,14 @@ public class AccepterUneNouvelleRecetteStepDef {
 
     @Quand("le Dirigent regarde les cookies en attente de validation")
     public void le_dirigent_regarde_les_cookies_en_attente_de_validation() {
-        assertTrue(bdCookie.getCookiesEnAttente().contains(cookie));
+        assertTrue(gererRecettesGlobales.getCookiesEnAttente().contains(cookie));
     }
 
     @Alors("le Dirigent valide le cookie {string}")
     public void le_dirigent_valide_le_cookie(String string) {
-        bdCookie.validerCookie(string);
+        gererRecettesGlobales.validerCookie(string);
         System.out.println("valide cookie");
-        assertTrue(bdCookie.getCookiesValide().contains(cookie));
+        assertTrue(gererRecettesGlobales.getCookiesValide().contains(cookie));
     }
 
     @Et("les magasins sont notifiés de la disponibilité du cookie {string}")

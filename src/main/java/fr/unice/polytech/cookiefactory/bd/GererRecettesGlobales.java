@@ -5,28 +5,24 @@ import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.observeur.CookieDuMagasinListener;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
-import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
-import fr.unice.polytech.cookiefactory.recette.enums.Melange;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-public class BDCookie {
+public class GererRecettesGlobales implements ConsulterRecettesGlobales, ModifierRecettesGlobales {
     private final Map<String, Cookie> cookies;
     HashSet<CookieDuMagasinListener> cookieDuMagasinListeners;
 
-    BDCookie() {
+    GererRecettesGlobales() {
         cookies = new HashMap<>();
         cookieDuMagasinListeners = new HashSet<>();
         init();
     }
 
+    @Override
     public Cookie getCookieParNom(String nom) {
         if (!cookies.containsKey(nom)) {
             throw new IllegalArgumentException(nom + "n'est pas contenu dans la base de données");
@@ -34,10 +30,12 @@ public class BDCookie {
         return cookies.get(nom);
     }
 
+    @Override
     public void ajouterUnCookie(Cookie cookie) {
         cookies.put(cookie.getNom(), cookie);
     }
 
+    @Override
     public void validerCookie(String nom) {
         if (!cookies.containsKey(nom)) {
             throw new IllegalArgumentException(nom + "n'est pas contenu dans la base de données");
@@ -50,14 +48,17 @@ public class BDCookie {
         }
     }
 
+    @Override
     public List<Cookie> getCookies() {
         return this.cookies.values().stream().toList();
     }
 
+    @Override
     public List<Cookie> getCookiesEnAttente() {
         return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.SOUMIS)).toList();
     }
 
+    @Override
     public List<Cookie> getCookiesValide() {
         return cookies.values().stream().filter(cookie -> cookie.getEtat().equals(ValidationCookie.VALIDE)).toList();
     }

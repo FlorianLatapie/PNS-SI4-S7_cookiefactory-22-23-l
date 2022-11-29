@@ -1,19 +1,19 @@
 package fr.unice.polytech.cookiefactory.bd;
 
 public class BaseDeDonnees {
-    private BDCookie bdCookie;
+    private GererRecettesGlobales gererRecettesGlobales;
     private BDIngredient bdIngredient;
     private BDCompte bdCompte;
 
 
     public void initBD() {
         bdIngredient = new BDIngredient();
-        bdCookie = new BDCookie();
+        gererRecettesGlobales = new GererRecettesGlobales();
         bdCompte = new BDCompte();
     }
 
-    public BDCookie getBdCookie() {
-        return bdCookie;
+    public GererRecettesGlobales getBdCookie() {
+        return gererRecettesGlobales;
     }
 
     public BDIngredient getBdIngredient() {
