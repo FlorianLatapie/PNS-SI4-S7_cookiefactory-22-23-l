@@ -13,7 +13,7 @@ import java.util.Objects;
 public class Commande implements IClasseTempsReel {
 
     public static int REDUCTION = 10; // en pourcentage
-    private final Panier panier = new Panier();
+    private Panier panier = new Panier();
     private ZonedDateTime dateReception;
     private boolean appliquerRemise;
     private GestionnaireDeCommandes gestionnaireDeCommandes;
@@ -22,6 +22,11 @@ public class Commande implements IClasseTempsReel {
 
     public Commande(Compte compte) {
         this.compte = compte;
+    }
+
+    public Commande(Compte compte, Panier panier) {
+        this.compte = compte;
+        this.panier = panier;
     }
 
     public Commande() {
