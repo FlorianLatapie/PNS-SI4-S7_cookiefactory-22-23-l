@@ -58,7 +58,6 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
                 compteAvecCommande = commande.getCompte(); //TODO rembourser client
                 Cuisinier cuisinier = obtenirCuisinierPreparantCommande(commande);
                 cuisinier.annulerCommande(commande); //désassigner le cuisinier
-                //TODO remettre en stock les ingrédients
                 this.enleverCommande(commande);      //enlever commande du gestionnaire
             }
             else {
