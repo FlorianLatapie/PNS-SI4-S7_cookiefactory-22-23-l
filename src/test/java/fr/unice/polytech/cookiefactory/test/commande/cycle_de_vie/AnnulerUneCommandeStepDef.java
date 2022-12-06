@@ -6,7 +6,9 @@ import fr.unice.polytech.cookiefactory.commandes.GestionnaireDeCommandes;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.divers.Util;
+import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
+import fr.unice.polytech.cookiefactory.magasin.Stock;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Etantdonné;
@@ -24,17 +26,20 @@ public class AnnulerUneCommandeStepDef {
     private IllegalArgumentException exception;
     private Cuisinier cuisinier;
     private int tailleEdt;
+    private Stock stock;
 
     @Etantdonné("un magasin avec des commandes")
     public void un_magasin_avec_des_commandes() {
         magasin = new Magasin("Cookie!");
         gestionnaireDeCommandes = magasin.getGestionnaireDeCommandes();
+        stock = magasin.getStock();
     }
 
     @Et("une commande à annuler")
     public void uneCommandeAAnnuler() {
         client = new Client("Chabanier", "Aurelia");
         commande = new Commande(magasin, client);
+        //commande.getPanier().ajouterCookies(ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookieParNom("Pop-Choco"), 2);
         commande.setDateReception(Util.getLundiDeLaSemaineCourante(Util.heurePile(ZonedDateTime.now(), 9)));
     }
 
@@ -86,7 +91,7 @@ public class AnnulerUneCommandeStepDef {
 
     @Alors("on rajoute dans le stock les ingrédients nécessaires à la commande")
     public void on_rajoute_dans_le_stock_les_ingrédients_nécessaires_à_la_commande() {
-        // Write code here that turns the phrase above into concrete actions
+        assertNotEquals(magasin.getStock().getIngredients(), stock);
     }
 
     @Alors("le client est remboursé de la valeur de sa commande")
