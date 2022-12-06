@@ -13,7 +13,7 @@ public class ComponentLogger {
         private static final Logger LOG = LoggerFactory.getLogger(ComponentLogger.class);
         private static final String PREFIX = "VSCF:Component:";
 
-        @Pointcut("execution(public * fr.unice.polytech.cookiefactory.spring.component..*(..))")
+        @Pointcut("execution(public * fr.unice.polytech.cookiefactory.spring.composants..*(..))")
         private void allComponentsMethods() {} // This enables to attach the pointcut to a method name we can reuse below
 
         @Before("allComponentsMethods()")
