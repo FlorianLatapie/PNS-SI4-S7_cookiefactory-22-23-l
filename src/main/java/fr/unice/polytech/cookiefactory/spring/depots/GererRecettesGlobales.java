@@ -16,7 +16,7 @@ public class GererRecettesGlobales implements ConsulterRecettesGlobales, Modifie
     private final Map<String, Cookie> cookies;
     HashSet<CookieDuMagasinListener> cookieDuMagasinListeners;
 
-    GererRecettesGlobales() {
+    public GererRecettesGlobales() {
         cookies = new HashMap<>();
         cookieDuMagasinListeners = new HashSet<>();
         init();

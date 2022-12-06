@@ -14,7 +14,8 @@ import io.cucumber.java.fr.Étantdonné;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class AccepterUneNouvelleRecetteStepDef {
     Dirigeant dirigeant;
