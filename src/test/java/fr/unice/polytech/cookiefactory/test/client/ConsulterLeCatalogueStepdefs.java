@@ -2,7 +2,7 @@ package fr.unice.polytech.cookiefactory.test.client;
 
 import fr.unice.polytech.cookiefactory.acteur.clients.Client;
 import fr.unice.polytech.cookiefactory.acteur.clients.Invite;
-import fr.unice.polytech.cookiefactory.spring.depots.GererRecettesGlobales;
+import fr.unice.polytech.cookiefactory.bd.BDCookie;
 import fr.unice.polytech.cookiefactory.bd.BDIngredient;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ConsulterLeCatalogueStepdefs {
     ChaineDeMagasins chaineDeMagasins = ChaineDeMagasins.getInstance();
 
-    GererRecettesGlobales gererRecettesGlobales = chaineDeMagasins.getBd().getBdCookie();
+    BDCookie bdCookie = chaineDeMagasins.getBd().getBdCookie();
     BDIngredient bdIngredient = chaineDeMagasins.getBd().getBdIngredient();
 
     Magasin magasin1;
@@ -112,17 +112,17 @@ public class ConsulterLeCatalogueStepdefs {
                         .setGarnituresWithGarniture(List.of(bdIngredient.getGarniture("M&M’s™").get()), 1)
 
         );
-            gererRecettesGlobales.ajouterUnCookie(cookie1);
-            gererRecettesGlobales.ajouterUnCookie(cookie2);
-            gererRecettesGlobales.ajouterUnCookie(cookie3);
-            gererRecettesGlobales.ajouterUnCookie(cookie4);
-            gererRecettesGlobales.ajouterUnCookie(cookie5);
+            bdCookie.ajouterUnCookie(cookie1);
+            bdCookie.ajouterUnCookie(cookie2);
+            bdCookie.ajouterUnCookie(cookie3);
+            bdCookie.ajouterUnCookie(cookie4);
+            bdCookie.ajouterUnCookie(cookie5);
 
-            gererRecettesGlobales.validerCookie("cookie1");
-            gererRecettesGlobales.validerCookie("cookie2");
-            gererRecettesGlobales.validerCookie("cookie3");
-            gererRecettesGlobales.validerCookie("cookie4");
-            gererRecettesGlobales.validerCookie("cookie5");
+            bdCookie.validerCookie("cookie1");
+            bdCookie.validerCookie("cookie2");
+            bdCookie.validerCookie("cookie3");
+            bdCookie.validerCookie("cookie4");
+            bdCookie.validerCookie("cookie5");
         }
 
         private void initStocks() {

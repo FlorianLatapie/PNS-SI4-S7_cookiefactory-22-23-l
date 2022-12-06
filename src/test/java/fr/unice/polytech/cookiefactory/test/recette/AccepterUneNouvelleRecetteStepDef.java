@@ -1,18 +1,26 @@
 package fr.unice.polytech.cookiefactory.test.recette;
 
 import fr.unice.polytech.cookiefactory.acteur.employe.management.Dirigeant;
+import fr.unice.polytech.cookiefactory.bd.BDCookie;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
-import fr.unice.polytech.cookiefactory.spring.composants.GestionCookies;
+import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
+import fr.unice.polytech.cookiefactory.recette.enums.Melange;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
+import fr.unice.polytech.cookiefactory.spring.component.GestionCookies;
+import fr.unice.polytech.cookiefactory.spring.depots.CookieDepot;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;

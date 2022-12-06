@@ -1,4 +1,4 @@
-package fr.unice.polytech.cookiefactory.spring.composants;
+package fr.unice.polytech.cookiefactory.spring.component;
 
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;

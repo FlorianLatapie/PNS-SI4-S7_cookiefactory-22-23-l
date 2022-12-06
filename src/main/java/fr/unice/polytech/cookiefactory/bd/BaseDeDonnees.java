@@ -1,21 +1,19 @@
 package fr.unice.polytech.cookiefactory.bd;
 
-import fr.unice.polytech.cookiefactory.spring.depots.GererRecettesGlobales;
-
 public class BaseDeDonnees {
-    private GererRecettesGlobales gererRecettesGlobales;
+    private BDCookie bdCookie;
     private BDIngredient bdIngredient;
     private BDCompte bdCompte;
 
 
     public void initBD() {
         bdIngredient = new BDIngredient();
-        gererRecettesGlobales = new GererRecettesGlobales();
+        bdCookie = new BDCookie();
         bdCompte = new BDCompte();
     }
 
-    public GererRecettesGlobales getBdCookie() {
-        return gererRecettesGlobales;
+    public BDCookie getBdCookie() {
+        return bdCookie;
     }
 
     public BDIngredient getBdIngredient() {
