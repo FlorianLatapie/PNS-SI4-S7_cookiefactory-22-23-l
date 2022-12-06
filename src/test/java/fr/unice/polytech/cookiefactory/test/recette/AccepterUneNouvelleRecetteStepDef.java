@@ -1,26 +1,39 @@
 package fr.unice.polytech.cookiefactory.test.recette;
 
 import fr.unice.polytech.cookiefactory.acteur.employe.management.Dirigeant;
-import fr.unice.polytech.cookiefactory.spring.depots.GererRecettesGlobales;
+import fr.unice.polytech.cookiefactory.bd.BDCookie;
 import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
+import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
+import fr.unice.polytech.cookiefactory.recette.enums.Melange;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
+import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
+import fr.unice.polytech.cookiefactory.spring.component.GestionCookies;
+import fr.unice.polytech.cookiefactory.spring.depots.CookieDepot;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Et;
 import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
+import io.cucumber.spring.CucumberContextConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
+@CucumberContextConfiguration
+@SpringBootTest
 public class AccepterUneNouvelleRecetteStepDef {
     Dirigeant dirigeant;
     ChaineDeMagasins chaineDeMagasins = ChaineDeMagasins.getInstance();
-    final GererRecettesGlobales gererRecettesGlobales = chaineDeMagasins.getBd().getBdCookie();
+    @Autowired
+    GestionCookies gestionCookies;
     Magasin magasin;
     Cuisinier cuisinier;
     Cookie cookie;
@@ -91,14 +104,14 @@ public class AccepterUneNouvelleRecetteStepDef {
 
     @Quand("le Dirigent regarde les cookies en attente de validation")
     public void le_dirigent_regarde_les_cookies_en_attente_de_validation() {
-        assertTrue(gererRecettesGlobales.getCookiesEnAttente().contains(cookie));
+        assertTrue(gestionCookies.getCookiesEnAttente().contains(cookie));
     }
 
     @Alors("le Dirigent valide le cookie {string}")
     public void le_dirigent_valide_le_cookie(String string) {
-        gererRecettesGlobales.validerCookie(string);
+        gestionCookies.validerCookie(string);
         System.out.println("valide cookie");
-        assertTrue(gererRecettesGlobales.getCookiesValide().contains(cookie));
+        assertTrue(gestionCookies.getCookiesValide().contains(cookie));
     }
 
     @Et("les magasins sont notifiés de la disponibilité du cookie {string}")

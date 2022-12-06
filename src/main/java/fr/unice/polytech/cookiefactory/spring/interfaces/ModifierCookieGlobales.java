@@ -1,8 +1,8 @@
-package fr.unice.polytech.cookiefactory.spring.depots;
+package fr.unice.polytech.cookiefactory.spring.interfaces;
 
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 
-public interface ModifierRecettesGlobales {
+public interface ModifierCookieGlobales {
     void ajouterUnCookie(Cookie cookie);
 
     void validerCookie(String nom);

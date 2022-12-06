@@ -3,10 +3,13 @@ package fr.unice.polytech.cookiefactory.recette.cookie;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 
+import java.util.UUID;
+
 public class Cookie {
     private final String nom;
     protected Recette recette;
     protected Prix prix;
+    private final UUID id = UUID.randomUUID();
     private ValidationCookie etat = ValidationCookie.VALIDE;
 
     public Cookie(String nom) {
@@ -60,5 +63,7 @@ public class Cookie {
                 '}';
     }
 
-
+    public UUID getId() {
+        return id;
+    }
 }
