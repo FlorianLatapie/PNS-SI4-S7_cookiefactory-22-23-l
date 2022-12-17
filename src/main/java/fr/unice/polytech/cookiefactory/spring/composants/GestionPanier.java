@@ -5,6 +5,7 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.spring.depots.ClientDepot;
 import fr.unice.polytech.cookiefactory.spring.interfaces.ConsulterPanier;
 import fr.unice.polytech.cookiefactory.spring.interfaces.ModifierPanier;
+import fr.unice.polytech.cookiefactory.spring.interfaces.PayerComande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +15,12 @@ import java.util.List;
 public class GestionPanier implements ModifierPanier, ConsulterPanier {
 
     private ClientDepot clientDepot;
+    private PayerComande payerComande;
 
     @Autowired
-    public GestionPanier(ClientDepot clientDepot) {
+    public GestionPanier(ClientDepot clientDepot, PayerComande payerComande) {
         this.clientDepot = clientDepot;
+        this.payerComande = payerComande;
     }
     @Override
     public List<Cookie> getCookies(Invite invite) {

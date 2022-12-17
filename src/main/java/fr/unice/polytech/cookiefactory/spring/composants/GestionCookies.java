@@ -12,7 +12,7 @@ import fr.unice.polytech.cookiefactory.spring.interfaces.*;
 import java.util.*;
 
 @Component
-public class GestionCookies implements ConsulterCookieGlobales, ModifierCookieGlobales {
+public class GestionCookies implements ObtenirCookiesGlobaux, ModifierCookieGlobales {
     private CookieDepot cookieDepot;
 
     @Autowired
