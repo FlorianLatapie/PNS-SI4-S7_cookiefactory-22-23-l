@@ -2,7 +2,10 @@ package fr.unice.polytech.cookiefactory.acteur;
 
 import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 
+import java.util.UUID;
+
 public abstract class Compte {
+    private final UUID id = UUID.randomUUID();
 
     private String nom;
     private String prenom;
@@ -87,5 +90,9 @@ public abstract class Compte {
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public UUID getId() {
+        return id;
     }
 }
