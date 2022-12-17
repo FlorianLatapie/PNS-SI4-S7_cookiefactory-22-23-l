@@ -32,6 +32,7 @@ public class GestionCookies implements ObtenirCookiesGlobaux, ModifierCookieGlob
 
     @Override
     public void ajouterUnCookie(Cookie cookie) {
+        cookie.setEtat(ValidationCookie.SOUMIS);
         cookieDepot.sauvegarder(cookie, cookie.getId());
     }
 

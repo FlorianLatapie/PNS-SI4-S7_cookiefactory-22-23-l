@@ -8,5 +8,5 @@ Fonctionnalité: Accepter un nouveau cookie
   Scénario: Accepter un cookie
     Étant donné un cuisinier qui soumet un cookie
     Alors le cookie est en attente de validation
-    Quand un dirigeant valide le cookie "Chocokid"
+    Quand un dirigeant valide le cookie
     Alors le cookie est accepté

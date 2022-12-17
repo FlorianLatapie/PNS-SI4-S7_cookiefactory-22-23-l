@@ -1,17 +1,10 @@
 package fr.unice.polytech.cookiefactory.test.recette;
 
-import fr.unice.polytech.cookiefactory.acteur.employe.management.Dirigeant;
-import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
-import fr.unice.polytech.cookiefactory.cuisine.Cuisinier;
-import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
-import fr.unice.polytech.cookiefactory.magasin.Magasin;
+
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
-import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
 import fr.unice.polytech.cookiefactory.recette.cookie.factory.SimpleCookieFactory;
 import fr.unice.polytech.cookiefactory.spring.composants.GestionCookies;
 import io.cucumber.java.fr.Alors;
-import io.cucumber.java.fr.Et;
-import io.cucumber.java.fr.Quand;
 import io.cucumber.java.fr.Étantdonné;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +20,11 @@ public class AccepterUneNouvelleRecetteStepDef {
     @Autowired
     GestionCookies gestionCookies;
     Cookie cookie;
-
     String nomCookie;
 
     @Étantdonné("un cookie {string}")
     public void un_cookie(String nomCookie) {
+        this.nomCookie = nomCookie;
         SimpleCookieFactory simpleCookieFactory = new SimpleCookieFactory();
         simpleCookieFactory.setValidationCookie(SOUMIS);
         cookie = simpleCookieFactory.creerCookie(nomCookie);
@@ -42,10 +35,9 @@ public class AccepterUneNouvelleRecetteStepDef {
         gestionCookies.ajouterUnCookie(cookie);
     }
 
-    @Alors("un dirigeant valide le cookie {string}")
-    public void le_dirigent_valide_le_cookie(String string) {
-        nomCookie = string;
-        gestionCookies.validerCookie(string);
+    @Alors("un dirigeant valide le cookie")
+    public void le_dirigent_valide_le_cookie() {
+        gestionCookies.validerCookie(nomCookie);
     }
 
     @Alors("le cookie est en attente de validation")

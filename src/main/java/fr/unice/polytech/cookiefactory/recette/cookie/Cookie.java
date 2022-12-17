@@ -55,6 +55,10 @@ public class Cookie {
         this.etat = etat;
     }
 
+    public void setEtat(ValidationCookie etat) {
+        this.etat = etat;
+    }
+
     @Override
     public String toString() {
         return "Cookie{" +
