@@ -68,15 +68,13 @@ mvn exec:java
 
 ## Réductions
 
-### *User
-Story* : Bénéficier d’une réduction de 10% sur une commande [#12](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/12)
+### *User Story* : Bénéficier d’une réduction de 10% sur une commande [#12](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/12)
 
 **En tant que** Client fidèle<br>
 **Je veux** bénéficier de mon avantage client fidèle<br>
 **Afin de** payer moins cher ma commande<br>
 
-### *User
-Story* : Obtenir une réduction quand le client attends le quota de fidélité [#49](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/49)
+### *User Story* : Obtenir une réduction quand le client attends le quota de fidélité [#49](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/49)
 
 **En tant que** client qui à un compte Membre<br>
 **Je veux** pouvoir bénéficié d'une réduction quand j'atteins le quota nécessaire<br>
@@ -84,8 +82,7 @@ Story* : Obtenir une réduction quand le client attends le quota de fidélité [
 
 ## Cookie festif
 
-### *User
-Story* : Ajouter un cookie festif au panier [#39](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/39)
+### *User Story* : Ajouter un cookie festif au panier [#39](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/39)
 
 **En tant qu'** invité<br>
 **Je veux** ajouter un cookie festif au panier<br>
@@ -97,22 +94,19 @@ Story* : Ajouter un cookie festif au panier [#39](https://github.com/PNS-Concept
 **Je veux** devenir chef cookies festifs<br>
 **Afin de** créer des party cookies pour mes thèmes et mes occasions<br>
 
-### *User
-Story* : Commander des cookies festifs [#41](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/41)
+### *User Story* : Commander des cookies festifs [#41](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/41)
 
 **En tant qu'** invité<br>
 **Je veux** obtenir la liste des magasins proposant les cookies festifs<br>
 **Afin de** commander des cookies festifs<br>
 
-### *User
-Story* : Cookies Festifs modifient la quantité d'ingrédients [#47](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/47)
+### *User Story* : Cookies Festifs modifient la quantité d'ingrédients [#47](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/47)
 
 **En tant que** Chef Cuisinier<br>
 **Je veux** que les Cookies Festifs que je prépare modifient la quantité des ingrédients de la recette<br>
 **Afin de** pouvoir prendre la quantité qu'il me faut à l'avance<br>
 
-### *User
-Story* : Assigner les chefs cookies festifs à une commande de cookies festifs [#48](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/48)
+### *User Story* : Assigner les chefs cookies festifs à une commande de cookies festifs [#48](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/48)
 
 **En tant que** chef cookies festif<br>
 **Je veux** être assigné à une commande de Cookie Festif<br>
@@ -144,29 +138,25 @@ Story* : Assigner les chefs cookies festifs à une commande de cookies festifs [
 
 ## Consultation des commandes
 
-### *User
-Story* : Consulter les commandes à préparer [#2](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/2)
+### *User Story* : Consulter les commandes à préparer [#2](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/2)
 
 **En tant que** Cuisinier<br>
 **Je veux** consulter les commandes à préparer<br>
 **Afin de** savoir quoi ce qu’il faut préparer<br>
 
-### *User
-Story* : Consulter les commandes en attente de retrait [#4](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/4)
+### *User Story* : Consulter les commandes en attente de retrait [#4](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/4)
 
 **En tant que** Caissier<br>
 **Je veux** consulter les commandes en attente de retrait<br>
 **Afin de** les délivrer au bon client<br>
 
-### *User
-Story* : Une commande par cuisinier, plusieurs cuisiniers [#21](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/21)
+### *User Story* : Une commande par cuisinier, plusieurs cuisiniers [#21](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/21)
 
 **En tant que** Cuisinier<br>
 **Je veux** consulter les commandes à préparer<br>
 **Afin de** pouvoir cuisiner les cookies<br>
 
-### *User
-Story* : Plusieurs commandes par cuisinier, plusieurs cuisiniers [#33](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/33)
+### *User Story* : Plusieurs commandes par cuisinier, plusieurs cuisiniers [#33](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/33)
 
 **En tant que** Cuisinier<br>
 **Je veux** consulter les commandes à préparer<br>
@@ -174,8 +164,7 @@ Story* : Plusieurs commandes par cuisinier, plusieurs cuisiniers [#33](https://g
 
 ## Gestion des commandes par le système
 
-### *User
-Story* : Marquer la commande en entrée et sortie de cuisine [#3](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/3)
+### *User Story* : Marquer la commande en entrée et sortie de cuisine [#3](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/3)
 
 **En tant que** Cuisinier<br>
 **Je veux** marquer une commande comme préparée<br>
@@ -189,15 +178,13 @@ Story* : Marquer la commande en entrée et sortie de cuisine [#3](https://github
 
 ## Magasins
 
-### *User
-Story* : Consulter le catalogue d’un magasin [#6](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/6)
+### *User Story* : Consulter le catalogue d’un magasin [#6](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/6)
 
 **En tant qu'** invité<br>
 **Je veux** consulter le catalogue des cookies disponibles auprès d’un magasin donné<br>
 **Afin de** connaître toutes les recettes proposées<br>
 
-### *User
-Story* : Gérer les magasins présents dans la chaine de magasins [#35](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/35)
+### *User Story* : Gérer les magasins présents dans la chaine de magasins [#35](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/35)
 
 **En tant que** dirigeant<br>
 **Je veux** gérer (ajouter/supprimer) les magasins présents dans la chaine de magasins<br>
@@ -213,29 +200,25 @@ Story* : Gérer les magasins présents dans la chaine de magasins [#35](https://
 
 ## Recettes
 
-### *User
-Story* : Sélectionner la quantité d’une recette [#9](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/9)
+### *User Story* : Sélectionner la quantité d’une recette [#9](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/9)
 
 **En tant qu'** invité<br>
 **Je veux** sélectionner la quantité pour un certain cookie que je veux commander<br>
 **Afin de** commander plusieurs cookies d’une même recette dans une seule commande<br>
 
-### *User
-Story* : Soumettre une nouvelle recette [#17](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/17)
+### *User Story* : Soumettre une nouvelle recette [#17](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/17)
 
 **En tant que** Chef Cuisinier<br>
 **Je veux** soumettre une nouvelle recette au dirigeant<br>
 **Afin d'** ajouter une nouvelle recette au catalogue des recettes<br>
 
-### *User
-Story* : Accepter une nouvelle recette [#19](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/19)
+### *User Story* : Accepter une nouvelle recette [#19](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/19)
 
 **En tant que** Dirigeant<br>
 **Je veux** valider ou refuser une nouvelle recette<br>
 **Afin de** l’ajouter ou non au catalogue<br>
 
-### *User
-Story* : Les recettes ont une quantité [#46](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/46)
+### *User Story* : Les recettes ont une quantité [#46](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/46)
 
 **En tant que** Chef Cuisinier<br>
 **Je veux** que les Cookies que je prépare aient une quantité d'ingrédients différents selon la recette<br>
@@ -243,8 +226,7 @@ Story* : Les recettes ont une quantité [#46](https://github.com/PNS-Conception/
 
 ## Programme de fidélité
 
-### *User
-Story* : Souscription au programme de fidélité [#11](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/11)
+### *User Story* : Souscription au programme de fidélité [#11](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/11)
 
 **En tant que** Client<br>
 **Je veux** souscrire au programme de fidélité<br>
@@ -252,22 +234,19 @@ Story* : Souscription au programme de fidélité [#11](https://github.com/PNS-Co
 
 ## Stock des ingrédients
 
-### *User
-Story* : Gérer des ingrédients du stock d'un magasin [#20](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/20)
+### *User Story* : Gérer des ingrédients du stock d'un magasin [#20](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/20)
 
 **En tant que** responsable du stock<br>
 **Je veux** ajouter des ingrédients aux stock<br>
 **Afin de** modifier les quantités présentes dans le stock du magasin<br>
 
-### *User
-Story* : Commander enlève les ingrédients du stock [#24](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/24)
+### *User Story* : Commander enlève les ingrédients du stock [#24](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/24)
 
 **En tant que** cuisinier<br>
 **Je veux** que les ingrédients nécessaires à la réalisation d'une commande soient disponibles<br>
 **Afin de** pouvoir réaliser toutes les commandes qui me sont assignées<br>
 
-### *User
-Story* : Gérer les ingrédients disponibles pour tous les magasins [#32](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/32)
+### *User Story* : Gérer les ingrédients disponibles pour tous les magasins [#32](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/32)
 
 **En tant que** dirigeant<br>
 **Je veux** ajouter des nouveaux ingrédients dans les ingrédients disponibles pour tous les magasins<br>
@@ -288,8 +267,7 @@ Story* : Gérer les ingrédients disponibles pour tous les magasins [#32](https:
 
 ## Notifications
 
-### *User
-Story* : Notifier le client une fois la commande en attente de retrait [#29](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/29)
+### *User Story* : Notifier le client une fois la commande en attente de retrait [#29](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/29)
 
 **En tant qu'** Invité<br>
 **Je veux** recevoir une notification quand ma commande est en attente de retrait<br>
@@ -297,8 +275,7 @@ Story* : Notifier le client une fois la commande en attente de retrait [#29](htt
 
 ## Horaires de Magasin
 
-### *User
-Story* : Changer les horaires d'ouvertures d'un magasin [#31](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/31)
+### *User Story* : Changer les horaires d'ouvertures d'un magasin [#31](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/31)
 
 **En tant que** Responsable<br>
 **Je veux** changer les horaires d’ouverture de mon magasin<br>
