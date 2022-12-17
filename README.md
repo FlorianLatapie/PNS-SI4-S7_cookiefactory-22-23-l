@@ -1,11 +1,14 @@
 # CookieFactory-22-23-L
 
+<div align="center">
+
 ![The Cookie Factory logo](https://www.cookiefactory-germany.de/wp-content/uploads/2021/08/cookie_factory.png)
 
 The Cookie Factory (TCF) est une grande enseigne de cookies.  
 Le système Cookie on Demand (CoD) est un service innovant proposé par TCF à ses clients.  
 Ils peuvent commander des cookies en ligne grâce à une application, et sélectionner le magasin de retrait, ainsi que du créneau de retrait de leur commande.  
 Le système CoD garantit aux clients de TCF qu'ils récupéreront toujours leurs cookies prépayés et chauds.
+</div>
 
 ## Documentation
 
@@ -58,7 +61,7 @@ mvn exec:java
 
 ### Réductions
 
- #### *User Story* : Bénéficier d’une réduction sur une commande [#12](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/12)
+#### *User Story* : Bénéficier d’une réduction sur une commande [#12](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/12)
 
 **En tant que** Client fidèle  
 **Je veux** bénéficier de mon avantage client fidèle  
