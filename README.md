@@ -290,7 +290,7 @@ mvn exec:java
 - [**Cucumber**](https://cucumber.io/) - Framework de test
 - [**Junit**](https://junit.org/junit5/) - Framework de test
 - [**Mockito**](https://site.mockito.org/) - Framework de test
-- [**Gurkins**](https://cucumber.io/docs/guides/overview/) - Langage pour Behavior Driven Development
+- [**Gherkin**](https://cucumber.io/docs/guides/overview/) - Langage pour Behavior Driven Development
 
 # Auteurs
 
