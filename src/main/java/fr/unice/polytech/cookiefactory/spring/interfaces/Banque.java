@@ -5,5 +5,5 @@ import fr.unice.polytech.cookiefactory.exceptions.PayementException;
 
 public interface Banque {
 
-    boolean payer(Prix valeur) throws PayementException;
+    void payer(Prix valeur) throws PayementException;
 }

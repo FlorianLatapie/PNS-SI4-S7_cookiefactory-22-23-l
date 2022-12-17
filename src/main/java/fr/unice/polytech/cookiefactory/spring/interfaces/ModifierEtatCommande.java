@@ -8,4 +8,10 @@ public interface ModifierEtatCommande {
     void annulerCommande(Commande commande);
 
     void commandeEnAttenteDeRetrait(Commande commande);
+
+    void commandeConfirmee(Commande commande);
+
+    void commandeOubliee(Commande commande);
+
+    void commandeEnCoursDePreparation(Commande commande);
 }

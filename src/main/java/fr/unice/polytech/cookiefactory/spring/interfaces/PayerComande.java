@@ -5,5 +5,5 @@ import fr.unice.polytech.cookiefactory.commandes.Commande;
 
 public interface PayerComande {
 
-    Commande payer(Invite invite);
+    void payer(Invite invite);
 }

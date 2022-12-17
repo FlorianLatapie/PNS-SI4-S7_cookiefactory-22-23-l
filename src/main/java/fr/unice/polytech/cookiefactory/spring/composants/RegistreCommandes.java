@@ -78,6 +78,21 @@ public class RegistreCommandes implements AjouterCommande, ObtenirCommande, Modi
     }
 
     @Override
+    public void commandeConfirmee(Commande commande) {
+        commande.setEtat(Etat.CONFIRMEE);
+    }
+
+    @Override
+    public void commandeOubliee(Commande commande) {
+        commande.setEtat(Etat.OUBLIEE);
+    }
+
+    @Override
+    public void commandeEnCoursDePreparation(Commande commande) {
+        commande.setEtat(Etat.EN_COURS_DE_PREPARATION);
+    }
+
+    @Override
     public void commandeReceptionnee(Commande commande){
         commande.setEtat(Etat.RECEPTIONNEE);
         notifier.envoyerAvecTousLesServicesClientelle(commande);
