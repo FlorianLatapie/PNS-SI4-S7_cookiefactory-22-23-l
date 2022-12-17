@@ -12,7 +12,7 @@ import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Etantdonné;
 import io.cucumber.java.fr.Quand;
-import io.cucumber.java.fr.Étantdonnée;
+import io.cucumber.java.fr.Étantdonné;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,7 +29,7 @@ public class ReservationIngredientsdefs {
         cookie = ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookieParNom(nomCookie);
     }
 
-    @Étantdonnée("un stock contenant {int} pâte {string}, {int} {string}, {int} {string}, {int} {string}")
+    @Étantdonné("un stock contenant {int} pâte {string}, {int} {string}, {int} {string}, {int} {string}")
     public void un_stock_contenant(int nbIngredient1, String nomIngredient1, int nbIngredient2, String nomIngredient2, int nbIngredient3, String nomIngredient3, int nbIngredient4, String nomIngredient4) {
         magasin = new Magasin();
         gestionnaireDeCommandes = magasin.getGestionnaireDeCommandes();
