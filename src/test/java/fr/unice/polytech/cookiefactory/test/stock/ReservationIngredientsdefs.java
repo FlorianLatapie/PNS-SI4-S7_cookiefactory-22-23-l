@@ -41,7 +41,6 @@ public class ReservationIngredientsdefs {
         magasin.getStock().ajouterIngredient(ingredient2, nbIngredient2);
         magasin.getStock().ajouterIngredient(ingredient3, nbIngredient3);
         magasin.getStock().ajouterIngredient(ingredient4, nbIngredient4);
-        System.out.println(magasin.getStock());
     }
 
     @Etantdonné("une commande contenant {int} cookies")
