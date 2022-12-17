@@ -3,17 +3,17 @@ package fr.unice.polytech.cookiefactory.spring.composants;
 import fr.unice.polytech.cookiefactory.acteur.clients.Invite;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.spring.depots.ClientDepot;
-import fr.unice.polytech.cookiefactory.spring.interfaces.ConsulterPanier;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ObtenirPanier;
 import fr.unice.polytech.cookiefactory.spring.interfaces.ModifierPanier;
 import fr.unice.polytech.cookiefactory.spring.interfaces.PayerComande;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ValiderPanier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class GestionPanier implements ModifierPanier, ConsulterPanier {
-
+public class GestionPanier implements ModifierPanier, ObtenirPanier, ValiderPanier {
     private ClientDepot clientDepot;
     private PayerComande payerComande;
 
