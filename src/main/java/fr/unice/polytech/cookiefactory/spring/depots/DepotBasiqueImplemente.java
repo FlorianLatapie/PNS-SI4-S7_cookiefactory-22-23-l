@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class DepotBasiqueImplemente<T, ID> implements Depot<T, ID> {
 
-    private HashMap<ID,T> stockage = new HashMap<>();
+    private HashMap<ID, T> stockage = new HashMap<>();
 
     @Override
     public long taille() {
@@ -32,6 +32,7 @@ public class DepotBasiqueImplemente<T, ID> implements Depot<T, ID> {
     public List<T> getTout() {
         return stockage.values().stream().toList();
     }
+
     @Override
     public Optional<T> getParId(ID id) {
         return Optional.ofNullable(stockage.get(id));
@@ -39,7 +40,7 @@ public class DepotBasiqueImplemente<T, ID> implements Depot<T, ID> {
 
     @Override
     public <S extends T> void sauvegarder(S entity, ID id) {
-        stockage.put(id,entity);
+        stockage.put(id, entity);
     }
 
 }

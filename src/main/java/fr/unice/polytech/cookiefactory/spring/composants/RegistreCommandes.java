@@ -3,7 +3,10 @@ package fr.unice.polytech.cookiefactory.spring.composants;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
 import fr.unice.polytech.cookiefactory.commandes.enums.Etat;
 import fr.unice.polytech.cookiefactory.spring.depots.CommandeDepot;
-import fr.unice.polytech.cookiefactory.spring.interfaces.*;
+import fr.unice.polytech.cookiefactory.spring.interfaces.AjouterCommande;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ModifierEtatCommande;
+import fr.unice.polytech.cookiefactory.spring.interfaces.Notifier;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ObtenirCommande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -62,7 +65,7 @@ public class RegistreCommandes implements AjouterCommande, ObtenirCommande, Modi
     /* ----------------- ModifierEtatCommande ----------------- */
 
     @Override
-    public void annulerCommande(Commande commande){
+    public void annulerCommande(Commande commande) {
         if (commande.getEtat() != Etat.CONFIRMEE) {
             throw new IllegalArgumentException("Vous ne pouvez pas annuler votre commande maintenant.");
         }
@@ -72,7 +75,7 @@ public class RegistreCommandes implements AjouterCommande, ObtenirCommande, Modi
     }
 
     @Override
-    public void commandeEnAttenteDeRetrait(Commande commande){
+    public void commandeEnAttenteDeRetrait(Commande commande) {
         commande.setEtat(Etat.EN_ATTENTE_DE_RETRAIT);
         notifier.envoyerAvecTousLesServicesClientelle(commande);
     }
@@ -93,7 +96,7 @@ public class RegistreCommandes implements AjouterCommande, ObtenirCommande, Modi
     }
 
     @Override
-    public void commandeReceptionnee(Commande commande){
+    public void commandeReceptionnee(Commande commande) {
         commande.setEtat(Etat.RECEPTIONNEE);
         notifier.envoyerAvecTousLesServicesClientelle(commande);
     }

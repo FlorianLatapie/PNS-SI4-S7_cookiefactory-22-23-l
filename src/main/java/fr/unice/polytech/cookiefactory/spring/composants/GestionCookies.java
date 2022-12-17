@@ -5,14 +5,15 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
 import fr.unice.polytech.cookiefactory.spring.depots.CookieDepot;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ModifierCookieGlobaux;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ObtenirCookiesGlobaux;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import fr.unice.polytech.cookiefactory.spring.interfaces.*;
 
-import java.util.*;
+import java.util.List;
 
 @Component
-public class GestionCookies implements ObtenirCookiesGlobaux, ModifierCookieGlobales {
+public class GestionCookies implements ObtenirCookiesGlobaux, ModifierCookieGlobaux {
     private CookieDepot cookieDepot;
 
     @Autowired

@@ -10,7 +10,6 @@ import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("ALL")
@@ -186,7 +185,7 @@ public class Magasin implements IClasseTempsReel {
         this.gestionnaireDeCommandes.updateHeure(zonedDateTime);
     }
 
-    public boolean possedeChefCookieFestif(){
+    public boolean possedeChefCookieFestif() {
         return this.gestionnaireDeCuisiniers.getCuisiniers().stream().filter(cuisinier -> cuisinier instanceof ChefCookieFestif).count() > 0;
     }
 }

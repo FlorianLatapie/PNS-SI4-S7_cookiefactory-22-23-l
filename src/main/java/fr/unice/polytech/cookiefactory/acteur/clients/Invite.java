@@ -1,11 +1,8 @@
 package fr.unice.polytech.cookiefactory.acteur.clients;
 
 import fr.unice.polytech.cookiefactory.acteur.Compte;
-import fr.unice.polytech.cookiefactory.commandes.LigneCommande;
 import fr.unice.polytech.cookiefactory.commandes.Panier;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Invite extends Compte {

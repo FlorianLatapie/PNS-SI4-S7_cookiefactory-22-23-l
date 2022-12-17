@@ -67,7 +67,7 @@ public class BDIngredient {
         ));
     }
 
-    public void initAUtiliserPourLesTests(){
+    public void initAUtiliserPourLesTests() {
         init();
     }
 

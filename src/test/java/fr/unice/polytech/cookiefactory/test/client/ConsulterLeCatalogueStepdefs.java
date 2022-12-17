@@ -82,7 +82,7 @@ public class ConsulterLeCatalogueStepdefs {
         );
 
 
-        cookie2= new Cookie(
+        cookie2 = new Cookie(
                 "cookie2",
                 new Recette()
                         .setPate(bdIngredient.getPate("Chocolat").get(), 1)
@@ -90,13 +90,13 @@ public class ConsulterLeCatalogueStepdefs {
                         .setGarnituresWithGarniture(List.of(bdIngredient.getGarniture("Pépite de chocolat au lait").get(), bdIngredient.getGarniture("Pépite de chocolat noir").get()), 1)
 
         );
-        cookie3= new Cookie(
+        cookie3 = new Cookie(
                 "cookie3",
                 new Recette()
                         .setPate(bdIngredient.getPate("Nature").get(), 1)
                         .setSaveur(bdIngredient.getSaveur("Nature").get(), 1)
         );
-        cookie4= new Cookie(
+        cookie4 = new Cookie(
                 "cookie4",
                 new Recette()
                         .setPate(bdIngredient.getPate("Caramel").get(), 1)
@@ -104,7 +104,7 @@ public class ConsulterLeCatalogueStepdefs {
                         .setGarnituresWithGarniture(List.of(bdIngredient.getGarniture("Amande").get(), bdIngredient.getGarniture("Caramel").get()), 1)
 
         );
-        cookie5= new Cookie(
+        cookie5 = new Cookie(
                 "cookie5",
                 new Recette()
                         .setPate(bdIngredient.getPate("Nature").get(), 1)
@@ -112,55 +112,55 @@ public class ConsulterLeCatalogueStepdefs {
                         .setGarnituresWithGarniture(List.of(bdIngredient.getGarniture("M&M’s™").get()), 1)
 
         );
-            bdCookie.ajouterUnCookie(cookie1);
-            bdCookie.ajouterUnCookie(cookie2);
-            bdCookie.ajouterUnCookie(cookie3);
-            bdCookie.ajouterUnCookie(cookie4);
-            bdCookie.ajouterUnCookie(cookie5);
+        bdCookie.ajouterUnCookie(cookie1);
+        bdCookie.ajouterUnCookie(cookie2);
+        bdCookie.ajouterUnCookie(cookie3);
+        bdCookie.ajouterUnCookie(cookie4);
+        bdCookie.ajouterUnCookie(cookie5);
 
-            bdCookie.validerCookie("cookie1");
-            bdCookie.validerCookie("cookie2");
-            bdCookie.validerCookie("cookie3");
-            bdCookie.validerCookie("cookie4");
-            bdCookie.validerCookie("cookie5");
-        }
+        bdCookie.validerCookie("cookie1");
+        bdCookie.validerCookie("cookie2");
+        bdCookie.validerCookie("cookie3");
+        bdCookie.validerCookie("cookie4");
+        bdCookie.validerCookie("cookie5");
+    }
 
-        private void initStocks() {
-            magasin1.getStock().ajouterIngredient(new Pate("Nature"), 100);
-            magasin1.getStock().ajouterIngredient(new Pate("Chocolat"), 100);
-            magasin1.getStock().ajouterIngredient(new Pate("Caramel"), 100);
-            magasin1.getStock().ajouterIngredient(new Saveur("Vanille"), 100);
-            magasin1.getStock().ajouterIngredient(new Saveur("Chocolat au lait"), 100);
-            magasin1.getStock().ajouterIngredient(new Saveur("Caramel"), 100);
-            magasin1.getStock().ajouterIngredient(new Saveur("Nature"), 100);
-            magasin1.getStock().ajouterIngredient(new Garniture("M&M’s™"), 100);
-            magasin1.getStock().ajouterIngredient(new Garniture("Amande"), 100);
-            magasin1.getStock().ajouterIngredient(new Garniture("Caramel"), 100);
-            magasin1.getStock().ajouterIngredient(new Garniture("Pépite de chocolat au lait"), 100);
-            magasin1.getStock().ajouterIngredient(new Garniture("Pépite de chocolat noir"), 100);
+    private void initStocks() {
+        magasin1.getStock().ajouterIngredient(new Pate("Nature"), 100);
+        magasin1.getStock().ajouterIngredient(new Pate("Chocolat"), 100);
+        magasin1.getStock().ajouterIngredient(new Pate("Caramel"), 100);
+        magasin1.getStock().ajouterIngredient(new Saveur("Vanille"), 100);
+        magasin1.getStock().ajouterIngredient(new Saveur("Chocolat au lait"), 100);
+        magasin1.getStock().ajouterIngredient(new Saveur("Caramel"), 100);
+        magasin1.getStock().ajouterIngredient(new Saveur("Nature"), 100);
+        magasin1.getStock().ajouterIngredient(new Garniture("M&M’s™"), 100);
+        magasin1.getStock().ajouterIngredient(new Garniture("Amande"), 100);
+        magasin1.getStock().ajouterIngredient(new Garniture("Caramel"), 100);
+        magasin1.getStock().ajouterIngredient(new Garniture("Pépite de chocolat au lait"), 100);
+        magasin1.getStock().ajouterIngredient(new Garniture("Pépite de chocolat noir"), 100);
 
-            magasin2.getStock().ajouterIngredient(new Pate("Chocolat"), 100);
-            magasin2.getStock().ajouterIngredient(new Pate("Caramel"), 100);
-            magasin2.getStock().ajouterIngredient(new Saveur("Vanille"), 100);
-            magasin2.getStock().ajouterIngredient(new Saveur("Chocolat au lait"), 100);
-            magasin2.getStock().ajouterIngredient(new Saveur("Caramel"), 100);
-            magasin2.getStock().ajouterIngredient(new Saveur("Nature"), 100);
-            magasin2.getStock().ajouterIngredient(new Garniture("M&M’s™"), 100);
-            magasin2.getStock().ajouterIngredient(new Garniture("Amande"), 100);
-            magasin2.getStock().ajouterIngredient(new Garniture("Caramel"), 100);
-            magasin2.getStock().ajouterIngredient(new Garniture("Pépite de chocolat au lait"), 100);
-            magasin2.getStock().ajouterIngredient(new Garniture("Pépite de chocolat noir"), 100);
+        magasin2.getStock().ajouterIngredient(new Pate("Chocolat"), 100);
+        magasin2.getStock().ajouterIngredient(new Pate("Caramel"), 100);
+        magasin2.getStock().ajouterIngredient(new Saveur("Vanille"), 100);
+        magasin2.getStock().ajouterIngredient(new Saveur("Chocolat au lait"), 100);
+        magasin2.getStock().ajouterIngredient(new Saveur("Caramel"), 100);
+        magasin2.getStock().ajouterIngredient(new Saveur("Nature"), 100);
+        magasin2.getStock().ajouterIngredient(new Garniture("M&M’s™"), 100);
+        magasin2.getStock().ajouterIngredient(new Garniture("Amande"), 100);
+        magasin2.getStock().ajouterIngredient(new Garniture("Caramel"), 100);
+        magasin2.getStock().ajouterIngredient(new Garniture("Pépite de chocolat au lait"), 100);
+        magasin2.getStock().ajouterIngredient(new Garniture("Pépite de chocolat noir"), 100);
 
-            magasin3.getStock().ajouterIngredient(new Pate("Nature"), 100);
-            magasin3.getStock().ajouterIngredient(new Pate("Chocolat"), 100);
-            magasin3.getStock().ajouterIngredient(new Pate("Caramel"), 100);
-            magasin3.getStock().ajouterIngredient(new Saveur("Chocolat au lait"), 100);
-            magasin3.getStock().ajouterIngredient(new Saveur("Caramel"), 100);
-            magasin3.getStock().ajouterIngredient(new Saveur("Nature"), 100);
-            magasin3.getStock().ajouterIngredient(new Garniture("M&M’s™"), 100);
-            magasin3.getStock().ajouterIngredient(new Garniture("Caramel"), 100);
-            magasin3.getStock().ajouterIngredient(new Garniture("Pépite de chocolat noir"), 100);
-        }
+        magasin3.getStock().ajouterIngredient(new Pate("Nature"), 100);
+        magasin3.getStock().ajouterIngredient(new Pate("Chocolat"), 100);
+        magasin3.getStock().ajouterIngredient(new Pate("Caramel"), 100);
+        magasin3.getStock().ajouterIngredient(new Saveur("Chocolat au lait"), 100);
+        magasin3.getStock().ajouterIngredient(new Saveur("Caramel"), 100);
+        magasin3.getStock().ajouterIngredient(new Saveur("Nature"), 100);
+        magasin3.getStock().ajouterIngredient(new Garniture("M&M’s™"), 100);
+        magasin3.getStock().ajouterIngredient(new Garniture("Caramel"), 100);
+        magasin3.getStock().ajouterIngredient(new Garniture("Pépite de chocolat noir"), 100);
+    }
 
 
 }

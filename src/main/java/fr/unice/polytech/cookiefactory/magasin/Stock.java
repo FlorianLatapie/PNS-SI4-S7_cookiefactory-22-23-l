@@ -16,7 +16,7 @@ public class Stock {
         ingredients = new HashMap<>();
     }
 
-    public void initStock(){
+    public void initStock() {
 
     }
 
@@ -81,8 +81,7 @@ public class Stock {
         for (Ingredient ingredient : cookie.getRecette().getIngredients()) {
             if (ingredients.containsKey(ingredient) && ingredients.get(ingredient) >= cookie.getRecette().getQuantite(ingredient) * quantite) {
                 retirerIngredient(ingredient, cookie.getRecette().getQuantite(ingredient) * quantite);
-            }
-            else {
+            } else {
                 throw new PasAssezIngredientStock(cookie.getRecette().getQuantite(ingredient), ingredients.get(ingredient));
             }
         }

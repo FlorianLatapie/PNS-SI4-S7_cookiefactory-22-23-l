@@ -55,20 +55,18 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     }
 
     public void annulerCommande(Commande commande) {
-        if(commandeAppartientAuGestionnaire(commande)) {
+        if (commandeAppartientAuGestionnaire(commande)) {
             Compte compteAvecCommande;
             if (commande.getEtat() == Etat.CONFIRMEE) {
                 compteAvecCommande = commande.getCompte(); //TODO rembourser client
                 Cuisinier cuisinier = obtenirCuisinierPreparantCommande(commande);
                 cuisinier.annulerCommande(commande); //désassigner le cuisinier
-                                                     //TODO remettre en stock les ingrédients
+                //TODO remettre en stock les ingrédients
                 this.enleverCommande(commande);      //enlever commande du gestionnaire
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException("Vous ne pouvez pas annuler votre commande maintenant.");
             }
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Vous ne pouvez pas annuler une commande qui n'appartient pas au gestionnaire. ");
         }
     }
@@ -80,15 +78,16 @@ public class GestionnaireDeCommandes implements IClasseTempsReel {
     public boolean commandeAppartientAuGestionnaire(Commande commande) {
         return this.commandes.contains(commande);
     }
+
     public void enleverCommande(Commande commande) {
-        if(commandeAppartientAuGestionnaire(commande)) {
+        if (commandeAppartientAuGestionnaire(commande)) {
             this.commandes.remove(commande);
             commande.changerStatut(Etat.ANNULEE);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Erreur: la commande n'est pas dans le gestionnaire de commande. ");
         }
     }
+
     public void ajouterCommande(List<Commande> commandes) {
         this.commandes.addAll(commandes);
     }

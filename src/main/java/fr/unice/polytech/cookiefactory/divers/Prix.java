@@ -31,7 +31,7 @@ public final class Prix {
         return new Prix((int) (Math.ceil(this.nbCentimes * (1 - pourcentage / 100.0))));
     }
 
-    public static Prix convertir(double prix){
+    public static Prix convertir(double prix) {
         return new Prix((int) (prix * 100));
     }
 

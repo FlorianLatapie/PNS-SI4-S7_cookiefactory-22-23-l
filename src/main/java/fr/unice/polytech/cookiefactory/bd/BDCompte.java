@@ -43,7 +43,7 @@ public class BDCompte {
         this.comptes.add(new Membre(client));
     }
 
-    public void init(){
+    public void init() {
 
     }
 }

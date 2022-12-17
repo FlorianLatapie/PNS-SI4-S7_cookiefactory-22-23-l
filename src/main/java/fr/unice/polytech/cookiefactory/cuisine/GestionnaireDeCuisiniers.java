@@ -67,8 +67,8 @@ public class GestionnaireDeCuisiniers {
         return Optional.empty();
     }
 
-    public ChefCookieFestif devenirChefCookieFestif(Cuisinier cuisinier, ArrayList<Themes> themes, ArrayList<Occasions> occasions){
-        if(cuisiniers.contains(cuisinier)){
+    public ChefCookieFestif devenirChefCookieFestif(Cuisinier cuisinier, ArrayList<Themes> themes, ArrayList<Occasions> occasions) {
+        if (cuisiniers.contains(cuisinier)) {
             cuisiniers.remove(cuisinier);
             cuisinier = new ChefCookieFestif(cuisinier.getGestionnaireDeCommandes(), themes, occasions);
             cuisiniers.add(cuisinier);

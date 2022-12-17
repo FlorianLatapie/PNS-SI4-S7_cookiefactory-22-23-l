@@ -17,7 +17,7 @@ public class QuantiteIngredient<Ingredient, Integer> {
         return quantite;
     }
 
-    public void setQuantite(int quantite){
+    public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
 }

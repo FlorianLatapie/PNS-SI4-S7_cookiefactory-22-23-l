@@ -3,22 +3,27 @@ package fr.unice.polytech.cookiefactory.test.recette;
 
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.factory.SimpleCookieFactory;
-import fr.unice.polytech.cookiefactory.spring.composants.GestionCookies;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ModifierCookieGlobaux;
+import fr.unice.polytech.cookiefactory.spring.interfaces.ObtenirCookiesGlobaux;
 import io.cucumber.java.fr.Alors;
 import io.cucumber.java.fr.Étantdonné;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 import static fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie.SOUMIS;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 @CucumberContextConfiguration
 @SpringBootTest
 public class AccepterUneNouvelleRecetteStepDef {
     @Autowired
-    GestionCookies gestionCookies;
+    private ModifierCookieGlobaux modifierCookieGlobaux;
+    @Autowired
+    private ObtenirCookiesGlobaux obtenirCookiesGlobaux;
+
     Cookie cookie;
     String nomCookie;
 
@@ -32,23 +37,23 @@ public class AccepterUneNouvelleRecetteStepDef {
 
     @Étantdonné("un cuisinier qui soumet un cookie")
     public void un_cuisinier_qui_a_soumis_un_cookie() {
-        gestionCookies.ajouterUnCookie(cookie);
+        modifierCookieGlobaux.ajouterUnCookie(cookie);
     }
 
     @Alors("un dirigeant valide le cookie")
     public void le_dirigent_valide_le_cookie() {
-        gestionCookies.validerCookie(nomCookie);
+        modifierCookieGlobaux.validerCookie(nomCookie);
     }
 
     @Alors("le cookie est en attente de validation")
     public void leCookieEstEnAttenteDeValidation() {
-        Cookie cookie = gestionCookies.getCookieParNom(nomCookie);
-        assertTrue(gestionCookies.getCookiesEnAttente().stream().map(Cookie::getId).toList().contains(cookie.getId()));
+        Cookie cookie = obtenirCookiesGlobaux.getCookieParNom(nomCookie);
+        assertTrue(obtenirCookiesGlobaux.getCookiesEnAttente().stream().map(Cookie::getId).toList().contains(cookie.getId()));
     }
 
     @Alors("le cookie est accepté")
     public void leCookieEstAccepté() {
-        Cookie cookie = gestionCookies.getCookieParNom(nomCookie);
-        assertTrue(gestionCookies.getCookiesValide().stream().map(Cookie::getId).toList().contains(cookie.getId()));
+        Cookie cookie = obtenirCookiesGlobaux.getCookieParNom(nomCookie);
+        assertTrue(obtenirCookiesGlobaux.getCookiesValide().stream().map(Cookie::getId).toList().contains(cookie.getId()));
     }
 }

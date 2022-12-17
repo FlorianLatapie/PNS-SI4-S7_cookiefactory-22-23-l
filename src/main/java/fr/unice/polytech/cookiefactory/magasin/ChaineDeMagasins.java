@@ -24,7 +24,7 @@ public class ChaineDeMagasins {
         initMagasin();
     }
 
-    private void initMagasin(){
+    private void initMagasin() {
         MagasinFactory factory = new SimpleMagasinFactory();
         magasins.add(factory.creerMagasin("Magasin 1"));
         magasins.add(factory.creerMagasin("Magasin 2"));

@@ -1,7 +1,5 @@
 package fr.unice.polytech.cookiefactory.acteur;
 
-import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
-
 import java.util.UUID;
 
 public abstract class Compte {

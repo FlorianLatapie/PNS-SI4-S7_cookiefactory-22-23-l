@@ -37,10 +37,12 @@ public class DevenirChefCookieFestif {
     public void un_thème(String string) {
         themes.add(Themes.valueOf(string));
     }
+
     @Etantdonné("une occasion {string}")
     public void une_occasion(String string) {
         occasions.add(Occasions.valueOf(string));
     }
+
     @Alors("je veux devenir chef cookie festif")
     public void je_veux_devenir_chef_cookie_festif() {
         chef = magasin.getGestionnaireDeCuisiniers().devenirChefCookieFestif(chef, themes, occasions);

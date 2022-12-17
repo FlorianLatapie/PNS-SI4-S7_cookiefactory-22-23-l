@@ -1,16 +1,9 @@
 package fr.unice.polytech.cookiefactory.recette.cookie.factory;
 
-import fr.unice.polytech.cookiefactory.bd.BDIngredient;
 import fr.unice.polytech.cookiefactory.divers.Prix;
-import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.recette.cookie.Cookie;
 import fr.unice.polytech.cookiefactory.recette.cookie.Recette;
-import fr.unice.polytech.cookiefactory.recette.enums.Cuisson;
-import fr.unice.polytech.cookiefactory.recette.enums.Melange;
 import fr.unice.polytech.cookiefactory.recette.enums.ValidationCookie;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Garniture;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Pate;
-import fr.unice.polytech.cookiefactory.recette.ingredient.Saveur;
 
 import java.util.List;
 

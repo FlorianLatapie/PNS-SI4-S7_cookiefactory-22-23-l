@@ -54,10 +54,9 @@ public class AnnulerUneCommandeStepDef {
 
     @Quand("le client annule sa commande")
     public void le_client_annule_sa_commande() {
-        try{
+        try {
             gestionnaireDeCommandes.annulerCommande(commande);
-        }
-        catch (IllegalArgumentException error){
+        } catch (IllegalArgumentException error) {
             exception = error;
         }
     }

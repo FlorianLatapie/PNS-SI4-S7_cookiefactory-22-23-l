@@ -12,7 +12,7 @@ import fr.unice.polytech.cookiefactory.recette.cookie.factory.SimpleCookieFestif
 import fr.unice.polytech.cookiefactory.recette.enums.Taille;
 import io.cucumber.java.fr.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AjouterDesCookiesFestifsAuPanierStepdefs {
     private Invite invite;
