@@ -1,5 +1,6 @@
 package fr.unice.polytech.cookiefactory.spring.depots;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface Depot<T, ID> {
@@ -17,7 +18,7 @@ public interface Depot<T, ID> {
     boolean existe(ID id);
 
     // Returns all instances of the type.
-    Iterable<T> getTout();
+    List<T> getTout();
 
     // Retrieves an entity by its id.
     Optional<T> getParId(ID id);

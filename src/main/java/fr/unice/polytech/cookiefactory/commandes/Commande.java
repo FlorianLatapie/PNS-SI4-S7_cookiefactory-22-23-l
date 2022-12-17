@@ -9,9 +9,10 @@ import fr.unice.polytech.cookiefactory.magasin.Magasin;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Commande implements IClasseTempsReel {
-
+    private final UUID id = UUID.randomUUID();
     public static int REDUCTION = 10; // en pourcentage
     private Panier panier = new Panier();
     private ZonedDateTime dateReception;
@@ -150,5 +151,9 @@ public class Commande implements IClasseTempsReel {
 
     public void setGestionnaireDeCommandes(GestionnaireDeCommandes gestionnaireDeCommandes) {
         this.gestionnaireDeCommandes = gestionnaireDeCommandes;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }

@@ -1,6 +1,7 @@
 package fr.unice.polytech.cookiefactory.spring.depots;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 public class DepotBasiqueImplemente<T, ID> implements Depot<T, ID> {
@@ -28,10 +29,9 @@ public class DepotBasiqueImplemente<T, ID> implements Depot<T, ID> {
     }
 
     @Override
-    public Iterable<T> getTout() {
-        return stockage.values();
+    public List<T> getTout() {
+        return stockage.values().stream().toList();
     }
-
     @Override
     public Optional<T> getParId(ID id) {
         return Optional.ofNullable(stockage.get(id));

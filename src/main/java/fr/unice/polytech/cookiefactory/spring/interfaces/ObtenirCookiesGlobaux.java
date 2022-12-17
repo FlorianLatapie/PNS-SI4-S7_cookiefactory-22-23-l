@@ -7,8 +7,6 @@ import java.util.List;
 public interface ObtenirCookiesGlobaux {
     Cookie getCookieParNom(String nom);
 
-    List<Cookie> getCookies();
-
     List<Cookie> getCookiesEnAttente();
 
     List<Cookie> getCookiesValide();
