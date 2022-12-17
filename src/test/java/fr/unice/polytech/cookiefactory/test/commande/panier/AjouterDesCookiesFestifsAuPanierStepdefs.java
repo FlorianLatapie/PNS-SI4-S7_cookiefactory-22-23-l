@@ -2,6 +2,7 @@ package fr.unice.polytech.cookiefactory.test.commande.panier;
 
 import fr.unice.polytech.cookiefactory.acteur.clients.Invite;
 import fr.unice.polytech.cookiefactory.commandes.Commande;
+import fr.unice.polytech.cookiefactory.cuisine.ChefCookieFestif;
 import fr.unice.polytech.cookiefactory.divers.Prix;
 import fr.unice.polytech.cookiefactory.magasin.ChaineDeMagasins;
 import fr.unice.polytech.cookiefactory.magasin.Magasin;
@@ -21,6 +22,8 @@ public class AjouterDesCookiesFestifsAuPanierStepdefs {
 
     private Magasin magasin;
 
+    private IllegalArgumentException erreur;
+
     @Etantdonné("un invité \\(cookieFestif)")
     public void unInvitéCookieFestif() {
         invite = new Invite();
@@ -34,6 +37,7 @@ public class AjouterDesCookiesFestifsAuPanierStepdefs {
 
     @Quand("j'ajoute {int} cookies festifs au panier.")
     public void jAjouteLeCookieFestifAuPanier(int nbCookies) {
+        commande.getPanier().setMagasinCommande(magasin);
         commande.getPanier().ajouterCookies(cookieFestif, nbCookies);
     }
 
@@ -45,10 +49,12 @@ public class AjouterDesCookiesFestifsAuPanierStepdefs {
     @Et("un magasin avec une taxe de {double}")
     public void unMagasinCookieFestif(double taxe) {
         magasin = new SimpleMagasinFactory().setValeurTaxe(taxe).creerMagasin("Magasin");
+        magasin.getGestionnaireDeCuisiniers().ajouterCuisinier(new ChefCookieFestif(magasin.getGestionnaireDeCommandes()));
     }
 
     @Quand("j'ajoute {int} cookies festifs de taille L au panier basés sur le cookie normal Pop-Choco.")
     public void jAjouteNbCookiesCookiesFestifsDeTailleLAuPanierBasésSurLeCookieNormal(int nbCookies) {
+        commande.getPanier().setMagasinCommande(magasin);
         Cookie cookie = ChaineDeMagasins.getInstance().getBd().getBdCookie().getCookieParNom("Pop-Choco");
         commande.getPanier().ajouterCookies(new CookieFestif(cookie, Taille.L), nbCookies);
     }
@@ -61,5 +67,19 @@ public class AjouterDesCookiesFestifsAuPanierStepdefs {
     @Et("le prix de la commande est de {double} euros.")
     public void lePrixDeLaCommandeEstDePrixTTCEuros(double prixTTC) {
         assertEquals(Prix.convertir(prixTTC), commande.getPrixAvecTaxe());
+    }
+
+    @Quand("j'ajoute un cookie festif au panier")
+    public void j_ajoute_un_cookie_festif_au_panier() {
+        try{
+            commande.getPanier().ajouterCookies(cookieFestif, 1);
+        }
+        catch (IllegalArgumentException e){
+            erreur = e;
+        }
+    }
+    @Alors("une erreur PasDeChefsCookieFestif est levée")
+    public void une_erreur_pas_de_chefs_cookie_festif_est_levée() {
+        assertNotEquals(erreur, null);
     }
 }

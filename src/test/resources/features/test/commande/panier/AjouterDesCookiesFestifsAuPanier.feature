@@ -27,3 +27,7 @@ Fonctionnalité: Ajouter des cookies festifs au panier
       | nbCookies | prixHT | prixTTC |
       | 1         | 7,50   | 9,00    |
       | 10        | 75,00  | 90,00   |
+
+  Scénario: Pas de chefs cuisiniers festifs
+    Quand j'ajoute un cookie festif au panier
+    Alors une erreur PasDeChefsCookieFestif est levée
