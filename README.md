@@ -6,11 +6,11 @@
 <h3 align="center">CookieFactory-22-23-L</h3>
 
 <p align="center">
-The Cookie Factory (TCF) est une grande marque de boulangerie aux États-Unis. 
-Le système Cookie on Demand (CoD) est un service innovant proposé par TCF à son client. 
+The Cookie Factory (TCF) est une grande enseigne de cookies aux États-Unis. 
+Le système Cookie on Demand (CoD) est un service innovant proposé par TCF à ses clients. 
 Ils peuvent commander des cookies en ligne grâce à une application, 
-et sélectionner où et quand ils retireront leur commande dans une boutique donnée. 
-Le système CoD garantit aux clients satisfaits de TCF qu'ils récupéreront toujours leurs cookies chauds prépayés à temps.
+et sélectionner le magasin de retrait, ainsi que du créneau de retrait de leur commande. 
+Le système CoD garantit aux clients de TCF qu'ils récupéreront toujours leurs cookies prépayés et chauds.
 </p>
 
 <br>
@@ -24,8 +24,7 @@ Vous pouvez également consulter le rapport du projet [ici](/doc/TeamL-rendu2.pd
 
 # Pour Commencer
 
-Ces instructions vous permettront d'obtenir une copie du projet sur votre machine locale
-à des fins de développement et de test.
+Ces instructions vous permettront d'obtenir une copie du projet sur votre propre machine.
 
 ## Prérequis
 
@@ -36,7 +35,7 @@ Vous devez avoir installé sur votre machine les logiciels suivants :
 
 ## Installation
 
-Un tutoriel pas à pas qui vous explique comment obtenir un environnement de développement en cours d'exécution.
+Un tutoriel pas à pas vous explique comment obtenir et exécuter le projet.
 
 Cloner le projet
 
