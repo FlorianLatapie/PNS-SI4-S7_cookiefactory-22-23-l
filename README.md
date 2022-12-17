@@ -292,7 +292,7 @@ mvn exec:java
 - [**Mockito**](https://site.mockito.org/) - Framework de test
 - [**Gurkins**](https://cucumber.io/docs/guides/overview/) - Langage pour Behavior Driven Development
 
-# Authors
+# Auteurs
 
 - [**Ludovic Bailet**](https://github.com/Ludovic-BAILET)
 - [**Aurélia Chabanier**](https://github.com/AureliaChabanier)
