@@ -52,13 +52,13 @@ cd cookiefactory-22-23-l
 
 ## Lancement de l'application
 
-Compilez le projet
+Compiler le projet
 
 ```sh
 mvn clean install
 ```
 
-Lancez l'application
+Lancer l'application
 
 ```sh
 mvn exec:java
@@ -74,33 +74,33 @@ mvn exec:java
 **Je veux** bénéficier de mon avantage client fidèle<br>
 **Afin de** payer moins cher ma commande<br>
 
-### *User Story* : Obtenir une réduction quand le client attends le quota de fidélité [#49](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/49)
+### *User Story* : Obtenir une réduction quand le client atteint le quota de fidélité [#49](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/49)
 
-**En tant que** client qui à un compte Membre<br>
-**Je veux** pouvoir bénéficié d'une réduction quand j'atteins le quota nécessaire<br>
-**Afin de** payer moins chère<br>
+**En tant que** Client qui a un compte Membre<br>
+**Je veux** pouvoir bénéficier d'une réduction quand j'atteins le quota nécessaire<br>
+**Afin de** payer moins cher<br>
 
 ## Cookie festif
 
 ### *User Story* : Ajouter un cookie festif au panier [#39](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/39)
 
-**En tant qu'** invité<br>
+**En tant qu'** Invité<br>
 **Je veux** ajouter un cookie festif au panier<br>
 **Afin de** le commander ultérieurement<br>
 
-### *User Story* : Devenir chef cookie festif [#40](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/40)
+### *User Story* : Devenir Chef cookie festif [#40](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/40)
 
-**En tant que** Chef Cuisinier<br>
+**En tant que** Chef cuisinier<br>
 **Je veux** devenir chef cookies festifs<br>
-**Afin de** créer des party cookies pour mes thèmes et mes occasions<br>
+**Afin de** créer des party cookies selon mes thèmes et mes occasions<br>
 
 ### *User Story* : Commander des cookies festifs [#41](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/41)
 
-**En tant qu'** invité<br>
+**En tant qu'** Invité<br>
 **Je veux** obtenir la liste des magasins proposant les cookies festifs<br>
 **Afin de** commander des cookies festifs<br>
 
-### *User Story* : Cookies Festifs modifient la quantité d'ingrédients [#47](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/47)
+### *User Story* : Les Cookies Festifs modifient la quantité d'ingrédients [#47](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/47)
 
 **En tant que** Chef Cuisinier<br>
 **Je veux** que les Cookies Festifs que je prépare modifient la quantité des ingrédients de la recette<br>
@@ -108,7 +108,7 @@ mvn exec:java
 
 ### *User Story* : Assigner les chefs cookies festifs à une commande de cookies festifs [#48](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/48)
 
-**En tant que** chef cookies festif<br>
+**En tant que** Chef cookie festif<br>
 **Je veux** être assigné à une commande de Cookie Festif<br>
 **Afin de** pouvoir préparer la commande<br>
 
@@ -124,7 +124,7 @@ mvn exec:java
 
 ### *User Story* : Consulter le contenu du panier [#1](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/1)
 
-**En tant qu'** invité<br>
+**En tant qu'** Invité<br>
 **Je veux** voir mon panier avant de payer<br>
 **Afin de** m’assurer de ne pas avoir fait d’erreur dans ma sélection des cookies et des quantités<br>
 
@@ -132,7 +132,7 @@ mvn exec:java
 
 ### *User Story* : Annuler sa commande  [#13](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/13)
 
-**En tant que** client ayant passé une commande<br>
+**En tant que** Client ayant passé une commande<br>
 **Je veux** annuler ma commande<br>
 **Afin d'** être remboursé de mon achat<br>
 
@@ -142,7 +142,7 @@ mvn exec:java
 
 **En tant que** Cuisinier<br>
 **Je veux** consulter les commandes à préparer<br>
-**Afin de** savoir quoi ce qu’il faut préparer<br>
+**Afin de** savoir ce qu’il faut préparer<br>
 
 ### *User Story* : Consulter les commandes en attente de retrait [#4](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/4)
 
@@ -154,7 +154,7 @@ mvn exec:java
 
 **En tant que** Cuisinier<br>
 **Je veux** consulter les commandes à préparer<br>
-**Afin de** pouvoir cuisiner les cookies<br>
+**Afin de** pouvoir cuisiner les cookies efficacement<br>
 
 ### *User Story* : Plusieurs commandes par cuisinier, plusieurs cuisiniers [#33](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/33)
 
@@ -168,7 +168,7 @@ mvn exec:java
 
 **En tant que** Cuisinier<br>
 **Je veux** marquer une commande comme préparée<br>
-**Afin d'** avertir le système de gestion de commande<br>
+**Afin d'** avertir le gestionnaire de commande<br>
 
 ### *User Story* : Valider une commande délivrée [#5](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/5)
 
@@ -180,13 +180,13 @@ mvn exec:java
 
 ### *User Story* : Consulter le catalogue d’un magasin [#6](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/6)
 
-**En tant qu'** invité<br>
+**En tant qu'** Invité<br>
 **Je veux** consulter le catalogue des cookies disponibles auprès d’un magasin donné<br>
 **Afin de** connaître toutes les recettes proposées<br>
 
 ### *User Story* : Gérer les magasins présents dans la chaine de magasins [#35](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/35)
 
-**En tant que** dirigeant<br>
+**En tant que** Dirigeant<br>
 **Je veux** gérer (ajouter/supprimer) les magasins présents dans la chaine de magasins<br>
 **Afin d'** avoir une cohérence entre le monde réel et le système<br>
 
@@ -194,7 +194,7 @@ mvn exec:java
 
 ### *User Story* : Créer un compte client [#7](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/7)
 
-**En tant qu'** invité<br>
+**En tant qu'** Invité<br>
 **Je veux** créer un compte client<br>
 **Afin de** bénéficier des avantages des clients enregistrés<br>
 
@@ -202,7 +202,7 @@ mvn exec:java
 
 ### *User Story* : Sélectionner la quantité d’une recette [#9](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/9)
 
-**En tant qu'** invité<br>
+**En tant qu'** Invité<br>
 **Je veux** sélectionner la quantité pour un certain cookie que je veux commander<br>
 **Afin de** commander plusieurs cookies d’une même recette dans une seule commande<br>
 
@@ -236,25 +236,25 @@ mvn exec:java
 
 ### *User Story* : Gérer des ingrédients du stock d'un magasin [#20](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/20)
 
-**En tant que** responsable du stock<br>
+**En tant que** Responsable du stock<br>
 **Je veux** ajouter des ingrédients aux stock<br>
 **Afin de** modifier les quantités présentes dans le stock du magasin<br>
 
-### *User Story* : Commander enlève les ingrédients du stock [#24](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/24)
+### *User Story* : Passer une commande enlève du stock les ingrédients nécessaires [#24](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/24)
 
-**En tant que** cuisinier<br>
+**En tant que** Cuisinier<br>
 **Je veux** que les ingrédients nécessaires à la réalisation d'une commande soient disponibles<br>
 **Afin de** pouvoir réaliser toutes les commandes qui me sont assignées<br>
 
 ### *User Story* : Gérer les ingrédients disponibles pour tous les magasins [#32](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/32)
 
-**En tant que** dirigeant<br>
-**Je veux** ajouter des nouveaux ingrédients dans les ingrédients disponibles pour tous les magasins<br>
+**En tant que** Dirigeant<br>
+**Je veux** ajouter de nouveaux ingrédients dans les ingrédients disponibles pour tous les magasins<br>
 **Afin de** créer des nouvelles recettes de cookie plus diversifiées<br>
 
 ## Paiement
 
-### *User Story* : Payer lors d'une commande [#22](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/22)
+### *User Story* : Payer à la fin d'une commande [#22](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/22)
 
 **En tant que** Client en cours de finalisation sa commande<br>
 **Je veux** pouvoir payer<br>
@@ -275,7 +275,7 @@ mvn exec:java
 
 ## Horaires de Magasin
 
-### *User Story* : Changer les horaires d'ouvertures d'un magasin [#31](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/31)
+### *User Story* : Changer les horaires d'ouverture d'un magasin [#31](https://github.com/PNS-Conception/cookiefactory-22-23-l/issues/31)
 
 **En tant que** Responsable<br>
 **Je veux** changer les horaires d’ouverture de mon magasin<br>
