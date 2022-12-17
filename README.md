@@ -283,7 +283,7 @@ mvn exec:java
 
 # Outils et technologies utilisés
 
-- [**Github**](https://github.com) - gestion de projet, gestion de version, gestion de tâches
+- [**Github**](https://github.com) - Gestion de projet, gestion de version, gestion de tâches
 - [**Java**](https://www.java.com/) - Langage de programmation
 - [**Maven**](https://maven.apache.org/) - Gestionnaire de dépendances
 - [**Spring**](https://spring.io/) - Framework Java
