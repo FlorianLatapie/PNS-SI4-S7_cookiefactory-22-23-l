@@ -4,8 +4,8 @@ import fr.unice.polytech.cookiefactory.acteur.clients.Membre;
 
 public abstract class Compte {
 
-    private final String nom;
-    private final String prenom;
+    private String nom;
+    private String prenom;
     private String email;
     private String telephone;
     private String motDePasse;
@@ -46,6 +46,26 @@ public abstract class Compte {
 
     public String getMotDePasse() {
         return motDePasse;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 
     public void changerEmail(String email) {
